@@ -77,10 +77,11 @@ module.exports = config({
       content: "道阻且长，将行则至",
     },
 
-    comment: {
-      type: "waline",
-      serverURL: "https://vuepress-theme-hope-comment.vercel.app",
-    },
+    // 评论功能
+    // comment: {
+    //   type: "waline",
+    //   serverURL: "https://vuepress-theme-hope-comment.vercel.app",
+    // },
     copyright: {
       status: "global",
     },
@@ -88,8 +89,14 @@ module.exports = config({
     git: {
       timezone: "Asia/Shanghai",
     },
-    // 开启markdown的mermaid流程图
 
+    // 开启手机端也能复制代码的功能
+    copyCode:{
+      showInMobile:true,
+    },
+
+
+    // 开启markdown的mermaid流程图
     mdEnhance: {
       mermaid: true,
       // enableAll: true,
