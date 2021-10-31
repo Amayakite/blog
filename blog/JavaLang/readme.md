@@ -1,4 +1,8 @@
 ---
 article: false
 ---
-# 这是Java学习笔记
+
+# 要做的事
+
+- [] Java入门
+- [] Java中级
