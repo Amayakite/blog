@@ -82,6 +82,7 @@ module.exports = config({
     //   type: "waline",
     //   serverURL: "https://vuepress-theme-hope-comment.vercel.app",
     // },
+    comment: false,
     copyright: {
       status: "global",
     },
