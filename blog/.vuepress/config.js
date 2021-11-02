@@ -29,7 +29,7 @@ module.exports = config({
     "/": {
       lang: "zh-CN",
       title: "Amayakite Blogs",
-      description: "使用vuepress-theme-hope的Blog",
+      description: "鱼跃此时海，花开彼岸天",
     }
 
   },
