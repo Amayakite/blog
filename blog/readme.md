@@ -43,7 +43,7 @@ title: 主页
 icon: home
 heroImage: /logo.svg
 heroText: vuepress-theme-hope
-tagline: 一个具有强大功能的 vuepress 主题✨
+tagline: 鱼跃此时海，花开彼岸天
 action:
   - text: 快速上手 💡
     link: /zh/guide/
@@ -101,7 +101,7 @@ features:
     details: 包括博客主页、图标支持、路径导航、页脚支持、全屏按钮、返回顶部按钮等
     link: /zh/guide/feature/
 
-footer: MIT Licensed | Copyright © 2019-present Mr.Hope
+footer: MIT Licensed | Copyright © 2021-present Amayakite
 copyrightText: false
 ---
 
