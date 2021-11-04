@@ -62,6 +62,8 @@ module.exports = config({
       links: {
         Github: "https://github.com/Amayakite",
         Email: "Amayakite@qq.com",
+        Gitee: "https://gitee.com/Amayakite",
+        QQ:"http://wpa.qq.com/msgrd?v=3&uin=2542896626&site=qq&menu=yes"
       },
     },
     // 自定义主题色，第一个就是默认主题设
