@@ -4,14 +4,14 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: 拉取本仓库代码🎉
       uses: actions/checkout@master
 
-    - name: vuepress-deploy
+    - name: 部署并上传到GitHub指定仓库🎉
       uses: jenkey2011/vuepress-deploy@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        TARGET_REPO: Amayakite/Amayakite.github.io
+        TARGET_REPO: ${{ secrets.REPO }}
         TARGET_BRANCH: gh-pages
         BUILD_SCRIPT: yarn && yarn docs:build
         BUILD_DIR: dist/
