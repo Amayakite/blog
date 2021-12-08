@@ -3,7 +3,7 @@ const {config} = require("vuepress-theme-hope");
 module.exports = config({
     title: "Amayakite Blogs",
     description: "记录我",
-
+    
     dest: "./dist",
 
     // 页头配置
@@ -46,7 +46,7 @@ module.exports = config({
         //     indexName: "dev_BLOG", //MyBlog
         //     appId: "9D51YEY005",
         // },
-
+        
         locales: {
             "/": {
                 nav: require('./navBar'),
@@ -148,6 +148,8 @@ module.exports = config({
             favicon: "/logo.svg",
             // favicon: "/favicon.ico",
             cachePic: true,
+            maxPicSize:1024*200,
+            maxSize:1024*200,
             // apple: {
             //   icon: "/assets/icon/apple-icon-152.png",
             //   statusBarColor: "black",
@@ -157,6 +159,7 @@ module.exports = config({
             //   color: "#ffffff",
             // },
             //#region
+
             // manifest: {
             //   icons: [
             //     {
