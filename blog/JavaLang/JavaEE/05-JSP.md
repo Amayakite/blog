@@ -1622,14 +1622,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 所以我们就得用到Filter
 
-### Filter的原理说明
-
-一张图概括，就相当于是在访问指定路径前加了个验证而已...
-
-![image-20211207181259688](/images/JavaEE/05-JSP/image-20211207181259688.png)
-
-我学过Vue和React和Nodejs，这里面都有和其非常相似的玩意，用我的话概括就是-访问指定路径前服务器会做的事情，一般都会留几个接口给人用
-
 ### 创建一个简单的filter
 
 前面说过，Filter是一个接口，所以我们要使用它最直接的方式是实现接口
