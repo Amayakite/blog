@@ -472,7 +472,7 @@ emm遇事不决先看源码：
 
 如果你试图这样：`out.write(12)`，就能发现页面上啥都没显示
 
-<img src="/images/JavaEE/05-JSP/image-20211206150649757.png" alt="image-20211206150649757" style="zoom:50%;" />
+![image-20211206150649757](/images/JavaEE/05-JSP/image-20211206150649757.png)
 
 但是换成print却又可以
 
@@ -496,7 +496,7 @@ emm遇事不决先看源码：
 
 众所周知，大部分网站中的结构都是这样的：
 
-<img src="/images/JavaEE/05-JSP/image-20211206151722723.png" alt="image-20211206151722723" style="zoom:50%;" />
+![image-20211206151722723](/images/JavaEE/05-JSP/image-20211206151722723.png)
 
 ​		假设你现在有一个网站，有10w个页面，如果每个页面都这样写重复的内容，那岂不是太难受了，并且修改的时候也要10w个页面的内容都一起改
 
@@ -506,7 +506,7 @@ emm遇事不决先看源码：
 
 就是这样：
 
-<img src="/images/JavaEE/05-JSP/image-20211206152007851.png" alt="image-20211206152007851" style="zoom: 25%;" />
+![image-20211206152007851](/images/JavaEE/05-JSP/image-20211206152007851.png)
 
 语法：
 
@@ -650,7 +650,7 @@ footer:
 
 和静态包含不同的是，他会生成被包含的文件的编译文件：
 
-<img src="/images/JavaEE/05-JSP/image-20211206153413808.png" alt="image-20211206153413808" style="zoom:50%;" />
+![image-20211206153413808](/images/JavaEE/05-JSP/image-20211206153413808.png)
 
 并且在源码中调用了这样一个方法：
 

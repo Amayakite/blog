@@ -12,7 +12,7 @@ tags:
 
 ​		数据库嘛，懂得都懂，在我学习Java之前，已经接触过Mysql了，并使用Nodejs、Koa、Vue3、ElementUI搭建了一个个人博客，使用的数据库就是Mysql，当然在学习Java之前Mysql为我存取了超多的图片：
 
-<img src="/images/JavaSE/21-MySql/image-20211119220054247.png" alt="image-20211119220054247" style="zoom:50%;" />
+![image-20211119220054247](/images/JavaSE/21-MySql/image-20211119220054247.png)
 
 ​		这大概是爬取了三天的结果，共在数据库内简历了八千多条索引，也就是说我以后能够随意调用这些数据hhhh~
 
@@ -579,9 +579,9 @@ drop table if exists emp;
 
 ![MySql数据类型](/images/JavaSE/21-MySql/MySql数据类型.svg)
 
-<img src="/images/JavaSE/21-MySql/image-20211120185628320.png" alt="image-20211120185628320" style="zoom:50%;" />
+![image-20211120185628320](/images/JavaSE/21-MySql/image-20211120185628320.png)
 
-<img src="/images/JavaSE/21-MySql/image-20211120185641114.png" alt="image-20211120185641114" style="zoom:50%;" />
+![image-20211120185641114](/images/JavaSE/21-MySql/image-20211120185641114.png)
 
 ![image-20211120192745001](/images/JavaSE/21-MySql/image-20211120192745001.png)
 
@@ -618,7 +618,7 @@ CREATE TABLE db3(
 
 ![image-20211120190547035](/images/JavaSE/21-MySql/image-20211120190547035.png)
 
-<img src="/images/JavaSE/21-MySql/image-20211120185726028.png" alt="image-20211120185726028" style="zoom:50%;" /><img src="/images/JavaSE/21-MySql/image-20211120185843253.png" alt="image-20211120185843253" style="zoom:50%;" />
+![image-20211120185843253](/images/JavaSE/21-MySql/image-20211120185726028.png" alt="image-20211120185726028" style="zoom:50%;" /><img src="/images/JavaSE/21-MySql/image-20211120185843253.png)
 
 #### 时间相关类型额外说明default值和on update值
 
@@ -2495,13 +2495,13 @@ drop table my_emp;
 
 ## 合并查询-UNION、UNION ALL
 
-<img src="/images/JavaSE/21-MySql/image-20211122154537661.png" alt="image-20211122154537661" style="zoom:50%;" />
+![image-20211122154537661](/images/JavaSE/21-MySql/image-20211122154537661.png)
 
-<img src="/images/JavaSE/21-MySql/image-20211122154637130.png" alt="image-20211122154637130" style="zoom:50%;" />
+![image-20211122154637130](/images/JavaSE/21-MySql/image-20211122154637130.png)
 
 ## 多表查询-外连接
 
-<img src="/images/JavaSE/21-MySql/image-20211122154827000.png" alt="image-20211122154827000" style="zoom:50%;" />
+![image-20211122154827000](/images/JavaSE/21-MySql/image-20211122154827000.png)
 
 ```sql
 # 这里使用mgr  上级名称来演示
@@ -2611,7 +2611,7 @@ Mysql中外连接分为两种
 
 这个 。。。只能说是一张表都得用它
 
-<img src="/images/JavaSE/21-MySql/image-20211122163807238.png" alt="image-20211122163807238" style="zoom:50%;" />
+![image-20211122163807238](/images/JavaSE/21-MySql/image-20211122163807238.png)
 
 ```sql
 # 前面添加主键
@@ -2681,7 +2681,7 @@ create table 表名(
 
 ![image-20211122170615206](/images/JavaSE/21-MySql/image-20211122170615206.png)
 
-<img src="/images/JavaSE/21-MySql/image-20211122164902068.png" alt="image-20211122164902068" style="zoom: 25%;" /><img src="/images/JavaSE/21-MySql/image-20211122164935895.png" alt="image-20211122164935895" style="zoom: 25%;" />
+![image-20211122164935895](/images/JavaSE/21-MySql/image-20211122164902068.png" alt="image-20211122164902068" style="zoom: 25%;" /><img src="/images/JavaSE/21-MySql/image-20211122164935895.png)
 
 ```sql
 create table class_tab(
@@ -3002,7 +3002,7 @@ CREATE INDEX empno_index ON emp(empno);
 # 我这里创建索引花了3s
 ```
 
-<img src="/images/JavaSE/21-MySql/image-20211122204942231.png" alt="image-20211122204942231" style="zoom:50%;" />
+![image-20211122204942231](/images/JavaSE/21-MySql/image-20211122204942231.png)
 
 创建完毕后，文件大了10mb
 
@@ -3055,9 +3055,9 @@ select * from emp where ename='SxKgBm';
 
 下图到查询到1后不确定后面还没有没有id=1的，所以要全表扫描
 
-<img src="/images/JavaSE/21-MySql/image-20211122211047180.png" alt="image-20211122211047180" style="zoom:50%;" />
+![image-20211122211047180](/images/JavaSE/21-MySql/image-20211122211047180.png)
 
-<img src="/images/JavaSE/21-MySql/image-20211122212123404.png" alt="image-20211122212123404" style="zoom:50%;" />
+![image-20211122212123404](/images/JavaSE/21-MySql/image-20211122212123404.png)
 
 
 
@@ -3076,7 +3076,7 @@ select * from emp where ename='SxKgBm';
 
   - 增删改一个数据后，要重新的去维护这个索引
 
-  <img src="/images/JavaSE/21-MySql/image-20211122212421742.png" alt="image-20211122212421742" style="zoom:50%;" />
+  ![image-20211122212421742](/images/JavaSE/21-MySql/image-20211122212421742.png)
 
 当然，在实际项目中，实际上90%左右的业务都是在进行查询，只有10%左右的业务在进行增删改
 
@@ -3226,7 +3226,7 @@ alter table ts2 drop primary key;
 
 当执行事务操作时(DML语句)，MYSQL会在表上加锁，防止其他用户修改表的数据，这对用户来讲是非常重要的
 
-<img src="/images/JavaSE/21-MySql/image-20211122222616278.png" alt="image-20211122222616278" style="zoom:50%;" />
+![image-20211122222616278](/images/JavaSE/21-MySql/image-20211122222616278.png)
 
 使用MySQL的事务，第一步**必须得确保**Mysql当前是是innodb引擎，查看方式
 
@@ -3245,9 +3245,9 @@ alter table ts2 drop primary key;
 - `rollback` 回退全部事物
 - `commit` 提交事务，所有的操作生效，不能回退
 
-<img src="/images/JavaSE/21-MySql/image-20211122224421237.png" alt="image-20211122224421237" style="zoom:50%;" />
+![image-20211122224421237](/images/JavaSE/21-MySql/image-20211122224421237.png)
 
-<img src="/images/JavaSE/21-MySql/image-20211122223136404.png" alt="image-20211122223136404" style="zoom:50%;" />
+![image-20211122223136404](/images/JavaSE/21-MySql/image-20211122223136404.png)
 
 回滚可以让事务能吃后悔药
 
@@ -4007,7 +4007,7 @@ show databases;
 +--------------------+
 ```
 
-<img src="/images/JavaSE/21-MySql/image-20211123144656109.png" alt="image-20211123144656109" style="zoom:50%;" />
+![image-20211123144656109](/images/JavaSE/21-MySql/image-20211123144656109.png)
 
 Mysql的权限大概有这些：
 

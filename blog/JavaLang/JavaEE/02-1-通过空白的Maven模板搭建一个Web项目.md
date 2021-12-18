@@ -22,11 +22,11 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 如果说你已经打开了一个项目，就：
 
-<img src="/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161122537.png" alt="image-20211202161122537" style="zoom:50%;" />
+
 
 如果没打开的话应该也是能找到这个配置，反正在这里面能够找到Maven的路径，然后进行修改即可：
 
-<img src="/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161214531.png" alt="image-20211202161214531" style="zoom:50%;" />
+![image-20211202161214531](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161214531.png)
 
 理论上来说，新版的IDEA，会在你读取Maven的主路径的时候，自动读取`本地仓库`地址
 
@@ -34,7 +34,7 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 就按照往常的来，新建一个空白的maven项目，然后填写下相关的信息
 
-<img src="/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161437222.png" alt="image-20211202161437222" style="zoom:50%;" />
+![image-20211202161437222](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161437222.png)
 
 这个工作坐标之类的随意填写，或者就按照默认的来即可，不影响
 
@@ -136,7 +136,7 @@ public class HelloWorld extends HttpServlet {
 
 点进去，发现啥都没有
 
-<img src="/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163937171.png" alt="image-20211202163937171" style="zoom:50%;" />
+![image-20211202163937171](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163937171.png)
 
 如果有的话，就直接从这里面选就行了，但是这里没有
 
@@ -355,7 +355,7 @@ router ={
 
 然后Tomcat的路径之类的这里就不说明了，在部署这里选择刚刚创建的工作
 
-<img src="/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170701479.png" alt="image-20211202170701479" style="zoom:50%;" />
+![image-20211202170701479](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170701479.png)
 
 如果说你点击这个加号没有显示工作的话
 

@@ -239,7 +239,7 @@ maven-archetype-webapp表示：这是一个web应用
 
 #### 创建一个普通的Maven项目
 
-<img src="/images/JavaEE/02-Maven/image-20211201224607370.png" alt="image-20211201224607370" style="zoom:50%;" />
+![image-20211201224607370](/images/JavaEE/02-Maven/image-20211201224607370.png)
 
 直接一路next
 
@@ -263,7 +263,7 @@ test.java是用来测试的
 
 并且：这个Maven并且变回了IEDA自带的版本....
 
-<img src="/images/JavaEE/02-Maven/image-20211201224621994.png" alt="image-20211201224621994" style="zoom:50%;" />
+![image-20211201224621994](/images/JavaEE/02-Maven/image-20211201224621994.png)
 
 好了，这个小细节就先不管了，返回我们的JavaWeb项目，将这里面的文件夹都在那里新建一个
 
@@ -589,7 +589,7 @@ public class MyApps {
 
 可以看到，默认还是IEDA自带的Maven
 
-<img src="/images/JavaEE/02-Maven/image-20211202115638074.png" alt="image-20211202115638074" style="zoom:50%;" />
+![image-20211202115638074](/images/JavaEE/02-Maven/image-20211202115638074.png)
 
 之后再新建项目：
 
@@ -670,7 +670,7 @@ public class MyApps {
 
 到了这一步，如果说你之前创建过webApp项目，它应该是如下所示的
 
-<img src="/images/JavaEE/02-Maven/image-20211202122800583.png" alt="image-20211202122800583" style="zoom:50%;" />
+![image-20211202122800583](/images/JavaEE/02-Maven/image-20211202122800583.png)
 
 这个时候点击第一个即可
 
@@ -678,7 +678,7 @@ public class MyApps {
 
 手动搜索HttpServlet：发现了很多看不懂的东西
 
-<img src="/images/JavaEE/02-Maven/image-20211202123110036.png" alt="image-20211202123110036" style="zoom:50%;" />
+![image-20211202123110036](/images/JavaEE/02-Maven/image-20211202123110036.png)
 
 这时，回到Tomcat，Tomcat能运行肯定是有相关的jar包在支持，
 

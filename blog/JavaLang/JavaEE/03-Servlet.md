@@ -65,7 +65,7 @@ https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api
 
 然后新建一个Maven JavaWeb APP模块，名字随意，Maven版本按照自己的来
 
-<img src="/images/JavaEE/03-Servlet/image-20211202193505154.png" alt="image-20211202193505154" style="zoom:50%;" />
+![image-20211202193505154](/images/JavaEE/03-Servlet/image-20211202193505154.png)
 
 然后得到了这些东西
 
@@ -1096,15 +1096,15 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 此时，如果我们直接访问/test2 可以看到是null（未赋值）:
 
-<img src="/images/JavaEE/03-Servlet/image-20211203131349218.png" alt="image-20211203131349218" style="zoom:50%;" />
+![image-20211203131349218](/images/JavaEE/03-Servlet/image-20211203131349218.png)
 
 访问下test1
 
-<img src="/images/JavaEE/03-Servlet/image-20211203131536087.png" alt="image-20211203131536087" style="zoom:50%;" />
+![image-20211203131536087](/images/JavaEE/03-Servlet/image-20211203131536087.png)
 
 在访问下test2：
 
-<img src="/images/JavaEE/03-Servlet/image-20211203131553703.png" alt="image-20211203131553703" style="zoom:50%;" />
+![image-20211203131553703](/images/JavaEE/03-Servlet/image-20211203131553703.png)
 
 成功读取到了该对象！
 

@@ -68,7 +68,7 @@ doGet(HttpServletRequest req, HttpServletResponse resp){
 
 HttpServletRequest中包含了客户端HTTP请求的所有信息，其中主要为三部分信息：请求行、请求头、请求正文，这样说大家可能会不太明白，下面我们通过几张图片来说明一下：
 
-<img src="/images/JavaEE/03-1Response和Requests/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70-16385397719285.jpeg" alt="资源分配图" style="zoom:50%;" />
+![资源分配图](/images/JavaEE/03-1Response和Requests/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70-16385397719285.jpeg)
 
 上图还是我们的老朋友HelloServlet在Chrome中的运行页面（前几篇博客中有说明），我们打开可以通过右击–>检查（或F12）打开开发者工具主面板，点击NetWork，点击请求的连接（HttpServlet）可以查看客户端向服务器的Http请求信息，红框中的信息即为Http请求中的部分信息为总览；
 
@@ -90,7 +90,7 @@ Http请求中还包含请求头信息，其中包含许多的header；
 
 如果你是在IEDA中启动tomcat的话，那么可以通过ieda的tomcat配置页面来设置log存放的路径：这两个勾上并配置即可
 
-<img src="/images/JavaEE/03-1Response和Requests/image-20211203220423076.png" alt="image-20211203220423076" style="zoom: 50%;" />
+![image-20211203220423076](/images/JavaEE/03-1Response和Requests/image-20211203220423076.png)
 
 我们在上面请求HelloServlet的请求行信息格式大概如下：
 
@@ -167,7 +167,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
  当客户端请求Servlet时，需要通过请求头向服务器传递附加信息，例如客户端可以接受的数据类型、请求源、消息正文的长度、是否保持TCP连接等，我们先来看下Http中常见的请求头信息：
 
-<img src="https://img-blog.csdnimg.cn/20200305162936951.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70" alt="资源分配图" style="zoom:50%;" />
+![资源分配图](https://img-blog.csdnimg.cn/20200305162936951.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70)
 
  同样的，为了方便的获取请求头中对应的信息，HttpServletRequest也提供了一系列的方法，相关方法如下：
 
@@ -226,7 +226,7 @@ for(Cookie cookie: cookies) {
 
 首先瞄一眼结构：原来是两个接口
 
-<img src="/images/JavaEE/03-1Response和Requests/image-20211203170325613.png" alt="image-20211203170325613" style="zoom:50%;" />
+![image-20211203170325613](/images/JavaEE/03-1Response和Requests/image-20211203170325613.png)
 
 可以看到，它继承自ServletResponse，同时他本身并没有直接对流操作的方法，但是它的父类中有个两个对流操作的方法：	
 
@@ -285,7 +285,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 接着，我们再来看看字段：
 
-<img src="/images/JavaEE/03-1Response和Requests/image-20211203172224003.png" alt="image-20211203172224003" style="zoom:50%;" />
+![image-20211203172224003](/images/JavaEE/03-1Response和Requests/image-20211203172224003.png)
 
 都是状态码的常量，这里面存放了各种常见的状态码，有需要的时候应该能直接调的来用
 

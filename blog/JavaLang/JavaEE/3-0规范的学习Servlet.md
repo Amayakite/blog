@@ -54,7 +54,7 @@ tags:
 
 补充：工程路径就是我们在tomcat中部署那里设置的应用程序上下文，比如我设置个03，则访问地址为http://localhost:8080/03/myServlet，需要以/开头，当让还有更多的方法，详情看我上一个文章（在最后@Servlet那里有说明四种）
 
-<img src="/images/JavaEE/3-0规范的学习Servlet/image-20211204133523223.png" alt="image-20211204133523223" style="zoom:50%;" />
+![image-20211204133523223](/images/JavaEE/3-0规范的学习Servlet/image-20211204133523223.png)
 
 ```java
 @WebServlet(
@@ -713,7 +713,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 结果：
 
-<img src="/images/JavaEE/3-0规范的学习Servlet/image-20211204162850284.png" alt="image-20211204162850284" style="zoom:50%;" />
+![image-20211204162850284](/images/JavaEE/3-0规范的学习Servlet/image-20211204162850284.png)
 
 java中获取这个图片的绝对路径的方式：
 
