@@ -1,5 +1,5 @@
 ---
-title: 12-MybatisPlus
+title: 12-Mybatis-Plus
 date: 2021-12-14 17:27:13
 category: Spring-FrameWork
 tags:
