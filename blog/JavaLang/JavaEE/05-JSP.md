@@ -34,7 +34,7 @@ tags:
 
 在webapp目录下新建一个a.jsp
 
-```jsp
+```html
 <%--
   Created by IntelliJ IDEA.
   User: Amayakite
@@ -146,7 +146,7 @@ public final class a_jsp extends org.apache.jasper.runtime.HttpJspBase
 
 ### 头部的page指令和它的属性
 
-```jsp
+```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 ```
 
@@ -177,7 +177,7 @@ page中可以写上去的属性
 
 作用：可以给jsp编译出来的Java类定义属性和方法，例如这样：
 
-```jsp
+```html
 <%!
     public static List<String> list = new ArrayList<String>();
     public static void add(String s){
@@ -193,7 +193,7 @@ page中可以写上去的属性
 
 在ieda中，在这个声明脚本中使用的类会自动导入
 
-```jsp
+```html
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%!
@@ -235,7 +235,7 @@ page中可以写上去的属性
 
 比如Person
 
-```jsp
+```html
 <%@ page import="Person" %>
 你的包就在java的根目录下 然后这样导入了，但还是会出现异常
 必须得将它放在一些其他的包中，例如com.test.Person
@@ -276,7 +276,7 @@ https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina
 
 在里面可以调用之前定义的方法
 
-```jsp
+```html
 <body>
 <h1>这里是A.jsp</h1>
 <%=12%><br>
@@ -318,7 +318,7 @@ out.write("</body>\r\n");
 
 注意：运行的时间根据我们拜访的位置决定
 
-```jsp
+```html
 <hr>
 <%--if语句--%>
 <%
@@ -356,7 +356,7 @@ out.write("</body>\r\n");
 
 3. 代码脚本还可以由多个代码脚本快组合完成一个完整的语句
 
-   ```jsp
+   ```html
    <%
        if (true) {%>
    <%
@@ -368,7 +368,7 @@ out.write("</body>\r\n");
 
 4. 也可以和表达式脚本一块使用：
 
-   ```jsp
+   ```html
    <%
        int i = 5;
    	for (int i1 = 0; i1 < i; i1++) {%>
@@ -419,7 +419,7 @@ out.write("</body>\r\n");
 
 先看一个代码吧：
 
-```jsp
+```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -447,7 +447,7 @@ emm遇事不决先看源码：
 
 ![image-20211206150030961](/images/JavaEE/05-JSP/image-20211206150030961.png) 说以说，我们可以通过提前调用out.flush的方式来让out中的内容比res中的内容先一步渲染出去
 
-```jsp
+```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -521,7 +521,7 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 实例：`include/main.jsp`
 
-```jsp
+```html
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -538,7 +538,7 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 `include/footer.jsp`
 
-```jsp
+```html
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -588,7 +588,7 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 3. 动态包含还可以传递参数：
 
-   ```jsp
+   ```html
    <jsp:include page="/include/footer.jsp">
        <jsp:param name="name" value="李四"/>
        <jsp:param name="password" value="王老五"/>
@@ -599,7 +599,7 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 实例：
 
-```jsp
+```html
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -621,7 +621,7 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 footer:
 
-```jsp
+```html
 <%--
   Created by IntelliJ IDEA.
   User: Amayakite
@@ -673,7 +673,7 @@ out.write("</html>\r\n");
 
 非常简单：
 
-```jsp
+```html
 
 <%--你可以选择在Servlet中的转发方式--%>
 <%
@@ -775,7 +775,7 @@ EL表达式在输出数据的时候，要比JSP表达式更简洁
 
 使用之前，需要在这个页面中设置下isELIgnored属性=false 否则表达式将不会生效
 
-```jsp
+```html
 <%@ page isELIgnored="false"
 %>
 ```
@@ -794,7 +794,7 @@ EL表达式在输出数据的时候，要比JSP表达式更简洁
 
 使用：举个很简单的例子：
 
-```jsp
+```html
 <%
 request.setAttribute("key","123");
 %>
@@ -808,7 +808,7 @@ EL表达式：${key}
 
 按照就近原则：pageContext>request>session>application(Context)从小到大来搜索
 
-```jsp
+```html
 <%
     pageContext.setAttribute("key", "pageContext");
     request.setAttribute("key", "request");
@@ -826,7 +826,7 @@ EL表达式：${key}
 
 上代码：
 
-```jsp
+```html
 <%
     Person person = new Person("张三", 20);
     List<Person> list = new ArrayList<>();
@@ -932,7 +932,7 @@ EL表达式输出map：${map}
 
 然后再到你的xx.jsp的头部添加如下内容：
 
-```jsp
+```html
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 ```
 
@@ -953,7 +953,7 @@ scope参数：
 
 例子：
 
-```jsp
+```html
 <c:set  scope="page" var="foo" value="bar"/>
 //读取数据
 <c:out  value="${foo}"/>
@@ -963,7 +963,7 @@ scope参数：
 
 语法：`<c:if test="{EL表达式}"> 表达式为true显示的内容  </c:if>`
 
-```jsp
+```html
 <c:if test="${12==12}">
     <h1>12=12</h1>
 </c:if>
@@ -977,7 +977,7 @@ if语句并不能做多条件判断（没有elseif）
 
 语法和使用：（注意，在choose标签内不能含有HTML的注释，只能含有jsp注释）
 
-```jsp
+```html
 <%
     request.setAttribute("height", 50);
 %>
@@ -1015,7 +1015,7 @@ if语句并不能做多条件判断（没有elseif）
   - status是一个LoopTagStatus对象：
     ![image-20211206223248677](/images/JavaEE/05-JSP/image-20211206223248677.png)
 
-```jsp
+```html
 <%--遍历1~10
     begin 设置开始的索引
     end   设置结束的索引
@@ -1092,7 +1092,7 @@ if语句并不能做多条件判断（没有elseif）
 
 jsp：
 
-```jsp
+```html
 <p>${pageContext.request.contextPath}/upFileService</p>
 <form method="post" enctype="multipart/form-data"
       action="${pageContext.request.contextPath}/upFileService">
@@ -1235,7 +1235,7 @@ while ((len = inputStream.read(bytes)) != -1) {
 
 jsp代码，这里也可以改成ajax请求
 
-```jsp
+```html
 <%--来个输入框让用户输入文件名 传递给服务器下载文件--%>
 <form action="${pageContext.request.contextPath}/downloadFile" method="post">
     <input type="text" name="fileName" value="">
@@ -1329,7 +1329,7 @@ COOKIE是一个接口，我们的Tomcat包完整了这个借口的封装
 
 先发送一个请求给服务端，接下来服务端处理
 
-```jsp
+```html
 <a href="${pageContext.request.contextPath}/getCookie">获取cookie</a>
 ```
 
@@ -1391,7 +1391,7 @@ public class getCookie extends HttpServlet {
 
 jsp:
 
-```jsp
+```html
 <%--发送cookie--%>
 <a href="${pageContext.request.contextPath}/setCookie">发送cookie</a>
 ```
@@ -1608,7 +1608,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 所以说可以在admin/index.jsp中加入如下内容
 
-```jsp
+```html
 <%
     Object user = session.getAttribute("user");
     if (user == null) {
@@ -1902,7 +1902,7 @@ filter1 后置代码
 
 然后在login.jsp中加入一个错误的代码：
 
-```jsp
+```html
 <%
     System.out.println(12 % 0);
 %>
@@ -2007,7 +2007,7 @@ public void test2(){
 
 这里用JSP代码为例：
 
-```jsp
+```html
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.util.ResourceBundle" %>
 <html>

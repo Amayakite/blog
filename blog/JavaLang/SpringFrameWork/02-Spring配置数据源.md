@@ -1,6 +1,6 @@
 ---
 title: 02-Spring配置JDBC数据源
-date: 2021-12-10 ‏‎0:12:30
+date: 2021-12-10 0:12:30
 category: Spring-FrameWork
 tags:
 - Java

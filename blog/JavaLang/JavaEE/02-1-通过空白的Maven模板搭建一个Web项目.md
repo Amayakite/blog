@@ -60,7 +60,7 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 然后把那个index.jsp删了，重新创建一个，系统会给你一个模板 不要删 不管他
 
-```jsp
+```html
 <%--
   Created by IntelliJ IDEA.
   User: Amayakite

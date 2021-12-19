@@ -185,7 +185,7 @@ public interface AccountMapper {
 
 service：
 
-```jav
+```java
 public interface AccountService {
 
     void save(Account account);
