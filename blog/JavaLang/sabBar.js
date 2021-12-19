@@ -43,5 +43,24 @@ module.exports = [
             '04-在开始后面东西前要做的事情',
             '05-JSP',
         ]
+    },{
+        title: "3-SpringFrameWork",
+        icon: "stack",
+        prefix: "SpringFrameWork/",
+        children: [
+            "01-Spring",
+            "02-Spring配置数据源",
+            "03-Spring注解开发",
+            "04-Spring-Web",
+            "04-1-扩展-注解",
+            "05-SpringMVC",
+            "06-JdbcTemplate",
+            "07-SpringMVC拦截器",
+            "08-AOP",
+            "09-事务控制",
+            "10-Mybatis",
+            "11-SSM框架的整合",
+            "12-Mybatis-Plus",
+        ]
     }
 ]
