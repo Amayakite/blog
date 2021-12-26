@@ -1,6 +1,6 @@
 ---
 title: 12-Mybatis-Plus
-date: 2021-12-14 17:27:13
+date: 2021-12-16 23:17:15
 category: Spring-FrameWork
 tags:
 - Java
@@ -843,5 +843,3 @@ public class User {
 ```sql
 insert into user(age,email) values(?,?)
 ```
-
-##

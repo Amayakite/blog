@@ -60,7 +60,18 @@ module.exports = [
             "09-事务控制",
             "10-Mybatis",
             "11-SSM框架的整合",
-            "12-Mybatis-Plus",
+            "12-MyBatis-Plus",
+        ]
+    },{
+        title:"4-SpringBoot",
+        icon:"stack",
+        prefix:"SpringBoot/",
+        children:[
+            "01-Spring_Boot基础",
+            "02-Spring_Boot核心功能",
+            "03-Spring_Boot整合数据访问",
+            "04-Redis",
+            "05-SpringSecurity"
         ]
     }
 ]
