@@ -3090,7 +3090,7 @@ public class UserTooManyException extends RuntimeException {
 
 并且访问的时候指定了异常message
 
-```javav
+```java
 @GetMapping("/test_error2")
 @ResponseBody
 public List<User> testError2() {

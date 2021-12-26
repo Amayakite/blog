@@ -148,8 +148,9 @@ module.exports = config({
             favicon: "/logo.svg",
             // favicon: "/favicon.ico",
             cachePic: true,
-            maxPicSize:1024*200,
-            maxSize:1024*200,
+            maxPicSize:1024*2000,
+            maxSize:1024*20000,
+            
             // apple: {
             //   icon: "/assets/icon/apple-icon-152.png",
             //   statusBarColor: "black",

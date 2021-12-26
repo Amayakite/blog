@@ -782,7 +782,7 @@ Lettuce是一个比较新的客户端，Jedis是老牌的客户端
 
 接着我们回到Autoconfiguration
 
-```java {4} {13}
+```java {4,13}
 @Bean
 @ConditionalOnMissingBean(name = "redisTemplate")
 @ConditionalOnSingleCandidate(RedisConnectionFactory.class)
