@@ -15,17 +15,17 @@ https://www.bilibili.com/video/BV1mm4y1X7Hc?from=search&seid=1564183674678492175
 
 感觉比ssg和hm的好非常多
 
-​		Spring Security是Spring家族中的一个安全管理框架，相比于另一个安全框架Shiro，它提供了更丰富的功能，社区资源也比Shiro丰富
+​Spring Security是Spring家族中的一个安全管理框架，相比于另一个安全框架Shiro，它提供了更丰富的功能，社区资源也比Shiro丰富
 
-​		一般来说中大型的项目都是用这个玩意来做安全框架，小项目用Shiro可能多一些，因为相比于这玩意，SHiro上手更简单一些
+​一般来说中大型的项目都是用这个玩意来做安全框架，小项目用Shiro可能多一些，因为相比于这玩意，SHiro上手更简单一些
 
-​		这玩意的用处：
+​这玩意的用处：
 
-​		一般的Web应用需要进行认证和授权
+​一般的Web应用需要进行认证和授权
 
-​		认证：验证当前访问系统的是不是本系统的用户，并且要确认具体是哪个用户
+​认证：验证当前访问系统的是不是本系统的用户，并且要确认具体是哪个用户
 
-​		授权：经过认证后判断当前用户是否有权限进行某个操作
+​授权：经过认证后判断当前用户是否有权限进行某个操作
 
 而认证和授权也是Spring Security作为安全框架的核心功能
 
@@ -82,9 +82,9 @@ public class HelloController {
 
 我们输入后就能正常访问hello
 
-​		也就是说，引入依赖后我们去尝试访问之前的接口就会自动跳转到springSecurity的默认登陆页面，默认用户名是user，默认密码在控制台打印
+​也就是说，引入依赖后我们去尝试访问之前的接口就会自动跳转到springSecurity的默认登陆页面，默认用户名是user，默认密码在控制台打印
 
-​		必须登录之后才能对接口进行访问
+​必须登录之后才能对接口进行访问
 
 ### 登陆校验的流程
 
@@ -952,7 +952,7 @@ There is no PasswordEncoder mapped for the id "null"
 
 ### ✨关于密码的加密存储
 
-​		前面我们刚刚遇到一个问题，就是不在密码前加东西就会抛异常
+​前面我们刚刚遇到一个问题，就是不在密码前加东西就会抛异常
 
 实际的流程是这样的：
 
@@ -964,17 +964,17 @@ There is no PasswordEncoder mapped for the id "null"
 - 如果一致 就过了 如果不一致 就GG
 - 
 
-​		实际项目中，我们并不会把密码的明文存储到数据库中
+​实际项目中，我们并不会把密码的明文存储到数据库中
 
-​		所以这个玩意默认使用的PasswordEncoder要求数据库中的密码格式为：`{id}password`，它会根据id去判断密码的加密方式，但是我们一般不会才用这种方式，所以就需要替换PasswordEncoder
+​所以这个玩意默认使用的PasswordEncoder要求数据库中的密码格式为：`{id}password`，它会根据id去判断密码的加密方式，但是我们一般不会才用这种方式，所以就需要替换PasswordEncoder
 
-​		替换的方式比较简单
+​替换的方式比较简单
 
-​		一般使用springSecurity为我们提供的BCyptpasswordEncoder
+​一般使用springSecurity为我们提供的BCyptpasswordEncoder
 
-​		我们需要定一个那玩意，并注入到spring容器内，springSecurity就会使用它来进行密码校验
+​我们需要定一个那玩意，并注入到spring容器内，springSecurity就会使用它来进行密码校验
 
-​		**我们可以自定义一个springSecurity配置类，这个配置类要继承WebSecurityConfigurationAdapter，就像是SpringMVC那样**
+​**我们可以自定义一个springSecurity配置类，这个配置类要继承WebSecurityConfigurationAdapter，就像是SpringMVC那样**
 
 我们写的话非常简单 只需要
 
@@ -1058,7 +1058,7 @@ additionalAuthenticationChecks
 
 之前我们引入过了一个JWT工具类 当然实际开发中一般都是直接用Hutool的二度封装一下
 
-这里就简单封装下：
+这里就简单封装下： 注意 这里没有全完封装 
 
 ```java
 package com.myspringproject.springsecurity.utils;
@@ -1066,7 +1066,10 @@ package com.myspringproject.springsecurity.utils;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.exceptions.ValidateException;
-import cn.hutool.jwt.*;
+import cn.hutool.jwt.JWT;
+import cn.hutool.jwt.JWTPayload;
+import cn.hutool.jwt.JWTUtil;
+import cn.hutool.jwt.JWTValidator;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 
@@ -1165,7 +1168,7 @@ public class JwtUtils {
         try {
             JWTValidator.of(jwt).validateAlgorithm(JWTSignerUtil.hs256(lock.getBytes(StandardCharsets.UTF_8))).validateDate();
         } catch (ValidateException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 //        返回荷载中的数据
         return jwt.getPayload();
@@ -1179,11 +1182,11 @@ public class JwtUtils {
 
 ### 自定义登陆接口的流程说明
 
-​		首先是自定义登陆接口，然后让SpringSecurity对这个接口进行放行，让用户访问这个接口的时候不用登录也能访问
+​首先是自定义登陆接口，然后让SpringSecurity对这个接口进行放行，让用户访问这个接口的时候不用登录也能访问
 
-​		在接口中我们通过AuthenticationManager的authentication方法来进行用户验证，所以只需要在Security中配置把AuthenticationManager注入容器
+​在接口中我们通过AuthenticationManager的authentication方法来进行用户验证，所以只需要在Security中配置把AuthenticationManager注入容器
 
-​		认证成功的话生成一个JWT，放入响应中返回，并且为了让用户下次请求时通过JWT识别出具体是哪个用户，我们需要把用户信息存入Redis，可以把用户的id作为key
+​认证成功的话生成一个JWT，放入响应中返回，并且为了让用户下次请求时通过JWT识别出具体是哪个用户，我们需要把用户信息存入Redis，可以把用户的id作为key
 
 我们按照用户登录的时间线来进程处理
 
@@ -1411,7 +1414,7 @@ public class LoginServiceImpl implements LoginService {
             throw new RuntimeException("登陆失败");
         }
 //        如果认证通过 使用UserID生成JWT Token
-		
+
         // 之前debug看到了返回值类型 这里直接获取
         LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
 //        获取用户ID
@@ -1795,5 +1798,1257 @@ public class LoginServiceImpl implements LoginService {
 
 ![image-20211227001950122](/images/SpringBoot/05-SpringSecurity/image-20211227001950122.png)
 
+## 关于认证配置configuration方法的说明
 
+我们之前在SpringSecurity中配置了一个继承的方法
+
+```java
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        //                关闭csrf  csrf 是 前后端分离的时候要关闭的 之后 会说明
+        .csrf().disable()
+        //                不通过session获取SecurityContext（登陆之后的用户认证信息 默认是在session中获取）
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .authorizeRequests()
+        //                对于登录接口，允许匿名访问 登录后不可以访问
+        .antMatchers("/user/login").anonymous()
+        //                对于其他的接口任意的访问都需要身份认证（除了上面的请求外全都要鉴权认证）
+        .anyRequest().authenticated();
+
+    //        两个参数：
+    //        1. 过滤器
+    //        2. 过滤器在哪个过滤器前执行（插入）
+    http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+}
+```
+
+这里来简单说下这个方法
+
+首先看看它重写之前长啥样
+
+```java
+	/**
+	 * Override this method to configure the {@link HttpSecurity}. Typically subclasses
+	 * should not invoke this method by calling super as it may override their
+	 * configuration. The default configuration is:
+	 *
+	 * <pre>
+	 * http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
+	 * </pre>
+	 *
+	 * Any endpoint that requires defense against common vulnerabilities can be specified
+	 * here, including public ones. See {@link HttpSecurity#authorizeRequests} and the
+	 * `permitAll()` authorization rule for more details on public endpoints.
+	 * @param http the {@link HttpSecurity} to modify
+	 * @throws Exception if an error occurs
+	 */
+	protected void configure(HttpSecurity http) throws Exception {
+        this.logger.debug("Using default configure(HttpSecurity). "
+            + "If subclassed this will potentially override subclass configure(HttpSecurity).");
+        http.authorizeRequests((requests) -> requests.anyRequest().authenticated());
+	    	http.formLogin();
+    http.httpBasic();
+	}
+```
+
+> 重写此方法以配置HttpSecurity。通常，子类不应该通过调用super来调用此方法，因为它可能会覆盖它们的配置。默认配置为： http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
+>
+>  此处可以指定需要防御常见漏洞的任何端点，包括公共漏洞。
+>
+> 请参阅HttpSecurity。authorizeRequests和`permitAll()`
+>
+> 授权规则以获取有关公共端点的更多详细信息。 形参: http–要修改的HttpSecurity 抛出: 异常–如果发生错误
+
+这就好说 了 我们使用它就需要重写它 然后在这个HttpSecurity中定义自己的规则
+
+接下来说说它这些方法
+
+```java
+http
+    //                关闭csrf  csrf 是 前后端分离的时候要关闭的 之后 会说明
+    .csrf().disable()
+    //                不通过session获取SecurityContext（登陆之后的用户认证信息 默认是在session中获取）
+    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+    .and()
+    .authorizeRequests()
+    //                对于登录接口，允许匿名访问 登录后不可以访问
+    .antMatchers("/user/login").anonymous()
+    //                对于其他的接口任意的访问都需要身份认证（除了上面的请求外全都要鉴权认证）
+    .anyRequest().authenticated();
+```
+
+第一个是固定写法  前后端分离一定要做的，调用这个方法会返回一个`HttpSecurity` 
+
+大概是这样的 我们调用`HttpSecurity.csrf()` 能获取他的csrf对象，然后自定义对齐进行配置，他之中有些方法会返回自身(HttpSecurity) 所以方便在后面陆续添加更多的操作
+
+第二个也就是 `SessionCreationPolicy.STATELESS`表示Spring Security永远不会创建HttpSession，也永远不会使用它来获取SecurityContext
+
+然后调用`sessionManagement`的and返回HttpSecurity，继续下一步配置
+
+第三个 就比较重要了，`Matchers`对象内包含很多对路径处理的方法 它有三个构造
+
+```java
+
+public C antMatchers(HttpMethod method) {
+    return antMatchers(method, "/**");
+}
+
+
+public C antMatchers(HttpMethod method, String... antPatterns) {
+    Assert.state(!this.anyRequestConfigured, "Can't configure antMatchers after anyRequest");
+    return chainRequestMatchers(RequestMatchers.antMatchers(method, antPatterns));
+}
+
+
+public C antMatchers(String... antPatterns) {
+    Assert.state(!this.anyRequestConfigured, "Can't configure antMatchers after anyRequest");
+    return chainRequestMatchers(RequestMatchers.antMatchers(antPatterns));
+}
+```
+
+这就非常清楚了嘛
+
+第一个是指定一个`HttpMethod`然后定义的规则将会对指定method方法下的所有路径生效
+
+第二个是是同时指定它和路径
+
+第三个是单单指定路径 然后所有请求都会放行
+
+它返回一个`RequestMatcher`对象，在这个对象内 我们可以对指定路径进行指定形式的放行
+
+看了一眼 方法有这些
+
+![image-20211227131019201](/images/SpringBoot/05-SpringSecurity/image-20211227131019201.png)
+
+这里说下目前常用的
+
+- `permitAll`：任何人都可以访问（无论是否登陆）
+- `authenticated`：只有经过了身份认证的才可以访问
+- `anonymous`：只允许没有登陆的才可以访问
+- `denyAll` ：任何人都不可以访问
+- 然后那几个带有hash的都是跟权限相关，这几个之后再说
+
+所以我们可以这样配置
+
+```java
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+//                关闭csrf  csrf 是 前后端分离的时候要关闭的 之后 会说明
+                .csrf().disable()
+//                不通过session获取SecurityContext（登陆之后的用户认证信息 默认是在session中获取）
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+//                对于登录接口，允许匿名访问 登录后不可以访问
+                .antMatchers("/user/login").anonymous()
+//                对于/hello 运行未登录和登录的都可以访问
+                .antMatchers("/hello").permitAll()
+//                放行 static路径下的所有资源
+                .antMatchers("/static/**").permitAll()
+//                对于其他的接口任意的访问都需要身份认证（除了上面的请求外全都要鉴权认证）
+                .anyRequest().authenticated();
+
+//        两个参数：
+//        1. 过滤器
+//        2. 过滤器在哪个过滤器前执行（插入）
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+```
+
+然后`.anyRequest().authenticated()`这个是固定写法 也就是除了上方路径以外 都需要验证后才可以访问
+
+## 授权
+
+### 	权限系统的应用
+
+> 例如一个图书管理系统，如果是普通学生就能看到借书还书的功能，不可能让他去看到并且使用书籍的增删改功能
+>
+> 但是一个图书管理员账号登陆了 则所有功能都可以使用
+>
+> 总结起来就是：**不同的用户使用不同的功能**，这就是权限管理要去实现的效果
+>
+> 我们不能只依赖前端去判断用户的权限选择来显示哪些菜单哪些按钮，因为如果只是这样，如果有人知道了对应功能的接口地址就可以不通过前端，直接去发送请求来实现相关的功能
+>
+> 我们还需要再后台进行用户权限的判断，判断当前用户是否有对应的权限，必须基于所需权限才能进行对应的操作
+
+### 授权的基本流程
+
+在SpringSecurity中，会使用默认的`FilterSecurityInterceptor`来进行权限校验，它会从SecurityContextHolder获取其中的AUthentication，然后获取其中的权限信息，当前用户是否拥有访问当前资源所需权限
+
+所以我们在项目中只需要把当前用户的权限信息也存入Authentication
+
+然后设置我们的资源所需要的权限即可
+
+### ✨限制资源访问所需要的权限
+
+SpringSecurity为我们提供了基于注解的权限控制方案，这也是我们项目中主要用的形式（还有一种基于配置的，用的比较少，一般也是用来配置静态资源）
+
+我们可以使用注解的方式去指定访问对应的资源所需要的权限
+
+要是用它 我们需要先开启相关的配置
+
+在SpringSecurity中添加一个注解即可
+
+```java {2}
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    //......
+}
+```
+
+`@EnableGlobalMethodSecurity(prePostEnabled = true)`就是开启权限校验
+
+接下来我们创建一个AdminController
+
+```java {3}
+@RestController
+@RequestMapping("/admin")
+@PreAuthorize("hasAuthority('admin')")
+public class AdminController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello admin";
+    }
+
+}
+```
+
+`@PreAuthorize("hasAuthority('admin')")`
+
+这句话的意思是：
+
+- `PreAuthorize`启动访问前的权限校验
+- 然后他的value是要传入一个规则，就像是Mybatis注解中的那啥ex表达式一样
+- `hasAuthority('admin')`这句话非常简单 意思就是：在访问这个接口/接口集的时候，需要指定的权限，比如上方所示的**admin**
+
+好了 限制已经完成了 接下来我们要封装下权限信息
+
+### ✨封装权限信息
+
+还记得我们之前配置的**UserDetailService**吗
+
+当时留了一个TODO 接下来完成它
+
+```java {18}
+@Service
+public class UserDetailServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private SysUserService sysUserService;
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        查询对应用户的信息
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+//        这里相当于是 select * from sys_user where username=传入的username
+        wrapper.eq(SysUser::getUserName, username);
+        SysUser user = sysUserService.getOne(wrapper);
+        if (Objects.isNull(user)) {
+//            如果没有查询到用户就先抛出异常
+            throw new UsernameNotFoundException("用户名不存在");
+        }
+
+//      TODO  查询对应用户的权限信息
+
+//        把数据封装成userdetails返回
+        LoginUser loginUser = new LoginUser(user);
+        return loginUser;
+    }
+}
+```
+
+我们首先明确的是 这个权限是在LoginUser内
+
+我们返回LoginUser这个类 中 可以看到之前略过的的一个方法
+
+```java
+@Data
+@NoArgsConstructor
+public class LoginUser implements UserDetails {
+    public LoginUser(SysUser user) {
+        this.user = user;
+    }
+
+    private SysUser user;
+
+    /**
+     * 这个是获取权限信息 我们暂时先返回null
+     *
+     * @return
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    // 其他的相关方法
+}
+
+```
+
+他这里需要返回一个集合 但是我们并不知道该返回谁
+
+所以我们先添加一个属性，接收一个集合进来
+
+```java
+@Data
+@NoArgsConstructor
+public class LoginUser implements UserDetails {
+    public LoginUser(SysUser user) {
+        this.user = user;
+    }
+
+    private SysUser user;
+
+    public LoginUser(SysUser user, List<String> permissions) {
+        this.user = user;
+        this.permissions = permissions;
+    }
+
+    private List<String> permissions;
+
+    /**
+     * 这个是获取权限信息 我们暂时先返回null
+     *
+     * @return
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null
+    }
+}
+```
+
+接下来返回service 我们这里就先写死了 给予用户固定的两个权限字段
+
+```java {20}
+@Service
+public class UserDetailServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private SysUserService sysUserService;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        查询对应用户的信息
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+//        这里相当于是 select * from sys_user where username=传入的username
+        wrapper.eq(SysUser::getUserName, username);
+        SysUser user = sysUserService.getOne(wrapper);
+        if (Objects.isNull(user)) {
+//            如果没有查询到用户就先抛出异常
+            throw new UsernameNotFoundException("用户名不存在");
+        }
+
+//      TODO  查询对应用户的权限信息
+        ArrayList<String> strings = new ArrayList<>(Arrays.asList("test", "admin"));
+//        把数据封装成userdetails返回
+        LoginUser loginUser = new LoginUser(user,strings);
+        return loginUser;
+    }
+}
+```
+
+给一个test和一个admin
+
+然后我们接下来该去完善下LoginUser内的getAuthorities方法
+
+可以看到它需要接收一个集合类型 这个集合类型必须得继承GrantedAuthority
+
+`Collection<? extends GrantedAuthority>`
+
+然后我们可以看到这个GrantedAuthority是一个接口
+
+```java
+public interface GrantedAuthority extends Serializable {
+	String getAuthority();
+}
+```
+
+接下来看看它有没有什么实现类
+
+![image-20211227150349442](/images/SpringBoot/05-SpringSecurity/image-20211227150349442.png)
+
+发现三个 这里不说别的了 直接用中间这个
+
+```java
+@Data
+@NoArgsConstructor
+public class LoginUser implements UserDetails {
+    public LoginUser(SysUser user) {
+        this.user = user;
+    }
+
+    private SysUser user;
+
+    public LoginUser(SysUser user, List<String> permissions) {
+        this.user = user;
+        this.permissions = permissions;
+    }
+
+    private List<String> permissions;
+
+    /**
+     * 让这个成员变量不被序列化到Redis当中 JSONField(serialize = false)
+     * 
+     */
+    @JSONField(serialize = false)
+    private List<SimpleGrantedAuthority> collect = null;
+
+    /**
+     * 这个是获取权限信息 我们暂时先返回null
+     *
+     * @return
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        HashSet<SimpleGrantedAuthority> simpleGrantedAuthorities = new HashSet<>();
+//        for (String permission : permissions) {
+//            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(permission);
+//            simpleGrantedAuthorities.add(simpleGrantedAuthority);
+//        }
+//
+//        return simpleGrantedAuthorities;
+        
+        // 使用成员变量 让每次访问的时候访问成员变量 而不是每次都new一个出来
+        if (collect == null &&permissions!=null) {
+//        注释掉的那段的简写形式 
+            collect = permissions.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        }
+        return collect;
+    }
+
+
+    @Override
+    public String getPassword() {
+        return user.getPassWord();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUserName();
+    }
+
+    /**
+     * 是否没有过期
+     *
+     * @return
+     */
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    /**
+     * 是否没有超时
+     *
+     * @return
+     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    /**
+     * 是否可用
+     *
+     * @return
+     */
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+}
+
+```
+
+好了  接下来还有一步：还记得我们的filter吗 当用户访问的时候 要验证jwttoken 然后当时我们打了一个todo的`setAuthentication`内的权限验证
+
+接下来我们只需要填充这一块即可 由于我们的权限现在可以直接通过loginUser获取了 所以直接拿到我们对应的信息即可
+
+```java
+@Component
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+
+    @Autowired
+    RedisCache redisCache;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+//        获取token
+        String token = request.getHeader("token");
+//        判断token是否为空
+        if (StringUtils.isEmpty(token)) {
+//            放行 不做任何处理 之后SpringSecurity会直接拒绝
+            filterChain.doFilter(request, response);
+//        如果这里没有加这个return 响应回来的时候还会走一遍过滤器链
+//            当然 上面也可以改成其他的 例如返回一句话之类的
+            return;
+        }
+
+//        解析token
+
+        String userId;
+        try {
+            JWTPayload jwtPayload = JwtUtils.descToken(token);
+            userId = (String) jwtPayload.getClaim("data");
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("token错误");
+        }
+//        从redis中获取用户信息
+        String redisKey = "login:" + userId;
+//        我们在redisUtils中定义了方法泛型 所以会根据我们的调用自动转换成对应的类型 而无需我们手动转换
+        LoginUser cacheObject = redisCache.getCacheObject(redisKey);
+        if (Objects.isNull(cacheObject)) {
+
+            throw new RuntimeException("用户未登录");
+        }
+
+//        存入SpringSecurity
+        SecurityContextHolder.getContext().setAuthentication(
+//                这里说下 这个方法的传入的参数表示
+//                首先 为什么要调用它的三个参数的构造方法 因为这个方法可以让之后免除验证（不再做额外的账号密码校验）
+//                第一个参数 我们的用户认证信息
+//                第二个参数 证书信息 这个一般填null即可
+//              TODO 第三个参数填坑 直接获取LoginUser的权限信息交给他
+                new UsernamePasswordAuthenticationToken(cacheObject, null, cacheObject.getAuthorities()));
+//        放行
+        filterChain.doFilter(request, response);
+    }
+}
+
+```
+
+好了 接下来重启服务器测试一下（注意 要重新获取下token，不然权限信息进不去）
+
+![image-20211227151005808](/images/SpringBoot/05-SpringSecurity/image-20211227151005808.png)
+
+同时在我们的redis内也能看到对应的权限信息了
+
+![image-20211227151056815](/images/SpringBoot/05-SpringSecurity/image-20211227151056815.png)
+
+但是这样的话 我们的权限信息相当于写死了 实际生产环境中 应该是动态的来在数据库内获取对应的权限信息
+
+## 从数据库中查询权限信息
+
+### ✨RBAC权限模型
+
+RBAC权限模型（Role-Based Access Control）
+
+基于角色的控制权限，这是目前来说最多人用 最简单的数据模型
+
+![image-20211227151413231](/images/SpringBoot/05-SpringSecurity/image-20211227151413231.png)
+
+![image-20211227151705510](/images/SpringBoot/05-SpringSecurity/image-20211227151705510.png)
+
+三张表 外加两张中间表
+
+![image-20211227152111453](/images/SpringBoot/05-SpringSecurity/image-20211227152111453.png)
+
+### ✨准备工作-创建表
+
+```sql
+# 角色表 之前创建过了这里可以省略
+create table `sys_user`(
+	id bigint(20) not null auto_increment primary key  comment '主键',
+    user_name varchar(64) not null default "null" comment '用户名',
+    nick_name varchar(64) not null default "null" comment '昵称',
+    pass_word varchar(64) not null default "null" comment '密码',
+    `status` char(1) default "0" comment '账号状态（0正常，1停用）',
+	 `email` varchar(64) not null default "null" comment '邮箱',
+    phone varchar(32) default null comment '手机号' ,
+    sex char(1) default '2' comment '用户性别(0男1女2未知)',
+    avatar varchar(128) default null comment '头像',
+    user_type char(1) not null default '1' comment '用户类别 0 管理员 1 普通用户',
+    create_by bigint(20) default null comment '创建人的用户id',
+    create_time datetime default null comment '创建时间',
+    update_by bigint(20) default null comment '更新人',
+    update_time datetime default null comment '更新时间',
+    del_flag int(11) default '0' comment "删除标志0代表未删除，1表示已删除" 
+)auto_increment=2 charset=utf8mb4 comment="用户表";
+
+# 权限表
+create table sys_menu(
+    id bigint(20) primary key auto_increment,
+    menu_name varchar(64) not null default "NULL" comment "菜单名",
+    `path` varchar(200) default null comment "路由地址",
+    component varchar(255) default null comment "组件路径",
+    `visible` char(1) default '0' comment '菜单状态（0正常 1隐藏）',
+    `status` char(1) default '0' comment '菜单状态(0正常 1停用)',
+    perms varchar(100) default null comment '权限标识',
+    icon varchar(100) default "#" comment '菜单图标',
+    create_by bigint(20) default null comment '创建人的用户id',
+    create_time datetime default null comment '创建时间',
+    update_by bigint(20) default null comment '更新人',
+    update_time datetime default null comment '更新时间',
+    del_flag int(11) default '0' comment '是否删除 0 未删除 1 已删除',
+    remark varchar(500) default null comment '备注'
+)charset=utf8mb4 comment="权限菜单表";
+
+create table sys_role(
+	id bigint(20) primary key auto_increment,
+    name varchar(128) default null,
+    role_key varchar(100) default null comment '角色权限字符串',
+    `status` char(1) default '0' comment '角色状态(0正常 1停用)',
+    del_flag int(1) default '0' comment '是否删除 0 未删除 1 已删除',
+    create_by bigint(20) default null comment '创建人的用户id',
+    create_time datetime default null comment '创建时间',
+    update_by bigint(20) default null comment '更新人',
+    update_time datetime default null comment '更新时间',
+    remark varchar(500) default null comment '备注'
+)charset=utf8mb4 comment="角色表";
+
+
+# 这里用到了复合主键 防止重复权限
+create table sys_role_menu(
+	role_id bigint(200) not null auto_increment comment '角色ID',
+    menu_id bigint(200) not null default '0' comment '菜单ID',
+    primary key(role_id,menu_id)
+)charset=utf8mb4 comment="角色菜单关联表";
+
+create table sys_user_role(
+	user_id bigint(200) not null auto_increment comment '用户ID',
+    role_id bigint(200) not null default '0' comment '角色ID',
+    primary key(user_id,role_id)
+)charset=utf8mb4 comment="用户角色关联表";
+
+```
+
+接下来添加一点数据
+
+![image-20211227155800811](/images/SpringBoot/05-SpringSecurity/image-20211227155800811.png)
+
+![image-20211227155813963](/images/SpringBoot/05-SpringSecurity/image-20211227155813963.png)
+
+![image-20211227155820741](/images/SpringBoot/05-SpringSecurity/image-20211227155820741.png)
+
+![image-20211227155859528](/images/SpringBoot/05-SpringSecurity/image-20211227155859528.png)
+
+![image-20211227155907549](/images/SpringBoot/05-SpringSecurity/image-20211227155907549.png)
+
+
+
+现在我们必须得明确需要查找的内容：
+
+**通过userid查找对应的权限关键字的一个列表**
+
+例如：
+
+- admin用户
+
+  - system:dept:list
+  - system:test:list
+
+  并且他们两的visible和status都必须得是0（正常状态）
+
+所以接下来来一个联表查询
+
+```sql
+# 通过userid查找对应的角色 DISTINCT 去重
+SELECT
+	DISTINCT m.perms
+FROM
+	sys_user_role AS `ur`
+	LEFT JOIN sys_role AS `r` ON ur.role_id = r.id 
+	LEFT JOIN sys_role_menu as rm ON ur.role_id=rm.role_id
+	left JOIN sys_menu as m on m.id=rm.menu_id
+WHERE
+	user_id = 2 
+	AND r.`status` = 0
+	and m.`status`=0;
+```
+
+### ✨代码实现
+
+我们先在ieda中右键sys_menu创建下mapper之类的
+
+然后在domain类中加上如下注解
+
+```java
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+```
+
+![image-20211227161336723](/images/SpringBoot/05-SpringSecurity/image-20211227161336723.png)
+
+其实接下来的实现就非常简单了 
+
+在mapper类中加一个方法，并且标注component
+
+```java
+@Component
+public interface SysMenuMapper extends BaseMapper<SysMenu> {
+
+    List<String> selectPermsByUserid(Long userid);
+}
+
+```
+
+然后到xml中去修改下：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myspringproject.springsecurity.mapper.SysMenuMapper">
+
+    <resultMap id="BaseResultMap" type="com.myspringproject.springsecurity.domain.SysMenu">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
+            <result property="path" column="path" jdbcType="VARCHAR"/>
+            <result property="component" column="component" jdbcType="VARCHAR"/>
+            <result property="visible" column="visible" jdbcType="CHAR"/>
+            <result property="status" column="status" jdbcType="CHAR"/>
+            <result property="perms" column="perms" jdbcType="VARCHAR"/>
+            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+            <result property="createBy" column="create_by" jdbcType="BIGINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="BIGINT"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="delFlag" column="del_flag" jdbcType="INTEGER"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,menu_name,path,
+        component,visible,status,
+        perms,icon,create_by,
+        create_time,update_by,update_time,
+        del_flag,remark
+    </sql>
+    <select id="selectPermsByUserid" parameterType="long" resultType="java.lang.String">
+        # 通过userid查找对应的角色 DISTINCT 去重
+        SELECT
+            DISTINCT m.perms
+        FROM
+            db1.sys_user_role AS `ur`
+                LEFT JOIN db1.sys_role AS `r` ON ur.role_id = r.id
+                LEFT JOIN db1.sys_role_menu as rm ON ur.role_id=rm.role_id
+                left JOIN db1.sys_menu as m on m.id=rm.menu_id
+        WHERE
+            user_id = #{id}
+          AND r.`status` = 0
+          and m.`status`=0;
+    </select>
+</mapper>
+
+```
+
+接下来写一个测试方法测试：
+
+```java
+@Autowired
+SysMenuMapper menuMapper;
+
+@Test
+public void testMenu(){
+    List<String> strings = menuMapper.selectPermsByUserid(2L);
+    log.info("strings={}", strings);
+}
+```
+
+恩，没有问题 然后我们修改下UserDetailServiceImpl吧
+
+```java
+@Service
+public class UserDetailServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private SysUserService sysUserService;
+
+    @Autowired
+    private SysMenuMapper sysMenuMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        查询对应用户的信息
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+//        这里相当于是 select * from sys_user where username=传入的username
+        wrapper.eq(SysUser::getUserName, username);
+        SysUser user = sysUserService.getOne(wrapper);
+        if (Objects.isNull(user)) {
+//            如果没有查询到用户就先抛出异常
+            throw new UsernameNotFoundException("用户名不存在");
+        }
+
+//      TODO  查询对应用户的权限信息
+        List<String> permsByUserid = sysMenuMapper.selectPermsByUserid(user.getId());
+//        把数据封装成userdetails返回
+        return new LoginUser(user, permsByUserid);
+    }
+}
+
+```
+
+接下来改下我们的controller
+
+```java
+@RestController
+@RequestMapping("/admin")
+@PreAuthorize("hasAuthority('system:dept:list')")
+public class AdminController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello admin";
+    }
+
+}
+
+```
+
+测试（注意 要获取下新的token）：
+
+![image-20211227163757078](/images/SpringBoot/05-SpringSecurity/image-20211227163757078.png)
+
+成功
+
+## ✨自定义失败处理
+
+> 我们还希望在认证失败或者授权失败的情况下也能和我们的ResoponseResult接口返回一样结构的json，这样可以让前端对响应进行统一的处理，需要实现这个功能我们需要知道SpringSecurity的异常处理机制
+>
+> 这玩意之中，如果我们在认证或者授权的时候出现了异常，会被ExceptionTranslationFilter拦截到，在ExceptionTranslationFilter中会去判断是认证失败还是授权失败出现的异常
+
+- 如果是认证过程中出现的异常会被封装成AuthenticationException然后调用**AuthenticationEntryPoint**方法进行处理
+
+- 如果是授权过程中出现的异常会被封装成AccessDeniedException然后调用**AccessDeniedHandler**对象的方法去进行异常的处理
+
+所以我们要自定义异常处理 只需要自定义AuthenticationEntryPoint或者AccessDeniedHandler然后配置给SpringSecurity即可
+
+其实非常简单 我们先定义两个类
+
+![image-20211227171523659](/images/SpringBoot/05-SpringSecurity/image-20211227171523659.png)
+
+```java
+@Component
+public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+        ResponseResult<Object> result = new ResponseResult<>(403, "权限不足");
+        String s = JSON.toJSONString(request);
+        WebUtils.redderString(response, s);
+    }
+}
+```
+
+```java
+@Component
+public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+//        处理异常
+        ResponseResult<Object> result = new ResponseResult<>(401, "用户认证失败请重新登录");
+        String s = JSON.toJSONString(result);
+        WebUtils.redderString(response, s);
+    }
+}
+```
+
+接下来在SpringSecurity内注册即可
+
+```java
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean(name = "MyAuthenticationManager")
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    /**
+     * 定义访问权限
+     *
+     * @param http
+     * @throws Exception
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+//                关闭csrf  csrf 是 前后端分离的时候要关闭的 之后 会说明
+                .csrf().disable()
+//                不通过session获取SecurityContext（登陆之后的用户认证信息 默认是在session中获取）
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+//                对于登录接口，允许匿名访问 登录后不可以访问
+                .antMatchers("/user/login").anonymous()
+//                对于/hello 运行未登录和登录的都可以访问
+                .antMatchers("/hello").permitAll()
+//                放行 static路径下的所有资源
+                .antMatchers("/static/**").permitAll()
+//                对于其他的接口任意的访问都需要身份认证（除了上面的请求外全都要鉴权认证）
+                .anyRequest().authenticated();
+
+//        过滤器两个参数：
+//        1. 过滤器
+//        2. 过滤器在哪个过滤器前执行（插入）
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+//        异常处理器
+        http.exceptionHandling()
+//                认证失败处理器
+                .authenticationEntryPoint(authenticationEntryPoint)
+//                无权限处理器
+                .accessDeniedHandler(accessDeniedHandler);
+
+    }
+
+    @Autowired
+    AccessDeniedHandlerImpl accessDeniedHandler;
+
+    @Autowired
+    AuthenticationEntryPointImpl authenticationEntryPoint;
+
+    @Autowired
+    JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+}
+
+```
+
+## 跨域
+
+![image-20211227172302453](/images/SpringBoot/05-SpringSecurity/image-20211227172302453.png)
+
+​前后端分离百分之一万都是不同源的 所以肯定存在跨域请求问题
+
+前后端处理方案都有 这里说下后端的 不单单只要设置SpringMvcConfig
+
+先设置SpringMVCConfig
+
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+//        设置允许跨域的路径
+        registry.addMapping("/**")
+//                设置允许跨域请求的域名
+                .allowedOriginPatterns("*")
+//                是否允许cookie
+                .allowCredentials(true)
+//                允许的方法
+                .allowedMethods("GET", "POST", "DELETE", "PUT")
+//                允许的头信息
+                .allowedHeaders("*")
+//                跨域允许时间
+                .maxAge(3600);
+
+    }
+}
+```
+
+然后还需要在SpringSecurity中加一句话
+
+```java {51,52}
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean(name = "MyAuthenticationManager")
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    /**
+     * 定义访问权限
+     *
+     * @param http
+     * @throws Exception
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+//                关闭csrf  csrf 是 前后端分离的时候要关闭的 之后 会说明
+                .csrf().disable()
+//                不通过session获取SecurityContext（登陆之后的用户认证信息 默认是在session中获取）
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+//                对于登录接口，允许匿名访问 登录后不可以访问
+                .antMatchers("/user/login").anonymous()
+//                对于/hello 运行未登录和登录的都可以访问
+                .antMatchers("/hello").permitAll()
+//                放行 static路径下的所有资源
+                .antMatchers("/static/**").permitAll()
+//                对于其他的接口任意的访问都需要身份认证（除了上面的请求外全都要鉴权认证）
+                .anyRequest().authenticated();
+
+//        过滤器两个参数：
+//        1. 过滤器
+//        2. 过滤器在哪个过滤器前执行（插入）
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+//        异常处理器
+        http.exceptionHandling()
+//                认证失败处理器
+                .authenticationEntryPoint(authenticationEntryPoint)
+//                无权限处理器
+                .accessDeniedHandler(accessDeniedHandler);
+//        允许跨域
+        http.cors();
+
+    }
+
+    @Autowired
+    AccessDeniedHandlerImpl accessDeniedHandler;
+
+    @Autowired
+    AuthenticationEntryPointImpl authenticationEntryPoint;
+
+    @Autowired
+    JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+}
+
+```
+
+## 关于@PreAuthorize的额外说明及其他的权限校验注解
+
+```java {3}
+@RestController
+@RequestMapping("/admin")
+@PreAuthorize("hasAuthority('system:dept:list')")
+public class AdminController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello admin";
+    }
+
+}
+```
+
+在ieda中可以很明显的看到这是一个方法
+
+![image-20211227174941675](/images/SpringBoot/05-SpringSecurity/image-20211227174941675.png)
+
+点进去看到了这样一个方法
+
+```java
+@Override
+public final boolean hasAuthority(String authority) {
+    return hasAnyAuthority(authority);
+}
+```
+
+目前来说我们也不知道它是干嘛的 所以debug看一看
+
+可以看到 访问指定页面的时候 这里接收的参数就是我们写死的那一个
+
+![image-20211227175146752](/images/SpringBoot/05-SpringSecurity/image-20211227175146752.png)
+
+步入可以看到
+
+![image-20211227175223794](/images/SpringBoot/05-SpringSecurity/image-20211227175223794.png)
+
+调用了顶一个方法 给prefix区域传入了null
+
+并且还可以知道 另外一个方法内 传入的是可变参数
+
+```java
+	@Override
+	public final boolean hasAnyAuthority(String... authorities) {
+return hasAnyAuthorityName(null, authorities);
+	}
+
+```
+
+也就是之后我们可以通过调用这个hasAnyAuthority来实现----只要有多个权限中的一个即可访问
+
+然后跳转到了这个方法
+
+```java
+private boolean hasAnyAuthorityName(String prefix, String... roles) {
+    Set<String> roleSet = getAuthoritySet();
+    for (String role : roles) {
+        String defaultedRole = getRoleWithDefaultPrefix(prefix, role);
+        if (roleSet.contains(defaultedRole)) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+![image-20211227175727003](/images/SpringBoot/05-SpringSecurity/image-20211227175727003.png)
+
+可以看到 第一个` Set<String> roleSet = getAuthoritySet();` 是获取到了我们用户的AuthoritySet集合
+
+然后遍历循环我们的核对参数 ，在通过set的contains来匹配 如果匹配成功返回true 反之亦然	
+
+至于`String defaultedRole = getRoleWithDefaultPrefix(prefix, role);` 这个看样子应该是拿了一个前缀和我们的字符串进行拼接 之前我们并没有传入前缀 所以说此时前缀为null
+
+### 定义多个校验规则
+
+```java {3}
+@RestController
+@RequestMapping("/admin")
+@PreAuthorize("hasAnyAuthority('system:dept:list','aaa','bbb')")
+public class AdminController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello admin";
+    }
+
+}
+```
+
+满足三个中的一个就会通过
+
+### 有前缀的校验规则
+
+```java
+@RestController
+@RequestMapping("/admin")
+@PreAuthorize("hasRole('system:dept:list')")
+public class AdminController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello admin";
+    }
+
+}
+```
+
+源码就不放了 自己点进去看看里面就知道 默认会给这个`system:dept:list`字符串加上一个前缀：
+
+`ROLE_`
+
+说以最终结果将是:`ROLE_system:dept:list`
+
+这个方法用的特别少 要给我们的那啥都手动加上前缀。。
+
+也就是在sql中的所有规则字段都要加前缀
+
+一般情况下不会用它
+
+### 自定义权限校验方法
+
+其实非常简单
+
+我们先定义一个类 然后丢到容器内 注意这个ex
+
+```java {1}
+@Component("ex")
+public class MyExpression {
+
+    public boolean hasAuthority(String authority) {
+//        获取当前用户的权限
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        List<String> permissions = loginUser.getPermissions();
+//        判断用户权限集合中是否存在authority
+        return permissions.contains(authority);
+    }
+
+}
+```
+
+紧接着 我们依旧是正常调用@PreAuthorize，但是传入的参数不同
+
+传入的是一个特殊的表达式----SPEL表达式
+
+```java {3}
+@RestController
+@RequestMapping("/admin")
+@PreAuthorize("@ex.hasAuthority('system:dept:list')")
+public class AdminController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello admin";
+    }
+
+}
+```
+
+这玩意别想的那么复杂 目前来说 @ex相当于能获取容器中的指定的bean（前提是我们给这个bean定义过姓名之类的）
+
+接着使用方法和往常一样即可，当然这样做之后就有了高扩展性 例如你可以定义一些正则语法来匹配对应的字符串
+
+### 基于配置的权限控制
+
+和在注解中没啥两样   但是统一性更好些 方便一次性修改某些值 适用于一些静态资源路径
+
+```java {6}
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/aaa").hasAnyAuthority("xxxxx");
+    }
+
+}
+
+```
+
+## 关于CSRF跨站攻击
+
+> CSRF是指跨站请求伪造（Cross-site request forgery），是Web常见的攻击之一
+
+![image-20211227212004659](/images/SpringBoot/05-SpringSecurity/image-20211227212004659.png)
+
+SpringSecurity去防止CSRF的攻击方式就是通过CSRF_TOKEN
+
+后端会生成一个csrf_token，前端发起请求的时候需要携带这个csrf_token
+
+后端会有过滤器进行校验 如果没有携带或者是伪造的就不允许访问
+
+我们可以发现CSRF攻击主要依靠的是cookie所携带的认证信息，但是前后端分离中**我们的认证信息其实是token**，token并不存在于cookie中，并且需要前端代码去把token设置到请求头中才可以，所以CSRF攻击就不用担心了
+
+前后端分离的项目天然就是不怕CSRF这玩意
+
+所以我们之前才会关闭这个玩意
+
+```java
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+//                关闭csrf  csrf 是 前后端分离的时候要关闭的 之后 会说明
+                .csrf().disable()
+//                .........
+
+    }
+```
+
+## 归档
+
+### 核心流程图
+
+务必牢记这张图 未来可以通过这张图来进行五花八门的扩展自定义验证
+
+![image-20211227214243138](/images/SpringBoot/05-SpringSecurity/image-20211227214243138.png)
 

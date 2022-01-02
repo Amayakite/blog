@@ -71,7 +71,10 @@ module.exports = [
             "02-Spring_Boot核心功能",
             "03-Spring_Boot整合数据访问",
             "04-Redis",
-            "05-SpringSecurity"
+            "05-SpringSecurity",
+            "06-RabbitMQ",
+            "07-Nginx",
+            "08-Elasticsearch"
         ]
     }
 ]
