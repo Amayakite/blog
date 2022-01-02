@@ -20,11 +20,11 @@ tags:
 
 ### 回顾动态代理
 
-​		AOP说人话就是动态代理来缩短我们的编写代码的时间，那么该怎么缩短呢？
+​  AOP说人话就是动态代理来缩短我们的编写代码的时间，那么该怎么缩短呢？
 
-​		草，你忘了动态代理？
+​  草，你忘了动态代理？
 
-​		巧了，我也忘了，这玩意属于反射，当然之前在JavaSE中学到的动态代理也没那么明白，这里我举一个简单的例子吧：
+​  巧了，我也忘了，这玩意属于反射，当然之前在JavaSE中学到的动态代理也没那么明白，这里我举一个简单的例子吧：
 
 - 你现在是一个上帝，想要去买电脑
 - 现在有两个地方可以买电脑
@@ -34,15 +34,15 @@ tags:
 - 你在你家楼下的电脑店买`Kite`电脑要1000块钱，他会给你送货上门，并送你鼠标键盘等
 - 你到`Kite`的官方工厂买`Kite`电脑要500块钱，什么都不附赠
 
-​		你会选择到哪里买？
+​  你会选择到哪里买？
 
-​		傻X才回去异国他乡的本部买吧~
+​  傻X才回去异国他乡的本部买吧~
 
-​		好了，到这里，你可能会有疑惑，好好的动态代理，怎么讲到电脑来了？
+​  好了，到这里，你可能会有疑惑，好好的动态代理，怎么讲到电脑来了？
 
 那可不！
 
-​		现在有一个需求，定义一个接口 然后使用实现类调用它完成在楼下电脑店的购买和xx工厂的购买
+​  现在有一个需求，定义一个接口 然后使用实现类调用它完成在楼下电脑店的购买和xx工厂的购买
 
 ```java
 public interface DianNao {
@@ -240,7 +240,7 @@ public class MyGoShop {
 
 ### AOP的底层实现
 
-​		实际上，AOP的底层是通过SPring提供的动态代理技术实现的，在运行期间，Spring动过反射生成动态代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对线的方法，从而完善功能的增强
+​  实际上，AOP的底层是通过SPring提供的动态代理技术实现的，在运行期间，Spring动过反射生成动态代理对象，代理对象方法执行时进行增强功能的介入，在去调用目标对线的方法，从而完善功能的增强
 
 ### 常用的动态代理技术(JDK/Cglib)
 
@@ -337,8 +337,6 @@ Target的Say方法被调用了
 
 ![image-20211214114239332](/images/SpringFrameWork/08-AOP/image-20211214114239332.png)
 
-
-
 接下来用cglib来演示一下---它不需要依赖接口，注意，下面这玩意不需要自个完全记住，但是等到工作个一两年了、需要自己手动造轮子了，就得好好的了解下它
 
 ```java
@@ -389,9 +387,9 @@ class com.aop.jdk.Target$$EnhancerByCGLIB$$b05937e8
 
 ### ✨AOP的相关概念
 
-​		Spring的AOP实现底层就是对上面的动态代理的代码进行了封装，封装后我们只需要对需要关注的部分进行代码编写，并通过配置的方式完成指定目标的方法增强
+​  Spring的AOP实现底层就是对上面的动态代理的代码进行了封装，封装后我们只需要对需要关注的部分进行代码编写，并通过配置的方式完成指定目标的方法增强
 
-​		在正式了解AOP的操作之前，我们必须理解AOP 相关术语，常用的术语如下：
+​  在正式了解AOP的操作之前，我们必须理解AOP 相关术语，常用的术语如下：
 
 - Target(目标对象)：的代理的目标对象
 - Proxy(连接点)：一个类被AOP织入增强后，就产生一个结果代理类
@@ -417,13 +415,13 @@ class com.aop.jdk.Target$$EnhancerByCGLIB$$b05937e8
 
 > AOP技术实现的内容：
 
-​		Spring框架监控切入点方法的执行，一旦监控到切入点方法被运行，使用动态代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的**对应位置**，将通知对应的功能织入，完成完整的代码逻辑运行
+​  Spring框架监控切入点方法的执行，一旦监控到切入点方法被运行，使用动态代理机制，动态创建目标对象的代理对象，根据通知类别，在代理对象的**对应位置**，将通知对应的功能织入，完成完整的代码逻辑运行
 
 人话就是：相当于我们上面那两个简单实现的动态代理
 
 > AOP底层使用哪种代理方式
 
-​		在Spring中，框架会根据目标类是否实现了接口来决定才用哪种动态代理方式
+​  在Spring中，框架会根据目标类是否实现了接口来决定才用哪种动态代理方式
 
 > 知识要点
 
@@ -644,11 +642,11 @@ Target的Say方法被调用了
 
 然后里面的第一个标签：aop:aspect 就是声明我们的切面（增强类）
 
-然后在这其中可以配置其的切点---aop:before 
+然后在这其中可以配置其的切点---aop:before
 
-​		其中的method属性就是在某个类的某个方法的执行前执行的方法
+​  其中的method属性就是在某个类的某个方法的执行前执行的方法
 
-​		然后ponitcut目前根据语法来看像是配置具体的方法
+​  然后ponitcut目前根据语法来看像是配置具体的方法
 
 ### ✨✨切点表达式execution
 
@@ -825,9 +823,9 @@ public void say() {
 也就是该方法中可以选择接收这个异常并做下其他相关的处理，比如记录下log，但是并不能处理该异常
 
 当然也可以不传参，前提是该方法是不需要参数的，例如
-`afterThrowing(Throwable e) ` 你不在这传一个参数过去就会报错
+`afterThrowing(Throwable e)` 你不在这传一个参数过去就会报错
 
-但是`afterThrowing() ` 它不接受参数的话，没传递参数也不影响
+但是`afterThrowing()` 它不接受参数的话，没传递参数也不影响
 
 运行结果：
 
@@ -858,8 +856,8 @@ public void say() {
         <aop:around method="around" pointcut-ref="mytarget"></aop:around>
         <aop:after-throwing method="afterThrowing" pointcut-ref="mytarget"></aop:after-throwing>
         <!--
-			定义切点表达式 注意 这里的名称最好是:aopTarget MyTarget之类的 反正不能叫target 			之类的常见词汇 不然有概率冲突它可以在aop aspect内的任意位置定义 最前面或者最后面都可
-		-->
+   定义切点表达式 注意 这里的名称最好是:aopTarget MyTarget之类的 反正不能叫target    之类的常见词汇 不然有概率冲突它可以在aop aspect内的任意位置定义 最前面或者最后面都可
+  -->
         <aop:pointcut id="mytarget" expression="execution(* com.aop..*.*(..))"/>
     </aop:aspect>
 </aop:config>
@@ -974,9 +972,9 @@ public class SpringConfiguration {
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-	<!--扫包-->
+ <!--扫包-->
     <context:component-scan base-package="com.aop"/>
-	<!--配置AOP扫描自动代理-->
+ <!--配置AOP扫描自动代理-->
     <aop:aspectj-autoproxy/>
 </beans>
 ```
@@ -1059,7 +1057,7 @@ public class MyAspect {
         //方法体内部无需任何内容
     }
 
-	//调用的时候，直接在这里面写上我们刚刚定义的那个方法即可pointcut()
+ //调用的时候，直接在这里面写上我们刚刚定义的那个方法即可pointcut()
     @Before("pointcut()")
     public void before() {
         System.out.println("前置增强...");
@@ -1081,4 +1079,3 @@ public class MyAspect {
 }
 
 ```
-

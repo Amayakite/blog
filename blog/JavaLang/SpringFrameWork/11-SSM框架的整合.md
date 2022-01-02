@@ -23,7 +23,7 @@ SS两个框架整合我们都知道了，因为属于同一个生态系统，所
 create database ssm;
 use ssm;
 create table account(
-	id int Primary key AUTO_INCREMENT,
+ id int Primary key AUTO_INCREMENT,
     name varchar(50),
     money double
 );
@@ -450,7 +450,7 @@ log4j.rootLogger=info, stdout
 </configuration>
 ```
 
-这里可以用` <package name="包名"/>`的方式来扫包，后续使用只需要使用类名的首字母小写形式即可
+这里可以用`<package name="包名"/>`的方式来扫包，后续使用只需要使用类名的首字母小写形式即可
 
 接着配置映射配置文件
 
@@ -688,8 +688,6 @@ public class AccountServiceImpl implements AccountService {
 
 ```
 
-
-
 ### 编写访问代码
 
 ```java
@@ -904,10 +902,6 @@ public class AccountServiceImpl implements AccountService {
 以及 Java的底层--JVM虚拟机（拿来唬面试官的）
 
 还有Mybatis Plus 可以让Mybatis变得不那么繁琐
-
-
-
-
 
 # 🎉🎉SSM整合总结-模板
 
@@ -1320,8 +1314,6 @@ public class Account {
 
 ```
 
-
-
 ### Mapper
 
 用于配合Mapper处理数据，里面全部存放接口，例如：
@@ -1439,14 +1431,14 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-	// 用户请求save 存放一个account
+ // 用户请求save 存放一个account
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public String save(@RequestBody Account account) {
         accountService.save(account);
         return "{\"success\":true}";
     }
-	
+ 
     // 用户请求findall 获取所有的account
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     @ResponseBody
@@ -1458,8 +1450,3 @@ public class AccountController {
 }
 
 ```
-
-
-
-
-

@@ -37,7 +37,7 @@ tags:
 <!--Servlet标签给tomcat配置一个Servlet程序-->
 <servlet>
     <!--给程序起一个别名，一般都是用类名-->
-	<servlet-name>myServlet</servlet-name>
+ <servlet-name>myServlet</servlet-name>
     <!--这里是全类名-->
     <servlet-class>com.amayakite.Servlet.MyServlet</servlet-class>
 </servlet>
@@ -45,20 +45,20 @@ tags:
 <!--给Servlet程序配置访问地址-->
 <servlet-mapping>
     <!--告诉服务器：我当前配置的地址，是给哪个Servlet程序去使用-->
-	<servlet-name>myServlet</servlet-name>
+ <servlet-name>myServlet</servlet-name>
     <!--url-pattern 标签配置访问地址 这个地址是基于工程路径的-->
     <url-pattern>/myServlet</url-pattern>
 </servlet-mapping>
 ```
 
-补充：工程路径就是我们在tomcat中部署那里设置的应用程序上下文，比如我设置个03，则访问地址为http://localhost:8080/03/myServlet，需要以/开头，当让还有更多的方法，详情看我上一个文章（在最后@Servlet那里有说明四种）
+补充：工程路径就是我们在tomcat中部署那里设置的应用程序上下文，比如我设置个03，则访问地址为<http://localhost:8080/03/myServlet，需要以/开头，当让还有更多的方法，详情看我上一个文章（在最后@Servlet>那里有说明四种）
 
 ![image-20211204133523223](/images/JavaEE/3-0规范的学习Servlet/image-20211204133523223.png)
 
 ```java
 @WebServlet(
         name = "myServlet",
-    	//等同于一个<servlet>，其中<servlet-class>自动配置为当前文件地址
+     //等同于一个<servlet>，其中<servlet-class>自动配置为当前文件地址
         urlPatterns = {"/myServlet"} //设置路径
 )
 public class MyServlet implements Servlet {
@@ -233,7 +233,7 @@ res.getClass() = class org.apache.catalina.connector.ResponseFacade
 
 哦豁，是我们没见过的类型，转换也找不到这个类-因为是tomcat中的
 
-那我们得换一个思路，看下这个`ServletRequest `有没有什么子类
+那我们得换一个思路，看下这个`ServletRequest`有没有什么子类
 
 发现有一个：
 
@@ -330,8 +330,6 @@ public void myPost(HttpServletRequest req, HttpServletResponse res) throws IOExc
 
 然后尝试运行，依旧完美！
 
-
-
 解决后，我又想到了一个问题：既然`ServletRequest` 有子接口，那么`Servlet`有没有子接口呢？
 
 发现有两个实现类
@@ -346,18 +344,18 @@ public void myPost(HttpServletRequest req, HttpServletResponse res) throws IOExc
 
 关于这个接口，官方给出了如下定义：
 
-​		定义所有servlet必须实现的方法。
-​		servlet是在Web服务器中运行的小型Java程序。servlet接收并响应来自Web客户机的请求，通常是通过HTTP(超文本传输协议)。
+​  定义所有servlet必须实现的方法。
+​  servlet是在Web服务器中运行的小型Java程序。servlet接收并响应来自Web客户机的请求，通常是通过HTTP(超文本传输协议)。
 
-​		要实现这个接口，**你可以编写一个扩展javax.servlet.GenericServlet的通用servlet，或者一个扩展javax.servlet.http.HttpServlet的HTTP servlet。**
+​  要实现这个接口，**你可以编写一个扩展javax.servlet.GenericServlet的通用servlet，或者一个扩展javax.servlet.http.HttpServlet的HTTP servlet。**
 
-​		该接口定义了用于初始化servlet、服务请求和从服务器中删除servlet的方法。这些被称为生命周期方法，按以下顺序调用:
+​  该接口定义了用于初始化servlet、服务请求和从服务器中删除servlet的方法。这些被称为生命周期方法，按以下顺序调用:
 
 1. servlet被构造，然后用init方法初始化。
 2. 客户端对服务方法的任何调用都会被处理。
 3. servlet从服务中取出，然后使用destroy方法销毁，然后进行垃圾收集并最终完成。
 
-​		除了生命周期方法外，该接口还提供getServletConfig方法和getServletInfo方法，servlet可以使用该方法获取任何启动信息，getServletInfo方法允许servlet返回关于自身的基本信息，如作者、版本和版权。
+​  除了生命周期方法外，该接口还提供getServletConfig方法和getServletInfo方法，servlet可以使用该方法获取任何启动信息，getServletInfo方法允许servlet返回关于自身的基本信息，如作者、版本和版权。
 
 也就是说，我们可以通过HttpServlet更方便的使用Servlet，接下来说说这玩意该怎么用吧
 
@@ -425,7 +423,7 @@ public class MyServlet2 extends HttpServlet {
 
 然后你会发现自动生成了一个带注解的
 
-如果说不把那个`创建Java EE 6+ `注解类勾上的话，就会在web.xml中生成相应的Servlet标签
+如果说不把那个`创建Java EE 6+`注解类勾上的话，就会在web.xml中生成相应的Servlet标签
 
 如果不勾选注解的话，需要自己手动创建一下Servlet-mapping标签
 
@@ -440,8 +438,6 @@ public class MyServlet2 extends HttpServlet {
         <url-pattern>/ServlettestIedacreate</url-pattern>
 </servlet-mapping>
 ```
-
-
 
 ```java
 @WebServlet(name = "testIedacreate", value = "/testIedacreate")
@@ -466,9 +462,9 @@ public class testIedacreate extends HttpServlet {
 
 ## ServletConfig类
 
-​		在这之前额外声明：Servlet程序和ServletConfig对象都是由Tomcat服务器创建，我们负责使用
+​  在这之前额外声明：Servlet程序和ServletConfig对象都是由Tomcat服务器创建，我们负责使用
 
-​		**Servlet程序默认是第一次访问时创建，这个Servletconfig在其创建后立刻创建，主要存放一些我们的初始化参数**
+​  **Servlet程序默认是第一次访问时创建，这个Servletconfig在其创建后立刻创建，主要存放一些我们的初始化参数**
 
 这玩意是在GenericServlet中就开始了引用的，从字面意义上来看，就知道是Servlet程序的配置信息类
 
@@ -486,14 +482,14 @@ public class testIedacreate extends HttpServlet {
      <servlet>
          <servlet-name>ServlettestIedacreate</servlet-name>
          <servlet-class>ServlettestIedacreate</servlet-class>
-     	<init-param>
+      <init-param>
              <param-name>username</param-name>
              <param-value>root</param-value>
-     	</init-param>
-     	<init-param>
+      </init-param>
+      <init-param>
              <param-name>password</param-name>
              <param-value>123456</param-value>
-     	</init-param>
+      </init-param>
      </servlet>
      ```
 
@@ -512,7 +508,7 @@ public class testIedacreate extends HttpServlet {
 
    - 两种方式最终的结果都一样
 
-3.  获取ServletContext对象
+3. 获取ServletContext对象
 
 我们再代码中重写带参数的`init(Serverconfig config)`
 
@@ -627,8 +623,6 @@ ServletConfig还可以在doget、dopost中随意调用：`this.getServletConfig(
     }
 ```
 
-
-
 ## ServletContext(上下文)
 
 在刚刚的ServletConfig中，ServletContext我们只是提了一嘴，并没有具体的使用他，接下来具体的介绍一下他，这玩意蛮有用的（用处比ServletConfig多多了）
@@ -702,9 +696,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 可能你会有疑惑：这个工程部署路径有啥用呢？
 
-​		emm这样说吧，比如说你要发送个文件(图片、视频等二进制文件)给客户端，就要通过它来将一个相对路径转换为一个绝对路径，来让FileInput流读取
+​  emm这样说吧，比如说你要发送个文件(图片、视频等二进制文件)给客户端，就要通过它来将一个相对路径转换为一个绝对路径，来让FileInput流读取
 
-​		我们的惯例应该是：除了一些隐私级别的文件，静态文件（html css 资源文件）同意放置在webapp目录下：
+​  我们的惯例应该是：除了一些隐私级别的文件，静态文件（html css 资源文件）同意放置在webapp目录下：
 
 ![image-20211204162732455](/images/JavaEE/3-0规范的学习Servlet/image-20211204162732455.png)
 
@@ -798,13 +792,13 @@ url=jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf8
 
 可能会遇到的导出问题：
 
-​		没有遇到这个问题就不要改`pom.xml`!
+​  没有遇到这个问题就不要改`pom.xml`!
 
-​		没有遇到这个问题就不要改`pom.xml`!
+​  没有遇到这个问题就不要改`pom.xml`!
 
-​		没有遇到这个问题就不要改`pom.xml`!
+​  没有遇到这个问题就不要改`pom.xml`!
 
-​		如果说你在这一部没有看到这个db.properties文件，那么百分之八十是maven的配置有问题（貌似新版不按照下面这样配置也不会出现这样的问题），在当前`module`的maven配置文件`pom.xml`中加上如下内容再重新打包即可（如果pom.xml中已经有`<build></build>`了，就在build中加入这两个resources，如果没有，就直接整个copy过去），即可解决该问题
+​  如果说你在这一部没有看到这个db.properties文件，那么百分之八十是maven的配置有问题（貌似新版不按照下面这样配置也不会出现这样的问题），在当前`module`的maven配置文件`pom.xml`中加上如下内容再重新打包即可（如果pom.xml中已经有`<build></build>`了，就在build中加入这两个resources，如果没有，就直接整个copy过去），即可解决该问题
 
 ```xml
 <!--在build中配置resources 来防止我们资源导出失败的问题-->
@@ -1176,7 +1170,7 @@ d.html
 
 ## HttpServletResponse
 
-​		跟Request一样，都是浏览器清流服务器时，Tomcat生成的对象，Request用于获取用户发送的数据，Response用户响应用户
+​  跟Request一样，都是浏览器清流服务器时，Tomcat生成的对象，Request用于获取用户发送的数据，Response用户响应用户
 
 特别基础的东西
 
@@ -1184,10 +1178,9 @@ d.html
 
 - `getWriter` 字符输出流 用于响应文本数据
 - `getOutoutStream` 字节数出流 用于响应文件
-  -  响应字节数的时候得提前设置好Context-Type
+  - 响应字节数的时候得提前设置好Context-Type
   - 比如image/jpg、image/png 等
   - 具体的可以查看[MIME参考手册](https://www.w3school.com.cn/media/media_mimeref.asp)
-
 
 注意 这两个流**不能混用**，即：**用了字符流就不能用字节流，反之亦然，否则会报错**
 
@@ -1240,4 +1233,4 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 }
 ```
 
-这句话相当于封装了` response.setStatus(302);`和`response.setHeader("Location", url);`
+这句话相当于封装了`response.setStatus(302);`和`response.setHeader("Location", url);`

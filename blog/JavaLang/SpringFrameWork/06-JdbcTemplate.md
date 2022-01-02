@@ -11,7 +11,7 @@ tags:
 
 ## 概述
 
-​		它是Spring框架中提供的一个对象，是对原始繁琐的JDBC APi对象进行简单封装，Spring为我们集成了多个消息模板类，例如：
+​  它是Spring框架中提供的一个对象，是对原始繁琐的JDBC APi对象进行简单封装，Spring为我们集成了多个消息模板类，例如：
 
 - 操作关系型数据库的JdbcTemplate和HibernateTemplate
 - 操作Nosql数据库的RedisTemplate
@@ -87,7 +87,7 @@ tags:
 create database spring_jdbc;
 use spring_jdbc;
 create table account(
-	name varchar(32) primary key,
+ name varchar(32) primary key,
     money double not null default 0
 );
 desc account;
@@ -397,9 +397,9 @@ Account{name='Jack', money=6663.0}
 
 ### ✨查询单个字段-queryForObject传入class
 
-​	如果我们只需要查询一个字段，那么只需要：
+​ 如果我们只需要查询一个字段，那么只需要：
 
-` jdbcTemplate.queryForObject(sql, 包装类.class);`
+`jdbcTemplate.queryForObject(sql, 包装类.class);`
 
 ```java
 @Test

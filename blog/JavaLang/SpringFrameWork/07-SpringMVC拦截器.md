@@ -16,9 +16,9 @@ tags:
 
 ## 拦截器基本介绍
 
-​		SPringMVC的拦截器类似于Servlet开发中的过滤器filter，用于对处理器进行**预处理**或**后处理**
+​  SPringMVC的拦截器类似于Servlet开发中的过滤器filter，用于对处理器进行**预处理**或**后处理**
 
-​		将拦截器按照一定的顺序连接成一条链，这条链也被称为拦截器链，在访问被拦截方法或字段时，拦截器链中的拦截器就会按其之前定义的顺序被调用，拦截器也是AOP思想的具体实现
+​  将拦截器按照一定的顺序连接成一条链，这条链也被称为拦截器链，在访问被拦截方法或字段时，拦截器链中的拦截器就会按其之前定义的顺序被调用，拦截器也是AOP思想的具体实现
 
 ### 拦截器和过滤器的区别
 
@@ -415,9 +415,9 @@ public class MyInterceptor implements HandlerInterceptor {
         <mvc:mapping path="/**"/>
         
         <!--这里配置excluede指的是不拦截某个地址，例如我上面那里写了/admin/** 但是下面写了：/admin/login
-			则：/admin/login不会被拦截 注意 mappping 和 exclude-mapping 都要写在bean的上面 不然会报错
-			这里和mapping一样，支持/admin/aa/** 这种风格的写法
-		-->
+   则：/admin/login不会被拦截 注意 mappping 和 exclude-mapping 都要写在bean的上面 不然会报错
+   这里和mapping一样，支持/admin/aa/** 这种风格的写法
+  -->
         <mvc:exclude-mapping path="/index.jsp"/>
 
         <!--            使用我们刚刚写的那个自定义资源拦截器-->
@@ -493,7 +493,7 @@ public String show1() {
 
 ### 异常处理的思路
 
-​		系统中异常包括两类
+​  系统中异常包括两类
 
 - 预期异常
 - 运行时异常RuntimeException
@@ -529,7 +529,7 @@ defaultErrorView
 <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" id="exceptionResolver">
     <!--       配置通用的异常处理机制，会捕获基本的异常并统一处理 这里的error代表着根目录下的error.jsp-->
     <property name="defaultErrorView" value="error"/>
-	
+ 
     <!--正常的工作中就算用也只会用到下面的那个 比较少用上面的-->
     
     <!--        通过exceptionMappings根据触发异常的类型来指定异常的处理机制-->

@@ -222,7 +222,7 @@ public class HelloController {
 
 紧接着，我们启动MainApplication.java
 
-接着访问http://localhost:8080/hello
+接着访问<http://localhost:8080/hello>
 
 你就能看到学习Spring以来最神奇的事情
 
@@ -607,7 +607,7 @@ class com.springboot.boot.config.MyConfig$$EnhancerBySpringCGLIB$$9cde7f34
 ...构造方法传参
 </bean>
 <bean id="user" xxxx>
-	<构造参数xxx name="cat" ref="cat">
+ <构造参数xxx name="cat" ref="cat">
 </bean>
 ```
 
@@ -725,7 +725,7 @@ public class MyConfig {
     public User user() {
         return new User("Tom", 10, cat());
     }
-	
+ 
     //@Bean
     public Cat cat() {
         return new Cat("Tomcat", 1, "Orange");
@@ -821,8 +821,6 @@ public class MyConfig {
 }
 ```
 
-
-
 也就是当这个类中有bean组件的时候，这个类中的所有bean注册才生效，否则全都不生效
 
 **加了条件注解，代码执行到此处会先记录忽略，等容器其他组件加载完，再来判断是否注册组件**
@@ -894,7 +892,7 @@ User{name='root', age=18, cat=Cat{name='小花猫', age=1, color='彩色'}}
 
 ## @ConfigurationProperties 配置绑定
 
-### 配合@Component 
+### 配合@Component
 
 使用Java读取Properties文件的内容，并将其封装到JavaBean中
 
@@ -932,7 +930,7 @@ mycar.price=100000
 public class Car {
     private String brand;
     private Integer price;
-	//......
+ //......
 }
 
 ```
@@ -942,7 +940,7 @@ public class Car {
 ```java
 @RestController
 public class HelloController {
-	
+ 
     //注入bean
     @Resource(type = Car.class)
     private Car car;
@@ -980,7 +978,7 @@ public class HelloController {
 public class Car {
     private String brand;
     private Integer price;
-	//......
+ //......
 }
 
 ```
@@ -1027,7 +1025,7 @@ public class MainApplication {
 
 这个当我们看到proxyBeanMethods的时候就应该知道
 
-代表这个类当前是一个配置类 
+代表这个类当前是一个配置类
 
 ```java
 
@@ -1057,13 +1055,13 @@ public @interface SpringBootConfiguration {
 public @interface EnableAutoConfiguration {
 
 
-	String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
+ String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
 
 
-	Class<?>[] exclude() default {};
+ Class<?>[] exclude() default {};
 
 
-	String[] excludeName() default {};
+ String[] excludeName() default {};
 
 }
 
@@ -1079,10 +1077,10 @@ public @interface EnableAutoConfiguration {
 public @interface AutoConfigurationPackage {
 
 
-	String[] basePackages() default {};
+ String[] basePackages() default {};
 
 
-	Class<?>[] basePackageClasses() default {};
+ Class<?>[] basePackageClasses() default {};
 
 }
 
@@ -1135,13 +1133,13 @@ metadata就是我们正在运行的这个main方法，com.springboot.boot.MainAp
 
 接着就是register方法，根据官方文档，可以看到它完成了如下内容：
 
-> 以编程方式注册自动配置包名称。后续调用将把给定的包名添加到已经注册的包名中。您可以使用此方法手动定义将用于给定BeanDefinitionRegistry的基本包。通常，建议您不要直接调用此方法，而是依赖默认约定，其中包名是从@EnableAutoConfiguration类设置的。 
+> 以编程方式注册自动配置包名称。后续调用将把给定的包名添加到已经注册的包名中。您可以使用此方法手动定义将用于给定BeanDefinitionRegistry的基本包。通常，建议您不要直接调用此方法，而是依赖默认约定，其中包名是从@EnableAutoConfiguration类设置的。
 >
-> 形参: 
+> 形参:
 >
-> ​	registry–bean定义注册表 
+> ​ registry–bean定义注册表
 >
-> ​	packageNames–要设置的包名称
+> ​ packageNames–要设置的包名称
 
 也就是说，我们传入一个包名 它会自动帮我们注册到包名列表
 
@@ -1166,7 +1164,7 @@ public Set<Object> determineImports(AnnotationMetadata metadata) {
 
 反正是通过了这三个内部类 来获取到所有的组件名到一个LinkedList到一个集合中
 
-md我跳过了 以后回来在看 视频https://www.bilibili.com/video/BV19K4y1L7MT?p=14&spm_id_from=pageDriver
+md我跳过了 以后回来在看 视频<https://www.bilibili.com/video/BV19K4y1L7MT?p=14&spm_id_from=pageDriver>
 
 #### 按需加载
 
@@ -1203,7 +1201,7 @@ public class AopAutoConfiguration {
 
 这里为true 所以自动加载，
 
-接下来是` @ConditionalOnClass(Advice.class)`
+接下来是`@ConditionalOnClass(Advice.class)`
 
 因为我们并没有安装aop相关的，它这里依赖的是aspectj相关的包
 
@@ -1214,7 +1212,7 @@ public class AopAutoConfiguration {
 ### 如何使用springboot
 
 - 引入对应的场景依赖
-  - https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters
+  - <https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters>
 - 查看自动配置了哪些
   - 自己分析，引入场景后在autoconfiguration内查看 例如web就是里面的web
   - 在application.properties中加入`debug=true`，然后看console里打印出来的含有Did not Match的都是不生效的(ctrl+F 搜索Negative matches 那下面的就是)
@@ -1228,7 +1226,7 @@ public class AopAutoConfiguration {
     ![image-20211218122410302](/images/SpringBoot/01-Spring_Boot基础/image-20211218122410302.png)
   - 接着发现支持
     ![image-20211218122634928](/images/SpringBoot/01-Spring_Boot基础/image-20211218122634928.png)
-  - 修改：你可以到这个网站去生成一个spring boot bannerhttps://www.bootschool.net/ascii
+  - 修改：你可以到这个网站去生成一个spring boot banner<https://www.bootschool.net/ascii>
   - 当然你甚至可以用txt
     ![image-20211218123227901](/images/SpringBoot/01-Spring_Boot基础/image-20211218123227901.png)
 - 当然 你也可以自定义加入或者替换组件，原理看这个[视频](https://www.bilibili.com/video/BV19K4y1L7MT?p=15&spm_id_from=pageDriver)
@@ -1292,8 +1290,6 @@ public class User {
     private Cat cat;
 }
 ```
-
-
 
 ```java
 //
@@ -1419,7 +1415,7 @@ public class User {
 
 第一个是spring-boot-devtools 添加下这个依赖，官方推荐用这个
 
-https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools
+<https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools>
 
 ```xml
 <dependencies>
@@ -1441,11 +1437,11 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.
 
 ![image-20211218131426831](/images/SpringBoot/01-Spring_Boot基础/image-20211218131426831.png)
 
-https://blog.csdn.net/lianghecai52171314/article/details/105637251
+<https://blog.csdn.net/lianghecai52171314/article/details/105637251>
 
 ### Spring-initializr 快速创建spring boot project
 
-如果说服务器连接不上的话 可以更换成阿里的`https://start.aliyun.com` 
+如果说服务器连接不上的话 可以更换成阿里的`https://start.aliyun.com`
 
 不过**阿里云的版本非常低** 建议有能力的话还是挂个梯子
 

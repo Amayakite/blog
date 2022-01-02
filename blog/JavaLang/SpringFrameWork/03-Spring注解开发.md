@@ -12,18 +12,18 @@ tags:
 
 在开始前，我们得再了解一下Spring
 
-​		Spring是轻代码而重配置的框架，配置比较繁重，在之前的配置中（基本的配置。注入。注入Properties）中也可以得出这一点，我们实际上并没有写多少代码，大部分时间都在解耦合
+​  Spring是轻代码而重配置的框架，配置比较繁重，在之前的配置中（基本的配置。注入。注入Properties）中也可以得出这一点，我们实际上并没有写多少代码，大部分时间都在解耦合
 
-​		所以我们就得用到注解来进行开发，Spring的注解就像之前在JavaWeb中，我们用的@WebServlet那样，能够代替XML进行文件，进行简化配置，提高效率
+​  所以我们就得用到注解来进行开发，Spring的注解就像之前在JavaWeb中，我们用的@WebServlet那样，能够代替XML进行文件，进行简化配置，提高效率
 
-​		也就是说，我们不应该面向xml编程，而是面向注解编程
+​  也就是说，我们不应该面向xml编程，而是面向注解编程
 
 Spring的注解分为两种，但是实际上都可以用
 
 - 原始注解：出现的比较早，所以被称之为原始注解
 - 新注解：出现的比较晚，称之为新注解
 
-​		Spring的原始注解主要是为了替代`<bean></bean>`的配置
+​  Spring的原始注解主要是为了替代`<bean></bean>`的配置
 
 ## Spring的原始注解
 
@@ -232,11 +232,9 @@ public void test() {
 
 是因为我们还没有告诉Spring，该去哪里获取我们的注解
 
-​		我们再使用注解进行开发时，需要在applicationContext.xml中配置组件扫描，作用是指定哪个包下的哪个Bean需要进行扫描识别使用注解配置的类、字段和方法
+​  我们再使用注解进行开发时，需要在applicationContext.xml中配置组件扫描，作用是指定哪个包下的哪个Bean需要进行扫描识别使用注解配置的类、字段和方法
 
 语法：
-
-
 
 ```xml
 <context:component-scan base-package="这里跟包名，例如：com.MyProject.Dao"/>
@@ -455,7 +453,7 @@ public class UserDaoImpl implements UserDao {
     public void init() {
         System.out.println("userDao的初始化方法被调用了");
     }
-	//销毁
+ //销毁
     @PreDestroy
     public void destroy() {
         System.out.println("userDao的销毁方法被调用了");
@@ -470,9 +468,9 @@ public class UserDaoImpl implements UserDao {
 
 ## Spring新注解
 
-​		我们在刚刚已经使用了Spring的原始注解完成了一些基本的注解了，但是在我们的配置文件当中，还存有一个使用第三方包的bean，这个使用了第三方包的bean又该怎么处理呢？
+​  我们在刚刚已经使用了Spring的原始注解完成了一些基本的注解了，但是在我们的配置文件当中，还存有一个使用第三方包的bean，这个使用了第三方包的bean又该怎么处理呢？
 
-​		以及这之中还存在了加载properties文件和组件扫描的配置又该怎么处理？
+​  以及这之中还存在了加载properties文件和组件扫描的配置又该怎么处理？
 
 ```java
 <context:property-placeholder location="classpath:db.properties"/>
@@ -487,7 +485,7 @@ public class UserDaoImpl implements UserDao {
 <context:component-scan base-package="com.MySpring"/>
 ```
 
-​		所以说，使用原始注解并不能完全替代xml文件，还需要注解来替代的配置如下：
+​  所以说，使用原始注解并不能完全替代xml文件，还需要注解来替代的配置如下：
 
 - 非自定义的Bean配置(使用了第三方模块的Bean)
 - 加载Properties文件的配置
@@ -540,7 +538,7 @@ public class SpringConfiguration {
         dataSource.setPassword(password);
         return dataSource;
     }
-	
+ 
     //这里通过el表达式来使用我们加载的db.properties中获取到的资源
     @Value("${db.driver}")
     private String dirver;
@@ -606,11 +604,11 @@ public class SpringConfiguration {
 
 ### 在程序中使用新注解容器
 
-​		竟然我们已经使用新注解来创建Spring容器了，那么就不应该通过往常的方法
+​  竟然我们已经使用新注解来创建Spring容器了，那么就不应该通过往常的方法
 
-​		去调用`ClassPathXmlApplicationContext`并传入xml来创建`ApplicationContext`对象了
+​  去调用`ClassPathXmlApplicationContext`并传入xml来创建`ApplicationContext`对象了
 
-​		所以我们就得用到Application的另外一个子实现类：AnnotationConfigApplicationContext
+​  所以我们就得用到Application的另外一个子实现类：AnnotationConfigApplicationContext
 
 ### AnnotationConfigApplicationContext的使用
 
@@ -682,7 +680,7 @@ public void test2() throws SQLException {
 
 ## Spring继承Junit
 
-​		在我们的测试类中，每个测试方法都有如下两行代码：
+​  在我们的测试类中，每个测试方法都有如下两行代码：
 
 ```java
 ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfiguration.class);
@@ -763,4 +761,3 @@ public class SpringJunitTest {
 }
 
 ```
-

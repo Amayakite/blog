@@ -34,11 +34,11 @@ tags:
 
 但实际上我们要学习的MyBatis已经帮我们做好了这些事情了
 
-> ​		MyBatis是一个优秀的基于Java的持久层框架，它内部封装了JDBC，使开发者只需要关注sql语句本身，而不需要花费精力去处理加载驱动，创建连接，创建statement等繁杂的过程
+> ​  MyBatis是一个优秀的基于Java的持久层框架，它内部封装了JDBC，使开发者只需要关注sql语句本身，而不需要花费精力去处理加载驱动，创建连接，创建statement等繁杂的过程
 >
-> ​		Mybatis通过xml或者注解的方式将要执行的各种statement配置起来，并通过Java对象和statement中的sql的动态参数进行映射生成最终执行的sql语句
+> ​  Mybatis通过xml或者注解的方式将要执行的各种statement配置起来，并通过Java对象和statement中的sql的动态参数进行映射生成最终执行的sql语句
 >
-> ​		最后mybatis框架执行sql语句并将结果映射为java对象返回，才用ORM（Object Relational Mapping 对象关系映射）思想解决了实体和数据库映射的问题，对JDBC进行了封装，屏蔽了JDBC api底层访问细节，使我们不用与jdbc api 打交道 就可以完成对数据库持久化的操作
+> ​  最后mybatis框架执行sql语句并将结果映射为java对象返回，才用ORM（Object Relational Mapping 对象关系映射）思想解决了实体和数据库映射的问题，对JDBC进行了封装，屏蔽了JDBC api底层访问细节，使我们不用与jdbc api 打交道 就可以完成对数据库持久化的操作
 
 当然 持久层框架不止有mybatis一个，还有hribernate、JOOQ/ebean等
 
@@ -93,7 +93,7 @@ Mybatis虽然不是最好的一个 但是作为初学者的话使用还是通过
 ```sql
 drop table if exists user;
 create table user(
-	id int primary key AUTO_INCREMENT,
+ id int primary key AUTO_INCREMENT,
     username varchar(32) not null unique,
     password char(40) not null default ""
 );
@@ -108,7 +108,7 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-	// get set toString
+ // get set toString
 }
 
 ```
@@ -260,8 +260,6 @@ public class MyBatisTest {
 
 ![image-20211215134202667](/images/SpringFrameWork/10-Mybatis/image-20211215134202667.png)
 
-
-
 ### ✨增删改查
 
 查询我们都知道了，增加有点特殊，userMapper文件需要这样配置：
@@ -355,8 +353,6 @@ public void test3() throws IOException {
 
 ![image-20211215153513639](/images/SpringFrameWork/10-Mybatis/image-20211215153513639.png)
 
-
-
 ## ✨Mybatis核心配置文件概述
 
 这里主要说下configuration标签的配置
@@ -399,8 +395,6 @@ public void test3() throws IOException {
 ### environment 配置数据源环境
 
 可以支持配置多个
-
-
 
 ![image-20211215153908922](/images/SpringFrameWork/10-Mybatis/image-20211215153908922.png)
 
@@ -1244,7 +1238,7 @@ select * from user where id in ....
         where id = #{id}
 
     </select>
-	<!--搜索特定范围内的用户-->
+ <!--搜索特定范围内的用户-->
     <select id="findByIds" parameterType="list" resultType="User">
         <include refid="selectUser"/>
         <where>
@@ -1260,7 +1254,7 @@ select * from user where id in ....
 
 ## TypeHandlers标签
 
-​		无论是mybatis在预处理语句（PreparedStatement）中设置一个参数，还是从结果集中取出一个值时，都用类型处理器将获取的值以合适的方式转换为Java类型，我们可以通过如下方式查看，总计40个：
+​  无论是mybatis在预处理语句（PreparedStatement）中设置一个参数，还是从结果集中取出一个值时，都用类型处理器将获取的值以合适的方式转换为Java类型，我们可以通过如下方式查看，总计40个：
 
 ```java
 public static void main(String[] args) throws IOException {
@@ -1288,15 +1282,15 @@ public static void main(String[] args) throws IOException {
 
 ### ✨重写/自定义类转换器
 
-​		我们可以重写类处理器或创建我们自己的类型处理器来支持不支持或非标准类型
+​  我们可以重写类处理器或创建我们自己的类型处理器来支持不支持或非标准类型
 
-​		具体做法为：实现`org.apache.ibatis.type.TypeHandler`接口
+​  具体做法为：实现`org.apache.ibatis.type.TypeHandler`接口
 
-​		或者继承一个很便利的类：`org.apache.ibatis.typeBase.BaseTypeHandler`
+​  或者继承一个很便利的类：`org.apache.ibatis.typeBase.BaseTypeHandler`
 
-​		然后可以选择性的将她映射到一个JDBC类型
+​  然后可以选择性的将她映射到一个JDBC类型
 
-​		例如：**一个Java中的Date类型数据，我想存储到数据库的时候转换成时间戳，取出来转换成Java的Date，即：Java的Date和数据库之间的varchar毫秒值进行相互的转换**
+​  例如：**一个Java中的Date类型数据，我想存储到数据库的时候转换成时间戳，取出来转换成Java的Date，即：Java的Date和数据库之间的varchar毫秒值进行相互的转换**
 
 开发步骤：
 
@@ -1312,7 +1306,7 @@ public static void main(String[] args) throws IOException {
 ```sql
 create table user
 (
-    id int auto_increment 		 primary key,
+    id int auto_increment    primary key,
     username varchar(32)         not null,
     password char(40) default '' not null,
     birthday bigint              null,
@@ -1688,8 +1682,8 @@ public class Order {
 
 ```sql
 select *  from
-	`user` as u  Right JOIN `order` as o 
-	ON u.id = o.uid;
+ `user` as u  Right JOIN `order` as o 
+ ON u.id = o.uid;
 ```
 
 ![image-20211216003720702](/images/SpringFrameWork/10-Mybatis/image-20211216003720702.png)
@@ -1698,8 +1692,8 @@ select *  from
 
 ```sql
 select *,o.id oid from
-	`user` as u  Right JOIN `order` as o 
-	ON u.id = o.uid;
+ `user` as u  Right JOIN `order` as o 
+ ON u.id = o.uid;
 ```
 
 ![image-20211216003922476](/images/SpringFrameWork/10-Mybatis/image-20211216003922476.png)
@@ -1944,7 +1938,7 @@ public static void main(String[] args) throws IOException {
 
 ## Mybatis注解开发
 
-​		注解开发是目前市场的主流，Mybatis也可以使用注解开发方式，这样我们就可以减少编写Mapper映射文件了
+​  注解开发是目前市场的主流，Mybatis也可以使用注解开发方式，这样我们就可以减少编写Mapper映射文件了
 
 ### 注解一览
 
@@ -2128,7 +2122,7 @@ public class TestA {
 
 ### Mybatis注解实现复杂的映射开发（多表查询）
 
-​		如果说复杂的关系映射我们可以在之前的xml文件中通过配置`resultMap`来实现，使用注解开发后，我们可以使用
+​  如果说复杂的关系映射我们可以在之前的xml文件中通过配置`resultMap`来实现，使用注解开发后，我们可以使用
 
 - @Results注解
 - @Result注解
@@ -2157,8 +2151,8 @@ public class Order {
 
 ```sql
 select *, o.id oid
-	from `user` as u
-	Right JOIN `order` as o ON u.id = o.uid;
+ from `user` as u
+ Right JOIN `order` as o ON u.id = o.uid;
 ```
 
 我们就可以在OrderMapper中按照xml的方式定义：
@@ -2331,10 +2325,3 @@ public void test1(){
 结果：
 
 ![image-20211216171148942](/images/SpringFrameWork/10-Mybatis/image-20211216171148942.png)
-
-
-
-
-
-
-

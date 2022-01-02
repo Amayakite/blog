@@ -11,17 +11,17 @@ tags:
 
 ## 概述
 
-> ​		SpringMvc是一种基于Java实现**Mvc设计模型**的请求驱动类的轻量级**Web框架**，属于**SpringFrameWork**的后续产品，已经融合在Spring web Flow中
+> ​  SpringMvc是一种基于Java实现**Mvc设计模型**的请求驱动类的轻量级**Web框架**，属于**SpringFrameWork**的后续产品，已经融合在Spring web Flow中
 >
 > - M：module，模型，主要用于数据封装和业务逻辑处理
 > - V：view，视图，用于数据的展示
 > - C：controller，控制器，用于分发、指派的工作
 
-​		SpringMVC已经成为目前最主流的MCV框架之一，并随着Spring3.0的发布，全面超越Strut2，成为最优秀的MVC框架。
+​  SpringMVC已经成为目前最主流的MCV框架之一，并随着Spring3.0的发布，全面超越Strut2，成为最优秀的MVC框架。
 
-​		它通过一套注解，让一个简单的Java类成为处理请求的控制器，而无需实现任何接口
+​  它通过一套注解，让一个简单的Java类成为处理请求的控制器，而无需实现任何接口
 
-​		同时它还支持**RESTful**编程风格的请求
+​  同时它还支持**RESTful**编程风格的请求
 
 其原理大概是这样
 
@@ -57,7 +57,7 @@ public class UserServlet extends HttpServlet{
         if(method==null){
             throw new RuntimeException("请求参数不能为空"); //或者做其他处理，例如跳转到首页
         }
- 		//这里设置什么utf-8之类的
+   //这里设置什么utf-8之类的
         //....
         switch(method){
             case "find":
@@ -84,9 +84,9 @@ public class UserServlet extends HttpServlet{
 
 但是你想一想，如果说把admin也写上，那不就是又要写一个跟这个一模一样的模板，并且判断之类的也要重写一遍
 
-​		而且这样不利于我们后期的维护，比方说，后期又加了一个`method=logout`
+​  而且这样不利于我们后期的维护，比方说，后期又加了一个`method=logout`
 
-​		那不是又要写一个case...
+​  那不是又要写一个case...
 
 也就是这样：
 
@@ -179,13 +179,13 @@ public class UserServlet extends HttpServlet{
 ```java
 @WebServlet("/user")
 public class UserServlet extends BaseServlet {
-	//返回标准值
+ //返回标准值
     public void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
         writer.write("Hello find");
-    	writer.close();
+     writer.close();
     }
-	//下面是请求重定向
+ //下面是请求重定向
     public String login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return "r:/login.jsp";
     }
@@ -201,7 +201,7 @@ public class UserServlet extends BaseServlet {
 
 ### baseServlet的弊端
 
-​		它有如下几个弊端：
+​  它有如下几个弊端：
 
 1. 直接重写service方法的话，无法分辨get、post
    - 需要自己手动在实现方法（也就是最终我们写方法的地方，简称PoJo）去自行判断、分辨
@@ -354,7 +354,7 @@ public class UserController {
 
 ### 分析Spring-MVC在启动的时候都做了什么
 
-​		我们给tomcat配置了全局缺省值`/`也就是说，所有请求都会从他手上过一遍，而这之后我们又定义了一个UserController，这里面通过注解配置了一个@RequestMapping("/quick")
+​  我们给tomcat配置了全局缺省值`/`也就是说，所有请求都会从他手上过一遍，而这之后我们又定义了一个UserController，这里面通过注解配置了一个@RequestMapping("/quick")
 
 所以大概流程应该就是这样的
 
@@ -416,12 +416,12 @@ public class UserController {
 
 ```xml
 <servlet>
-	<serlvet-name>xxx</serlvet-name>
-	<servlet-class>UserController.????这里应该是什么呢</servlet-class>
+ <serlvet-name>xxx</serlvet-name>
+ <servlet-class>UserController.????这里应该是什么呢</servlet-class>
 </servlet>
 <servlet-mapping>
-	<servlet-name>xxx</servlet-name>
-	<url-pattern>/quick</url-pattern>
+ <servlet-name>xxx</servlet-name>
+ <url-pattern>/quick</url-pattern>
 </servlet-mapping>
 ```
 
@@ -433,23 +433,23 @@ public class UserController {
 @Documented
 @Mapping
 public @interface RequestMapping {
-	String name() default "";
-	@AliasFor("path")
-	String[] value() default {};
-	@AliasFor("value")
-	String[] path() default {};
-	RequestMethod[] method() default {};
-	String[] params() default {};
-	String[] headers() default {};
-	String[] consumes() default {};
-	String[] produces() default {};
+ String name() default "";
+ @AliasFor("path")
+ String[] value() default {};
+ @AliasFor("value")
+ String[] path() default {};
+ RequestMethod[] method() default {};
+ String[] params() default {};
+ String[] headers() default {};
+ String[] consumes() default {};
+ String[] produces() default {};
 }
 
 ```
 
-​		在@Target中，可以传入两个属性，分别为 `ElementType.METHOD` 和 `ElementType.TYPE`，也就是说 @RequestMapping 可以在方法和类的声明中使用
+​  在@Target中，可以传入两个属性，分别为 `ElementType.METHOD` 和 `ElementType.TYPE`，也就是说 @RequestMapping 可以在方法和类的声明中使用
 
-​		并且可以看到注解中的属性除了name()返回的是字符串以外，其他的全都返回的是数组，也就是可以定义多个属性值，例如 value() 和 path() 都可以同时定义多个字符串值来接收多个URL请求
+​  并且可以看到注解中的属性除了name()返回的是字符串以外，其他的全都返回的是数组，也就是可以定义多个属性值，例如 value() 和 path() 都可以同时定义多个字符串值来接收多个URL请求
 
 那么我们先来测试下它的@Target中的属性是否可行，例如，我现在想通过`/user/quick`来访问：
 
@@ -469,11 +469,11 @@ public class UserController {
 
 ![image-20211211164313409](/images/SpringFrameWork/05-SpringMVC/image-20211211164313409.png)
 
-​		未找到`/user/success.jsp`，也就是说我们可以通过这样正确的设置嵌套路径，那么目前这个情况是怎么回事呢？
+​  未找到`/user/success.jsp`，也就是说我们可以通过这样正确的设置嵌套路径，那么目前这个情况是怎么回事呢？
 
-​		还记得我们给`DispatcherServlet`设置的路径是`/`覆盖默认缺省吗，我们在之前访问`/quick`的时候，实际上查找的路径是相对于`/`，但是现在我们是`/user/quick`，所以是查找`/user`路径下的资源
+​  还记得我们给`DispatcherServlet`设置的路径是`/`覆盖默认缺省吗，我们在之前访问`/quick`的时候，实际上查找的路径是相对于`/`，但是现在我们是`/user/quick`，所以是查找`/user`路径下的资源
 
-​		也就是说，如果没有指定具体路径的话，默认是查找当前路径下的资源，所以相对应的解决方案也就有了：
+​  也就是说，如果没有指定具体路径的话，默认是查找当前路径下的资源，所以相对应的解决方案也就有了：
 
 ```java
 @Controller
@@ -671,9 +671,9 @@ public class UserController {
 
 ![image-20211211161238095](/images/SpringFrameWork/05-SpringMVC/image-20211211161238095.png)
 
-​			首先我们回顾下这玩意是怎么运行期的，在我们的处理器处理完毕后，返回的是一个ModelAndView给视图解析器处理
+​   首先我们回顾下这玩意是怎么运行期的，在我们的处理器处理完毕后，返回的是一个ModelAndView给视图解析器处理
 
-​		那么我们先要做的事情很简单，找到这个视图解析器，就能知道它都做了什么
+​  那么我们先要做的事情很简单，找到这个视图解析器，就能知道它都做了什么
 
 可以看到，在spring-mvc中有个显眼的properties文件
 
@@ -692,7 +692,7 @@ org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.vie
 但是我们直接点进去这个类貌似并没有看到跟请求转发相关的字眼，但是看到了一个方法：
 
 ```java
-//											前缀			后缀
+//           前缀   后缀
 public InternalResourceViewResolver(String prefix, String suffix) {
     this();
     this.setPrefix(prefix);
@@ -788,11 +788,7 @@ public String save() {
 }
 ```
 
-
-
 看下能否正常访问
-
-
 
 ![image-20211211182913639](/images/SpringFrameWork/05-SpringMVC/image-20211211182913639.png)
 
@@ -861,8 +857,6 @@ public String save() {
 ```
 
 大概就是这样
-
-
 
 ![image-20211211222121214](/images/SpringFrameWork/05-SpringMVC/image-20211211222121214.png)
 
@@ -1095,9 +1089,9 @@ public User write3() {
 
 ```properties
 org.springframework.web.servlet.HandlerAdapter=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,\
-	org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\
-	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter,\
-	org.springframework.web.servlet.function.support.HandlerFunctionAdapter
+ org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\
+ org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter,\
+ org.springframework.web.servlet.function.support.HandlerFunctionAdapter
 ```
 
 选中它，按两下shift，搜索并进入这个类
@@ -1251,9 +1245,9 @@ public List<User> write6() {
 <mvc:annotation-driven/>
 ```
 
-​		在SpringMVC的各个组件中、处理器映射器、处理器适配器、视图解析器称为SpringMVC的三大组件
+​  在SpringMVC的各个组件中、处理器映射器、处理器适配器、视图解析器称为SpringMVC的三大组件
 
-​		使用`<mvc:annotation-driven>`会自动加载：
+​  使用`<mvc:annotation-driven>`会自动加载：
 
 - RequestMappingHandlerMapping（处理器映射器）
 - RequestMappingHandlerAdapter（处理器适配器）
@@ -1376,11 +1370,11 @@ public User test2(User user) {
 
 个人推测底层应该是这样的：
 
-​		首先通过反射new一个User
+​  首先通过反射new一个User
 
-​		反射获取User的所有Field参数，然后进行逐一匹配对比，匹配上了就进行set操作
+​  反射获取User的所有Field参数，然后进行逐一匹配对比，匹配上了就进行set操作
 
-​		如果传入空值，那么我们应该也是能够获取一个user，但是里面的所有属性都是空的
+​  如果传入空值，那么我们应该也是能够获取一个user，但是里面的所有属性都是空的
 
 接下来测试下：
 
@@ -1554,9 +1548,9 @@ public User test5(@RequestBody User user) {
 
 做了一个缺省的配置：什么资源都要过一遍DispatcherServlet的手
 
-​		也就是说，DispatchServlet会拦截所有请求（除了.jsp文件，因为JSP本质就是一个Servlet，映射方法中有配置jsp的映射），并交给我们的请求器适配器处理，在我们定义的@RequestMapping中，并没有定义params.html这个东西，所以虚拟路径匹配就匹配不到它，所以直接返回404
+​  也就是说，DispatchServlet会拦截所有请求（除了.jsp文件，因为JSP本质就是一个Servlet，映射方法中有配置jsp的映射），并交给我们的请求器适配器处理，在我们定义的@RequestMapping中，并没有定义params.html这个东西，所以虚拟路径匹配就匹配不到它，所以直接返回404
 
-​		所以SpringMVC提供了一个能让我们访问静态资源的方法：
+​  所以SpringMVC提供了一个能让我们访问静态资源的方法：
 
 接下来试用下它，先配置下JS的访问：（在spring-mvc.xml中配置）
 
@@ -1608,8 +1602,6 @@ public User test5(@RequestBody User user) {
 
 成功了hhh
 
-
-
 > 实际上我们在实际开发中一般这两种方式都会用，通常是直接下面设置default，上面那个要一条一条的配置，比较麻烦
 
 ```xml
@@ -1656,9 +1648,9 @@ public User test5(@RequestBody User user) {
 
 ### ✨@RequestParam获取param参数
 
-​		假设现在有一个需求：
+​  假设现在有一个需求：
 
-​		有个傻逼项目经理，提出了一个必要条件：客户端在请求/xxx/admin接口的时候，需要携带两个东西：一个是params中的token，另一个是请求体中的用户信息
+​  有个傻逼项目经理，提出了一个必要条件：客户端在请求/xxx/admin接口的时候，需要携带两个东西：一个是params中的token，另一个是请求体中的用户信息
 
 用axios来实现大概是这样：
 
@@ -1920,8 +1912,6 @@ PostmanRuntime/7.28.4
 
 ![image-20211212222526347](/images/SpringFrameWork/05-SpringMVC/image-20211212222526347.png)
 
-
-
 ### ✨@CookieValue 获取cookie
 
 使用@CookieValue可以获取指定的COOKIE值
@@ -2095,4 +2085,3 @@ public String quick(String name, MultipartFile[] uploadFile) throws IOException 
 
 
 ```
-

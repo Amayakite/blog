@@ -10,19 +10,19 @@ tags:
 
 ## 基本介绍
 
-​		Jsp的全称是 Java Server Pages，Java的服务器页面
+​  Jsp的全称是 Java Server Pages，Java的服务器页面
 
-​		JSP的主要作用是替代Servlet程序回传HTML页面的数据
+​  JSP的主要作用是替代Servlet程序回传HTML页面的数据
 
-​		因为Servlet程序回传HTML页面数据是一件非常繁琐的事情，开发成本和维护成本都极高
+​  因为Servlet程序回传HTML页面数据是一件非常繁琐的事情，开发成本和维护成本都极高
 
-​		(我上一个文章用的并非是完整的SSM思想，正确的SSM思想是在收到用户数据后回传HTML页面，并让用户跳转到指定页面)
+​  (我上一个文章用的并非是完整的SSM思想，正确的SSM思想是在收到用户数据后回传HTML页面，并让用户跳转到指定页面)
 
-​		**Jsp目前来说可以算是一个过时的东西，前后端分离才是主流**
+​  **Jsp目前来说可以算是一个过时的东西，前后端分离才是主流**
 
-​		或者说SSM也是一个过时的东西（耦合性太高了）		
+​  或者说SSM也是一个过时的东西（耦合性太高了）  
 
-​		但还是有必要学习下
+​  但还是有必要学习下
 
 比如说我们正常的通过流来传输一些HTML数据，是比较繁琐的
 
@@ -91,7 +91,7 @@ import jakarta.servlet.jsp.*;
 public final class a_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent,
                  org.apache.jasper.runtime.JspSourceImports {
-	//.... 这里省略一堆代码
+ //.... 这里省略一堆代码
   public void _jspService(final jakarta.servlet.http.HttpServletRequest request, final jakarta.servlet.http.HttpServletResponse response)
       throws java.io.IOException, jakarta.servlet.ServletException {
 
@@ -102,7 +102,7 @@ public final class a_jsp extends org.apache.jasper.runtime.HttpJspBase
         //熟悉的流
       response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
-      			null, true, 8192, true);
+         null, true, 8192, true);
       _jspx_page_context = pageContext;
       application = pageContext.getServletContext();
       config = pageContext.getServletConfig();
@@ -164,7 +164,7 @@ page中可以写上去的属性
 |    import    | 跟Java源代码中一样<br />用导包的方式倒类                     | <%@page import="java.util.ArrayList" %><br /> <%@page import="java.util.List" %> |
 |  autoFlush   | 设置当out输出流缓冲区满了之后<br />是否自动刷新缓冲区<br />默认为true<br />一般不会用这玩意 |                       autoFlush="true"                       |
 |    buffer    | 设置out输出流缓冲区的大小<br />默认是8kb<br />一般也是不动它 |                         buffer="8kb"                         |
-|  errorPage   | 当JSP页面运行时出错<br />自动跳转去的错误页面路径<br />这个路径一般都是以斜杠大头<br />它表示请求地址为：<br />http://ip:port/工程路径/<br />映射到代码的web目录 |      errorPage="/error"<br />errorPage="/error500.jsp"       |
+|  errorPage   | 当JSP页面运行时出错<br />自动跳转去的错误页面路径<br />这个路径一般都是以斜杠大头<br />它表示请求地址为：<br /><http://ip:port/工程路径/><br />映射到代码的web目录 |      errorPage="/error"<br />errorPage="/error500.jsp"       |
 | isErrorPage  | 设置当前jsp页面是否是错误信息页面<br />默认是false<br />如果设置为true可以获取异常信息 |                                                              |
 |   session    | 设置访问当前jsp页面，是否会创建<br />HttpSession对象，默认是true<br />也就是是否能创建Session对象<br />一般不动它 |                                                              |
 |   extends    | 设置jsp翻译出来的java类默认继承谁<br />一般不动它，让tomcat自动生成 |               extends="xxx.xx.xxx.xxx"\|<br />               |
@@ -214,7 +214,7 @@ page中可以写上去的属性
         return 1;
     }
 //声明内部类
-	public static class A{
+ public static class A{
         private Inetger id = 12;
         private String abc = "abc";
     }
@@ -245,7 +245,7 @@ page中可以写上去的属性
 
 并且，需要安装一个依赖，不然一定会在运行时出错
 
-https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina
+<https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina>
 
 根据你的tomcat版本安装，我这里是10.0.13
 
@@ -371,7 +371,7 @@ out.write("</body>\r\n");
    ```html
    <%
        int i = 5;
-   	for (int i1 = 0; i1 < i; i1++) {%>
+    for (int i1 = 0; i1 < i; i1++) {%>
    <%=i%>
    <%
        }
@@ -392,13 +392,13 @@ out.write("</body>\r\n");
 
 ## JSP的九大内置对象
 
-​		Tomcat在编译jsp页面成为Servlet源码后，内部会提供九个对象
+​  Tomcat在编译jsp页面成为Servlet源码后，内部会提供九个对象
 
 ![image-20211206144442202](/images/JavaEE/05-JSP/image-20211206144442202.png)
 
 ### 四大域对象
 
-​		使用方法都跟`Context`全局上下文对象一样，可以自由增删改查数据（都很像是map）
+​  使用方法都跟`Context`全局上下文对象一样，可以自由增删改查数据（都很像是map）
 
 分别是：
 
@@ -498,9 +498,9 @@ emm遇事不决先看源码：
 
 ![image-20211206151722723](/images/JavaEE/05-JSP/image-20211206151722723.png)
 
-​		假设你现在有一个网站，有10w个页面，如果每个页面都这样写重复的内容，那岂不是太难受了，并且修改的时候也要10w个页面的内容都一起改
+​  假设你现在有一个网站，有10w个页面，如果每个页面都这样写重复的内容，那岂不是太难受了，并且修改的时候也要10w个页面的内容都一起改
 
-​		所以就要用到JSP中的标签（这玩意用起来跟Vue之类的有点像，不过Vue之类的都是Diff渲染，这个是服务端渲染）
+​  所以就要用到JSP中的标签（这玩意用起来跟Vue之类的有点像，不过Vue之类的都是Diff渲染，这个是服务端渲染）
 
 ### 静态包含
 
@@ -562,8 +562,6 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 草，直接把哪个页面的out中的所有内容搬到这里来了......
 
-
-
 ### JSP动态包含
 
 先说下使用原则：简单的代码用静态包含，有逻辑的复杂一点的代码用动态包含
@@ -594,8 +592,6 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
        <jsp:param name="password" value="王老五"/>
    </jsp:include>
    ```
-
-   
 
 实例：
 
@@ -701,15 +697,15 @@ out.write("</html>\r\n");
 
 ### ServletContextListener监听器
 
-​		其他的用法跟这个都差不多
+​  其他的用法跟这个都差不多
 
-​		ServletContextListener可以监听ServletContext对象的创建和销毁
+​  ServletContextListener可以监听ServletContext对象的创建和销毁
 
-​		ServletContext在Web工程启动的时候创建，全局唯一，在Web停止的时候销毁
+​  ServletContext在Web工程启动的时候创建，全局唯一，在Web停止的时候销毁
 
-​		ServletContextListener在监听到ServletContext监听和销毁后都会被调用
+​  ServletContextListener在监听到ServletContext监听和销毁后都会被调用
 
-​		坚挺到创建和销毁之后都会分别调用`ServletContextListener`的方法反馈
+​  坚挺到创建和销毁之后都会分别调用`ServletContextListener`的方法反馈
 
 两个方法分别是：
 
@@ -723,7 +719,7 @@ out.write("</html>\r\n");
      }
  
      /**
- 	 * 在ServletContext销毁的时候调用，做一些后续资源的关闭等
+   * 在ServletContext销毁的时候调用，做一些后续资源的关闭等
       */
      public default void contextDestroyed(ServletContextEvent sce) {
      }
@@ -869,8 +865,6 @@ EL表达式输出map：${map}
 
 关系运算是通过方法内的equals来决定的
 
-
-
 #### 逻辑运算
 
 ![image-20211206171800762](/images/JavaEE/05-JSP/image-20211206171800762.png)
@@ -907,9 +901,9 @@ EL表达式输出map：${map}
 
 ## JSTL标签库
 
-​		全称：JSP Standard Tag Library JSP标准标签库。是一个不断完善的开源标签库
+​  全称：JSP Standard Tag Library JSP标准标签库。是一个不断完善的开源标签库
 
-​		EL表达式主要是为了替换JSP中的表达式脚本，而标签库则是替换了代码脚本，这样使得整个JSP页面变得更加简洁
+​  EL表达式主要是为了替换JSP中的表达式脚本，而标签库则是替换了代码脚本，这样使得整个JSP页面变得更加简洁
 
 安装参考：[这篇博客](https://blog.csdn.net/amiao_2018/article/details/116357125)和[这篇博客](https://blog.csdn.net/RonaldMH/article/details/116675297)（Tomcat10+）
 
@@ -1572,21 +1566,19 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 ### Session的实例-验证码
 
-​		可以将我在上个章节的验证码的密文/明文存储（存储在Header中的）替换为使用Session来保存，这样用户就始终不知道密文，也无法暴力破解了
+​  可以将我在上个章节的验证码的密文/明文存储（存储在Header中的）替换为使用Session来保存，这样用户就始终不知道密文，也无法暴力破解了
 
-​		验证码可以通过Google的Kaptcha来生成，或者使用huTool
+​  验证码可以通过Google的Kaptcha来生成，或者使用huTool
 
-​		当让这样的话得严格限制下Session的超时时间，例如一分钟，否则抗不太住高频请求
-
-
+​  当让这样的话得严格限制下Session的超时时间，例如一分钟，否则抗不太住高频请求
 
 ## Filter过滤器
 
-​		JavaWeb的三大组件之一：Servlet程序、Listener监听器、Filter监听器
+​  JavaWeb的三大组件之一：Servlet程序、Listener监听器、Filter监听器
 
-​		Filter是JavaEE的规范，也就是接口
+​  Filter是JavaEE的规范，也就是接口
 
-​		Filter过滤器的作用是：**拦截请求**、过滤响应
+​  Filter过滤器的作用是：**拦截请求**、过滤响应
 
 常见的应用场景：
 
@@ -1696,7 +1688,7 @@ public class MyFilter implements Filter {
 <!--filter标签用于配置一个Filter过滤器-->
 <filter>
 <!--配置FIlter的别名-->
-	<filter-name>AdminFilter</filter-name>
+ <filter-name>AdminFilter</filter-name>
 <!--配置Filter的全类名-->
     <filter-class>com.Filter.MyFilter</filter-class>
 </filter>
@@ -1720,7 +1712,7 @@ public class MyFilter implements Filter {
 
 ```java
 @WebFilter( filterName = "AdminFilter", urlPatterns = "/admin/*")
-//			名称							拦截的路径
+//   名称       拦截的路径
 ```
 
 ### Filter的生命周期
@@ -1740,9 +1732,9 @@ Filter的生命周期包含如下方法：
 
 ### FilterConfig类
 
-​		见名知意，它是Filter过滤器的配置文件类
+​  见名知意，它是Filter过滤器的配置文件类
 
-​		Tomcat每次创建Filter的时候，也会同时创建一个FilterConfig类，这里包含了Filter配置文件的配置信息
+​  Tomcat每次创建Filter的时候，也会同时创建一个FilterConfig类，这里包含了Filter配置文件的配置信息
 
 FilterConfig类的作用是获取FIlter过滤器配置的内容
 
@@ -1795,15 +1787,15 @@ ServletContext对象:org.apache.catalina.core.ApplicationContextFacade@79f987f6
 
 ### FilterChain过滤器链
 
-​		我们可以看到doFilter方法内有个`FilterChain chain`参数，并且我们在调用过滤器的时候最后调用了` chain.doFilter(request, response);`方法
+​  我们可以看到doFilter方法内有个`FilterChain chain`参数，并且我们在调用过滤器的时候最后调用了`chain.doFilter(request, response);`方法
 
-​		这玩意目前我看来就跟其他语言中的上下文传递对象挺像的，接下来详细的说明下它
+​  这玩意目前我看来就跟其他语言中的上下文传递对象挺像的，接下来详细的说明下它
 
-​		Filter	过滤
+​  Filter 过滤
 
-​		Chain	链条
+​  Chain 链条
 
-​		FilterChain	就是过滤器链（多个过滤器如何一起工作）
+​  FilterChain 就是过滤器链（多个过滤器如何一起工作）
 
  比如说我们现在有两个Filter：Filter1 和Filter2
 
@@ -1880,7 +1872,7 @@ filter1 后置代码
 <!--error-page标签配置-服务器出错后，自动跳转的页面-->
 <error-page>
     <!--error-code是错误类型-->
-	<error-code>500</error-code>
+ <error-code>500</error-code>
     <!--localtion标签标识，要跳转去的页面路径（可以是文件 也可以是一个Servlet）-->
     <localtion>/404.html</localtion> 
     <!--上面这样配置的是项目根目录下的404.html为发生code 500 错误时自动跳转的页面-->
@@ -1914,21 +1906,21 @@ filter1 后置代码
 
 ## I18N国际化
 
-​		这里只是做个引子，实际上在通常情况下，国际化的任务是交给前端来完成的（ReactI18N、VueI18N）
+​  这里只是做个引子，实际上在通常情况下，国际化的任务是交给前端来完成的（ReactI18N、VueI18N）
 
-​		国际化指的是同一个网站可以支持多种不同的语言，以便不同的国家、地点、用户访问
+​  国际化指的是同一个网站可以支持多种不同的语言，以便不同的国家、地点、用户访问
 
-​		关于国际化我们相当的最简单的方案是为不同的国家创建不同的网站
+​  关于国际化我们相当的最简单的方案是为不同的国家创建不同的网站
 
-​		例如苹果，在美国是：https://www.apple.com，而中国是https://www.apple.com/cn
+​  例如苹果，在美国是：<https://www.apple.com，而中国是https://www.apple.com/cn>
 
-​		但是这种方案并不适合全部公司---造价较高
+​  但是这种方案并不适合全部公司---造价较高
 
-​		我们通常希望一个相同的网站，在相同的人访问的时候，可以展现出不同的语言，实际上这种需求并不强烈，一般真的有国际化需求的公司，主流用的依然是苹果公司的那种方案，为不同国家的人创建不同的页面，所以国际化的内容并不是终点
+​  我们通常希望一个相同的网站，在相同的人访问的时候，可以展现出不同的语言，实际上这种需求并不强烈，一般真的有国际化需求的公司，主流用的依然是苹果公司的那种方案，为不同国家的人创建不同的页面，所以国际化的内容并不是终点
 
-​		国际化的全称是：internationalization 由于字母过长，老外就想了个简单的叫法：I18N，这个单词总共有20个字母，掐头去尾18个，头是I，尾是N
+​  国际化的全称是：internationalization 由于字母过长，老外就想了个简单的叫法：I18N，这个单词总共有20个字母，掐头去尾18个，头是I，尾是N
 
-​		以后有人跟你说I18N那就是在跟你说国际化
+​  以后有人跟你说I18N那就是在跟你说国际化
 
 ### 国际化的相关要素
 
@@ -2093,7 +2085,5 @@ public void test2(){
 Tomcat10 太阴间 找不到问题 要看就去看这个系列的最后1P吧，安装教程也没有 （MD 找不到那个包 气死我了）
 
 <iframe src="//player.bilibili.com/player.html?aid=91909529&bvid=BV1Y7411K7zz&cid=157064727&page=325" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-
 
 JavaWEB就先学到这，如果你有兴趣的话就跟着尚硅谷敲一遍前端代码。接下来我的学习路线是先学习JUC（JavaSE中的），然后继续学习SPring全家桶

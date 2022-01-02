@@ -31,9 +31,9 @@ tags:
 
 然后我们要分别去添加两个依赖：`servlet`和`jsp`的，这里我们选择和Tomcat版本兼容的（还是用Tomcat家的）
 
-https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api
+<https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api>
 
-https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api
+<https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api>
 
 当然，我这里先不用，用现在最多人用的，留个坑
 
@@ -56,8 +56,6 @@ https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api
 </dependency>
 
 ```
-
-
 
 从这里开始，我们将模块化编程-每个章节都是一个模块，减少Project的创建数量
 
@@ -149,17 +147,17 @@ import java.io.IOException;
 public interface Servlet {
     // 初始化（创建）一个Servlet
     public void init(ServletConfig config) throws ServletException;
-	// 获取配置信息
+ // 获取配置信息
     public ServletConfig getServletConfig();
 
-	// 对于请求的处理
+ // 对于请求的处理
     public void service(ServletRequest req, ServletResponse res)
             throws ServletException, IOException;
 
     //获取这个servlet的信息
     public String getServletInfo();
 
-	//销毁一个Servlet
+ //销毁一个Servlet
     public void destroy();
 }
 
@@ -170,16 +168,16 @@ public interface Servlet {
 ```java
 public interface ServletConfig {
 
-	//返回Servlet的名称
+ //返回Servlet的名称
     public String getServletName();
 
-	//返回调用者在其中执行的ServletContext的引用
+ //返回调用者在其中执行的ServletContext的引用
     public ServletContext getServletContext();
 
-	//返回一个包含初始化参数值的字符串，可能会返回null
+ //返回一个包含初始化参数值的字符串，可能会返回null
     public String getInitParameter(String name);
 
-	//返回Servlet初始化参数的名称作为String对象的Enumeration
+ //返回Servlet初始化参数的名称作为String对象的Enumeration
     //Enumeration:一个接口，接口中定义了一些方法，通过这些方法可以枚举（一次获得一个）对象集合中的元素。
     public Enumeration<String> getInitParameterNames();
 }
@@ -187,8 +185,6 @@ public interface ServletConfig {
 ```
 
 然后看看GenericServlet这个实现类中都有哪些东西
-
-
 
 ```java
 
@@ -200,42 +196,42 @@ import java.util.Enumeration;
 
 public abstract class GenericServlet implements Servlet, ServletConfig,
         java.io.Serializable {
-	//序列化标识符
+ //序列化标识符
     private static final long serialVersionUID = 1L;
 
     //一个未初始化的ServletConfig对象
     private transient ServletConfig config;
 
-	//这个构造函数什么也不做，交给init()方法来完成
+ //这个构造函数什么也不做，交给init()方法来完成
     public GenericServlet() {
         // NOOP
     }
 
-	//这里我目前还没太看明白
+ //这里我目前还没太看明白
     @Override
     public void destroy() {
         // NOOP by default
     }
 
-	//获取一些初始化的参数
+ //获取一些初始化的参数
     @Override
     public String getInitParameter(String name) {
         return getServletConfig().getInitParameter(name);
     }
-	
-	//同上 获取初始化的名字
+ 
+ //同上 获取初始化的名字
     @Override
     public Enumeration<String> getInitParameterNames() {
         return getServletConfig().getInitParameterNames();
     }
 
-	//获取config配置
+ //获取config配置
     @Override
     public ServletConfig getServletConfig() {
         return config;
     }
 
-	//下面都是一些获取相关信息的玩意
+ //下面都是一些获取相关信息的玩意
     @Override
     public ServletContext getServletContext() {
         return getServletConfig().getServletContext();
@@ -247,7 +243,7 @@ public abstract class GenericServlet implements Servlet, ServletConfig,
         return "";
     }
 
-	// 初始化 可以看到这里对config进行了一个赋值
+ // 初始化 可以看到这里对config进行了一个赋值
     @Override
     public void init(ServletConfig config) throws ServletException {
         this.config = config;
@@ -259,7 +255,7 @@ public abstract class GenericServlet implements Servlet, ServletConfig,
         // NOOP by default
     }
 
-	
+ 
     public void log(String message) {
         getServletContext().log(getServletName() + ": " + message);
     }
@@ -269,12 +265,12 @@ public abstract class GenericServlet implements Servlet, ServletConfig,
         getServletContext().log(getServletName() + ": " + message, t);
     }
 
-	//可以看到这里依旧对service并没有做任何的处理 直接继承过来了..	
+ //可以看到这里依旧对service并没有做任何的处理 直接继承过来了.. 
     @Override
     public abstract void service(ServletRequest req, ServletResponse res)
             throws ServletException, IOException;
 
-	
+ 
     @Override
     public String getServletName() {
         return config.getServletName();
@@ -290,7 +286,7 @@ public abstract class GenericServlet implements Servlet, ServletConfig,
 ```java
 ......
 public abstract class HttpServlet extends GenericServlet {
-	//这里定义的都是一些常量
+ //这里定义的都是一些常量
     private static final long serialVersionUID = 1L;
 
     private static final String METHOD_DELETE = "DELETE";
@@ -306,7 +302,7 @@ public abstract class HttpServlet extends GenericServlet {
 
     private static final String LSTRING_FILE = "jakarta.servlet.http.LocalStrings";
     private static final ResourceBundle lStrings = ResourceBundle.getBundle(LSTRING_FILE);
-	
+ 
     //这个transient的Object...应该是拿来锁线程用的
     private final transient Object cachedAllowHeaderValueLock = new Object();
 
@@ -317,7 +313,7 @@ public abstract class HttpServlet extends GenericServlet {
         // NOOP
     }
 
-	//get方法
+ //get方法
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException
     {
@@ -378,7 +374,7 @@ public abstract class HttpServlet extends GenericServlet {
     }
 
     //中间略过一段我不知道是干嘛用的东西
-	//可以看到，这里正式重写了service，对所有请求进行处理
+ //可以看到，这里正式重写了service，对所有请求进行处理
     protected void service(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException {
 
@@ -507,13 +503,13 @@ public class MyApp extends HttpServlet {
 
 ### 配置Servlet的映射(Router)
 
-​		这是一个非常简单的道理，刚刚我们是处理了Servlet的请求和响应，接下来要正式在Java应用程序去处理它，也就是配置我们的web.xml文件
+​  这是一个非常简单的道理，刚刚我们是处理了Servlet的请求和响应，接下来要正式在Java应用程序去处理它，也就是配置我们的web.xml文件
 
-​		就好比我写了一个NodeJS的后端接口，但是没有给他配置他属于哪个路由，那不就废了吗~
+​  就好比我写了一个NodeJS的后端接口，但是没有给他配置他属于哪个路由，那不就废了吗~
 
-​		Java同理，一个Java程序，我们需要通过浏览器访问，而浏览器需要连接WEb服务器，所以我们需要在Web服务中注册我们写的Servlet，还需要给他一个能够访问的路径
+​  Java同理，一个Java程序，我们需要通过浏览器访问，而浏览器需要连接WEb服务器，所以我们需要在Web服务中注册我们写的Servlet，还需要给他一个能够访问的路径
 
-​		这就跟注册Router是一个道理，就是流程稍微变了一点
+​  这就跟注册Router是一个道理，就是流程稍微变了一点
 
 在web.xml中，我们之前编写了这些内容
 
@@ -572,15 +568,15 @@ MyApps.get("/hello",(req,res)=>{
   - 第三步：根据映射找到对应的servlet名`MyApps`
   - 第四步：根据根据servlet名找到我们全限定类名，既我们自己写的类`MyApp`
 
-​		服务器：**我们所用的服务器是Tomcat**，所以下文中的服务器实际上指的是tomcat
+​  服务器：**我们所用的服务器是Tomcat**，所以下文中的服务器实际上指的是tomcat
 
-​		也就是说，浏览器就是发起了一次请求，剩余的步骤都是服务器来完成的（这也是基本常识了）
+​  也就是说，浏览器就是发起了一次请求，剩余的步骤都是服务器来完成的（这也是基本常识了）
 
-​		那么，服务器找到该类名后，又做了什么呢？
+​  那么，服务器找到该类名后，又做了什么呢？
 
-​		它会通过**反射**创建这个对象，同时创建一个`ServletConfig`，里面存放了一些初始化信息（服务器只会创建一次Servlet对象，所以ServletConfig也只有一个）
+​  它会通过**反射**创建这个对象，同时创建一个`ServletConfig`，里面存放了一些初始化信息（服务器只会创建一次Servlet对象，所以ServletConfig也只有一个）
 
-​		当对象创建好了之后，`tomcat`会执行`init`方法，此时我们知道，我们自己没有重写过init方法，同时HttpServlet也没有重写init方法，根据动态绑定，会调用GenericServlet的init方法：
+​  当对象创建好了之后，`tomcat`会执行`init`方法，此时我们知道，我们自己没有重写过init方法，同时HttpServlet也没有重写init方法，根据动态绑定，会调用GenericServlet的init方法：
 
 ```java
 @Override
@@ -592,9 +588,9 @@ public void init(ServletConfig config) throws ServletException {
 }
 ```
 
-​		由于前面提到了，在反射创建我们的Servlet对象时，创建了一个Servlet对象，所以此时传入的ServletConfig为之前创建的（这一切都是由tomcat来完成的，之后有空了得了解下tomcat的源码）
+​  由于前面提到了，在反射创建我们的Servlet对象时，创建了一个Servlet对象，所以此时传入的ServletConfig为之前创建的（这一切都是由tomcat来完成的，之后有空了得了解下tomcat的源码）
 
-​		这里额外说下，那个无参无返回值的`init()`方法，实际上是这玩意的开发者给我们留的后路，当我们想在服务器创建时额外做点什么，只需要在我们的代码中重写下这个无参或者有参的构造方法即可，例如：
+​  这里额外说下，那个无参无返回值的`init()`方法，实际上是这玩意的开发者给我们留的后路，当我们想在服务器创建时额外做点什么，只需要在我们的代码中重写下这个无参或者有参的构造方法即可，例如：
 
 ```java
 @Override
@@ -617,9 +613,9 @@ public void init() throws ServletException {
 
 ![image-20211202234647857](/images/JavaEE/03-Servlet/image-20211202234647857.png)
 
-​		紧接着，我们就该很清晰的知道服务器下一步该调用哪个代码了：
+​  紧接着，我们就该很清晰的知道服务器下一步该调用哪个代码了：
 
-​		那当让是Service方法！
+​  那当让是Service方法！
 
 先再来看看Service方法 草看到的第一眼就非常清晰了
 
@@ -652,7 +648,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
                 resp.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
             }
         }
-	//执行其他相对应的方法
+ //执行其他相对应的方法
     } else if (method.equals(METHOD_HEAD)) {
         long lastModified = getLastModified(req);
         maybeSetLastModified(resp, lastModified);
@@ -674,7 +670,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
         doTrace(req,resp);
 
     } else {
-		//如果说都不是的话，抛出异常给客户端
+  //如果说都不是的话，抛出异常给客户端
         String errMsg = lStrings.getString("http.method_not_implemented");
         Object[] errArgs = new Object[1];
         errArgs[0] = method;
@@ -708,13 +704,13 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 
 可以看到，这之中大部分的工作都是tomcat在帮我们做
 
-​		这也印证了一点：我在开头的时候故意用的别的包的时候，引发了tomcat的报错，因为数据类型根本不是同一种的，其他包的实现功能虽然和这玩意差不多，但是一些细节的东西肯定跟tomcat的有偏差
+​  这也印证了一点：我在开头的时候故意用的别的包的时候，引发了tomcat的报错，因为数据类型根本不是同一种的，其他包的实现功能虽然和这玩意差不多，但是一些细节的东西肯定跟tomcat的有偏差
 
-​		比如说返回值要经过tomcat的处理，如果是其他的包，返回值的类型可能就不一样了
+​  比如说返回值要经过tomcat的处理，如果是其他的包，返回值的类型可能就不一样了
 
-​		当然这只是初步的分析源码，如果能吃透这个tomcat应该对工作很有帮助
+​  当然这只是初步的分析源码，如果能吃透这个tomcat应该对工作很有帮助
 
-​		它里面应该涉及到了高并发之类的以及程序和程序之间的联系
+​  它里面应该涉及到了高并发之类的以及程序和程序之间的联系
 
 既然了解完这个了，接下来了解下它的Servlet-mapping配置项吧
 
@@ -874,7 +870,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 - 运行阶段：Servlet 调用 service() 方法来处理客户端的请求；
 - 销毁阶段：Servlet 通过调用 destroy() 方法终止（结束），并由 JVM 的垃圾回收器进行垃圾回收的。
 
- 		其中的init()方法应只调用一次，Servlet创建后，在其运行阶段，便可通过service方法来处理来自客户端的请求，通过，当服务器关闭（tomcat停止运行）或者应用被移除容器（tomcat下webapps目录中的文件被移除）时，调用destory()方法来终止Servlet。应其生命周期如下图所示：
+   其中的init()方法应只调用一次，Servlet创建后，在其运行阶段，便可通过service方法来处理来自客户端的请求，通过，当服务器关闭（tomcat停止运行）或者应用被移除容器（tomcat下webapps目录中的文件被移除）时，调用destory()方法来终止Servlet。应其生命周期如下图所示：
 
 ![资源分配图](/images/JavaEE/03-Servlet/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70.jpeg)
 
@@ -905,7 +901,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 ## ServletContext
 
-​		在容器(Tomcat)启动的时候，他会为**每一个web程序**都创建一个对应的Servletcontext对象，他代表了当前的web应用，这个对象是全局唯一，而且在所有工程内部的所有Servlet都共享这个对象
+​  在容器(Tomcat)启动的时候，他会为**每一个web程序**都创建一个对应的Servletcontext对象，他代表了当前的web应用，这个对象是全局唯一，而且在所有工程内部的所有Servlet都共享这个对象
 
 所以它也被称为：全局应用程序共享对象
 
@@ -922,9 +918,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 ### 域对象介绍
 
- 		域对象是服务器在内存上创建的存储空间，用于在不同动态资源（servlet）之间传递与共享数据。
+   域对象是服务器在内存上创建的存储空间，用于在不同动态资源（servlet）之间传递与共享数据。
 
-​		简单来说就是：<u>应用范围-服务器范围,只要服务器不关闭,数据一致存在</u>
+​  简单来说就是：<u>应用范围-服务器范围,只要服务器不关闭,数据一致存在</u>
 
 ## ServletContext中常用的方法
 
@@ -953,7 +949,7 @@ web.xml中添加全局资源 细节等下会说
 <context-param>
   <param-name>CourseName</param-name>
   <param-value>JAVA WEB</param-value>
-</context-param>	
+</context-param> 
 ```
 
 然后是Java文件
@@ -1236,13 +1232,13 @@ url=jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf8
 
 #### 可能会遇到的导出问题
 
-​		没有遇到这个问题就不要改`pom.xml`!
+​  没有遇到这个问题就不要改`pom.xml`!
 
-​		没有遇到这个问题就不要改`pom.xml`!
+​  没有遇到这个问题就不要改`pom.xml`!
 
-​		没有遇到这个问题就不要改`pom.xml`!
+​  没有遇到这个问题就不要改`pom.xml`!
 
-​		如果说你在这一部没有看到这个db.properties文件，那么百分之八十是maven的配置有问题（貌似新版不按照下面这样配置也不会出现这样的问题），在当前`module`的maven配置文件`pom.xml`中加上如下内容再重新打包即可（如果pom.xml中已经有`<build></build>`了，就在build中加入这两个resources，如果没有，就直接整个copy过去），即可解决该问题
+​  如果说你在这一部没有看到这个db.properties文件，那么百分之八十是maven的配置有问题（貌似新版不按照下面这样配置也不会出现这样的问题），在当前`module`的maven配置文件`pom.xml`中加上如下内容再重新打包即可（如果pom.xml中已经有`<build></build>`了，就在build中加入这两个resources，如果没有，就直接整个copy过去），即可解决该问题
 
 ```xml
 <!--在build中配置resources 来防止我们资源导出失败的问题-->
@@ -1333,13 +1329,11 @@ public class HelloServlet extends HttpServlet {
 
 ![image-20211203175447989](/images/JavaEE/03-Servlet/image-20211203175447989.png)
 
-
-
 接下来详细讲下这个注解是干什么的吧：
 
 ### @WebServlet注解
 
-​		从上面的代码中，我们可以看到，顶部是一个@WebServlet注解，这个也是**Servlet3.0**之后的一个特点，配置注解化了，**不用在web.xml**中在去一个个配置了，但是**实现的功能是相同的**，我们可以看到，**@WebServlet中的一些属性就是我们在创建的过程中设置的**。其中@WebServlet中的每个属性的解释如下：
+​  从上面的代码中，我们可以看到，顶部是一个@WebServlet注解，这个也是**Servlet3.0**之后的一个特点，配置注解化了，**不用在web.xml**中在去一个个配置了，但是**实现的功能是相同的**，我们可以看到，**@WebServlet中的一些属性就是我们在创建的过程中设置的**。其中@WebServlet中的每个属性的解释如下：
 
 这些标签名（没见过的）会在之后的学习中逐一解释
 
@@ -1362,22 +1356,22 @@ public class HelloServlet extends HttpServlet {
 
 ```java
 @WebServlet(
-		description = "My First Servlet", 
-		urlPatterns = { "/HelloServlet"}, 
-		initParams = { 
-				@WebInitParam(name = "name", value = "join")
-		})
+  description = "My First Servlet", 
+  urlPatterns = { "/HelloServlet"}, 
+  initParams = { 
+    @WebInitParam(name = "name", value = "join")
+  })
 ```
 
 如果改成这样：那么访问`/StillMe`也可以到这，就像是之前xml配置多个mapping一样
 
 ```java
 @WebServlet(
-		description = "My First Servlet", 
-		urlPatterns = { "/HelloServlet", "/StillMe" }, 
-		initParams = { 
-				@WebInitParam(name = "name", value = "join")
-		})
+  description = "My First Servlet", 
+  urlPatterns = { "/HelloServlet", "/StillMe" }, 
+  initParams = { 
+    @WebInitParam(name = "name", value = "join")
+  })
 ```
 
 接下来详细说下它的匹配规则
@@ -1387,23 +1381,23 @@ public class HelloServlet extends HttpServlet {
 - `扩展名匹配`：比如想匹配所有以.do结尾的请求，可以写成"*.do"，其格式为以’*.’，后面跟上扩展名；
 - `缺省匹配`：映射路径为"/"，那么这个Servlet就是当前应用的缺省Servlet，默认处理无法匹配到虚拟路径的请求。
 
- 		需要注意的是，**路径匹配和扩展匹配无法混合使用**，即urlPattern无法写成"`/rest/*.do"`；
+   需要注意的是，**路径匹配和扩展匹配无法混合使用**，即urlPattern无法写成"`/rest/*.do"`；
 
-​		这也是初学者容易感到困惑的地方
+​  这也是初学者容易感到困惑的地方
 
-​		Servlet的虚拟路径匹配并不是完全的按照正则来匹配的
+​  Servlet的虚拟路径匹配并不是完全的按照正则来匹配的
 
-​		虽然路径匹配和扩展匹配是按照正则中的通配符(*)来匹配的，这也是部分人可以会写出特定的正则，但是却不是一个合法的虚拟路径
+​  虽然路径匹配和扩展匹配是按照正则中的通配符(*)来匹配的，这也是部分人可以会写出特定的正则，但是却不是一个合法的虚拟路径
 
-​		Servlet容器收到请求后，会将请求从上下文路径（通过`request.getContextPath()`获取的）处截断，**使用剩余的部分来进行路径匹配**
+​  Servlet容器收到请求后，会将请求从上下文路径（通过`request.getContextPath()`获取的）处截断，**使用剩余的部分来进行路径匹配**
 
-​		比如请求url为http://localhost:8080/FirstProject/HelloServlet，**那么Servlet容器就会使用"/HelloServlet"来匹配Servlet**
+​  比如请求url为<http://localhost:8080/FirstProject/HelloServlet>，**那么Servlet容器就会使用"/HelloServlet"来匹配Servlet**
 
 #### 优先级问题
 
 优先级为：
 
-​		精确匹配>路径匹配>扩展名匹配>缺省匹配，**Servlet容器会从优先级高的虚拟路径开始匹配，匹配到后就会立刻将请求交给对应的Servlet来处理**，不会再关心其他Servlet的虚拟路径是否会匹配成功。
+​  精确匹配>路径匹配>扩展名匹配>缺省匹配，**Servlet容器会从优先级高的虚拟路径开始匹配，匹配到后就会立刻将请求交给对应的Servlet来处理**，不会再关心其他Servlet的虚拟路径是否会匹配成功。
 
 下面来一组例子：
 
@@ -1529,9 +1523,9 @@ public class testparrten1 extends HttpServlet {
 
 其实我们这个时候的想法应该是，服务器遵循文件的意愿，在用户输入`/mybuild`时访问`mybuild.html`，因为没多少人愿意花心情去整一个Java文件写多美观的页面，更多时候我们的Java文件应该是作为一个数据接口使用的
 
-​		其实，**客户端的每个请求，都是由Servlet容器根据虚拟路径的匹配规则来进行处理的，包括静态资源**。
+​  其实，**客户端的每个请求，都是由Servlet容器根据虚拟路径的匹配规则来进行处理的，包括静态资源**。
 
-​		我们能通过servlet方便简单的开发网站，是因为我们站在了巨人的肩膀上，下面我们一起来看下Sun公司都为我们开发者提前做了些什么工作。
+​  我们能通过servlet方便简单的开发网站，是因为我们站在了巨人的肩膀上，下面我们一起来看下Sun公司都为我们开发者提前做了些什么工作。
 
 - Tomcat会为项目配置一个缺省的Servlet（如果项目中自行配置，则不会生效），配置文件在tomcat安装目录下conf目录中的web.xml文件中，具体内容如下，缺省的Servlet名为`DefaultServlet`。
 
@@ -1553,19 +1547,19 @@ public class testparrten1 extends HttpServlet {
 </servlet>
 ```
 
-​		 客户端请求静态资源文件时，也是由缺省的Servlet处理的（自己单独配置Servlet除外），如果请求文件能找到，就会将页面通过HttpServletResponse对象以流的方式返回给客户端，否则报404错误。
+​   客户端请求静态资源文件时，也是由缺省的Servlet处理的（自己单独配置Servlet除外），如果请求文件能找到，就会将页面通过HttpServletResponse对象以流的方式返回给客户端，否则报404错误。
 
-​		不过讲到这里，大家可以自己试一试配置了缺省Servelt时
+​  不过讲到这里，大家可以自己试一试配置了缺省Servelt时
 
-​		访问`mybuild.html`的情况（会调用SelfDefaultServlet），但是，如果我们在浏览器中输入`http://localhost:8080/项目名称/index.jsp`（index.jsp是创建的第一个jsp页面）呢？会是什么样一个结果？也是调用缺省的Servlet么？真是的运行结果如下：
+​  访问`mybuild.html`的情况（会调用SelfDefaultServlet），但是，如果我们在浏览器中输入`http://localhost:8080/项目名称/index.jsp`（index.jsp是创建的第一个jsp页面）呢？会是什么样一个结果？也是调用缺省的Servlet么？真是的运行结果如下：
 
 ![image-20211203204139560](/images/JavaEE/03-Servlet/image-20211203204139560.png)
 
-​		这是什么原因？
+​  这是什么原因？
 
-​		为什么不是调用缺省的servlet了？
+​  为什么不是调用缺省的servlet了？
 
-​		这是因为**tomcat除了缺省Serlvet外**，还给我们**提供一个处理jsp文件的Servlet**，配置如下，因为**后缀匹配的优先级高于缺省的Servlet**，**所以访问JSP的时候需要交由JspServlet来处理**（JSP因为可能包含Java代码，所以第一次执行的时候需要先编译，这个工作由JspServlet完成）
+​  这是因为**tomcat除了缺省Serlvet外**，还给我们**提供一个处理jsp文件的Servlet**，配置如下，因为**后缀匹配的优先级高于缺省的Servlet**，**所以访问JSP的时候需要交由JspServlet来处理**（JSP因为可能包含Java代码，所以第一次执行的时候需要先编译，这个工作由JspServlet完成）
 
 ```java
 <servlet>
@@ -1601,7 +1595,7 @@ public class testparrten1 extends HttpServlet {
 
 是不是发现了什么
 
-jsp的匹配是` <url-pattern>*.jsp</url-pattern>`
+jsp的匹配是`<url-pattern>*.jsp</url-pattern>`
 
 而默认缺省处理是`<url-pattern>/</url-pattern>`
 
@@ -1611,5 +1605,4 @@ jsp的匹配是` <url-pattern>*.jsp</url-pattern>`
 
 就是通过缺省匹配查找相应的文件，找不到？那就返回404
 
-​		同时，我们可以自由的覆盖它，因为它的优先级是最低的，所以我们在测试`mybuild`和`mybuild.html`时，`mybuild`会优先展示的原因
-
+​  同时，我们可以自由的覆盖它，因为它的优先级是最低的，所以我们在测试`mybuild`和`mybuild.html`时，`mybuild`会优先展示的原因

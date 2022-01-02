@@ -11,9 +11,9 @@ tags:
 
 > md总算学到这个玩意了，这个东西是Java程序员的命根子。。
 
-​		首先解决下你的疑惑，Spring是**分层的JavaSE/EE应用**full-stack**轻量级**开源框架，以Ioc(Inverse Of Count：反转控制)和Aop(Aspect OrientedProgramming：**面向切面编程**)为内核
+​  首先解决下你的疑惑，Spring是**分层的JavaSE/EE应用**full-stack**轻量级**开源框架，以Ioc(Inverse Of Count：反转控制)和Aop(Aspect OrientedProgramming：**面向切面编程**)为内核
 
-​		Spring提供了展现层`SpringMVC`和持久层`Spring JDBCTemplate`以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和库，逐渐成为使用最多的JavaEE企业级应用开源框架
+​  Spring提供了展现层`SpringMVC`和持久层`Spring JDBCTemplate`以及业务层事务管理等众多的企业级应用技术，还能整合开源世界众多著名的第三方框架和库，逐渐成为使用最多的JavaEE企业级应用开源框架
 
 - 控制反转：这里简单说下，就是反转Bean的创建权  
 
@@ -25,7 +25,7 @@ tags:
 
 - DAO层：SpringJDBC模板
 
--  SpringDate：也是一个存放数据的东西
+- SpringDate：也是一个存放数据的东西
 
 PS：一张图让你明白Spring是干嘛用的：
 
@@ -88,8 +88,6 @@ Spring框架至今已集成了20多个模块，这些模块分布在以下模块
 - 测试（Test）模块
 
 ![img](https://img2018.cnblogs.com/blog/480452/201903/480452-20190318225849216-2097896352.png)
-
-
 
 ### Spring程序开发步骤
 
@@ -225,7 +223,7 @@ UserDaoImpl.save()
 <!-- 注解包扫描 -->
 <context:component-scan base-package="com.test.fx.service"></context:component-scan>
 <!-- 引入DB配置文件 -->
-<context:property-placeholder location="classpath:oracleDriver.properties"/>	
+<context:property-placeholder location="classpath:oracleDriver.properties"/> 
 <!-- 配置数据源 -->
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
     <property name="driverClassName" value="${driver}"></property>
@@ -247,14 +245,12 @@ UserDaoImpl.save()
 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"></property>
 </bean>
-<!-- 事务管理器注解 -->	
+<!-- 事务管理器注解 --> 
 <tx:annotation-driven transaction-manager="transactionManager"/>
 
 
 
 ```
-
-
 
 ### Bean标签的基本配置
 
@@ -359,11 +355,11 @@ false
 
 #### singleton和prototype的创建时机的区别
 
-​		（TIPS：可以直接到最下面看总结）
+​  （TIPS：可以直接到最下面看总结）
 
-​		到这里，你可能会有疑问，这两玩意连创建时机都不同的？
+​  到这里，你可能会有疑问，这两玩意连创建时机都不同的？
 
-​		我们直接上代码说明吧
+​  我们直接上代码说明吧
 
 现在UserDaoImpl中加入一个无参构造，打印一句话出来：
 
@@ -406,9 +402,9 @@ UserDaoImpl.UserDaoImpl()无参构造被调用了
 创建userDao2完毕
 ```
 
-​		  我们还没有获取到userBean的实例对象的时候，userDaoImpl的无参构造器就被调用了  
+​    我们还没有获取到userBean的实例对象的时候，userDaoImpl的无参构造器就被调用了  
 
- 		 也就是说这个UserDaoImpl在扫描到ApplicationContext.xml的时候就通过反射调用无参构造器创建了一个实例对象出来
+    也就是说这个UserDaoImpl在扫描到ApplicationContext.xml的时候就通过反射调用无参构造器创建了一个实例对象出来
 
 接下来我们将singleton替换为prototype
 
@@ -540,9 +536,9 @@ Spring当让不可能只提供一个无参构造给我们
 
 #### 为什么要通过工厂来创建实例
 
-​		很简单，因为我们创建对象的时候，不一定是通过无参构造来创建的，而是通过有参构造，但是在Spring中无法直接传入参数（目前来说），所以就需要工厂来帮我们具体的执行创建对象
+​  很简单，因为我们创建对象的时候，不一定是通过无参构造来创建的，而是通过有参构造，但是在Spring中无法直接传入参数（目前来说），所以就需要工厂来帮我们具体的执行创建对象
 
-​		就比如说创建JDBC的实例，是一定要传入一个db.properties的实例对象的(Druid)，我们直接通过无参构造的方式无法实现动态的传入（例如在开发中和实际项目上线的时候，可能用的是两个sql数据库），所以就需要工厂来帮我们实现动态的传入指定的db.properti
+​  就比如说创建JDBC的实例，是一定要传入一个db.properties的实例对象的(Druid)，我们直接通过无参构造的方式无法实现动态的传入（例如在开发中和实际项目上线的时候，可能用的是两个sql数据库），所以就需要工厂来帮我们实现动态的传入指定的db.properti
 
 #### 工厂静态
 
@@ -705,21 +701,19 @@ UserDaoImpl.save()被调用了
 
 但是仔细一想，不对啊，ApplicationContext被创建了两次、加载了两次配置文件？！
 
-​		`UserDaoImpl.UserDaoImpl()无参构造被调用了` 这句话出现了两次，表示创建了两个UserDao
+​  `UserDaoImpl.UserDaoImpl()无参构造被调用了` 这句话出现了两次，表示创建了两个UserDao
 
-​		仔细捋一捋，目前UserService实例和UserDao实例都保存在Spring容器中，当前的做法是在容器外部分别获得UserDao实例和Userservice实例，然后在程序中进行结合
+​  仔细捋一捋，目前UserService实例和UserDao实例都保存在Spring容器中，当前的做法是在容器外部分别获得UserDao实例和Userservice实例，然后在程序中进行结合
 
 ![image-20211209205819276](/images/SpringFrameWork/01-Spring/image-20211209205819276.png)
 
+​  **那么我们是否可以换一个思路，因为UserService和UserDao都在Spring容器中，而最终程序直接使用的是UserService，所以我们是否可以将UserDao设置在UserService内部？**
 
+​  问题来了，我们该怎么把某个对象、某个数据给另外一个对象？
 
-​		**那么我们是否可以换一个思路，因为UserService和UserDao都在Spring容器中，而最终程序直接使用的是UserService，所以我们是否可以将UserDao设置在UserService内部？**
+​  那么总得调用另外一个对象的某个方法，才能把这个玩意给他吧？
 
-​		问题来了，我们该怎么把某个对象、某个数据给另外一个对象？
-
-​		那么总得调用另外一个对象的某个方法，才能把这个玩意给他吧？
-
-​		无非就是两种方法嘛
+​  无非就是两种方法嘛
 
 ```java
 class A{
@@ -740,17 +734,17 @@ class A{
 
 ### 依赖注入的概念
 
-​		在刚刚的案例中，我们得到的结论无非就是，在UserService中，需要一个UserDao，最笨的方法就是：在UserService中新建一个set方法，然后再到我们的操作层手动的将UserDao给set进去，然后再调用-----但是这样做的话，UserService的作用何在？我还不如直接调用UserDao得了
+​  在刚刚的案例中，我们得到的结论无非就是，在UserService中，需要一个UserDao，最笨的方法就是：在UserService中新建一个set方法，然后再到我们的操作层手动的将UserDao给set进去，然后再调用-----但是这样做的话，UserService的作用何在？我还不如直接调用UserDao得了
 
-​		这时候，就要用到Spring的依赖注入了。
+​  这时候，就要用到Spring的依赖注入了。
 
-​		依赖注入（Dependency Injection），是Spring核心框架Ioc的具体实现
+​  依赖注入（Dependency Injection），是Spring核心框架Ioc的具体实现
 
-​		在编写程序时，通过Ioc控制反转，把对象的创建交给了Spring，但是代码中不可能会出现没有依赖的情况，Ioc解耦只是降低他们的依赖关系，但不会消除，例如：业务层仍会调用持久层的方法
+​  在编写程序时，通过Ioc控制反转，把对象的创建交给了Spring，但是代码中不可能会出现没有依赖的情况，Ioc解耦只是降低他们的依赖关系，但不会消除，例如：业务层仍会调用持久层的方法
 
-​		那这种业务层和持久层的依赖关系，在使用Spring后，就让Spring来维护了
+​  那这种业务层和持久层的依赖关系，在使用Spring后，就让Spring来维护了
 
-​		简单的说，就是坐等框架把持久层传入业务层，而不用我们自己去获取了
+​  简单的说，就是坐等框架把持久层传入业务层，而不用我们自己去获取了
 
 刚刚也说了，现在有两种方法可以把数据注入到UserService内部
 
@@ -840,7 +834,7 @@ UserDaoImpl.save()
 
 还有一种更简便的方式可以来注入内容：通过P命名空间来注入
 
-​		P命名空间注入本质也是set方法注入，但比起上面的那个set方法注入更加方便，主要体现在配置文件中
+​  P命名空间注入本质也是set方法注入，但比起上面的那个set方法注入更加方便，主要体现在配置文件中
 
 分为两步：
 
@@ -859,7 +853,7 @@ UserDaoImpl.save()
 
    - 小tips：这里你直接输入一个`p:`，然后ieda会提示你引入，按下ctrl+enter即可自动引入步骤1中的属性
 
-这里的`p:userDao-ref="userDao"`大概是如下意思 
+这里的`p:userDao-ref="userDao"`大概是如下意思
 
 - `userDao-ref`要设定的属性
 - `=userDao`设定的值
@@ -873,7 +867,7 @@ UserDaoImpl.save()
 ```java
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
-	// 无论是在什么情况下，使用反射来创建对象一定要保留一个无参构造器
+ // 无论是在什么情况下，使用反射来创建对象一定要保留一个无参构造器
     public UserServiceImpl() {
     }
 
@@ -1147,7 +1141,7 @@ public class UserServiceImpl implements UserService {
 
 ### ApplicationContext的继承体系
 
-​		说起Spring 我们第一个当然要说这玩意啦~在我们写第一段SPring代码的时候，它就一直在那了
+​  说起Spring 我们第一个当然要说这玩意啦~在我们写第一段SPring代码的时候，它就一直在那了
 
 ```java
 ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -1208,4 +1202,3 @@ public <T> T getBean(Class<T> requiredType, Object... args) throws BeansExceptio
     return getBeanFactory().getBean(requiredType, args);
 }
 ```
-

@@ -27,7 +27,6 @@ tags:
     - 任何接口，如果**只包含唯一一个抽象方法**，那么他就是一个函数式接口
     - 对于函数式接口，可以通过lambda表达式来创建该接口的对象
 
-
 ## 表达式的使用
 
 可能看完上面的会有点懵，但是它使用起来是非常简单的，而且在某些情况下能够节约一大堆敲代码的时间
@@ -126,15 +125,15 @@ Lambda函数式中语法的可能性并不多（只有六种）
   // 那就会报错...所以说这玩意目前而言是有些鸡肋的
   ```
 
-- 无参数有返回值` test(){return XXX}`
+- 无参数有返回值`test(){return XXX}`
 
-- 单个参数无返回值` void test(T t){ }`
+- 单个参数无返回值`void test(T t){ }`
 
 - 多个参数无返回值`void test(T t,E e...){}`
 
-- 单个参数有返回值` void test(T t){ return xxx}`
+- 单个参数有返回值`void test(T t){ return xxx}`
 
-- 多个参数有返回值` void test(T t,E e...){ return xxx}`
+- 多个参数有返回值`void test(T t,E e...){ return xxx}`
 
 ## 进一步精简语法
 
@@ -144,7 +143,7 @@ Lambda函数式中语法的可能性并不多（只有六种）
 
    ```java
    interface If1{
-   	void test(int a);
+    void test(int a);
    }
    main(){
        //把int省略了
@@ -168,7 +167,7 @@ Lambda函数式中语法的可能性并不多（只有六种）
 
    ```java
    interface If2{
-   	int test(int number);
+    int test(int number);
    }
    main(){
        If2 if = a->a*5;
@@ -451,6 +450,6 @@ interface DogService2 {
 //这样编译器是可以正常通过的，且lambda表达式也可以正常调用
 ```
 
-### Java内置函数式接口:
+### Java内置函数式接口
 
 看看[这篇文章](https://blog.csdn.net/m2606707610/article/details/83754507)，用的也不多，基本上都是自己实现

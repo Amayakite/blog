@@ -10,13 +10,13 @@ tags:
 
 ## Spring集成Web环境
 
-​		我们首先需要创建一个新的Maven Moudle 然后进行如下操作
+​  我们首先需要创建一个新的Maven Moudle 然后进行如下操作
 
-​		首先创建一个UserDao 和它的Impl（做一个简单的即可）以及UserService，**然后配置好相关的Spring--通过SpringConfiguration.java来进行配置**
+​  首先创建一个UserDao 和它的Impl（做一个简单的即可）以及UserService，**然后配置好相关的Spring--通过SpringConfiguration.java来进行配置**
 
 > UserDao定义一个save方法，UserDaoImpl实现该方法，并在控制台打印一句话，Service同理，UserServiceImpl在实现save方法时要调用userDao的save方法（UserServiceImpl中保存着一个UserDao变量--通过Spring加载）
 
-​		然后再添加下tomcat的Servlet的api和tomcat-jsp的API，我这里是10,10-的自己百度
+​  然后再添加下tomcat的Servlet的api和tomcat-jsp的API，我这里是10,10-的自己百度
 
 > ```xml
 > <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
@@ -33,7 +33,7 @@ tags:
 > </dependency>
 > ```
 
-​		然后按下alt+shift+ctrl+s，唤醒出项目结构，给当前moudle新建web项目，然后配置好相关路径，最后一定要把tomcat的web.xml模板复制过来，里面有一处一定要修改
+​  然后按下alt+shift+ctrl+s，唤醒出项目结构，给当前moudle新建web项目，然后配置好相关路径，最后一定要把tomcat的web.xml模板复制过来，里面有一处一定要修改
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -79,7 +79,7 @@ public class UserServlet extends HttpServlet {
 
 然后配置好tomcat，并运行，看看控制台是否有输出即可
 
-这一步可能会遇到的问题： 
+这一步可能会遇到的问题：
 
 **java.lang.NoClassDefFoundError: org/springframework/context/ApplicationContext**
 
@@ -89,13 +89,13 @@ public class UserServlet extends HttpServlet {
 
 ### 封装Application
 
-​		想必从刚刚的代码中，你已经感觉到有点不对劲了，我们光是在一次用户发送请求的过程中，就调用了一次new XXXX来创建一个ApplicationContext，如果有1w个用户访问，那不得创建1W个？
+​  想必从刚刚的代码中，你已经感觉到有点不对劲了，我们光是在一次用户发送请求的过程中，就调用了一次new XXXX来创建一个ApplicationContext，如果有1w个用户访问，那不得创建1W个？
 
-​		我们可能首先想到的就是静态代码块，以及在Web项目启动的时候就创建一个，然后放到ServletContext全局上下文对象中...好像想到了什么
+​  我们可能首先想到的就是静态代码块，以及在Web项目启动的时候就创建一个，然后放到ServletContext全局上下文对象中...好像想到了什么
 
-​		还记得我们在学习JavaWeb时使用的Listener监听器吗？
+​  还记得我们在学习JavaWeb时使用的Listener监听器吗？
 
-​		通过该方式创建对象，然后放到全局上下文对象中
+​  通过该方式创建对象，然后放到全局上下文对象中
 
 接下来先试试：创建文件夹listener，里面新建一个Java类：
 
@@ -159,9 +159,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 ### 将加载ApplicationConfig变成动态的
 
-​		我们刚刚加载始终是加载的`SpringConfiguration.class`这样不太好，所以我们得再度解耦一波，那么该怎么去加载呢？
+​  我们刚刚加载始终是加载的`SpringConfiguration.class`这样不太好，所以我们得再度解耦一波，那么该怎么去加载呢？
 
-​		还记得之前在学JavaWeb时，有一个全局初始化参数吗，是不是可以把这个类名的全字符串丢进去，然后通过Class.forName来反射获取Clazz对象，然后丢进去创建
+​  还记得之前在学JavaWeb时，有一个全局初始化参数吗，是不是可以把这个类名的全字符串丢进去，然后通过Class.forName来反射获取Clazz对象，然后丢进去创建
 
 说干就干，接下来开始配置
 
@@ -199,7 +199,7 @@ public void contextInitialized(ServletContextEvent sce) {
 
 ### Spring集成Web环境-自己使用Utils进行封装
 
-​		但是问题又来了，我们每次使用WebServlet来调用Application的时候，都要自己手动的执行下面的代码，我们能不能设计一个工具，传入一个上下文对象，自动获取Application呢？
+​  但是问题又来了，我们每次使用WebServlet来调用Application的时候，都要自己手动的执行下面的代码，我们能不能设计一个工具，传入一个上下文对象，自动获取Application呢？
 
 ```java
 Object applicationContext = getServletContext().getAttribute("applicationContext");
@@ -233,15 +233,15 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 }
 ```
 
-但是，这玩意没必要做的。。。Spring提供了获取应用上下文的工具 
+但是，这玩意没必要做的。。。Spring提供了获取应用上下文的工具
 
 ## ContextLoaderListener类
 
-​		我们之前所做的事情，其实都不用手动实现，Spring提供了监听器ContextLoaderListener就是对上述所有功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext中，提供了一个客户端工具`WebApplicationContextUtils`供使用者获取上下文对象
+​  我们之前所做的事情，其实都不用手动实现，Spring提供了监听器ContextLoaderListener就是对上述所有功能的封装，该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext中，提供了一个客户端工具`WebApplicationContextUtils`供使用者获取上下文对象
 
-​		那我们上面写的那一摞子东西都是干嘛用的？
+​  那我们上面写的那一摞子东西都是干嘛用的？
 
-​		当让是写源码了hhhh
+​  当让是写源码了hhhh
 
 我们使用这个东西只需要做两件事：
 
@@ -347,13 +347,13 @@ set JRE_HOME=C:\Program Files\Eclipse Foundation\jdk-8.0.302.8-hotspot\jre
 
 ![image-20211211000739085](/images/SpringFrameWork/04-Spring-Web/image-20211211000739085.png)
 
-启动测试（看见他启动了自己手动进下http://localhost:8080）：
+启动测试（看见他启动了自己手动进下<http://localhost:8080>）：
 
 ![image-20211211001358066](/images/SpringFrameWork/04-Spring-Web/image-20211211001358066.png)
 
 ### 安装tomcat-9对应的Maven依赖
 
-我们依旧是先进入这个hello看下有哪些代码：http://localhost:8080/examples/servlets/helloworld.html
+我们依旧是先进入这个hello看下有哪些代码：<http://localhost:8080/examples/servlets/helloworld.html>
 
 发现他是依赖于一个javax.servlet，这就好办了
 
@@ -520,4 +520,3 @@ res目录下：applicationContext.xml
 ![image-20211211011506765](/images/SpringFrameWork/04-Spring-Web/image-20211211011506765.png)
 
 ![image-20211211011453111](/images/SpringFrameWork/04-Spring-Web/image-20211211011453111.png)
-

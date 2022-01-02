@@ -13,21 +13,19 @@ tags:
 
 ## 概述
 
-
-
-​		想了想，在正式学习Spring Boot 之前 还是来接着学习下Mybatis好一些。。。
+​  想了想，在正式学习Spring Boot 之前 还是来接着学习下Mybatis好一些。。。
 
 2021年12月17日14:22:59 补： 先别看这玩意 还是学完Spring Boot再来整 新版本的MybatisPlus都得会Spring Boot才能学好
 
-​		毕竟SPring Boot 的内容真的不多
+​  毕竟SPring Boot 的内容真的不多
 
-​		Mybatis-Plus是一个Mybatis的增强工具包，只做增强，功能不变，为简化开发工作，提高生产效率而生
+​  Mybatis-Plus是一个Mybatis的增强工具包，只做增强，功能不变，为简化开发工作，提高生产效率而生
 
-​		这玩意的目标是成为Mybatis最好的搭档
+​  这玩意的目标是成为Mybatis最好的搭档
 
-​		有了这玩意是非常丝滑的
+​  有了这玩意是非常丝滑的
 
-​		这玩意是国人开发的，所以说有中文文档和[中文官网](https://baomidou.com/)
+​  这玩意是国人开发的，所以说有中文文档和[中文官网](https://baomidou.com/)
 
 ### 快速入门
 
@@ -476,7 +474,7 @@ TMD我知道现在知道，测试的时候 log4j会自动打印消息
 
 问题：
 
-​		假设我们已经存在一张table user 表 并且已经有对应的实体类User 实现基于它的CRUD需要做哪些事情？
+​  假设我们已经存在一张table user 表 并且已经有对应的实体类User 实现基于它的CRUD需要做哪些事情？
 
 - 基于Mybatis
 
@@ -490,8 +488,6 @@ TMD我知道现在知道，测试的时候 log4j会自动打印消息
         List<User> findAll();
     }
     ```
-
-    
 
 - 基于MyBatis-Plus
 
@@ -740,7 +736,7 @@ public class User {
 
 ### Select
 
-​	
+​ 
 
 ## ✨Mybatis-Plus的相关注解
 

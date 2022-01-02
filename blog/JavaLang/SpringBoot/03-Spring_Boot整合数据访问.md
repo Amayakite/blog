@@ -14,7 +14,7 @@ tags:
 
 首先我们打开官方文档
 
-https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters
+<https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters>
 
 发现跟操作数据库有关的 全都有一个data
 
@@ -150,7 +150,7 @@ HikariDataSource
 
 搜了下 貌似是当前世界上最快的数据源管理包
 
-但是我们平常可能因为一些别的需要 
+但是我们平常可能因为一些别的需要
 
 例如Druid：主要是德鲁伊会提供数据监控等等   后边分布式的时候监控很有用
 
@@ -164,12 +164,12 @@ HikariDataSource
   - 引入下druid的包
   - 以前的方法就是在xml或者bean中或者注册一个DruidDataSource
   - 就是我们之前的配置的方式。。然后要额外配置蛮多东西..
-  - 详情的可以看https://www.bilibili.com/video/BV19K4y1L7MT?p=61&spm_id_from=pageDriver
+  - 详情的可以看<https://www.bilibili.com/video/BV19K4y1L7MT?p=61&spm_id_from=pageDriver>
 - 找starter
 
 ### 才用传统方法配置druid
 
-全部按照官方文档来https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98
+全部按照官方文档来<https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98>
 
 我们首先安装下druid的依赖
 
@@ -185,7 +185,7 @@ HikariDataSource
 
 自己配肯定是懒得配的 于是乎去druid的wiki上面找了找
 
-https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98
+<https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98>
 
 发现上面都有现成的了 于是乎我们按照它那里的顺序来做即可
 
@@ -214,7 +214,7 @@ public class MyDataSourceConfig {
         return new DruidDataSource();
     }
     
-	// 这里是设置监控的访问路径
+ // 这里是设置监控的访问路径
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
 
@@ -254,15 +254,11 @@ public class MyDataSourceConfig {
 
 ![image-20211221204925951](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221204925951.png)
 
-
-
 ### 通过state方式来使用druid
-
-
 
 于是还真的发现了
 
-https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+<https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter>
 
 ```xml
 <dependency>
@@ -270,8 +266,8 @@ https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
     <artifactId>druid-spring-boot-starter</artifactId>
     <version>1.2.8</version>
     <!--version可以去这里看看最新是什么版本
-	https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter
-	-->
+ https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter
+ -->
 </dependency>
 ```
 
@@ -457,7 +453,7 @@ spring:
 
 ### 准备依赖
 
-https://github.com/mybatis/spring-boot-starter
+<https://github.com/mybatis/spring-boot-starter>
 
 在这上面的spring-boot-stater文件夹内可以获取到我们想要的pom
 
@@ -600,8 +596,6 @@ public class MybatisProperties {
 
 ![image-20211222002928765](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222002928765.png)
 
-
-
 一个mybatis-config
 
 ```xml
@@ -713,7 +707,7 @@ public class DataSourceController {
 
 ### 整合Mybatis的一些配置（驼峰命名等）
 
-在官方文档中https://mybatis.org/mybatis-3/zh/configuration.html#settings
+在官方文档中<https://mybatis.org/mybatis-3/zh/configuration.html#settings>
 
 可以看到，设置驼峰命名是通过设置mapUnderscoreToCamelCase为true来完成的
 
@@ -741,8 +735,6 @@ public class DataSourceController {
     configuration:
       map-underscore-to-camel-case: true
   ```
-
-  
 
 在xml中
 
@@ -781,9 +773,9 @@ mybatis:
 
 MybatisPlus是一个Mybatis的增强工具，在Mybatis的基础上只做增强不做改变，为简化开发，提高效率而生
 
-国人制作的，官网https://baomidou.com/
+国人制作的，官网<https://baomidou.com/>
 
-封装了很多基本的增删改查 
+封装了很多基本的增删改查
 
 我们就直接按照官方文档的上手操作了
 
@@ -1000,7 +992,7 @@ class ApplicationTests {
 
 ### 注解标注表名、字段名等
 
-https://baomidou.com/pages/223848/#tablename
+<https://baomidou.com/pages/223848/#tablename>
 
 发现可以指定表名
 
@@ -1059,8 +1051,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
 但是这样又引出了一个问题 因为我们要使用BaseMapper所提供的查询，所以说要手动给service写一堆BaseMapper中的方法 并且让Impl再实现这个借口，再调用AdminMapper的一些方法不太现实
 
-
-
 所以Mybatis-plus提供了一个神器接口
 
 `IService<T>`
@@ -1085,7 +1075,7 @@ public interface AdminService extends IService<Admin> {
 
 所以mybatis也做了一个超级强大的类
 
-`ServiceImpl<M,T>`  这是一个对顶级Service接口的实现类 
+`ServiceImpl<M,T>`  这是一个对顶级Service接口的实现类
 
 使用它的时候 继承它并传入两个泛型即可
 
@@ -1129,7 +1119,7 @@ class ApplicationTests {
 
 官方是这样说明的
 
-https://baomidou.com/pages/8f40ae/
+<https://baomidou.com/pages/8f40ae/>
 
 说以我们要先注册一个Bean 这里官方文有分新旧版本 我们就用新版即可
 
@@ -1221,10 +1211,6 @@ class ApplicationTests {
 
 ![image-20211222172853573](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222172853573.png)
 
-
-
-
-
 ### 扩展-IEDA的MybatisX插件的使用
 
 这玩意非常方便..
@@ -1244,8 +1230,6 @@ class ApplicationTests {
 ![image-20211222132850756](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132850756.png)
 
 接着你就能在你的项目中额外得到这些东西
-
-
 
 ![image-20211222132956925](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132956925.png)
 

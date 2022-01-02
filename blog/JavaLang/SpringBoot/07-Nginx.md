@@ -40,7 +40,7 @@ tags:
 
 通过反向代理，其实客户端对代理是没有感知的，因为客户端无需配置就可以进行访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，再返回给客户端，此时反向代理服务器和目标服务器对外一是同一个服务器，暴露的是代理服务器的IP地址，隐藏了真实服务器IP地址
 
-**正向代理隐藏真实客户端，反向代理隐藏真实服务端**
+- **正向代理隐藏真实客户端，反向代理隐藏真实服务端**
 
 正向代理访问的外部内容，反向代理访问的是内部内容
 
@@ -53,8 +53,6 @@ tags:
 这种架构模式对于早期的系统相对单一，并发和请求相对较少的情况下是比较合适的，成本也比较低，但是随着信息数据的不断增长，访问量和数据量飞速增长，以及业务系统的复杂程度增加，这种架构会造成服务器响应客户端的请求变慢，并发量特别大的时候，还很容易导致服务器崩溃，这很明显是由于服务器性能的瓶颈造成的问题，，那么如何解决这种情况呢
 
 ![image-20211230122132179](/images/SpringBoot/07-Nginx/image-20211230122132179.png)
-
-
 
 首先我们可能想到的是给服务器加配，但是这也是有上限的
 
@@ -99,8 +97,6 @@ systemctl start nginx
 接着访问80端口即可
 
 ![image-20211230142610498](/images/SpringBoot/07-Nginx/image-20211230142610498.png)
-
-
 
 ### Docker
 
@@ -241,9 +237,7 @@ error_log  /var/log/nginx/error.log notice;
 pid        /var/run/nginx.pid;
 ```
 
-先说明下worker_processes
-
-**worker_processes，工作进程数**
+先说明下worker_processes：**worker_processes，工作进程数**
 
 这是nginx服务器并发处理服务的关键配置，可以穿入数值或者auto，如果传入的是数值，则数值越大，可以支持处理的并发量越多，但是会收到硬件、软件等设备的约束
 
@@ -259,9 +253,7 @@ events {
 }
 ```
 
-这一款主要是负责nginx服务器和用户的网络连接
-
-**worker_connections，单个工作进程可以允许同时建立外部连接的数量**
+这一款主要是负责nginx服务器和用户的网络连接：**worker_connections，单个工作进程可以允许同时建立外部连接的数量**
 
 - 默认：worker_connections: 1024
 - 调大：worker_connections: 100000，（调大到10万连接）
@@ -280,7 +272,7 @@ events {
   - 以前是1024，现在是65535
   - nginx提供了`worker_rlimit_nofile`指令
   - 这是除了`ulimit`的一种设置可用的描述符的方式
-  -  该指令与使用`ulimit`对用户的设置是同样的效果。此指令的值将覆盖`ulimit`的值
+  - 该指令与使用`ulimit`对用户的设置是同样的效果。此指令的值将覆盖`ulimit`的值
     - 如：`worker_rlimit_nofile 20960`;
 
 ```ini {2,5}
@@ -405,7 +397,7 @@ http {
 
     keepalive_timeout  65;
 
-	server {
+ server {
         listen       80;
         listen  [::]:80;
         server_name  localhost;
@@ -423,7 +415,7 @@ http {
         }
 
 
-	}
+ }
 }
 ```
 
@@ -507,19 +499,19 @@ vi /etc/nginx/conf.d/default.conf
 
 ```nginx
 server {
-	# 这个server的端口
+ # 这个server的端口
     listen       80;
     # 这里的[::]:80; 表示本机的任意地址的80都是它
     listen  [::]:80;
     # 这里是这个server的名字 可以自由更该
     server_name  localhost;
 
-	# 这里是访问根路径下的一些对应操作
+ # 这里是访问根路径下的一些对应操作
     location / {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
-	
+ 
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   /usr/share/nginx/html;
@@ -563,8 +555,6 @@ nginx -s reload
 然后你就可以正常访问了
 
 ![image-20211230165105012](/images/SpringBoot/07-Nginx/image-20211230165105012.png)
-
-
 
 ### Nginx反向代理配置多个路径
 
@@ -637,7 +627,7 @@ server {
 
 ```
 
-` ~ /bilibili/`和`~ /baidu/` 其他的好理解 代表访问自定路径balabala的 那么这个`~`呢？
+`~ /bilibili/`和`~ /baidu/` 其他的好理解 代表访问自定路径balabala的 那么这个`~`呢？
 
 其实nginx给我们准备了四个特殊的玩意
 
@@ -660,7 +650,7 @@ server {
 
 ## Nginx配置负载均衡
 
-我们现在有一个需求 
+我们现在有一个需求
 
 现在有两个一模一样的nginx服务器 里面的内容都一样
 
@@ -879,7 +869,7 @@ server {
 
 也就是前后端分离 各做各的
 
->  可以理解成  Nginx处理静态页面，我们的Java程序处理动态页面
+> 可以理解成  Nginx处理静态页面，我们的Java程序处理动态页面
 
 目前来说有两种实现方案
 
@@ -971,10 +961,6 @@ const add = () => {
 
 ![image-20211230194525973](/images/SpringBoot/07-Nginx/image-20211230194525973.png)
 
-
-
-
-
 接着，将相应的打包好的资源拷贝到docker目录内
 
 ```bash
@@ -1027,15 +1013,12 @@ server {
 }
 ```
 
-
-
 > nginx指定文件路径有两种方式root和alias，指令的使用方法和作用域：
 >
 > > [root]
 > > 语法：root path
 > > 默认值：root html
 > > 配置段：http、server、location、if
->
 > > [alias]
 > > 语法：alias path
 > > 配置段：location
@@ -1095,17 +1078,15 @@ Nginx的大概长这样
 
 ![image-20211230215330918](/images/SpringBoot/07-Nginx/image-20211230215330918.png)
 
-
-
 这里就不说了 实际上这玩意非常稳 很少用到集群（除非托大的project）
 
-详细使用看这个视频https://www.bilibili.com/video/BV1zJ411w7SV?p=15&spm_id_from=pageDriver
+详细使用看这个视频<https://www.bilibili.com/video/BV1zJ411w7SV?p=15&spm_id_from=pageDriver>
 
 不过据说实际项目中一般都不会用这种方式来配置 而是用另一个玩意：`lvs`来配置
 
 ## Nginx原理简单说明
 
-稍微具体一点的原理可以看这个视频https://www.bilibili.com/video/BV1zJ411w7SV?p=17&spm_id_from=pageDriver
+稍微具体一点的原理可以看这个视频<https://www.bilibili.com/video/BV1zJ411w7SV?p=17&spm_id_from=pageDriver>
 
 就客户是骨头
 
@@ -1116,4 +1097,3 @@ master进程是狗狗管理员即可
 ![image-20211230222442992](/images/SpringBoot/07-Nginx/image-20211230222442992.png)
 
 ![image-20211230222725945](/images/SpringBoot/07-Nginx/image-20211230222725945.png)
-

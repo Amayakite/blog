@@ -318,7 +318,7 @@ md大部分鸟人这里讲的云里雾里的，我这里先放最终文件吧
 
 ```js
 route={
-	name:"Myapps",
+    name:"Myapps",
     component:()=>require("com/local/www/Myapps")
 }
 ```
