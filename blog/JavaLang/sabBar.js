@@ -1,7 +1,7 @@
 module.exports = [
     {
         title: "1-基础部分",
-        icon: "creative",
+        icon: "java",
         prefix: "JavaSE/",
         children: [
             "01-Java的特点",
@@ -31,7 +31,7 @@ module.exports = [
         ]
     }, {
         title: "2-JavaWeb",
-        icon: "Apache",
+        icon: "javaweb",
         prefix: "JavaEE/",
         children: [
             '01-初识JavaWeb',
@@ -43,9 +43,9 @@ module.exports = [
             '04-在开始后面东西前要做的事情',
             '05-JSP',
         ]
-    },{
+    }, {
         title: "3-SpringFrameWork",
-        icon: "stack",
+        icon: "spring",
         prefix: "SpringFrameWork/",
         children: [
             "01-Spring",
@@ -62,11 +62,11 @@ module.exports = [
             "11-SSM框架的整合",
             "12-MyBatis-Plus",
         ]
-    },{
-        title:"4-SpringBoot",
-        icon:"stack",
-        prefix:"SpringBoot/",
-        children:[
+    }, {
+        title: "4-SpringBoot",
+        icon: "spring-boot",
+        prefix: "SpringBoot/",
+        children: [
             "01-Spring_Boot基础",
             "02-Spring_Boot核心功能",
             "03-Spring_Boot整合数据访问",
@@ -76,5 +76,30 @@ module.exports = [
             "07-Nginx",
             "08-Elasticsearch"
         ]
+    }, {
+        title: "5-SpringCloud",
+        icon: "spring-cloud",
+        prefix: "SpringCloud/",
+        children: [
+            "00-Docker",
+            "01-微服务",
+            "02-Eureka服务注册与发现",
+            "03-Zookeeper服务注册与发现",
+            "04-Consul服务注册与发现",
+            "05-Ribbon负载均衡服务调用",
+            "06-OpenFeign服务调用",
+            "07-Hystrix服务降级",
+            "08-GateWay服务网关",
+            "09-Config和Bus",
+            "10-Stream和Sleuth",
+            "11-Alibaba入门",
+            "12-Nacos服务注册和配置中心",
+            "13-Sentinel熔断与限流",
+            "14-1-Seata部署全流程",
+            "14-Seata分布式事务",
+            "15-雪花算法",
+        ]
+
     }
 ]
+
