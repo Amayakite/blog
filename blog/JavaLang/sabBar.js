@@ -95,8 +95,8 @@ module.exports = [
             "11-Alibaba入门",
             "12-Nacos服务注册和配置中心",
             "13-Sentinel熔断与限流",
-            "14-1-Seata部署全流程",
             "14-Seata分布式事务",
+            "14-1-Seata部署全流程",
             "15-雪花算法",
         ]
 
