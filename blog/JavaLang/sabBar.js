@@ -31,7 +31,7 @@ module.exports = [
         ]
     }, {
         title: "2-JavaWeb",
-        icon: "javaweb",
+        icon: "java-web",
         prefix: "JavaEE/",
         children: [
             '01-初识JavaWeb',
@@ -99,7 +99,19 @@ module.exports = [
             "14-1-Seata部署全流程",
             "15-雪花算法",
         ]
-
+    }, {
+        title: "6-Thread",
+        icon: "java-thread",
+        prefix: "Thread/",
+        children: [
+            "1-线程的基本介绍",
+            "2-Java线程",
+            "3-共享模型之管程",
+            "4-共享模型之内存",
+            "5-共享模型之无锁",
+            "6-连接池和线程池",
+            "7-JUC",
+        ]
     }
 ]
 
