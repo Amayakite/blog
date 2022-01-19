@@ -27,7 +27,6 @@ module.exports = [
             "21-MySql",
             "22-JDBC和数据库连接池",
             "23-正则表达式",
-            "24-高并发-JUC",
         ]
     }, {
         title: "2-JavaWeb",
