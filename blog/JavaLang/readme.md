@@ -2,10 +2,9 @@
 article: false
 ---
 
-# 要做的事
+# 概述
 
-- [] Java入门
-- [] Java中级
-- [] Java进阶
-- [] Mysql
-- [] Spring Boot
+你好，这里是我学习Java的笔记
+
+道阻且长，将行则至
+

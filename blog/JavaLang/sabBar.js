@@ -98,9 +98,9 @@ module.exports = [
             "14-1-Seata部署全流程",
             "15-雪花算法",
             "16-Nginx-进阶",
+            "17-Sa-Token",
             "17-1-Sa-Token单点认证",
             "17-2-OAuth",
-            "17-Sa-Token",
         ]
     }, {
         title: "6-Thread",

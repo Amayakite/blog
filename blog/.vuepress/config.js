@@ -106,9 +106,11 @@ module.exports = config({
         },
 
 
-        // 开启markdown的mermaid流程图
         mdEnhance: {
+            // 开启markdown的mermaid流程图支持
             mermaid: true,
+            // 开启任务列表支持
+            tasklist: true,
             // enableAll: true,
             // presentation: {
             //   plugins: [
