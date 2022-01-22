@@ -1,11 +1,11 @@
 ---
 title: 2-Java线程
-date: 2021-1-15 16:12:30
-category: JavaSE
+date: 2022-1-15 16:12:30
+category: Thread
 tags:
-  - Java
-  - JavaSE
-  - Thread
+- Java
+- JavaSE
+- Thread
 ---
 
 ## 创建和运行线程

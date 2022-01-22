@@ -1,11 +1,11 @@
 ---
 title: 7-JUC
-date: 2021-1-18 15:52:30
-category: JavaSE
+date: 2022-1-18 15:52:30
+category: Thread
 tags:
-  - Java
-  - JavaSE
-  - Thread
+- Java
+- JavaSE
+- Thread
 ---
 
 ## JUC概述
