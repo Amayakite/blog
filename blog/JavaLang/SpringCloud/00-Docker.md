@@ -1725,7 +1725,7 @@ docker run -it -name 容器名 --volumes-from 父容器 父容器名 镜像
 
 volumes-from就是捆绑多少个就多少个数据卷共享，即使docker01被停止
 
-## Dockerfile
+## ✨Dockerfile
 
 dockerfile是用来构建docker镜像文件的命令参数脚本
 
@@ -1949,19 +1949,1113 @@ docker run xxx -l
 
 就能完整的模拟出`ls -al`的效果
 
-### docker制作tomcat镜像
+### ✨docker制作tomcat镜像
 
 1. 准备文件：tomcat压缩包，jdk的压缩包
 2. 准备dockerfile文件
 
 首先下载java压缩包和tomcat压缩包
 
-```bash
-wget https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245467_4d5417147a92418ea8b615e228bb6935 -O "jdk.tar.gz"
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz -O "tomcat.tar.gz"
-```
+JDK：<https://www.oracle.com/java/technologies/downloads/>往下拉找到x64 Compressed Archive下载即可
+
+Tomcat：<https://tomcat.apache.org/download-90.cgi>
+
+然后传输到你的服务器上（创建好一个文件夹）
 
 接着我们编写`DockerFIle`文件，记住这个名字 官方在build的时候会默认寻找这个文件
+
+DockerFIle和那两个压缩包在同一个文件夹内
+
+我这里最终是如下两个文件
+
+![image-20220119174116464](/images/SpringCloud/00-Docker/image-20220119174116464.png)
+
+接着创建`Dockerfile`，然后编写其中的内容
+
+```dockerfile
+FROM ubuntu
+
+MAINTAINER "Amayakite"
+
+# 使用add命令添加文件会自动解压 这里第一个参数是文件名，相对路径
+# 第二个参数是容器内的路径，解压后的文件将会存放至该路径下
+
+# 添加jdk
+ADD jdk-8u321-linux-x64.tar.gz /usr/local
+
+# 添加tomcat
+ADD apache-tomcat-9.0.56.tar.gz /usr/local
+
+# 设置工作目录
+ENV MYPATH=/usr/local
+WORKDIR $MYPATH
+
+# 设置JAva的工作目录 这里填写解压后的路径 jdk压缩包解压后默认是还有一个文件夹
+# 里面是一个Java的版本号：例如:jdk1.8.0_111
+ENV JAVA_HOME=/usr/local/jdk1.8.0_321
+
+ENV CLASSSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+# 配置tomcat目录
+ENV CATALINA_HOME=/usr/local/apache-tomcat-9.0.56
+
+# 设置tomcat的运行目录
+ENV PATH=$PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+
+## 启动后暴露的端口
+EXPOSE 8080
+
+# 启动时运行的命令
+CMD $CATALINA_HOME/bin/startup.sh && tail -F $CATALINA_HOME/logs/catalina.out
+
+```
+
+接下来运行构建命令
+
+```bash
+docker build -t mytomcat .
+```
+
+如果不出意外，你的控制台应该打印如下内容
+
+![image-20220119180519935](/images/SpringCloud/00-Docker/image-20220119180519935.png)
+
+接下来你可以通过`docker images`看到你刚刚创建的镜像
+
+![image-20220119180547179](/images/SpringCloud/00-Docker/image-20220119180547179.png)
+
+emm事后我发现事情并没有我想的那么简单
+
+**下载的jdk无法自动解压**
+
+于是乎我分别尝试了如下几种方式
+
+使用OpenLogic的[JDK](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=416&field_operating_system_target_id=426&field_architecture_target_id=391&field_java_package_target_id=396)
+
+在下载的时候，我突然想到，阿里巴巴不是也有jdk来着，于是也尝试了下阿里巴巴的[JDK](https://github.com/alibaba/dragonwell8)
+
+但是当我想要下载阿里巴巴的jdk的时候，那啥open啥啥啥的jdk下载好了，于是我就用上了它家的
+
+```dockerfile
+FROM ubuntu
+
+MAINTAINER "Amayakite"
+
+# 使用add命令添加文件会自动解压 这里第一个参数是文件名，相对路径
+# 第二个参数是容器内的路径，解压后的文件将会存放至该路径下
+
+# 添加jdk
+ADD openlogic-openjdk-8u262-b10-linux-x64.tar.gz /usr/local
+
+# 添加tomcat
+ADD apache-tomcat-9.0.56.tar.gz /usr/local
+
+# 设置工作目录
+ENV MYPATH=/usr/local
+WORKDIR $MYPATH
+
+# 设置JAva的工作目录 这里填写解压后的路径 jdk压缩包解压后默认是还有一个文件夹
+# 里面是一个Java的版本号：例如:jdk1.8.0_111
+ENV JAVA_HOME=/usr/local/openlogic-openjdk-8u262-b10-linux-64
+
+ENV CLASSSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+# 配置tomcat目录
+ENV CATALINA_HOME=/usr/local/apache-tomcat-9.0.56
+
+# 设置tomcat的运行目录
+ENV PATH=$PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+
+## 启动后暴露的端口
+EXPOSE 8080
+
+
+
+# 启动时运行的命令
+CMD $CATALINA_HOME/bin/startup.sh && tail -F $CATALINA_HOME/logs/catalina.out
+
+```
+
+成功运行
+
+![image-20220119193933882](/images/SpringCloud/00-Docker/image-20220119193933882.png)
+
+然后尝试访问（我这里开的映射是9001）
+
+```bash
+curl localhost:9001
+```
+
+成功获取到结果
+
+![image-20220119194007032](/images/SpringCloud/00-Docker/image-20220119194007032.png)
+
+并且可以看到容器内都有内容了
+
+![image-20220119194245470](/images/SpringCloud/00-Docker/image-20220119194245470.png)
+
+当然你也可以选择挂载卷之类的。。
+
+### 发布自己的tomcat到dockerhub
+
+1. 注册账号<https://hub.docker.com/>
+
+2. 登陆账号
+
+   1. ```bash
+      docker login --help
+      # 查看帮助一览
+      ```
+
+   2. 例如
+
+   3. ```bash
+      docker login -u youUserName -p youPassord
+      ```
+
+3. 提交
+
+   - ```bash
+     docker push --help
+     ```
+
+   - push的时候要带上自己的名字，上传的镜像名必须是【用户名/镜像名】，所以我们得重新构建一个镜像
+
+   - ```bash
+     docker build -t amayakite/diytomcat:1.0.0 .
+     ```
+
+   - 或者用重命名的方式
+
+   - ```bash
+     docker tag diytomcat amayakite/diytomcat:1.0.0
+     ```
+
+   - 然后push
+
+   - ```bash
+     docker push amayakite/diytomcat:1.0.0
+     ```
+
+   - 结果
+
+   - ![image-20220119200457890](/images/SpringCloud/00-Docker/image-20220119200457890.png)
+
+   - 上传是比较慢的….因为人家是国外的服务器
+
+   - 上传完毕后，是这样的
+
+   - ![image-20220119200759277](/images/SpringCloud/00-Docker/image-20220119200759277.png)
+
+   - 然后你就能在自己的[Docker Hub](https://hub.docker.com/)上看到如下内容了
+
+   - ![image-20220119200847859](/images/SpringCloud/00-Docker/image-20220119200847859.png)
+
+可以看到我们的镜像已经上传了(另外那个貌似是创建docker账号的时候自动创建的)
+
+如果你要上传到阿里云或者腾讯云之类的地方的话，可以自行去他们官网上，一般都会要求创建命名空间，创建完毕后，会有详细的push教程
+
+### docker打包容器
+
+> 将容器保存成镜像
+
+```bash
+#语法：
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+
+# 例如
+docker commit -a "Amayakite" mytomcat  imagexxx:1.1.1
+-a :提交的镜像作者；
+-c :使用Dockerfile指令来创建镜像；
+-m :提交时的说明文字；
+-p :在commit时，将容器暂停。
+imagexxx 是新创建的镜像的名字
+```
+
+>  将镜像打包成tar包
+
+```bash
+docker  save  -o xxx.tar  imagexxx1.1.1  # 当前路径下会生成一个xxx.tar
+```
+
+> 将tar包再次压缩为gz包
+
+```bash
+tar -zcvf xxx.tar.gz     xxx.tar    # 当前路径生成一个xxx.tar.gz压缩包
+```
+
+然后假设你在一台新的电脑上获取了这个tar.gz包并且想要使用它
+
+> 解压缩得到tar包
+
+````bash
+tar -zxvf xxx.tar.gz
+````
+
+> 将tar包生成镜像
+
+```bash
+docke load < xxx.tar #生成的镜像信息和打包之前的一样
+```
+
+然后照常运行即可
+
+## Docker网络
+
+### Docker0网络
+
+当你连接上服务器的时候，应该有注意到过这个玩意
+
+![image-20220119212308383](/images/SpringCloud/00-Docker/image-20220119212308383.png)
+
+那么现在我有个问题，例如我有个mysql容器，映射了6000到本地，那么我能不能直接访问它的3306呢
+
+接下来我进入我的mysql容器看看ip
+
+```bash
+docker exec -it mysql bash
+cat /etc/hosts
+```
+
+结果如下
+
+```bash
+127.0.0.1       localhost
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+172.17.0.4      9f21f81da253
+```
+
+有个`172.17.0.4`比较令人在意，那么我尝试下本地ping下
+
+![image-20220119214058287](/images/SpringCloud/00-Docker/image-20220119214058287.png)
+
+看来是可以的，也就是说我在容器外面也可以通过访问这个地址的3306来进行访问
+
+换一种方式尝试，我开一个tomcat，映射本地9999
+
+```bash
+docker run -d -p 9999:8080 -name testTomcat tomcat
+docker exec -it  testTomcat bash
+rm -rf webapps && mv webapps.dist/ webapps
+cat /etc/hosts
+
+
+# Host结果为
+127.0.0.1       localhost
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+172.17.0.5      b352b627f9c7
+```
+
+接下来退出容器，然后访问下这个`172.17.0.5:8080`试试
+
+得到了html
+
+![image-20220119214548354](/images/SpringCloud/00-Docker/image-20220119214548354.png)
+
+那么容器和容器之间是否可以ping通呢？答案是可以的，你可以自行尝试
+
+docker0相当于网卡，同一个网段内是可以互相连接的
+
+### 容器互联-link
+
+好了，下面的话是你学完SpringCloud再过来学的了
+
+我现在有两个服务，tomcat1和tomcat2，能否像在Spring Cloud中的那样(Fegin)，通过服务名来互相调用呢？
+
+我们先给当前的Tomcat安装下ping之类的工具
+
+```bash
+mv /etc/apt/sources.list /etc/apt/sources.list.bak
+
+cat <<EOF >/etc/apt/sources.list
+deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
+EOF
+apt update
+apt install iputils-ping
+apt install net-tools
+exit
+# 然后打包成一个镜像
+docker commit testTomcat mytomcat
+
+# 然后运行两个
+docker run -d -p 9001:8080 --name tomcat1 mytomcat
+docker run -d -p 9002:8080 --name tomcat2 mytomcat
+
+```
+
+然后ping一下 是ping不通的
+
+![image-20220119222108897](/images/SpringCloud/00-Docker/image-20220119222108897.png)
+
+所以Docker给我们提供了一个解决方案，link
+
+```bash
+docker run  -d -p 9003:8080 --link tomcat2 --name tomcat3 mytomcat
+```
+
+我们只需要在启动的时候，加一个link命令，指定要桥接的容器即可
+
+接下来进入tomcat3
+
+```bash
+docker exec -it tomcat3 bash
+ping tomcat2
+```
+
+可以发现ping通了
+
+![image-20220119222336320](/images/SpringCloud/00-Docker/image-20220119222336320.png)
+
+但是此时，tomcat2可以ping通tomcat3吗？
+
+实际上是不可以的….
+
+因为我们没有配置tomcat2的link…
+
+现在，我们来看下docker的网卡信息
+
+```bash
+ docker network ls
+ # 结果
+ NETWORK ID     NAME                DRIVER    SCOPE
+2addf569c311   bridge              bridge    local
+。。。。等一系列网卡信息
+# 这里的bridge就是docker的基础网卡 我们来看看这个网卡的信息
+ docker network  inspect bridge
+```
+
+可以发现你的全部网络，例如tomcat2和3
+
+![image-20220119222915944](/images/SpringCloud/00-Docker/image-20220119222915944.png)
+
+那么看着两个的配置不用多说了
+
+```bash
+docker inspect tomcat3
+```
+
+可以看到，在它的`HostConfig`内，有一个配置
+
+![image-20220119223715561](/images/SpringCloud/00-Docker/image-20220119223715561.png)
+
+但是在tomcat2中这个地方是没有东西的
+
+并且你进入Tomcat3，可以在` /etc/hosts`看到
+
+```bash
+docker exec -it tomcat3 bash
+cat /etc/hosts
+```
+
+![image-20220119223910780](/images/SpringCloud/00-Docker/image-20220119223910780.png)
+
+这里就是直接来了个转发，就像是windows的修改hosts文件那样，所以可以直接ping通
+
+当然，现在完Docker已经不推荐用`--link`这个玩意了
+
+因为docker0毕竟是官方默认的，使用过多容易造成混乱，并且不易维护
+
+### 自定义网络-创建
+
+创建
+
+```bash
+docker network create [OPTIONS] NETWORK
+```
+
+- OPtions参数如下
+
+| 简参数,参数   | 默认   | 描述                                                         |
+| ------------- | ------ | ------------------------------------------------------------ |
+| --attachable  |        | API 1.25+启用手动容器附件                                    |
+| --aux-address |        | 网络驱动程序使用的辅助IPv4或IPv6地址                         |
+| --config-from |        | API 1.30+从中复制配置的网络                                  |
+| --config-only |        | API 1.30+创建仅配置网络                                      |
+| -d,--driver   | bridge | 驱动程序来管理网络                                           |
+| **--gateway** |        | **主子网的IPv4或IPv6网关**<br />这个相当于是暴露给主机的网络 |
+| --ingress     |        | API 1.29+创建群集路由网状网络                                |
+| --internal    |        | 限制外部访问网络                                             |
+| --ip-range    |        | 从子范围分配容器ip                                           |
+| --ipam-driver |        | IP地址管理驱动程序                                           |
+| --ipam-opt    |        | 设置IPAM驱动程序特定选项                                     |
+| --ipv6        |        | 启用IPv6网络                                                 |
+| --label       |        | 在网络上设置元数据                                           |
+| -o,--opt      |        | 设置驱动程序特定选项                                         |
+| --scope       |        | API 1.30+控制网络范围                                        |
+| **--subnet**  |        | **代表网段的CIDR格式的子网**<br />这个比较重要，也就是配置这个网卡的虚拟地址 |
+
+我们接下来创建一个
+
+```bash
+docker network create --subnet 233.33.0.0/16 --gateway 233.33.0.1 mynet
+# 这里的16代表双路啥啥啥的，反正最多能创建65535个子网，如果说这里写了24，那就只有255个
+#貌似也指的是前面16位固定 不过无所谓 反正这玩意知道咋用就行
+# 后面的表示主机能通过哪个地址来访问到这个网卡
+```
+
+然后就可以看到我们刚刚创建的网卡了
+
+![image-20220119232745245](/images/SpringCloud/00-Docker/image-20220119232745245.png)
+
+之后，从`233.33.0.2`一直到`233.33.255.255`中都属于他
+
+自此，我们的自定义网络就创建好了，你可以看看他的具体内容
+
+```bash
+docker network inspect  mynet
+```
+
+结果：
+
+```json
+[
+    {
+        "Name": "mynet",
+        "Id": "39ac7d62a102c2b9eb7bd179119022942d3db33a317ed03530e0714ba5022cd7",
+        "Created": "2022-01-19T23:27:03.473039445+08:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "233.33.0.0/16",
+                    "Gateway": "233.33.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
+```
+
+emm然后我尝试创建一个容器，桥接这个网卡
+
+```bash
+ docker run -d -p 9001:8080 --net mynet --name tomcat-net1 mytomcat
+ # -net就是桥接网卡 不填写的话就是默认的那个东西
+```
+
+然后发现了如下异常
+
+![image-20220119234052518](/images/SpringCloud/00-Docker/image-20220119234052518.png)
+
+大意就是网络地址不可用，没事，我们删掉重新创建一个1xx的
+
+```bash
+docker rm -fv tomcat-net1
+docker network rm mynet
+docker network create --subnet 160.1.0.0/16 --gateway 160.1.0.1 mynet
+6503247b85489d8f7e8f68e69c62d9b7ea2632bcb31c56d441559caa288bb3b3
+docker run -d -p 9001:8080 --net mynet --name tomcat-net1 mytomcat
+```
+
+![image-20220119234145202](/images/SpringCloud/00-Docker/image-20220119234145202.png)
+
+创建成功，再来创建一个2吧
+
+```bash
+docker run -d -p 9002:8080 --net mynet --name tomcat-net2 mytomcat
+```
+
+再来尝试ping一下，你就会发现神奇的事情
+
+```bash
+docker exec  -it tomcat-net1 ping tomcat-net2
+```
+
+![image-20220119234338393](/images/SpringCloud/00-Docker/image-20220119234338393.png)
+
+居然ping通了….
+
+这就非常舒服了
+
+原理就是这两个容器都是连的自定义网络，连接在同一个自定义网络的容器之间端口会自动相互暴露，而且不会向以外的显示任何端口，这样就更好的进行了容器见相互通信和隔离
+
+### 网络连通
+
+现在我们想把docker0和mynet之间也实现可以通过直接通过名字来访问的方式，又该怎么做呢？
+
+也就是在docker0上面的tomcat1和tomcat2和在mynet上面的tomcat-net1和tomcat-net2如何通过名字来实现互相访问
+
+也就是这样
+
+![image-20220119234953131](/images/SpringCloud/00-Docker/image-20220119234953131.png)
+
+这个是想都不用想的，压根不可能的，所以说我们应该换一种想法
+
+让在docekr0上面的容器能连接上mynet
+
+![image-20220119235138175](/images/SpringCloud/00-Docker/image-20220119235138175.png)
+
+在`docker networ`中，有如下几个命令
+
+```bash
+Usage:  docker network COMMAND
+
+Manage networks
+
+Commands:
+  connect     Connect a container to a network
+  create      Create a network
+  disconnect  Disconnect a container from a network
+  inspect     Display detailed information on one or more networks
+  ls          List networks
+  prune       Remove all unused networks
+  rm          Remove one or more networks
+
+Run 'docker network COMMAND --help' for more information on a command.
+```
+
+其中第一个就是我们要用的：**将容器连接到网络**
+
+看看他的参数
+
+```bash
+Usage:  docker network connect [OPTIONS] NETWORK CONTAINER
+
+Connect a container to a network
+
+Options:
+
+# 为容器添加网络范围的别名
+--alias strings           Add network-scoped alias for the container
+
+#网络的驱动程序选项
+--driver-opt strings      driver options for the network
+
+#IPv4 地址（例如，172.30.100.104）
+--ip string               IPv4 address (e.g., 172.30.100.104)
+
+#IPv6 地址（例如，2001:db8::33） 
+--ip6 string              IPv6 address (e.g., 2001:db8::33)
+
+#添加到另一个容器的链接
+--link list               Add link to another container
+
+#为容器添加链接本地地址
+--link-local-ip strings   Add a link-local address for the container
+
+当然这些参数并不是最重要的，它的语句是这样的
+
+docker network connect [OPTIONS] 网络 容器
+```
+
+所以我们只需要
+
+```bash
+docker network connect mynet tomcat1
+```
+
+运行之后，没有任何事情发生，但是我们这个时候尝试ping下
+
+```bash
+docker exec  -it tomcat1 ping tomcat-net1
+```
+
+![image-20220119235724607](/images/SpringCloud/00-Docker/image-20220119235724607.png)
+
+居然ping通了
+
+那么如何解除呢？
+
+依旧是看看network
+
+```bash
+Usage:  docker network COMMAND
+
+Manage networks
+
+Commands:
+# 连接
+  connect     Connect a container to a network
+  # 创建
+  create      Create a network
+  # 解除连接
+  disconnect  Disconnect a container from a network
+  # 查看
+  inspect     Display detailed information on one or more networks
+  # 列表
+  ls          List networks
+  # 自动删除没人用的
+  prune       Remove all unused networks
+  # 指定删除
+  rm          Remove one or more networks
+
+Run 'docker network COMMAND --help' for more information on a command.
+```
+
+看看取消连接有哪些参数
+
+```bash
+Usage:  docker network disconnect [OPTIONS] NETWORK CONTAINER
+
+Disconnect a container from a network
+
+Options:
+  -f, --force   Force the container to disconnect from a network 强制容器断开网络连接
+```
+
+所以我们只需要
+
+```bash
+docker network disconnect mynet tomcat1
+```
+
+然后再ping，就会发现ping不上了
+
+![image-20220120000044659](/images/SpringCloud/00-Docker/image-20220120000044659.png)
+
+## Docker Compose
+
+### 概述
+
+我们现在配置Docker有三个步骤：
+
+1. DockerFIle
+2. Docker Build
+3. Docker Run
+
+这三步全都是手动操作，并且一次只能操作单个容器
+
+但是假设我们现在有100个微服务，宕机了我们就要手动重启，非常麻烦，而他们之中还存在依赖关系，配置起来非常麻烦
+
+Docker Compose就是来解决这个问题的，他可以轻松搞笑的管理容器，定义运行多个容器
+
+根据它的[官方文档](https://docs.docker.com/compose/)中描述，可以得知，我们使用的话需要三步
+
+1. 准备好`DockerFile`
+2. 准备好一个`docker-compose.yml`
+3. 运行`docker-compose up`
+
+作用是：批量容器编排
+
+Compose是Docker官方的开源项目，需要额外自行安装
+
+`Dockerfile`让程序在任何地方可以运行web服务等，web服务、redis、mysql、nginx….多个容器
+
+`docker-compose.yml`让这些容器可以一键部署
+
+官方文档中这个yml的格式为
+
+```yaml
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+    links:
+      - redis
+  redis:
+    image: redis
+volumes:
+  logvolume01: {}
+```
+
+这看起来就像是：image用了redis，然后volumes指定了挂在卷，然后定义了端口暴露..
+
+Compose有两个重要的概念
+
+- 服务Service：容器，应用(web/redis/mysql…)
+- 项目Project，一组关联的容器
+
+### Docker Compose的安装
+
+参照官方文档<https://docs.docker.com/compose/install/>
+
+文档中有git的命令，于是我去Compose的[仓库](https://github.com/docker/compose)看了看
+
+我这里看的最新的是v2.2.3
+
+你可以到这个链接里面去看看<https://github.com/docker/compose/releases>
+
+> 后续补充：不建议用v2.0+的版本，有很多地方不太兼容
+>
+> 建议是用1.29.2
+>
+> ```bash
+> sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+> 
+> # 或者另一个加速
+> sudo curl -L "https://download.fastgit.org/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+> 
+> sudo chmod +x /usr/local/bin/docker-compose
+> ```
+>
+> 
+
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+当然，因为直接下载速度较慢，可以选择加速
+
+```bash
+sudo curl -L "https://github.91chi.fun//https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+我这里的话，比较块的加速还是这个<https://fastgit.org/>
+
+这个加速的使用[教程](https://doc.fastgit.org/zh-cn/guide.html#web-%E7%9A%84%E4%BD%BF%E7%94%A8)
+
+```bash
+sudo curl -L "https://download.fastgit.org/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+以及daocloud的，看个人心情，反正加速的都可以用，最稳的就是这个daocloud
+
+```bash
+curl -L https://get.daocloud.io/docker/compose/releases/download/v2.2.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+```
+
+然后赋予可执行权限
+
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+然后测试
+
+```bash
+docker-compose --version
+```
+
+![image-20220120114317974](/images/SpringCloud/00-Docker/image-20220120114317974.png)
+
+当然 我们还可以使用Python-pip来进行安装
+
+```bash
+pip3 install docker-compose
+```
+
+或者你可以使用贴心的包管理来一键安装（并不推荐，版本有点旧）
+
+```bash
+sudo apt install docker-compose
+```
+
+### 使用
+
+参考官方文档<https://docs.docker.com/compose/gettingstarted/>
+
+先创建个文件夹
+
+```bash
+ mkdir composetest
+ cd composetest
+```
+
+然后创建一个`app.py`
+
+??貌似用到了redis
+
+```bash
+import time
+
+# 导入redis
+import redis
+# 导入Flask  这类似于Java的SpringWeb
+from flask import Flask
+
+app = Flask(__name__)
+# 监听redis
+cache = redis.Redis(host='redis', port=6379)
+
+# 一个方法 反正每次调用都是执行redis的一个自增
+def get_hit_count():
+    retries = 5
+    while True:
+        try:
+            return cache.incr('hits')
+        except redis.exceptions.ConnectionError as exc:
+            if retries == 0:
+                raise exc
+            retries -= 1
+            time.sleep(0.5)
+
+# 访问根路径调用方法，并使用模板字符串渲染
+@app.route('/')
+def hello():
+    count = get_hit_count()
+    return 'Hello World! I have been seen {} times.\n'.format(count)
+```
+
+然后创建一个pip的`requirements.txt`
+
+```text
+flask
+redis
+```
+
+然后编写一个DockerFile
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]
+```
+
+- 从 Python 3.7 映像开始构建映像。
+- 将工作目录设置为`/code`.
+- 设置命令使用的环境变量`flask`。
+- 安装 gcc 和其他依赖项
+- 复制`requirements.txt`并安装 Python 依赖项。
+- 向镜像添加元数据以描述容器正在侦听端口 5000
+- 将项目中的当前目录复制`.`到镜像中的workdir `.`。
+- 将容器的默认命令设置为`flask run`.
+
+> 然后定义我们的service的yml：`docker-compose.yml`
+
+```yaml
+# 版本号
+version: "3.9"
+services:
+ # 这里是使用DockerFile构建的镜像
+  web:
+  # 构建目录
+    build: .
+    # 暴露的端口
+    ports:
+      - "5000:5000"
+  # 下面这里是使用了官方的redis的镜像
+  redis:
+    image: "redis:alpine"
+```
+
+然后只需要在当前文件夹下执行一条命令即可
+
+```bash
+docker-compose up
+```
+
+然后你就能看到如下内容
+
+![image-20220120120148671](/images/SpringCloud/00-Docker/image-20220120120148671.png)
+
+最后一个下载可能会比较慢…
+
+草，会非常非常的慢，尤其是那个gcc
+
+所以说我们改动下脚本
+
+![image-20220120124603233](/images/SpringCloud/00-Docker/image-20220120124603233.png)
+
+这行删掉，重新构建（或者你在那里自己指定代理）
+
+然后你就能得到
+
+![image-20220120124734036](/images/SpringCloud/00-Docker/image-20220120124734036.png)
+
+然后开下5000端口，外网访问下看看
+
+![image-20220120124915265](/images/SpringCloud/00-Docker/image-20220120124915265.png)
+
+成功，然后尝试下退出
+
+![image-20220120125100136](/images/SpringCloud/00-Docker/image-20220120125100136.png)
+
+然后您能得到这两个镜像
+
+![image-20220120125230085](/images/SpringCloud/00-Docker/image-20220120125230085.png)
+
+并且在docker images里面多了一个内容
+
+![image-20220120125354954](/images/SpringCloud/00-Docker/image-20220120125354954.png)
+
+并且，我们看看network
+
+![image-20220120131325324](/images/SpringCloud/00-Docker/image-20220120131325324.png)
+
+可以看到，多出了一个网络，也就是说我们部署的容器都是可以互通的
+
+### Compose常用命令一览
+
+注意 以下命令都是要cd到指定文件夹下才行
+
+> 普通运行
+
+```bash
+docker-compose up
+```
+
+> 后台运行
+
+```bash
+docker-compose up -d
+```
+
+> 一次性运行
+
+```bash
+docker-compose run
+```
+
+> 查看正在运行的容器(通过Compose构建的)
+
+```bsah
+docker-compose ps
+```
+
+> 结束服务
+
+```bash
+docker-compose stop
+```
+
+> 完全关闭、删除容器，并且删除对应的数据卷
+
+```bash
+docker-compose down --volumes
+```
+
+## Compose文件编写规则
+
+参照官方文档<https://docs.docker.com/compose/compose-file/>
+
+### version约定
+
+表示这个Compose文件支持哪些指定的Docker版本
+
+一般来说现在都是写3.9
+
+| 版本号                | 对应的Docker版本 |
+| :-------------------- | :--------------- |
+| Compose specification | 19.03.0+         |
+| 3.8                   | 19.03.0+         |
+| 3.7                   | 18.06.0+         |
+| 3.6                   | 18.02.0+         |
+| 3.5                   | 17.12.0+         |
+| 3.4                   | 17.09.0+         |
+| 3.3                   | 17.06.0+         |
+| 3.2                   | 17.04.0+         |
+| 3.1                   | 1.13.1+          |
+| 3.0                   | 1.13.0+          |
+| 2.4                   | 17.12.0+         |
+| 2.3                   | 17.06.0+         |
+| 2.2                   | 1.13.0+          |
+| 2.1                   | 1.12.0+          |
+| 2.0                   | 1.10.0+          |
+
+### Compose-Service
+
+详细的可以去看[官方文档](https://docs.docker.com/compose/compose-file/compose-file-v3/#service-configuration-reference)
+
+或者这篇[博客](https://blog.csdn.net/qq_36148847/article/details/79427878)（这篇博客比较齐全）
+
+反正总共就三层概念
+
+```yaml
+version: "版本号"
+service: #服务
+	服务1: web
+		images
+		build
+		network
+		....
+    服务2: redis。。。
+    服务3: redis。。。
+# 其他配置：网络、数据卷、全局规则
+volumes: 
+networks:
+configs: 
+```
+
+### 编写一个WordPress博客
+
+随便创建一个文件夹，然后创建一个docker-compose.yml
+
+```yaml
+version: '3.1'
+
+services:
+
+  wordpress:
+  # 使用镜像
+    image: wordpress
+    # 是否自动启动
+    restart: always
+    # 容器端口
+    ports:
+      - 8080:80
+    # 容器环境变量
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    # 挂载的数据卷
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
+```
+
+然后启动
+
+```bash
+docker-compose up
+```
+
+然后就行了
+
+删除：
+
+```bash
+docker-compose down --volumes
+```
+
+
+
+
+
+
+
+
 
 
 
