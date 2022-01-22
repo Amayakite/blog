@@ -454,7 +454,7 @@ const requestToken = ctx.request.query.code;
 
 接着，后端使用这个授权码，向 GitHub 请求令牌。
 
-```javasc
+```javascript
 const tokenResponse = await axios({
   method: 'post',
   url: 'https://github.com/login/oauth/access_token?' +

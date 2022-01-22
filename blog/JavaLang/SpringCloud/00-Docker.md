@@ -2924,7 +2924,7 @@ docker-compose run
 
 > 查看正在运行的容器(通过Compose构建的)
 
-```bsah
+```bash
 docker-compose ps
 ```
 

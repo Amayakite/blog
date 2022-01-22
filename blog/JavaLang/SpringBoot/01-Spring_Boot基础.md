@@ -236,7 +236,7 @@ public class HelloController {
 
 在里面写一句话（在你打service的时候IEDA应该就有智能提示了）
 
-```proper
+```properties
 server.port=8888
 ```
 
