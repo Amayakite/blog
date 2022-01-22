@@ -39,6 +39,8 @@ module.exports = config({
         hostname: "https://vuepress-theme-hope-demo.mrhope.site",
         author: "Amayakite",
         repo: "https://github.com/Amayakite/Amayakite.github.io",
+        sidebarDepth:3,
+
 
         // 配置Algolia搜索
         // algolia: {
@@ -91,6 +93,7 @@ module.exports = config({
         comment: false,
         copyright: {
             status: "global",
+            minLength:1000,
         },
 
         git: {
