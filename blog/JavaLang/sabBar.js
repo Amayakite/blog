@@ -101,6 +101,13 @@ module.exports = [
             "17-Sa-Token",
             "17-1-Sa-Token单点认证",
             "17-2-OAuth",
+            "18-数据校验",
+            "19-分布式缓存",
+            "20-Session共享",
+            "21-Spring操作RabbitMQ",
+            "22-Feign远程调用丢失请求头",
+            "23-幂等性问题",
+            "24-本地事务失效解决方案"
         ]
     }, {
         title: "6-Thread",
