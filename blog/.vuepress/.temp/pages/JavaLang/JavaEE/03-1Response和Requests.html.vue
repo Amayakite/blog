@@ -1,0 +1,412 @@
+<template><h2 id="基本概念" tabindex="-1"><a class="header-anchor" href="#基本概念" aria-hidden="true">#</a> 基本概念</h2>
+<p>嘛，这里主要是了解这两个东西是怎么样一个用法</p>
+<p>我们在使用<code>doGet()</code>的时候，可以发现他接受两个对象：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>之前一直没怎么说，现在开始具体的说说它</p>
+<p>​  Web服务器(Tomcat)接收到客户端的http请求，针对这个请求，分别创建了两个东西</p>
+<ul>
+<li>代表请求的<code>HttpServletRequest</code>对象
+<ul>
+<li>如果要获取客户端发过来的参数，找他就对了</li>
+</ul>
+</li>
+<li>代表响应的<code>HttpServletResponse</code>对象
+<ul>
+<li>如果要给客户端响应，找他就对了</li>
+</ul>
+</li>
+</ul>
+<p>既然要学，我们肯定是要按照顺序来学习的，先从Request开始吧</p>
+<h1 id="httpservletrequest" tabindex="-1"><a class="header-anchor" href="#httpservletrequest" aria-hidden="true">#</a> HttpServletRequest</h1>
+<p>相信学过爬虫的都对request这玩意不陌生，一个请求，在正式开始前，我们先来看看这张图</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/20200305162320791.jpg" alt="资源分配图" loading="lazy"></p>
+<p>​  从这张图中，我们可以看到，一个客户端请求分为好几步：</p>
+<ol>
+<li>
+<p>客户端的网络请求首先会被Http服务器接收</p>
+<ul>
+<li>这里的Http服务器也叫作<strong>Web服务器、Web容器，其需要提供web应用所需的环境，接受客户端的http请求</strong></li>
+<li>这里我们的服务器就是本机（<a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080<ExternalLinkIcon/></a>）</li>
+</ul>
+</li>
+<li>
+<p>web服务器根据请求的路径将请求转交给其对应的Servlet容器</p>
+<ul>
+<li>Servlet容器，也称作Servlet引擎，<strong>为Servlet的运行提供环境</strong></li>
+<li>也就是Tomcat或者其他服务器</li>
+</ul>
+</li>
+<li>
+<p>Servlet容器根据对应的虚拟路径（@WebServlet中配置的（或者是在xml中配置的mapping））来加载Servlet，如果Serlvet没有被实例化则创建该Servlet的一个实例（调用init方法）</p>
+</li>
+<li>
+<p>Servlet容器根据用户的HTTP请求，创建一个ServletRequest对象（HTTP的请求信息被封装在其中）和一个可以对HTTP请求进行响应的ServletResponse对象（类似于寄信，并在信中说明回信的地址）</p>
+<ol>
+<li>然后调用HttpServlet中重写的service(ServletRequest req, ServletResponse res)方法，并在这个方法中，将ServletRequest、ServletResponse这两个对象向下转型，得到我们非常熟悉的HttpServletRequest和HttpServletResponse两个对象，然后将客户端的请求转发到HttpServlet中protected修饰的</li>
+</ol>
+</li>
+<li>
+<p>service(HttpServletRequest req, HttpServletResponse resp)根据请求的method（get、post、put、delete、head、options、trace）来调用不同的方法，如doGet、doPost</p>
+</li>
+<li>
+<p>服务端处理完Http的请求后，根据HttpServletResponse对象将处理结果作为Http响应返回给客户端。</p>
+<p>上面就是一个客户端发起请求与接收响应之前服务器所执行的操作，对于一个Servlet来讲，其执行过程就等同于它的生命周期：</p>
+<ol>
+<li>被Servlet容器加载------&gt;</li>
+<li>接收servlet容器转发的来自客户端的Http请求-------&gt;</li>
+<li>处理完毕后，将处理结果返回至客户端------&gt;</li>
+<li>web服务终止时被销毁。</li>
+</ol>
+</li>
+</ol>
+<p>​  其中的2、3步骤，在web服务运行期间，可能会因为客户端的多次请求而执行多次，1、4步骤也有可能因为服务的重启或者主动销毁而多次执行。</p>
+<h3 id="http请求中包含的信息" tabindex="-1"><a class="header-anchor" href="#http请求中包含的信息" aria-hidden="true">#</a> Http请求中包含的信息</h3>
+<p>HttpServletRequest中包含了客户端HTTP请求的所有信息，其中主要为三部分信息：请求行、请求头、请求正文，这样说大家可能会不太明白，下面我们通过几张图片来说明一下：</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70-16385397719285.jpeg" alt="资源分配图" loading="lazy"></p>
+<p>上图还是我们的老朋友HelloServlet在Chrome中的运行页面（前几篇博客中有说明），我们打开可以通过右击–&gt;检查（或F12）打开开发者工具主面板，点击NetWork，点击请求的连接（HttpServlet）可以查看客户端向服务器的Http请求信息，红框中的信息即为Http请求中的部分信息为总览；</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70.jpeg" alt="资源分配图" loading="lazy"></p>
+<p>Http请求中还包含请求头信息，其中包含许多的header；</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/20200305162507214.jpg" alt="资源分配图" loading="lazy"></p>
+<p>如果Http请求方式为post，装在请求体中的数据可以在Form Data中看到，Query String Parameters和Form Data是可以共存的，即Http协议既允许我们通过url传参，也可以通过请求体传参，Get、Post方式更多的是对请求进行规范化，开发中还是尽量只使用一种方式传参。</p>
+<h3 id="httpservletrequest中获取请求行信息的方法" tabindex="-1"><a class="header-anchor" href="#httpservletrequest中获取请求行信息的方法" aria-hidden="true">#</a> HttpServletRequest中获取请求行信息的方法</h3>
+<p>​  Http的请求行中，会包含请求方法、请求资源名、请求路径、Http版本等信息</p>
+<p>​  我们可以在tomcat的安装目录–&gt;logs—&gt;localhost_access_log.xxx.txt中查看在某日期中(xxx为日期，格式为yyyy-MM-dd)请求本Tomcat的所有Http请求的请求头信息</p>
+<p>如果你是在IEDA中启动tomcat的话，那么可以通过ieda的tomcat配置页面来设置log存放的路径：这两个勾上并配置即可</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203220423076.png" alt="image-20211203220423076" loading="lazy"></p>
+<p>我们在上面请求HelloServlet的请求行信息格式大概如下：</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203220705031.png" alt="image-20211203220705031" loading="lazy"></p>
+<p>​  在log信息中，括起来的为请求行信息，<code>GET</code>表示请求方式，<code>/</code>为请求url，<code>HTTP/1.1</code>为请求的协议及版本。</p>
+<p>请求行后跟的200为Http响应的状态码（Status Code），11363为响应内容的长度（Content-Length）。</p>
+<p>为了获取请求行中对应的信息，HttpServletRequest中实现了一堆的方法，让我们的操作变得更加简单快捷。相关方法如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String getMehod()</td>
+<td>该方法用于获取HTTP请求消息中的请求方式<br />（如GET、POST等）</td>
+</tr>
+<tr>
+<td style="text-align:center">String getRequestUrl()</td>
+<td>该方法用于获取请求行中的资源名称部分<br />即位于URL的主机端口之后、参数部分之前的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">String getQueryString()</td>
+<td>该方法用于获取请求体中的参数部分<br />例如：<code>localhost:8080/aa/b?name=hello&amp;pwd=123</code><br />则获取到的内容为：<code>name=hello&amp;pwd=123</code></td>
+</tr>
+<tr>
+<td style="text-align:center">String getProtocol()</td>
+<td>该方法用户获取请求体中的协议名称和版本<br />例如：<code>HTTP/1.0</code>或<code>HTTP/1.1</code></td>
+</tr>
+<tr>
+<td style="text-align:center">String getContextPath()</td>
+<td>这个方法用于获取这个URL位于我们WEB应用程序的路径<br />例如访问<code>localhost:8080/aa/bb/cc</code><br />则返回<code>/aa/bb/cc</code><br />如果说访问的路径是根目录，则返回空字符串(不是null)</td>
+</tr>
+<tr>
+<td style="text-align:center">String getServletPath()</td>
+<td>该方法用户获取 Servlet 的名称或Servlet所映射的路径</td>
+</tr>
+<tr>
+<td style="text-align:center">String getRemoteAddr()</td>
+<td>该方法用户获取客户端的IP地址，格式类似于&quot;192.168.0.3&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center">String getRemoteHost()</td>
+<td>该方法用户获取客户端的完整主机名，其格式类似于<code>localhost</code><br />需要注意的是，如果无法解析出该主机名，会返回客户端的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">int getRemotePort()</td>
+<td>获取请求客户端网络连接的端口号</td>
+</tr>
+<tr>
+<td style="text-align:center">String getLocalAddr()</td>
+<td>获取web服务器上接收当前请求网络连接的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">String getLocalName()</td>
+<td>获取web服务器上接收当前请求网络连接的IP地址所对应的主机名</td>
+</tr>
+<tr>
+<td style="text-align:center">int getLocalPort()</td>
+<td>获取web服务器上接收当前请求网络连接的端口号</td>
+</tr>
+<tr>
+<td style="text-align:center">String getServerName()</td>
+<td>该方法用于获取当前请求所指向的主机名<br />即：HTTP请求消息中Host头字段所对应的主机名部分</td>
+</tr>
+<tr>
+<td style="text-align:center">int getServerPort()</td>
+<td>该方法用户获取当前请求所连接的服务器端口号<br />即如果是HTTP请求消息中Host头字段所有对应端口号部分</td>
+</tr>
+<tr>
+<td style="text-align:center">String getSchme()</td>
+<td>该方法用户获取请求的协议名，例如<code>http</code>、<code>https</code>或<code>ftp</code></td>
+</tr>
+<tr>
+<td style="text-align:center">StringBuffer getRequestURL()</td>
+<td>获取客户端发出请求的完整URL<br />包括协议、服务名、端口号、资源路径等信息<br />但是不包括后面的查询参数(params)部分<br />这玩意返回的是StringBuffer类型，更方便对结果的修改</td>
+</tr>
+</tbody>
+</table>
+<p>为了更好的理解，我们通过一个例子来看下每个方法的返回值</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    resp<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/plain;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//        获取所有请求行相关的信息</span>
+    <span class="token class-name">PrintWriter</span> writer <span class="token operator">=</span> resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"HttpServletRequest对象获取请求行信息方法示例：&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getMethod : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getRequestURI : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getQueryString:"</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getQueryString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getProtocol : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getProtocol</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getContextPath:"</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getContextPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getServletPath : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getServletPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getRemoteAddr : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getRemoteAddr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getRemoteHost : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getRemoteHost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getRemotePort : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getRemotePort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getLocalAddr : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getLocalAddr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getLocalName : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getLocalName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getLocalPort : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getLocalPort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getServerName : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getServerName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getServerPort : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getServerPort</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getScheme : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getScheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getRequestURL : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getRequestURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p><img src="/images/JavaEE/03-1Response和Requests/image-20211203223228622.png" alt="image-20211203223228622" loading="lazy"></p>
+<p>换成127.0.0.1再试试（我电脑上装了docker，所以他识别我的主机名是docker（docker安装的时候会附带一个网络驱动））</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203223341940.png" alt="image-20211203223341940" loading="lazy"></p>
+<p>​  我们可以看到，HttpServletRequest提供的方法几乎可以获取我们想要的任何请求头中的信息，还可以获得客户端的的ip地址（客户端出口的公网ip），在上例中，getRemoteAddr等四个方法获取到的值全为0:0:0:0:0:0:0:1</p>
+<p>​  这是因为客户端和服务器端都在一个主机上，hosts文件解析地址的时候将localhost解析为ipv6了，我们可以将localhost改为127.0.0.1，即可获得ipv4的地址。</p>
+<p>​  其中的getRemotePort获取的是客户端与服务器管建立的Tcp连接所使用的端口号。</p>
+<h3 id="httpservletrequest中获取请求头的相关方法" tabindex="-1"><a class="header-anchor" href="#httpservletrequest中获取请求头的相关方法" aria-hidden="true">#</a> HttpServletRequest中获取请求头的相关方法</h3>
+<p>当客户端请求Servlet时，需要通过请求头向服务器传递附加信息，例如客户端可以接受的数据类型、请求源、消息正文的长度、是否保持TCP连接等，我们先来看下Http中常见的请求头信息：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200305162936951.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70" alt="资源分配图" loading="lazy"></p>
+<p>同样的，为了方便的获取请求头中对应的信息，HttpServletRequest也提供了一系列的方法，相关方法如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String getHeader(String name)</td>
+<td>该方法用于获取一个指定头字段<br />如果请求消息中没有包括指定的头字段，getHeader()方法就返回null<br />如果过请求消息中包含有多个指定名称的头字段，<br />getHeader()返回其中第一个头字段的值</td>
+</tr>
+<tr>
+<td style="text-align:center">Enumeration getHeaders(String name)</td>
+<td>该方法返回一个<code>Enumeration&lt;String&gt;</code>集合对象<br />该机和对象有请求消息中出现的某个指定名称的所有头字段组成<br />在多数情况下，一个头字段名在请求消息中只出现一次<br />但有时候可能出现多次</td>
+</tr>
+<tr>
+<td style="text-align:center">Enumeration getHeaderNames()</td>
+<td>获取所有请求头字段<strong>名称</strong>的<code>Enumeration&lt;String&gt;</code>对象</td>
+</tr>
+<tr>
+<td style="text-align:center">int getIntHeader(String name)</td>
+<td>获取指定名称的头字段，并且将其转换为<code>int</code>类型<br />如果指定名称的头字段不存在，返回-1<br />如果获取到的头字段不能转换为int，则抛出<br />NumberFormatException异常</td>
+</tr>
+<tr>
+<td style="text-align:center">long getDateHeader(String name)</td>
+<td>该方法用户获取指定头字段的值<br />并且按照GMT时间格式转换成一个代表日期的长整数（时间戳）</td>
+</tr>
+<tr>
+<td style="text-align:center">String getContentType()</td>
+<td>该方法用于获取<code>content-Type</code>头字段的值，结果为String类型</td>
+</tr>
+<tr>
+<td style="text-align:center">int getContentLength()</td>
+<td>该方法用于获取Content-Length头字段的值，结果为int类型</td>
+</tr>
+<tr>
+<td style="text-align:center">String getCharacterEncoding()</td>
+<td>返回请求消息的试题部分的字符集编码，通常是从<code>content-Type</code>头字段中进行提取，结果为String类型</td>
+</tr>
+<tr>
+<td style="text-align:center">Cookie[] getCookies()</td>
+<td>该方法用于获取所有的客户端传来的Cookie对象，如果客户端没有发送Cookie，则返回null</td>
+</tr>
+</tbody>
+</table>
+<p>我们接着之前的代码，加上如下代码，然后跑起来访问一下看看：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code>writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&lt;hr/>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"HttpServletRequest对象获取请求头信息方法示例：&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getHeaderNames,all headers info as follows:"</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 获取请求消息中所有头字段</span>
+<span class="token class-name">Enumeration</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> headerNames <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getHeaderNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 使用循环遍历所有请求头，并通过getHeader()方法获取一个指定名称的头字段</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>headerNames<span class="token punctuation">.</span><span class="token function">hasMoreElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> headerName <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> headerNames<span class="token punctuation">.</span><span class="token function">nextElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>headerName <span class="token operator">+</span> <span class="token string">" : "</span> <span class="token operator">+</span> req<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span>headerName<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getCookies,all cookies info as follows:"</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Cookie</span><span class="token punctuation">[</span><span class="token punctuation">]</span>cookies <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">getCookies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">Cookie</span> cookie<span class="token operator">:</span> cookies<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    writer<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>cookie<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> cookie<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>结果：这里也可以手动添加几个cookie看看cookie的效果</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203230732811.png" alt="image-20211203230732811" loading="lazy"></p>
+<h2 id="httpservletrequest中获取请求参数" tabindex="-1"><a class="header-anchor" href="#httpservletrequest中获取请求参数" aria-hidden="true">#</a> HttpServletRequest中获取请求参数</h2>
+<p>上面讲了这么多，其实都是HttpServletRequest提供的锦上添花的方法，HttpServletRequest最重要的，就是可以获取用户提交来的数据，比如表单数据或者一些查询参数。因为Servlet在MVC架构中是充当controller这个角色的，其负责响应用户的请求，也就需要和用户进行交互，负责获取从前端（JSP，客户端）获取数据（用户输入、或者查询条件等），并在处理结束后，给客户端一个响应。如果无法获取页面数据，那么后续的操作也就无从谈起。</p>
+<p>​   当然，为了方便获取页面中的参数，HttpServletRequest也也也提供了一系列的方法，相关方法如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法声明</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String getParameter(String name)</td>
+<td style="text-align:left">获取某个指定名称的参数值<br />如果在请求消息中没有包含指定名称的参数值<br />则返回null<br />如果有多个该指定名称的参数，返回第一个</td>
+</tr>
+<tr>
+<td style="text-align:center">String[] getParameterValues(String name)</td>
+<td style="text-align:left">获取某个指定名称的参数值<br />和上面不同的是，这玩意是处理多个该指定名称的参数的</td>
+</tr>
+<tr>
+<td style="text-align:center">Enumeration getParamentNames()</td>
+<td style="text-align:left">返回一个包含请求消息中所有参数名的Enumeration 对象<br />在基础上，可以对请求消息中的所有参数进行遍历处理</td>
+</tr>
+<tr>
+<td style="text-align:center">Map getParameterMap()</td>
+<td style="text-align:left">将请求信息中的所有参数名和值装入一个Map中返回</td>
+</tr>
+</tbody>
+</table>
+<h1 id="httpservletresponse" tabindex="-1"><a class="header-anchor" href="#httpservletresponse" aria-hidden="true">#</a> HttpServletResponse</h1>
+<p>首先瞄一眼结构：原来是两个接口</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203170325613.png" alt="image-20211203170325613" loading="lazy"></p>
+<p>可以看到，它继承自ServletResponse，同时他本身并没有直接对流操作的方法，但是它的父类中有个两个对流操作的方法：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token keyword">public</span> <span class="token class-name">ServletOutputStream</span> <span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token class-name">PrintWriter</span> <span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>我们之前给浏览器发送文本，就是通过<code>getWriter</code>来进行发送的，那么发送文件之类的二进制数据应该是用<code>getOutputStream</code>了</p>
+<p>我们来写行代码测试看下它的运行类型是什么：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>看来都是tomcat在实现这个东西</p>
+<div class="language-markdown ext-md line-numbers-mode"><pre v-pre class="language-markdown"><code><span class="token title important"><span class="token punctuation">#</span> 1</span>
+class org.apache.catalina.connector.ResponseFacade
+<span class="token title important"><span class="token punctuation">#</span> 2</span>
+class org.apache.catalina.connector.CoyoteOutputStream
+<span class="token title important"><span class="token punctuation">#</span> 3</span>
+class org.apache.catalina.connector.ResponseFacade
+class org.apache.catalina.connector.CoyoteOutputStream
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>貌似发现了什么，我接着写一些代码测试了下：</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    resp<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    resp<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">PrintWriter</span> writer <span class="token operator">=</span> resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;h1>Hello World&lt;/h1>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>写完这些后，我尝试的访问了下这个东西绑定的路径，发现没有返回任何消息</p>
+<p>说明<code>getWriter</code>中的流是继承自<code>getOutputStream()</code>中的流的</p>
+<p>接着，我们再来看看字段：</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203172224003.png" alt="image-20211203172224003" loading="lazy"></p>
+<p>都是状态码的常量，这里面存放了各种常见的状态码，有需要的时候应该能直接调的来用</p>
+<h2 id="常见应用" tabindex="-1"><a class="header-anchor" href="#常见应用" aria-hidden="true">#</a> 常见应用</h2>
+<h3 id="设置状态码" tabindex="-1"><a class="header-anchor" href="#设置状态码" aria-hidden="true">#</a> 设置状态码</h3>
+<h3 id="发送消息" tabindex="-1"><a class="header-anchor" href="#发送消息" aria-hidden="true">#</a> 发送消息</h3>
+<p>略，天天用</p>
+<h3 id="发送文件、展示图片" tabindex="-1"><a class="header-anchor" href="#发送文件、展示图片" aria-hidden="true">#</a> 发送文件、展示图片</h3>
+<p>我这里以演示发送一个jpg文件为例，注意，文件存放的位置决定了发送时调用不同的方法</p>
+<p>我把文件放在了静态资源的同级目录下，而非是我们代码的目录下</p>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211203235821715.png" alt="image-20211203235821715" loading="lazy"></p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span>
+        name <span class="token operator">=</span> <span class="token string">"testRes1"</span><span class="token punctuation">,</span>
+        urlPatterns <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"/test-res-1"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        description <span class="token operator">=</span> <span class="token string">"testRes"</span>
+
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> testRes1 <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+<span class="token comment">//        完成发送文件给客户端的操作</span>
+        <span class="token class-name">String</span> realPath <span class="token operator">=</span> <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/01.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        截取这个字符串最后一个\+1的index及之后的内容，</span>
+        <span class="token class-name">String</span> substring <span class="token operator">=</span> realPath<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>realPath<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">"\\"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        设置响应头为文件类型 并且将文件名编码设置为utf-8，防止中文乱码的问题</span>
+<span class="token comment">//        resp.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(substring, "UTF-8"));</span>
+        
+<span class="token comment">//        如果要让浏览器不直接下载而是展现图片的话：</span>
+        resp<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"image/jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+<span class="token comment">//        创建一个文件缓冲输入流</span>
+        <span class="token class-name">BufferedInputStream</span> inputStream <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>realPath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        如果说放在了resources文件夹下，那么这里的new BufferedInputStream()内应该是如下内容</span>
+<span class="token comment">//        getServletContext().getResourceAsStream("/WEB-INF/classes/01.jpg")</span>
+<span class="token comment">//        创建一个缓冲区</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>count <span class="token operator">=</span> inputStream<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            resp<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>bytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        inputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resp<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><h3 id="验证码的实现" tabindex="-1"><a class="header-anchor" href="#验证码的实现" aria-hidden="true">#</a> 验证码的实现</h3>
+<p>这里需要用到一个<code>Image</code>类</p>
+<p>我也懒得整，直接看网上的教程做一遍</p>
+<p><a href="https://www.cnblogs.com/hxw6/p/10151766.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/hxw6/p/10151766.html<ExternalLinkIcon/></a></p>
+<p>这里放上我的代码，已经能够实现初步的发送图片了，剩下的只要调用下那位作者代码，获取到验证码明文，放到session内即可，剩下的就交给前端来验证</p>
+<div class="language-java ext-java line-numbers-mode"><pre v-pre class="language-java"><code><span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span>
+        name <span class="token operator">=</span> <span class="token string">"testImagePace"</span><span class="token punctuation">,</span>
+        urlPatterns <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"/testImagePace"</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> testImagePace <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+        <span class="token class-name">ImageVerificationCode</span> ivc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageVerificationCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//获取验证码</span>
+        <span class="token class-name">BufferedImage</span> image <span class="token operator">=</span> ivc<span class="token punctuation">.</span><span class="token function">getImage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> text <span class="token operator">=</span> ivc<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        发送图片</span>
+        resp<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"image/jpeg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        让浏览器不缓存图片</span>
+        resp<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Pragma"</span><span class="token punctuation">,</span> <span class="token string">"No-cache"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resp<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Cache-Control"</span><span class="token punctuation">,</span> <span class="token string">"no-cache"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resp<span class="token punctuation">.</span><span class="token function">setDateHeader</span><span class="token punctuation">(</span><span class="token string">"Expires"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        将图片写到输出流中</span>
+        <span class="token class-name">ServletOutputStream</span> sos <span class="token operator">=</span> resp<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//        这个output实际上调用的还是ImageIO.write(image, "jpeg", sos);</span>
+        <span class="token class-name">ImageVerificationCode</span><span class="token punctuation">.</span><span class="token function">output</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> sos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        sos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p><img src="/images/JavaEE/03-1Response和Requests/image-20211204004721307.png" alt="image-20211204004721307" loading="lazy"></p>
+<p>而且每次的都不一样</p>
+<h3 id="实现重定向" tabindex="-1"><a class="header-anchor" href="#实现重定向" aria-hidden="true">#</a> 实现重定向</h3>
+<p><img src="/images/JavaEE/03-1Response和Requests/image-20211204121022669.png" alt="image-20211204121022669" loading="lazy"></p>
+<p>B一个Web资源接收到客户端A请求后，他会通知客户端A去访问另一个WEb资源C，这个过程叫重定向</p>
+<p>常见场景：</p>
+<ul>
+<li>用户登录</li>
+</ul>
+</template>
