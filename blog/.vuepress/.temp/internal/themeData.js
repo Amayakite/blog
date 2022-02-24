@@ -34,7 +34,7 @@ export const themeData = {
         {
           "text": "VuePressTheme-Hope",
           "icon": "vue",
-          "link": "https://vuepress-theme-hope.github.io/zh/"
+          "link": "https://vuepress-theme-hope.github.io/v2/zh/"
         },
         {
           "text": "Java常用网站",
@@ -62,8 +62,13 @@ export const themeData = {
             },
             {
               "text": "Spring官网",
-              "icon": "note",
+              "icon": "leaf",
               "link": "https://spring.io/"
+            },
+            {
+              "text": "Json在线解析",
+              "icon": "script",
+              "link": "https://www.json.cn/"
             }
           ]
         }

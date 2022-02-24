@@ -31,10 +31,10 @@ export default defineThemeConfig({
   logo: "/logo.svg",
 
   // 仓库的地址
-  repo: "https://github.com/Amayakite/myBlog",
+  repo: "https://github.com/Amayakite/blog",
   repoLabel: "GitHub",
   // 文档在的仓库
-  docsRepo:"https://github.com/Amayakite/myBlog",
+  docsRepo:"https://github.com/Amayakite/blog",
   // 文档在的分支
   docsBranch: "master",
   docsDir: "blog",
