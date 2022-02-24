@@ -4,6 +4,19 @@ import themeConfig from "./themeConfig";
 export default defineHopeConfig({
   base: "/",
 
+  plugins:[
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: '搜索',
+          },
+        },
+      },
+    ],
+  ],
+
   title: "Amayakite Blogs",
   description: "记录我",
 
