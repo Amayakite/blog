@@ -6,5 +6,3 @@ dist-ssr
 .idea
 .vscode
 yarn.lock
-blog/.vuepress/.temp
-blog/.vuepress/.cache

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["dep:dayjs_plugin_localizedFormat"],
+  "sourcesContent": ["export default require(\"../../../../../../../node_modules/dayjs/plugin/localizedFormat.js\");"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,IAAO,uCAAQ;",
+  "names": []
+}

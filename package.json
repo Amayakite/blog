@@ -2,7 +2,7 @@
   "name": "amayakite-blog",
   "version": "2.0.0",
   "description": "个人博客",
-  "license": "MIT",
+  "license": "Apache2.0",
   "scripts": {
     "docs:build": "vuepress build blog",
     "docs:clean-dev": "vuepress dev blog --clean-cache",

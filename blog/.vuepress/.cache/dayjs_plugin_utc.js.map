@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["dep:dayjs_plugin_utc"],
+  "sourcesContent": ["export default require(\"../../../../../../../node_modules/dayjs/plugin/utc.js\");"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,IAAO,2BAAQ;",
+  "names": []
+}
