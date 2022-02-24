@@ -39,6 +39,11 @@ export default defineThemeConfig({
   docsBranch: "master",
   docsDir: "blog",
 
+  lastUpdated:true,
+  contributors:true,
+  editLink:true,
+
+
   // navbar
   navbar: navbar,
 
@@ -49,10 +54,13 @@ export default defineThemeConfig({
 
   displayFooter: true,
 
+
   // page meta
   metaLocales: {
     editLink: "在 GitHub 上编辑此页",
   },
+
+
 
   blog: {
     description: "Amayakite",
@@ -73,6 +81,7 @@ export default defineThemeConfig({
   // },
 
   plugins: {
+
 
     // blog:true,
 

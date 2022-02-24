@@ -1,160 +1,160 @@
 {
-  "hash": "e9214761",
-  "browserHash": "e6d5f493",
+  "hash": "a08c9a17",
+  "browserHash": "680941af",
   "optimized": {
     "vue": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/vue.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/vue.js",
+      "src": "E:/AmayakiteBlog/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js",
       "needsInterop": false
     },
     "vue-router": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/vue-router.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/vue-router/dist/vue-router.esm-bundler.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/vue-router.js",
+      "src": "E:/AmayakiteBlog/node_modules/vue-router/dist/vue-router.esm-bundler.js",
       "needsInterop": false
     },
     "@vue/devtools-api": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/@vue_devtools-api.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/@vue/devtools-api/lib/esm/index.js",
-      "needsInterop": false
-    },
-    "@mr-hope/vuepress-shared/lib/client": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/@mr-hope_vuepress-shared_lib_client.js",
-      "src": "C:/projects/vuepress-theme-hope/packages/shared/lib/client/index.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@vue_devtools-api.js",
+      "src": "E:/AmayakiteBlog/node_modules/@vue/devtools-api/lib/esm/index.js",
       "needsInterop": false
     },
     "@vueuse/core": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/@vueuse_core.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/@vueuse/core/index.mjs",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@vueuse_core.js",
+      "src": "E:/AmayakiteBlog/node_modules/@vueuse/core/index.mjs",
       "needsInterop": false
     },
     "bcryptjs": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/bcryptjs.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/bcryptjs/dist/bcrypt.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/bcryptjs.js",
+      "src": "E:/AmayakiteBlog/node_modules/bcryptjs/dist/bcrypt.js",
       "needsInterop": true
     },
     "body-scroll-lock": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/body-scroll-lock.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/body-scroll-lock/lib/bodyScrollLock.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/body-scroll-lock.js",
+      "src": "E:/AmayakiteBlog/node_modules/body-scroll-lock/lib/bodyScrollLock.esm.js",
       "needsInterop": false
     },
     "lodash.throttle": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/lodash_throttle.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/lodash.throttle/index.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/lodash_throttle.js",
+      "src": "E:/AmayakiteBlog/node_modules/lodash.throttle/index.js",
       "needsInterop": true
     },
+    "@mr-hope/vuepress-shared/lib/client": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@mr-hope_vuepress-shared_lib_client.js",
+      "src": "E:/AmayakiteBlog/node_modules/@mr-hope/vuepress-shared/lib/client/index.js",
+      "needsInterop": false
+    },
     "dayjs": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/dayjs.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/dayjs/dayjs.min.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/dayjs.min.js",
       "needsInterop": true
     },
     "dayjs/plugin/localizedFormat": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/dayjs_plugin_localizedFormat.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/dayjs/plugin/localizedFormat.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_localizedFormat.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/localizedFormat.js",
       "needsInterop": true
     },
     "dayjs/plugin/objectSupport": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/dayjs_plugin_objectSupport.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/dayjs/plugin/objectSupport.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_objectSupport.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/objectSupport.js",
       "needsInterop": true
     },
     "dayjs/plugin/timezone": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/dayjs_plugin_timezone.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/dayjs/plugin/timezone.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_timezone.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/timezone.js",
       "needsInterop": true
     },
     "dayjs/plugin/utc": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/dayjs_plugin_utc.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/dayjs/plugin/utc.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_utc.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/utc.js",
       "needsInterop": true
     },
     "lodash.debounce": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/lodash_debounce.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/lodash.debounce/index.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/lodash_debounce.js",
+      "src": "E:/AmayakiteBlog/node_modules/lodash.debounce/index.js",
       "needsInterop": true
     },
     "screenfull": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/screenfull.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/screenfull/dist/screenfull.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/screenfull.js",
+      "src": "E:/AmayakiteBlog/node_modules/screenfull/dist/screenfull.js",
       "needsInterop": true
     },
     "nprogress": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/nprogress.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/nprogress/nprogress.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/nprogress.js",
+      "src": "E:/AmayakiteBlog/node_modules/nprogress/nprogress.js",
       "needsInterop": true
     },
     "@waline/client": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/@waline_client.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/@waline/client/dist/Waline.min.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@waline_client.js",
+      "src": "E:/AmayakiteBlog/node_modules/@waline/client/dist/Waline.min.js",
       "needsInterop": true
     },
     "flowchart.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/flowchart_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/flowchart.js/index.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/flowchart_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/flowchart.js/index.js",
       "needsInterop": true
     },
     "mermaid": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/mermaid.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/mermaid/dist/mermaid.esm.min.mjs",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/mermaid.js",
+      "src": "E:/AmayakiteBlog/node_modules/mermaid/dist/mermaid.esm.min.mjs",
       "needsInterop": false
     },
-    "reveal.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/dist/reveal.esm.js",
+    "reveal.js/dist/reveal.esm.js": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_dist_reveal_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/dist/reveal.esm.js",
       "needsInterop": false
     },
     "reveal.js/plugin/markdown/markdown.esm.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js_plugin_markdown_markdown_esm_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/plugin/markdown/markdown.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_plugin_markdown_markdown_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/plugin/markdown/markdown.esm.js",
       "needsInterop": false
     },
     "reveal.js/plugin/highlight/highlight.esm.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js_plugin_highlight_highlight_esm_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/plugin/highlight/highlight.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_plugin_highlight_highlight_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/plugin/highlight/highlight.esm.js",
       "needsInterop": false
     },
     "reveal.js/plugin/math/math.esm.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js_plugin_math_math_esm_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/plugin/math/math.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_plugin_math_math_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/plugin/math/math.esm.js",
       "needsInterop": false
     },
     "reveal.js/plugin/search/search.esm.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js_plugin_search_search_esm_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/plugin/search/search.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_plugin_search_search_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/plugin/search/search.esm.js",
       "needsInterop": false
     },
     "reveal.js/plugin/notes/notes.esm.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js_plugin_notes_notes_esm_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/plugin/notes/notes.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_plugin_notes_notes_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/plugin/notes/notes.esm.js",
       "needsInterop": false
     },
     "reveal.js/plugin/zoom/zoom.esm.js": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/reveal_js_plugin_zoom_zoom_esm_js.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/reveal.js/plugin/zoom/zoom.esm.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/reveal_js_plugin_zoom_zoom_esm_js.js",
+      "src": "E:/AmayakiteBlog/node_modules/reveal.js/plugin/zoom/zoom.esm.js",
       "needsInterop": false
     },
     "photoswipe": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/photoswipe.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/photoswipe/dist/photoswipe.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/photoswipe.js",
+      "src": "E:/AmayakiteBlog/node_modules/photoswipe/dist/photoswipe.js",
       "needsInterop": true
     },
     "photoswipe/dist/photoswipe-ui-default": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/photoswipe_dist_photoswipe-ui-default.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/photoswipe/dist/photoswipe-ui-default.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/photoswipe_dist_photoswipe-ui-default.js",
+      "src": "E:/AmayakiteBlog/node_modules/photoswipe/dist/photoswipe-ui-default.js",
       "needsInterop": true
     },
     "mitt": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/mitt.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/mitt/dist/mitt.mjs",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/mitt.js",
+      "src": "E:/AmayakiteBlog/node_modules/mitt/dist/mitt.mjs",
       "needsInterop": false
     },
     "register-service-worker": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/register-service-worker.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/register-service-worker/index.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/register-service-worker.js",
+      "src": "E:/AmayakiteBlog/node_modules/register-service-worker/index.js",
       "needsInterop": false
     },
     "@vuepress/shared": {
-      "file": "C:/projects/vuepress-theme-hope/packages/create/template/zh/.vuepress/.cache/@vuepress_shared.js",
-      "src": "C:/projects/vuepress-theme-hope/node_modules/@vuepress/shared/lib/esm/index.js",
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@vuepress_shared.js",
+      "src": "E:/AmayakiteBlog/node_modules/@vuepress/shared/lib/esm/index.js",
       "needsInterop": false
     }
   }

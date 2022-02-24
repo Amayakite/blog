@@ -15,11 +15,14 @@ export const themeData = {
   },
   "iconPrefix": "iconfont icon-",
   "logo": "/logo.svg",
-  "repo": "https://github.com/Amayakite/myBlog",
+  "repo": "https://github.com/Amayakite/blog",
   "repoLabel": "GitHub",
-  "docsRepo": "https://github.com/Amayakite/myBlog",
+  "docsRepo": "https://github.com/Amayakite/blog",
   "docsBranch": "master",
   "docsDir": "blog",
+  "lastUpdated": true,
+  "contributors": true,
+  "editLink": true,
   "navbar": [
     "/",
     {
@@ -81,6 +84,7 @@ export const themeData = {
         "text": "1-基础部分",
         "icon": "java",
         "prefix": "JavaSE/",
+        "collapsable": true,
         "children": [
           "01-Java的特点.md",
           "02-开始使用Java.md",
@@ -111,6 +115,7 @@ export const themeData = {
         "text": "2-JavaWeb",
         "icon": "java-web",
         "prefix": "JavaEE/",
+        "collapsable": true,
         "children": [
           "01-初识JavaWeb.md",
           "02-Maven.md",
@@ -126,6 +131,7 @@ export const themeData = {
         "text": "3-SpringFrameWork",
         "icon": "spring",
         "prefix": "SpringFrameWork/",
+        "collapsable": true,
         "children": [
           "01-Spring.md",
           "02-Spring配置数据源.md",
@@ -145,6 +151,7 @@ export const themeData = {
       {
         "text": "4-SpringBoot",
         "icon": "spring-boot",
+        "collapsable": true,
         "prefix": "SpringBoot/",
         "children": [
           "01-Spring_Boot基础.md",
@@ -160,6 +167,7 @@ export const themeData = {
       {
         "text": "5-SpringCloud",
         "icon": "spring-cloud",
+        "collapsable": true,
         "prefix": "SpringCloud/",
         "children": [
           "00-Docker.md",
@@ -195,6 +203,7 @@ export const themeData = {
       {
         "text": "6-Thread",
         "icon": "java-thread",
+        "collapsable": true,
         "prefix": "Thread/",
         "children": [
           "1-线程的基本介绍.md",
@@ -292,4 +301,17 @@ export const themeData = {
   "sidebarIcon": true,
   "pure": false,
   "fullScreen": true
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateThemeData) {
+    __VUE_HMR_RUNTIME__.updateThemeData(themeData)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ themeData }) => {
+    __VUE_HMR_RUNTIME__.updateThemeData(themeData)
+  })
 }

@@ -7,6 +7,8 @@ heroImage: /logo.svg
 heroText: Amayakite Blog
 heroFullScreen: true
 tagline: 鱼跃此时海，花开彼岸天
+bgImage: /homeBackground.jpg
+
 # projects:
 #   - type: project
 #     name: 项目名称

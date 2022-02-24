@@ -23,8 +23,8 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-G642NIRV.js";
-import "./chunk-HY7UP3Y7.js";
+} from "./chunk-QONNFWLF.js";
+import "./chunk-EERTZB2S.js";
 import {
   init_define_ARTICLE_INFO_LOCALES,
   init_define_BACK_TO_TOP_LOCALES,
@@ -41,7 +41,7 @@ import {
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
   init_define_WALINE_LOCALES
-} from "./chunk-2JB763FX.js";
+} from "./chunk-HAWNBGA3.js";
 
 // dep:@vueuse_core
 init_define_ARTICLE_INFO_LOCALES();
@@ -60,7 +60,7 @@ init_define_REVEAL_CONFIG();
 init_define_WALINE_LOCALES();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 
-// ../../node_modules/@vueuse/core/index.mjs
+// node_modules/@vueuse/core/index.mjs
 init_define_ARTICLE_INFO_LOCALES();
 init_define_BACK_TO_TOP_LOCALES();
 init_define_CODE_COPY_LOCALES();
@@ -77,7 +77,7 @@ init_define_REVEAL_CONFIG();
 init_define_WALINE_LOCALES();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 
-// ../../node_modules/@vueuse/shared/index.mjs
+// node_modules/@vueuse/shared/index.mjs
 init_define_ARTICLE_INFO_LOCALES();
 init_define_BACK_TO_TOP_LOCALES();
 init_define_CODE_COPY_LOCALES();
@@ -94,7 +94,7 @@ init_define_REVEAL_CONFIG();
 init_define_WALINE_LOCALES();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 
-// ../../node_modules/vue-demi/lib/index.mjs
+// node_modules/vue-demi/lib/index.mjs
 init_define_ARTICLE_INFO_LOCALES();
 init_define_BACK_TO_TOP_LOCALES();
 init_define_CODE_COPY_LOCALES();
@@ -129,7 +129,7 @@ function del(target, key) {
   delete target[key];
 }
 
-// ../../node_modules/@vueuse/shared/index.mjs
+// node_modules/@vueuse/shared/index.mjs
 function and(...args) {
   return computed(() => args.every((i) => unref(i)));
 }
@@ -1273,7 +1273,7 @@ function whenever(source, cb, options) {
   }, options);
 }
 
-// ../../node_modules/@vueuse/core/index.mjs
+// node_modules/@vueuse/core/index.mjs
 function asyncComputed(evaluationCallback, initialState2, optionsOrRef) {
   let options;
   if (isRef(optionsOrRef)) {

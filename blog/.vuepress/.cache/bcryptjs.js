@@ -19,7 +19,7 @@ import {
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
   init_define_WALINE_LOCALES
-} from "./chunk-2JB763FX.js";
+} from "./chunk-HAWNBGA3.js";
 
 // browser-external:crypto
 var crypto_exports = {};
@@ -52,9 +52,9 @@ var init_crypto = __esm({
   }
 });
 
-// ../../node_modules/bcryptjs/dist/bcrypt.js
+// node_modules/bcryptjs/dist/bcrypt.js
 var require_bcrypt = __commonJS({
-  "../../node_modules/bcryptjs/dist/bcrypt.js"(exports, module) {
+  "node_modules/bcryptjs/dist/bcrypt.js"(exports, module) {
     init_define_ARTICLE_INFO_LOCALES();
     init_define_BACK_TO_TOP_LOCALES();
     init_define_CODE_COPY_LOCALES();

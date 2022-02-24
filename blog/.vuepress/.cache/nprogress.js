@@ -15,11 +15,11 @@ import {
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
   init_define_WALINE_LOCALES
-} from "./chunk-2JB763FX.js";
+} from "./chunk-HAWNBGA3.js";
 
-// ../../node_modules/nprogress/nprogress.js
+// node_modules/nprogress/nprogress.js
 var require_nprogress = __commonJS({
-  "../../node_modules/nprogress/nprogress.js"(exports, module) {
+  "node_modules/nprogress/nprogress.js"(exports, module) {
     init_define_ARTICLE_INFO_LOCALES();
     init_define_BACK_TO_TOP_LOCALES();
     init_define_CODE_COPY_LOCALES();

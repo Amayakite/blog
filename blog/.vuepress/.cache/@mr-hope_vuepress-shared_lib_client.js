@@ -1,29 +1,12 @@
 import {
-  require_dayjs_min
-} from "./chunk-RHUTP25B.js";
-import {
-  require_localizedFormat
-} from "./chunk-GG2GV5SX.js";
-import {
-  require_objectSupport
-} from "./chunk-UJLLDWRU.js";
-import {
-  require_timezone
-} from "./chunk-SPNUHUU2.js";
-import {
-  require_utc
-} from "./chunk-3EXDT3YR.js";
-import {
   computed,
   defineComponent,
   h
-} from "./chunk-G642NIRV.js";
-import "./chunk-HY7UP3Y7.js";
+} from "./chunk-QONNFWLF.js";
+import "./chunk-EERTZB2S.js";
 import {
-  __commonJS,
   __spreadProps,
   __spreadValues,
-  __toESM,
   init_define_ARTICLE_INFO_LOCALES,
   init_define_BACK_TO_TOP_LOCALES,
   init_define_CODE_COPY_LOCALES,
@@ -39,953 +22,7 @@ import {
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
   init_define_WALINE_LOCALES
-} from "./chunk-2JB763FX.js";
-
-// ../../node_modules/tslib/tslib.js
-var require_tslib = __commonJS({
-  "../../node_modules/tslib/tslib.js"(exports, module) {
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    var __extends;
-    var __assign;
-    var __rest;
-    var __decorate;
-    var __param;
-    var __metadata;
-    var __awaiter;
-    var __generator;
-    var __exportStar;
-    var __values;
-    var __read;
-    var __spread;
-    var __spreadArrays;
-    var __spreadArray;
-    var __await;
-    var __asyncGenerator;
-    var __asyncDelegator;
-    var __asyncValues;
-    var __makeTemplateObject;
-    var __importStar;
-    var __importDefault;
-    var __classPrivateFieldGet;
-    var __classPrivateFieldSet;
-    var __createBinding;
-    (function(factory) {
-      var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
-      if (typeof define === "function" && define.amd) {
-        define("tslib", ["exports"], function(exports2) {
-          factory(createExporter(root, createExporter(exports2)));
-        });
-      } else if (typeof module === "object" && typeof module.exports === "object") {
-        factory(createExporter(root, createExporter(module.exports)));
-      } else {
-        factory(createExporter(root));
-      }
-      function createExporter(exports2, previous) {
-        if (exports2 !== root) {
-          if (typeof Object.create === "function") {
-            Object.defineProperty(exports2, "__esModule", { value: true });
-          } else {
-            exports2.__esModule = true;
-          }
-        }
-        return function(id, v) {
-          return exports2[id] = previous ? previous(id, v) : v;
-        };
-      }
-    })(function(exporter) {
-      var extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d, b) {
-        d.__proto__ = b;
-      } || function(d, b) {
-        for (var p in b)
-          if (Object.prototype.hasOwnProperty.call(b, p))
-            d[p] = b[p];
-      };
-      __extends = function(d, b) {
-        if (typeof b !== "function" && b !== null)
-          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() {
-          this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-      };
-      __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-          s = arguments[i];
-          for (var p in s)
-            if (Object.prototype.hasOwnProperty.call(s, p))
-              t[p] = s[p];
-        }
-        return t;
-      };
-      __rest = function(s, e) {
-        var t = {};
-        for (var p in s)
-          if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
-        if (s != null && typeof Object.getOwnPropertySymbols === "function")
-          for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-              t[p[i]] = s[p[i]];
-          }
-        return t;
-      };
-      __decorate = function(decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-          r = Reflect.decorate(decorators, target, key, desc);
-        else
-          for (var i = decorators.length - 1; i >= 0; i--)
-            if (d = decorators[i])
-              r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-      };
-      __param = function(paramIndex, decorator) {
-        return function(target, key) {
-          decorator(target, key, paramIndex);
-        };
-      };
-      __metadata = function(metadataKey, metadataValue) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-          return Reflect.metadata(metadataKey, metadataValue);
-      };
-      __awaiter = function(thisArg, _arguments, P, generator) {
-        function adopt(value) {
-          return value instanceof P ? value : new P(function(resolve) {
-            resolve(value);
-          });
-        }
-        return new (P || (P = Promise))(function(resolve, reject) {
-          function fulfilled(value) {
-            try {
-              step(generator.next(value));
-            } catch (e) {
-              reject(e);
-            }
-          }
-          function rejected(value) {
-            try {
-              step(generator["throw"](value));
-            } catch (e) {
-              reject(e);
-            }
-          }
-          function step(result) {
-            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-          }
-          step((generator = generator.apply(thisArg, _arguments || [])).next());
-        });
-      };
-      __generator = function(thisArg, body) {
-        var _ = { label: 0, sent: function() {
-          if (t[0] & 1)
-            throw t[1];
-          return t[1];
-        }, trys: [], ops: [] }, f, y, t, g;
-        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
-          return this;
-        }), g;
-        function verb(n) {
-          return function(v) {
-            return step([n, v]);
-          };
-        }
-        function step(op) {
-          if (f)
-            throw new TypeError("Generator is already executing.");
-          while (_)
-            try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done)
-                return t;
-              if (y = 0, t)
-                op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0:
-                case 1:
-                  t = op;
-                  break;
-                case 4:
-                  _.label++;
-                  return { value: op[1], done: false };
-                case 5:
-                  _.label++;
-                  y = op[1];
-                  op = [0];
-                  continue;
-                case 7:
-                  op = _.ops.pop();
-                  _.trys.pop();
-                  continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                    _ = 0;
-                    continue;
-                  }
-                  if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                    _.label = op[1];
-                    break;
-                  }
-                  if (op[0] === 6 && _.label < t[1]) {
-                    _.label = t[1];
-                    t = op;
-                    break;
-                  }
-                  if (t && _.label < t[2]) {
-                    _.label = t[2];
-                    _.ops.push(op);
-                    break;
-                  }
-                  if (t[2])
-                    _.ops.pop();
-                  _.trys.pop();
-                  continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) {
-              op = [6, e];
-              y = 0;
-            } finally {
-              f = t = 0;
-            }
-          if (op[0] & 5)
-            throw op[1];
-          return { value: op[0] ? op[1] : void 0, done: true };
-        }
-      };
-      __exportStar = function(m, o) {
-        for (var p in m)
-          if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p))
-            __createBinding(o, m, p);
-      };
-      __createBinding = Object.create ? function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        Object.defineProperty(o, k2, { enumerable: true, get: function() {
-          return m[k];
-        } });
-      } : function(o, m, k, k2) {
-        if (k2 === void 0)
-          k2 = k;
-        o[k2] = m[k];
-      };
-      __values = function(o) {
-        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-        if (m)
-          return m.call(o);
-        if (o && typeof o.length === "number")
-          return {
-            next: function() {
-              if (o && i >= o.length)
-                o = void 0;
-              return { value: o && o[i++], done: !o };
-            }
-          };
-        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-      };
-      __read = function(o, n) {
-        var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m)
-          return o;
-        var i = m.call(o), r, ar = [], e;
-        try {
-          while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
-            ar.push(r.value);
-        } catch (error) {
-          e = { error };
-        } finally {
-          try {
-            if (r && !r.done && (m = i["return"]))
-              m.call(i);
-          } finally {
-            if (e)
-              throw e.error;
-          }
-        }
-        return ar;
-      };
-      __spread = function() {
-        for (var ar = [], i = 0; i < arguments.length; i++)
-          ar = ar.concat(__read(arguments[i]));
-        return ar;
-      };
-      __spreadArrays = function() {
-        for (var s = 0, i = 0, il = arguments.length; i < il; i++)
-          s += arguments[i].length;
-        for (var r = Array(s), k = 0, i = 0; i < il; i++)
-          for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-        return r;
-      };
-      __spreadArray = function(to, from, pack) {
-        if (pack || arguments.length === 2)
-          for (var i = 0, l = from.length, ar; i < l; i++) {
-            if (ar || !(i in from)) {
-              if (!ar)
-                ar = Array.prototype.slice.call(from, 0, i);
-              ar[i] = from[i];
-            }
-          }
-        return to.concat(ar || Array.prototype.slice.call(from));
-      };
-      __await = function(v) {
-        return this instanceof __await ? (this.v = v, this) : new __await(v);
-      };
-      __asyncGenerator = function(thisArg, _arguments, generator) {
-        if (!Symbol.asyncIterator)
-          throw new TypeError("Symbol.asyncIterator is not defined.");
-        var g = generator.apply(thisArg, _arguments || []), i, q = [];
-        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
-          return this;
-        }, i;
-        function verb(n) {
-          if (g[n])
-            i[n] = function(v) {
-              return new Promise(function(a, b) {
-                q.push([n, v, a, b]) > 1 || resume(n, v);
-              });
-            };
-        }
-        function resume(n, v) {
-          try {
-            step(g[n](v));
-          } catch (e) {
-            settle(q[0][3], e);
-          }
-        }
-        function step(r) {
-          r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
-        }
-        function fulfill(value) {
-          resume("next", value);
-        }
-        function reject(value) {
-          resume("throw", value);
-        }
-        function settle(f, v) {
-          if (f(v), q.shift(), q.length)
-            resume(q[0][0], q[0][1]);
-        }
-      };
-      __asyncDelegator = function(o) {
-        var i, p;
-        return i = {}, verb("next"), verb("throw", function(e) {
-          throw e;
-        }), verb("return"), i[Symbol.iterator] = function() {
-          return this;
-        }, i;
-        function verb(n, f) {
-          i[n] = o[n] ? function(v) {
-            return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v;
-          } : f;
-        }
-      };
-      __asyncValues = function(o) {
-        if (!Symbol.asyncIterator)
-          throw new TypeError("Symbol.asyncIterator is not defined.");
-        var m = o[Symbol.asyncIterator], i;
-        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
-          return this;
-        }, i);
-        function verb(n) {
-          i[n] = o[n] && function(v) {
-            return new Promise(function(resolve, reject) {
-              v = o[n](v), settle(resolve, reject, v.done, v.value);
-            });
-          };
-        }
-        function settle(resolve, reject, d, v) {
-          Promise.resolve(v).then(function(v2) {
-            resolve({ value: v2, done: d });
-          }, reject);
-        }
-      };
-      __makeTemplateObject = function(cooked, raw) {
-        if (Object.defineProperty) {
-          Object.defineProperty(cooked, "raw", { value: raw });
-        } else {
-          cooked.raw = raw;
-        }
-        return cooked;
-      };
-      var __setModuleDefault = Object.create ? function(o, v) {
-        Object.defineProperty(o, "default", { enumerable: true, value: v });
-      } : function(o, v) {
-        o["default"] = v;
-      };
-      __importStar = function(mod) {
-        if (mod && mod.__esModule)
-          return mod;
-        var result = {};
-        if (mod != null) {
-          for (var k in mod)
-            if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
-        }
-        __setModuleDefault(result, mod);
-        return result;
-      };
-      __importDefault = function(mod) {
-        return mod && mod.__esModule ? mod : { "default": mod };
-      };
-      __classPrivateFieldGet = function(receiver, state, kind, f) {
-        if (kind === "a" && !f)
-          throw new TypeError("Private accessor was defined without a getter");
-        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
-          throw new TypeError("Cannot read private member from an object whose class did not declare it");
-        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-      };
-      __classPrivateFieldSet = function(receiver, state, value, kind, f) {
-        if (kind === "m")
-          throw new TypeError("Private method is not writable");
-        if (kind === "a" && !f)
-          throw new TypeError("Private accessor was defined without a setter");
-        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
-          throw new TypeError("Cannot write private member to an object whose class did not declare it");
-        return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
-      };
-      exporter("__extends", __extends);
-      exporter("__assign", __assign);
-      exporter("__rest", __rest);
-      exporter("__decorate", __decorate);
-      exporter("__param", __param);
-      exporter("__metadata", __metadata);
-      exporter("__awaiter", __awaiter);
-      exporter("__generator", __generator);
-      exporter("__exportStar", __exportStar);
-      exporter("__createBinding", __createBinding);
-      exporter("__values", __values);
-      exporter("__read", __read);
-      exporter("__spread", __spread);
-      exporter("__spreadArrays", __spreadArrays);
-      exporter("__spreadArray", __spreadArray);
-      exporter("__await", __await);
-      exporter("__asyncGenerator", __asyncGenerator);
-      exporter("__asyncDelegator", __asyncDelegator);
-      exporter("__asyncValues", __asyncValues);
-      exporter("__makeTemplateObject", __makeTemplateObject);
-      exporter("__importStar", __importStar);
-      exporter("__importDefault", __importDefault);
-      exporter("__classPrivateFieldGet", __classPrivateFieldGet);
-      exporter("__classPrivateFieldSet", __classPrivateFieldSet);
-    });
-  }
-});
-
-// ../shared/lib/shared/utils/capitalize.js
-var require_capitalize = __commonJS({
-  "../shared/lib/shared/utils/capitalize.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.strictCapitalize = exports.capitalize = void 0;
-    var capitalize2 = (word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
-    exports.capitalize = capitalize2;
-    var strictCapitalize2 = (word) => `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
-    exports.strictCapitalize = strictCapitalize2;
-  }
-});
-
-// ../shared/lib/shared/utils/dayjs.js
-var require_dayjs = __commonJS({
-  "../shared/lib/shared/utils/dayjs.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.dayjs = void 0;
-    var tslib_1 = require_tslib();
-    var dayjs_1 = (0, tslib_1.__importDefault)(require_dayjs_min());
-    var localizedFormat_1 = (0, tslib_1.__importDefault)(require_localizedFormat());
-    var objectSupport_1 = (0, tslib_1.__importDefault)(require_objectSupport());
-    var timezone_1 = (0, tslib_1.__importDefault)(require_timezone());
-    var utc_1 = (0, tslib_1.__importDefault)(require_utc());
-    dayjs_1.default.extend(localizedFormat_1.default);
-    dayjs_1.default.extend(objectSupport_1.default);
-    dayjs_1.default.extend(utc_1.default);
-    dayjs_1.default.extend(timezone_1.default);
-    var zhLocale = {
-      name: "zh-cn",
-      weekdays: "\u661F\u671F\u65E5_\u661F\u671F\u4E00_\u661F\u671F\u4E8C_\u661F\u671F\u4E09_\u661F\u671F\u56DB_\u661F\u671F\u4E94_\u661F\u671F\u516D".split("_"),
-      weekdaysShort: "\u5468\u65E5_\u5468\u4E00_\u5468\u4E8C_\u5468\u4E09_\u5468\u56DB_\u5468\u4E94_\u5468\u516D".split("_"),
-      weekdaysMin: "\u65E5_\u4E00_\u4E8C_\u4E09_\u56DB_\u4E94_\u516D".split("_"),
-      months: "\u4E00\u6708_\u4E8C\u6708_\u4E09\u6708_\u56DB\u6708_\u4E94\u6708_\u516D\u6708_\u4E03\u6708_\u516B\u6708_\u4E5D\u6708_\u5341\u6708_\u5341\u4E00\u6708_\u5341\u4E8C\u6708".split("_"),
-      monthsShort: "1\u6708_2\u6708_3\u6708_4\u6708_5\u6708_6\u6708_7\u6708_8\u6708_9\u6708_10\u6708_11\u6708_12\u6708".split("_"),
-      ordinal: (number, period) => {
-        switch (period) {
-          case "W":
-            return `${number}\u5468`;
-          default:
-            return `${number}\u65E5`;
-        }
-      },
-      weekStart: 1,
-      yearStart: 4,
-      formats: {
-        LT: "HH:mm",
-        LTS: "HH:mm:ss",
-        L: "YYYY/MM/DD",
-        LL: "YYYY\u5E74M\u6708D\u65E5",
-        LLL: "YYYY\u5E74M\u6708D\u65E5Ah\u70B9mm\u5206",
-        LLLL: "YYYY\u5E74M\u6708D\u65E5ddddAh\u70B9mm\u5206",
-        l: "YYYY/M/D",
-        ll: "YYYY\u5E74M\u6708D\u65E5",
-        lll: "YYYY\u5E74M\u6708D\u65E5 HH:mm",
-        llll: "YYYY\u5E74M\u6708D\u65E5dddd HH:mm"
-      },
-      relativeTime: {
-        future: "%s\u5185",
-        past: "%s\u524D",
-        s: "\u51E0\u79D2",
-        m: "1 \u5206\u949F",
-        mm: "%d \u5206\u949F",
-        h: "1 \u5C0F\u65F6",
-        hh: "%d \u5C0F\u65F6",
-        d: "1 \u5929",
-        dd: "%d \u5929",
-        M: "1 \u4E2A\u6708",
-        MM: "%d \u4E2A\u6708",
-        y: "1 \u5E74",
-        yy: "%d \u5E74"
-      },
-      meridiem: (hour, minute) => {
-        const hm = hour * 100 + minute;
-        return hm < 600 ? "\u51CC\u6668" : hm < 900 ? "\u65E9\u4E0A" : hm < 1100 ? "\u4E0A\u5348" : hm < 1300 ? "\u4E2D\u5348" : hm < 1800 ? "\u4E0B\u5348" : "\u665A\u4E0A";
-      }
-    };
-    var enLocale = {
-      name: "en",
-      weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
-      months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
-    };
-    dayjs_1.default.locale("zh", zhLocale);
-    dayjs_1.default.locale("en", enLocale);
-    exports.dayjs = dayjs_1.default;
-  }
-});
-
-// ../shared/lib/shared/utils/date.js
-var require_date = __commonJS({
-  "../shared/lib/shared/utils/date.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.compareDate = exports.getDate = exports.timeTransformer = void 0;
-    var dayjs_1 = require_dayjs();
-    var getLang = (lang = "en") => {
-      const langcode = lang.toLowerCase();
-      if (langcode === "zh" || langcode === "zh-cn")
-        return "zh";
-      if (langcode === "en-us" || langcode === "en-uk" || langcode === "en")
-        return "en";
-      console.warn(`${lang} locale missing in config`);
-      return "en";
-    };
-    var timeTransformer2 = (date, options = {}) => {
-      const { lang, timezone, type } = options;
-      dayjs_1.dayjs.locale(getLang(lang));
-      const dateText = timezone ? (0, dayjs_1.dayjs)(date).tz(timezone).format("LL") : (0, dayjs_1.dayjs)(date).format("LL");
-      const timeText = timezone ? (0, dayjs_1.dayjs)(date).tz(timezone).format("HH:mm") : (0, dayjs_1.dayjs)(date).format("HH:mm");
-      return type === "date" ? dateText : type === "time" ? timeText : `${dateText} ${timeText}`;
-    };
-    exports.timeTransformer = timeTransformer2;
-    var getDate2 = (date, options = {}) => {
-      const { timezone } = options;
-      if (date) {
-        const time = (0, dayjs_1.dayjs)(date instanceof Date ? date : date.trim());
-        if (time.isValid()) {
-          const currentTime = timezone ? (0, dayjs_1.dayjs)(date).tz(timezone) : (0, dayjs_1.dayjs)(date);
-          const year = currentTime.year();
-          const month = currentTime.month() + 1;
-          const day = currentTime.date();
-          const hour = currentTime.hour();
-          const minute = currentTime.minute();
-          const second = currentTime.second();
-          const millisecond = currentTime.millisecond();
-          const isDate = hour === 0 && minute === 0 && second === 0 && millisecond === 0;
-          const value = currentTime.toDate();
-          return {
-            display: (0, exports.timeTransformer)(value, __spreadValues({
-              type: isDate ? "date" : "full"
-            }, options)),
-            value,
-            detail: __spreadValues({
-              year,
-              month,
-              day
-            }, isDate ? {} : { hour, minute, second })
-          };
-        }
-        const timeRegPattern = /(?:(\d{2,4})[/-](\d{1,2})[/-](\d{1,2}))?\s*(?:(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/u;
-        const result = timeRegPattern.exec(date.trim());
-        if (result) {
-          const [, year, month, day, hour, minute, second] = result;
-          const getNumber = (a) => typeof a === "undefined" ? void 0 : Number(a);
-          const getYear = (yearNumber) => yearNumber && yearNumber < 100 ? yearNumber + 2e3 : yearNumber;
-          const getSecond = (secondNumber) => hour && minute && !second ? 0 : secondNumber;
-          const detail = {
-            year: getYear(getNumber(year)),
-            month: getNumber(month),
-            day: getNumber(day),
-            hour: getNumber(hour),
-            minute: getNumber(minute),
-            second: getSecond(getNumber(second))
-          };
-          const isTime = year === void 0 && month === void 0 && day === void 0;
-          const isDate = hour === void 0 && minute === void 0 && second === void 0;
-          const value = (0, dayjs_1.dayjs)(__spreadProps(__spreadValues({}, detail), { month: detail.month - 1 })).toDate();
-          return {
-            display: (0, exports.timeTransformer)(value, __spreadValues({
-              type: isDate ? "date" : isTime ? "time" : "full"
-            }, options)),
-            value: isTime ? void 0 : value,
-            detail: isDate ? { year: detail.year, month: detail.month, day: detail.day } : isTime ? { hour: detail.hour, minute: detail.minute, second: detail.second } : detail
-          };
-        }
-      }
-      return null;
-    };
-    exports.getDate = getDate2;
-    var compareDate2 = (dateA, dateB) => {
-      const parsedDateA = (0, exports.getDate)(typeof dateA === "number" ? new Date(dateA) : dateA);
-      const parsedDateB = (0, exports.getDate)(typeof dateB === "number" ? new Date(dateB) : dateB);
-      if (!parsedDateA || !parsedDateA.value)
-        return 1;
-      if (!parsedDateB || !parsedDateB.value)
-        return -1;
-      return parsedDateB.value.getTime() - parsedDateA.value.getTime();
-    };
-    exports.compareDate = compareDate2;
-  }
-});
-
-// ../shared/lib/shared/utils/info.js
-var require_info = __commonJS({
-  "../shared/lib/shared/utils/info.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getTag = exports.getCategory = exports.getAuthor = void 0;
-    var capitalize_1 = require_capitalize();
-    var getAuthor2 = (author, canDisable = false) => {
-      if (author) {
-        if (Array.isArray(author)) {
-          return author.map((item) => typeof item === "string" ? { name: item } : item);
-        }
-        if (typeof author === "string")
-          return [{ name: author }];
-        if (typeof author === "object" && author.name)
-          return [author];
-        console.error(`Expect 'author' to be \`AuthorInfo[] | AuthorInfo | string[] | string ${canDisable ? "" : "| false"} | undefined\`, but got`, author);
-        return [];
-      }
-      return [];
-    };
-    exports.getAuthor = getAuthor2;
-    var getCategory2 = (category) => {
-      if (category) {
-        if (Array.isArray(category))
-          return category.map(capitalize_1.capitalize);
-        if (typeof category === "string")
-          return [(0, capitalize_1.capitalize)(category)];
-        console.error(`Expect 'category' to be \`string[] | string | undefined\`, but got`, category);
-      }
-      return [];
-    };
-    exports.getCategory = getCategory2;
-    var getTag2 = (tag) => {
-      if (tag) {
-        if (Array.isArray(tag))
-          return tag;
-        if (typeof tag === "string")
-          return [tag];
-        console.error(`Expect 'tag' to be \`string[] | string | undefined\`, but got`, tag);
-      }
-      return [];
-    };
-    exports.getTag = getTag2;
-  }
-});
-
-// ../shared/lib/shared/utils/url.js
-var require_url = __commonJS({
-  "../shared/lib/shared/utils/url.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.isAbsoluteUrl = exports.isUrl = void 0;
-    var isUrl2 = (test) => {
-      if (typeof test !== "string" || test === "")
-        return false;
-      const result = /^(?:\w+:)?\/\/(\S+)$/u.exec(test);
-      if (!result)
-        return false;
-      const address = result[1];
-      if (!address)
-        return false;
-      return /^localhost[:?\d]*(?:[^:?\d]\S*)?$/u.test(address) || /^[^\s.]+\.\S{2,}$/u.test(address);
-    };
-    exports.isUrl = isUrl2;
-    var isAbsoluteUrl2 = (test) => test.startsWith("/");
-    exports.isAbsoluteUrl = isAbsoluteUrl2;
-  }
-});
-
-// ../shared/lib/shared/utils/index.js
-var require_utils = __commonJS({
-  "../shared/lib/shared/utils/index.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var tslib_1 = require_tslib();
-    (0, tslib_1.__exportStar)(require_capitalize(), exports);
-    (0, tslib_1.__exportStar)(require_date(), exports);
-    (0, tslib_1.__exportStar)(require_info(), exports);
-    (0, tslib_1.__exportStar)(require_url(), exports);
-  }
-});
-
-// ../shared/lib/shared/types/author.js
-var require_author = __commonJS({
-  "../shared/lib/shared/types/author.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-  }
-});
-
-// ../shared/lib/shared/types/locales.js
-var require_locales = __commonJS({
-  "../shared/lib/shared/types/locales.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-  }
-});
-
-// ../shared/lib/shared/types/frontmatter.js
-var require_frontmatter = __commonJS({
-  "../shared/lib/shared/types/frontmatter.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-  }
-});
-
-// ../shared/lib/shared/types/themeConfig.js
-var require_themeConfig = __commonJS({
-  "../shared/lib/shared/types/themeConfig.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-  }
-});
-
-// ../shared/lib/shared/types/index.js
-var require_types = __commonJS({
-  "../shared/lib/shared/types/index.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var tslib_1 = require_tslib();
-    (0, tslib_1.__exportStar)(require_author(), exports);
-    (0, tslib_1.__exportStar)(require_locales(), exports);
-    (0, tslib_1.__exportStar)(require_frontmatter(), exports);
-    (0, tslib_1.__exportStar)(require_themeConfig(), exports);
-  }
-});
-
-// ../shared/lib/shared/index.js
-var require_shared = __commonJS({
-  "../shared/lib/shared/index.js"(exports) {
-    "use strict";
-    init_define_ARTICLE_INFO_LOCALES();
-    init_define_BACK_TO_TOP_LOCALES();
-    init_define_CODE_COPY_LOCALES();
-    init_define_CODE_COPY_OPIONS();
-    init_define_CODE_DEMO_OPTIONS();
-    init_define_COMMENT_OPTIONS();
-    init_define_MERMAID_OPTIONS();
-    init_define_PAGINATION_LOCALES();
-    init_define_PHOTO_SWIPE_LOCALES();
-    init_define_PHOTO_SWIPE_OPTIONS();
-    init_define_PWA_LOCALES();
-    init_define_READING_TIME_LOCALES();
-    init_define_REVEAL_CONFIG();
-    init_define_WALINE_LOCALES();
-    init_define_EXTERNAL_LINK_ICON_LOCALES();
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var tslib_1 = require_tslib();
-    (0, tslib_1.__exportStar)(require_utils(), exports);
-    (0, tslib_1.__exportStar)(require_types(), exports);
-  }
-});
+} from "./chunk-HAWNBGA3.js";
 
 // dep:@mr-hope_vuepress-shared_lib_client
 init_define_ARTICLE_INFO_LOCALES();
@@ -1004,7 +41,7 @@ init_define_REVEAL_CONFIG();
 init_define_WALINE_LOCALES();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 
-// ../shared/lib/client/index.js
+// node_modules/@mr-hope/vuepress-shared/lib/client/index.js
 init_define_ARTICLE_INFO_LOCALES();
 init_define_BACK_TO_TOP_LOCALES();
 init_define_CODE_COPY_LOCALES();
@@ -1020,383 +57,556 @@ init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
 init_define_WALINE_LOCALES();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
-var import_shared2 = __toESM(require_shared());
-
-// ../shared/lib/client/components/index.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-
-// ../shared/lib/client/components/IconBase.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-var IconBase = defineComponent({
-  name: "IconBase",
-  props: {
-    name: {
-      type: String,
-      default: ""
-    },
-    color: {
-      type: String,
-      default: "currentColor"
+import { useRouteLocale as r, usePageData as i } from "@vuepress/client";
+import "E:/AmayakiteBlog/node_modules/@mr-hope/vuepress-shared/lib/client/styles/message.scss";
+var s = (t) => `${t.charAt(0).toUpperCase()}${t.slice(1)}`;
+var o = (t) => `${t.charAt(0).toUpperCase()}${t.slice(1).toLowerCase()}`;
+var a;
+var u = { exports: {} };
+var c = u.exports = function() {
+  var t = 1e3, e = 6e4, n = 36e5, r2 = "millisecond", i2 = "second", s2 = "minute", o2 = "hour", a2 = "day", u2 = "week", c2 = "month", f2 = "quarter", d2 = "year", h3 = "date", l2 = "Invalid Date", m2 = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, $2 = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, v2 = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, p2 = function(t2, e2, n2) {
+    var r3 = String(t2);
+    return !r3 || r3.length >= e2 ? t2 : "" + Array(e2 + 1 - r3.length).join(n2) + t2;
+  }, y2 = { s: p2, z: function(t2) {
+    var e2 = -t2.utcOffset(), n2 = Math.abs(e2), r3 = Math.floor(n2 / 60), i3 = n2 % 60;
+    return (e2 <= 0 ? "+" : "-") + p2(r3, 2, "0") + ":" + p2(i3, 2, "0");
+  }, m: function t2(e2, n2) {
+    if (e2.date() < n2.date())
+      return -t2(n2, e2);
+    var r3 = 12 * (n2.year() - e2.year()) + (n2.month() - e2.month()), i3 = e2.clone().add(r3, c2), s3 = n2 - i3 < 0, o3 = e2.clone().add(r3 + (s3 ? -1 : 1), c2);
+    return +(-(r3 + (n2 - i3) / (s3 ? i3 - o3 : o3 - i3)) || 0);
+  }, a: function(t2) {
+    return t2 < 0 ? Math.ceil(t2) || 0 : Math.floor(t2);
+  }, p: function(t2) {
+    return { M: c2, y: d2, w: u2, d: a2, D: h3, h: o2, m: s2, s: i2, ms: r2, Q: f2 }[t2] || String(t2 || "").toLowerCase().replace(/s$/, "");
+  }, u: function(t2) {
+    return t2 === void 0;
+  } }, g2 = "en", M2 = {};
+  M2[g2] = v2;
+  var D2 = function(t2) {
+    return t2 instanceof w2;
+  }, _2 = function(t2, e2, n2) {
+    var r3;
+    if (!t2)
+      return g2;
+    if (typeof t2 == "string")
+      M2[t2] && (r3 = t2), e2 && (M2[t2] = e2, r3 = t2);
+    else {
+      var i3 = t2.name;
+      M2[i3] = t2, r3 = i3;
     }
-  },
-  setup: (props, { slots }) => () => {
-    var _a;
-    return h("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      class: ["icon", `${props.name}-icon`],
-      viewBox: "0 0 1024 1024",
-      ariaLabelledby: props.name
-    }, [
-      h("title", { id: props.name, lang: "en" }, `${props.name} icon`),
-      h("g", { fill: props.color }, (_a = slots.default) == null ? void 0 : _a.call(slots))
-    ]);
-  }
-});
-
-// ../shared/lib/client/composables/index.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-
-// ../shared/lib/client/composables/locales.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-import { useRouteLocale } from "@vuepress/client";
-var useLocaleConfig = (localesConfig) => {
-  const routeLocale = useRouteLocale();
-  return computed(() => localesConfig[routeLocale.value]);
-};
-
-// ../shared/lib/client/composables/page.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-import { usePageData } from "@vuepress/client";
-var usePageTitle = () => computed(() => usePageData().value.title);
-
-// ../shared/lib/client/utils/index.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-
-// ../shared/lib/client/utils/click-outside.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-var nodeList = /* @__PURE__ */ new Map();
-var startClick;
-if (true) {
-  document.addEventListener("mousedown", (event) => {
-    startClick = event;
-  });
-  document.addEventListener("mouseup", (event) => {
-    for (const handlers of nodeList.values()) {
-      for (const { documentHandler } of handlers) {
-        documentHandler(event, startClick);
+    return !n2 && r3 && (g2 = r3), r3 || !n2 && g2;
+  }, Y2 = function(t2, e2) {
+    if (D2(t2))
+      return t2.clone();
+    var n2 = typeof e2 == "object" ? e2 : {};
+    return n2.date = t2, n2.args = arguments, new w2(n2);
+  }, S2 = y2;
+  S2.l = _2, S2.i = D2, S2.w = function(t2, e2) {
+    return Y2(t2, { locale: e2.$L, utc: e2.$u, x: e2.$x, $offset: e2.$offset });
+  };
+  var w2 = function() {
+    function v3(t2) {
+      this.$L = _2(t2.locale, null, true), this.parse(t2);
+    }
+    var p3 = v3.prototype;
+    return p3.parse = function(t2) {
+      this.$d = function(t3) {
+        var e2 = t3.date, n2 = t3.utc;
+        if (e2 === null)
+          return new Date(NaN);
+        if (S2.u(e2))
+          return new Date();
+        if (e2 instanceof Date)
+          return new Date(e2);
+        if (typeof e2 == "string" && !/Z$/i.test(e2)) {
+          var r3 = e2.match(m2);
+          if (r3) {
+            var i3 = r3[2] - 1 || 0, s3 = (r3[7] || "0").substring(0, 3);
+            return n2 ? new Date(Date.UTC(r3[1], i3, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s3)) : new Date(r3[1], i3, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s3);
+          }
+        }
+        return new Date(e2);
+      }(t2), this.$x = t2.x || {}, this.init();
+    }, p3.init = function() {
+      var t2 = this.$d;
+      this.$y = t2.getFullYear(), this.$M = t2.getMonth(), this.$D = t2.getDate(), this.$W = t2.getDay(), this.$H = t2.getHours(), this.$m = t2.getMinutes(), this.$s = t2.getSeconds(), this.$ms = t2.getMilliseconds();
+    }, p3.$utils = function() {
+      return S2;
+    }, p3.isValid = function() {
+      return !(this.$d.toString() === l2);
+    }, p3.isSame = function(t2, e2) {
+      var n2 = Y2(t2);
+      return this.startOf(e2) <= n2 && n2 <= this.endOf(e2);
+    }, p3.isAfter = function(t2, e2) {
+      return Y2(t2) < this.startOf(e2);
+    }, p3.isBefore = function(t2, e2) {
+      return this.endOf(e2) < Y2(t2);
+    }, p3.$g = function(t2, e2, n2) {
+      return S2.u(t2) ? this[e2] : this.set(n2, t2);
+    }, p3.unix = function() {
+      return Math.floor(this.valueOf() / 1e3);
+    }, p3.valueOf = function() {
+      return this.$d.getTime();
+    }, p3.startOf = function(t2, e2) {
+      var n2 = this, r3 = !!S2.u(e2) || e2, f3 = S2.p(t2), l3 = function(t3, e3) {
+        var i3 = S2.w(n2.$u ? Date.UTC(n2.$y, e3, t3) : new Date(n2.$y, e3, t3), n2);
+        return r3 ? i3 : i3.endOf(a2);
+      }, m3 = function(t3, e3) {
+        return S2.w(n2.toDate()[t3].apply(n2.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)), n2);
+      }, $3 = this.$W, v4 = this.$M, p4 = this.$D, y3 = "set" + (this.$u ? "UTC" : "");
+      switch (f3) {
+        case d2:
+          return r3 ? l3(1, 0) : l3(31, 11);
+        case c2:
+          return r3 ? l3(1, v4) : l3(0, v4 + 1);
+        case u2:
+          var g3 = this.$locale().weekStart || 0, M3 = ($3 < g3 ? $3 + 7 : $3) - g3;
+          return l3(r3 ? p4 - M3 : p4 + (6 - M3), v4);
+        case a2:
+        case h3:
+          return m3(y3 + "Hours", 0);
+        case o2:
+          return m3(y3 + "Minutes", 1);
+        case s2:
+          return m3(y3 + "Seconds", 2);
+        case i2:
+          return m3(y3 + "Milliseconds", 3);
+        default:
+          return this.clone();
       }
+    }, p3.endOf = function(t2) {
+      return this.startOf(t2, false);
+    }, p3.$set = function(t2, e2) {
+      var n2, u3 = S2.p(t2), f3 = "set" + (this.$u ? "UTC" : ""), l3 = (n2 = {}, n2[a2] = f3 + "Date", n2[h3] = f3 + "Date", n2[c2] = f3 + "Month", n2[d2] = f3 + "FullYear", n2[o2] = f3 + "Hours", n2[s2] = f3 + "Minutes", n2[i2] = f3 + "Seconds", n2[r2] = f3 + "Milliseconds", n2)[u3], m3 = u3 === a2 ? this.$D + (e2 - this.$W) : e2;
+      if (u3 === c2 || u3 === d2) {
+        var $3 = this.clone().set(h3, 1);
+        $3.$d[l3](m3), $3.init(), this.$d = $3.set(h3, Math.min(this.$D, $3.daysInMonth())).$d;
+      } else
+        l3 && this.$d[l3](m3);
+      return this.init(), this;
+    }, p3.set = function(t2, e2) {
+      return this.clone().$set(t2, e2);
+    }, p3.get = function(t2) {
+      return this[S2.p(t2)]();
+    }, p3.add = function(r3, f3) {
+      var h4, l3 = this;
+      r3 = Number(r3);
+      var m3 = S2.p(f3), $3 = function(t2) {
+        var e2 = Y2(l3);
+        return S2.w(e2.date(e2.date() + Math.round(t2 * r3)), l3);
+      };
+      if (m3 === c2)
+        return this.set(c2, this.$M + r3);
+      if (m3 === d2)
+        return this.set(d2, this.$y + r3);
+      if (m3 === a2)
+        return $3(1);
+      if (m3 === u2)
+        return $3(7);
+      var v4 = (h4 = {}, h4[s2] = e, h4[o2] = n, h4[i2] = t, h4)[m3] || 1, p4 = this.$d.getTime() + r3 * v4;
+      return S2.w(p4, this);
+    }, p3.subtract = function(t2, e2) {
+      return this.add(-1 * t2, e2);
+    }, p3.format = function(t2) {
+      var e2 = this, n2 = this.$locale();
+      if (!this.isValid())
+        return n2.invalidDate || l2;
+      var r3 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i3 = S2.z(this), s3 = this.$H, o3 = this.$m, a3 = this.$M, u3 = n2.weekdays, c3 = n2.months, f3 = function(t3, n3, i4, s4) {
+        return t3 && (t3[n3] || t3(e2, r3)) || i4[n3].substr(0, s4);
+      }, d3 = function(t3) {
+        return S2.s(s3 % 12 || 12, t3, "0");
+      }, h4 = n2.meridiem || function(t3, e3, n3) {
+        var r4 = t3 < 12 ? "AM" : "PM";
+        return n3 ? r4.toLowerCase() : r4;
+      }, m3 = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: a3 + 1, MM: S2.s(a3 + 1, 2, "0"), MMM: f3(n2.monthsShort, a3, c3, 3), MMMM: f3(c3, a3), D: this.$D, DD: S2.s(this.$D, 2, "0"), d: String(this.$W), dd: f3(n2.weekdaysMin, this.$W, u3, 2), ddd: f3(n2.weekdaysShort, this.$W, u3, 3), dddd: u3[this.$W], H: String(s3), HH: S2.s(s3, 2, "0"), h: d3(1), hh: d3(2), a: h4(s3, o3, true), A: h4(s3, o3, false), m: String(o3), mm: S2.s(o3, 2, "0"), s: String(this.$s), ss: S2.s(this.$s, 2, "0"), SSS: S2.s(this.$ms, 3, "0"), Z: i3 };
+      return r3.replace($2, function(t3, e3) {
+        return e3 || m3[t3] || i3.replace(":", "");
+      });
+    }, p3.utcOffset = function() {
+      return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
+    }, p3.diff = function(r3, h4, l3) {
+      var m3, $3 = S2.p(h4), v4 = Y2(r3), p4 = (v4.utcOffset() - this.utcOffset()) * e, y3 = this - v4, g3 = S2.m(this, v4);
+      return g3 = (m3 = {}, m3[d2] = g3 / 12, m3[c2] = g3, m3[f2] = g3 / 3, m3[u2] = (y3 - p4) / 6048e5, m3[a2] = (y3 - p4) / 864e5, m3[o2] = y3 / n, m3[s2] = y3 / e, m3[i2] = y3 / t, m3)[$3] || y3, l3 ? g3 : S2.a(g3);
+    }, p3.daysInMonth = function() {
+      return this.endOf(c2).$D;
+    }, p3.$locale = function() {
+      return M2[this.$L];
+    }, p3.locale = function(t2, e2) {
+      if (!t2)
+        return this.$L;
+      var n2 = this.clone(), r3 = _2(t2, e2, true);
+      return r3 && (n2.$L = r3), n2;
+    }, p3.clone = function() {
+      return S2.w(this.$d, this);
+    }, p3.toDate = function() {
+      return new Date(this.valueOf());
+    }, p3.toJSON = function() {
+      return this.isValid() ? this.toISOString() : null;
+    }, p3.toISOString = function() {
+      return this.$d.toISOString();
+    }, p3.toString = function() {
+      return this.$d.toUTCString();
+    }, v3;
+  }(), O2 = w2.prototype;
+  return Y2.prototype = O2, [["$ms", r2], ["$s", i2], ["$m", s2], ["$H", o2], ["$W", a2], ["$M", c2], ["$y", d2], ["$D", h3]].forEach(function(t2) {
+    O2[t2[1]] = function(e2) {
+      return this.$g(e2, t2[0], t2[1]);
+    };
+  }), Y2.extend = function(t2, e2) {
+    return t2.$i || (t2(e2, w2, Y2), t2.$i = true), Y2;
+  }, Y2.locale = _2, Y2.isDayjs = D2, Y2.unix = function(t2) {
+    return Y2(1e3 * t2);
+  }, Y2.en = M2[g2], Y2.Ls = M2, Y2.p = {}, Y2;
+}();
+var f = { exports: {} };
+var d = f.exports = (a = { LTS: "h:mm:ss A", LT: "h:mm A", L: "MM/DD/YYYY", LL: "MMMM D, YYYY", LLL: "MMMM D, YYYY h:mm A", LLLL: "dddd, MMMM D, YYYY h:mm A" }, function(t, e, n) {
+  var r2 = e.prototype, i2 = r2.format;
+  n.en.formats = a, r2.format = function(t2) {
+    t2 === void 0 && (t2 = "YYYY-MM-DDTHH:mm:ssZ");
+    var e2 = this.$locale().formats, n2 = function(t3, e3) {
+      return t3.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, function(t4, n3, r3) {
+        var i3 = r3 && r3.toUpperCase();
+        return n3 || e3[r3] || a[r3] || e3[i3].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(t5, e4, n4) {
+          return e4 || n4.slice(1);
+        });
+      });
+    }(t2, e2 === void 0 ? {} : e2);
+    return i2.call(this, n2);
+  };
+});
+var h2 = { exports: {} };
+var l = h2.exports = function(t, e, n) {
+  var r2 = e.prototype, i2 = function(t2) {
+    var e2, i3 = t2.date, s3 = t2.utc, o3 = {};
+    if (!((e2 = i3) instanceof Date) && !(e2 instanceof Array) && e2 instanceof Object) {
+      if (!Object.keys(i3).length)
+        return new Date();
+      var a3 = s3 ? n.utc() : n();
+      Object.keys(i3).forEach(function(t3) {
+        var e3, n2;
+        o3[e3 = t3, n2 = r2.$utils().p(e3), n2 === "date" ? "day" : n2] = i3[t3];
+      });
+      var u3 = o3.day || (o3.year || o3.month >= 0 ? 1 : a3.date()), c2 = o3.year || a3.year(), f2 = o3.month >= 0 ? o3.month : o3.year || o3.day ? 0 : a3.month(), d2 = o3.hour || 0, h3 = o3.minute || 0, l2 = o3.second || 0, m2 = o3.millisecond || 0;
+      return s3 ? new Date(Date.UTC(c2, f2, u3, d2, h3, l2, m2)) : new Date(c2, f2, u3, d2, h3, l2, m2);
     }
-  });
-}
-var createDocumentHandler = (el, binding) => {
-  let excludes = [];
-  if (Array.isArray(binding.arg)) {
-    excludes = binding.arg;
-  } else if (binding.arg instanceof HTMLElement) {
-    excludes.push(binding.arg);
-  }
-  return (mouseup, mousedown) => {
-    const popperRef = binding.instance.popperRef;
-    const mouseUpTarget = mouseup.target;
-    const mouseDownTarget = mousedown == null ? void 0 : mousedown.target;
-    const isBound = !binding || !binding.instance;
-    const isTargetExists = !mouseUpTarget || !mouseDownTarget;
-    const isContainedByEl = el.contains(mouseUpTarget) || el.contains(mouseDownTarget);
-    const isSelf = el === mouseUpTarget;
-    const isTargetExcluded = excludes.length && excludes.some((item) => item == null ? void 0 : item.contains(mouseUpTarget)) || excludes.length && excludes.includes(mouseDownTarget);
-    const isContainedByPopper = popperRef && (popperRef.contains(mouseUpTarget) || popperRef.contains(mouseDownTarget));
-    if (isBound || isTargetExists || isContainedByEl || isSelf || isTargetExcluded || isContainedByPopper) {
-      return;
+    return i3;
+  }, s2 = r2.parse;
+  r2.parse = function(t2) {
+    t2.date = i2.bind(this)(t2), s2.bind(this)(t2);
+  };
+  var o2 = r2.set, a2 = r2.add, u2 = function(t2, e2, n2, r3) {
+    if (r3 === void 0 && (r3 = 1), e2 instanceof Object) {
+      var i3 = Object.keys(e2), s3 = this;
+      return i3.forEach(function(n3) {
+        s3 = t2.bind(s3)(e2[n3] * r3, n3);
+      }), s3;
     }
-    binding.value(mouseup, mousedown);
+    return t2.bind(this)(e2 * r3, n2);
+  };
+  r2.set = function(t2, e2) {
+    return e2 = e2 === void 0 ? t2 : e2, u2.bind(this)(function(t3, e3) {
+      return o2.bind(this)(e3, t3);
+    }, e2, t2);
+  }, r2.add = function(t2, e2) {
+    return u2.bind(this)(a2, t2, e2);
+  }, r2.subtract = function(t2, e2) {
+    return u2.bind(this)(a2, t2, e2, -1);
   };
 };
-var clickOutSideDirective = {
-  beforeMount(el, binding) {
-    if (!nodeList.has(el)) {
-      nodeList.set(el, []);
-    }
-    nodeList.get(el).push({
-      documentHandler: createDocumentHandler(el, binding),
-      bindingFn: binding.value
-    });
-  },
-  updated(el, binding) {
-    if (!nodeList.has(el)) {
-      nodeList.set(el, []);
-    }
-    const handlers = nodeList.get(el);
-    const oldHandlerIndex = handlers.findIndex((item) => item.bindingFn === binding.oldValue);
-    const newHandler = {
-      documentHandler: createDocumentHandler(el, binding),
-      bindingFn: binding.value
+var m = { exports: {} };
+var $ = m.exports = function() {
+  var t = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, e = {};
+  return function(n, r2, i2) {
+    var s2, o2 = function(t2, n2, r3) {
+      r3 === void 0 && (r3 = {});
+      var i3 = new Date(t2);
+      return function(t3, n3) {
+        n3 === void 0 && (n3 = {});
+        var r4 = n3.timeZoneName || "short", i4 = t3 + "|" + r4, s3 = e[i4];
+        return s3 || (s3 = new Intl.DateTimeFormat("en-US", { hour12: false, timeZone: t3, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: r4 }), e[i4] = s3), s3;
+      }(n2, r3).formatToParts(i3);
+    }, a2 = function(e2, n2) {
+      for (var r3 = o2(e2, n2), s3 = [], a3 = 0; a3 < r3.length; a3 += 1) {
+        var u3 = r3[a3], c3 = u3.type, f2 = u3.value, d2 = t[c3];
+        d2 >= 0 && (s3[d2] = parseInt(f2, 10));
+      }
+      var h3 = s3[3], l2 = h3 === 24 ? 0 : h3, m2 = s3[0] + "-" + s3[1] + "-" + s3[2] + " " + l2 + ":" + s3[4] + ":" + s3[5] + ":000", $2 = +e2;
+      return (i2.utc(m2).valueOf() - ($2 -= $2 % 1e3)) / 6e4;
+    }, u2 = r2.prototype;
+    u2.tz = function(t2, e2) {
+      t2 === void 0 && (t2 = s2);
+      var n2 = this.utcOffset(), r3 = this.toDate(), o3 = r3.toLocaleString("en-US", { timeZone: t2 }), a3 = Math.round((r3 - new Date(o3)) / 1e3 / 60), u3 = i2(o3).$set("millisecond", this.$ms).utcOffset(15 * -Math.round(r3.getTimezoneOffset() / 15) - a3, true);
+      if (e2) {
+        var c3 = u3.utcOffset();
+        u3 = u3.add(n2 - c3, "minute");
+      }
+      return u3.$x.$timezone = t2, u3;
+    }, u2.offsetName = function(t2) {
+      var e2 = this.$x.$timezone || i2.tz.guess(), n2 = o2(this.valueOf(), e2, { timeZoneName: t2 }).find(function(t3) {
+        return t3.type.toLowerCase() === "timezonename";
+      });
+      return n2 && n2.value;
     };
-    if (oldHandlerIndex >= 0) {
-      handlers.splice(oldHandlerIndex, 1, newHandler);
-    } else {
-      handlers.push(newHandler);
+    var c2 = u2.startOf;
+    u2.startOf = function(t2, e2) {
+      if (!this.$x || !this.$x.$timezone)
+        return c2.call(this, t2, e2);
+      var n2 = i2(this.format("YYYY-MM-DD HH:mm:ss:SSS"));
+      return c2.call(n2, t2, e2).tz(this.$x.$timezone, true);
+    }, i2.tz = function(t2, e2, n2) {
+      var r3 = n2 && e2, o3 = n2 || e2 || s2, u3 = a2(+i2(), o3);
+      if (typeof t2 != "string")
+        return i2(t2).tz(o3);
+      var c3 = function(t3, e3, n3) {
+        var r4 = t3 - 60 * e3 * 1e3, i3 = a2(r4, n3);
+        if (e3 === i3)
+          return [r4, e3];
+        var s3 = a2(r4 -= 60 * (i3 - e3) * 1e3, n3);
+        return i3 === s3 ? [r4, i3] : [t3 - 60 * Math.min(i3, s3) * 1e3, Math.max(i3, s3)];
+      }(i2.utc(t2, r3).valueOf(), u3, o3), f2 = c3[0], d2 = c3[1], h3 = i2(f2).utcOffset(d2);
+      return h3.$x.$timezone = o3, h3;
+    }, i2.tz.guess = function() {
+      return Intl.DateTimeFormat().resolvedOptions().timeZone;
+    }, i2.tz.setDefault = function(t2) {
+      s2 = t2;
+    };
+  };
+}();
+var v = { exports: {} };
+var p = v.exports = function() {
+  var t = "minute", e = /[+-]\d\d(?::?\d\d)?/g, n = /([+-]|\d\d)/g;
+  return function(r2, i2, s2) {
+    var o2 = i2.prototype;
+    s2.utc = function(t2) {
+      return new i2({ date: t2, utc: true, args: arguments });
+    }, o2.utc = function(e2) {
+      var n2 = s2(this.toDate(), { locale: this.$L, utc: true });
+      return e2 ? n2.add(this.utcOffset(), t) : n2;
+    }, o2.local = function() {
+      return s2(this.toDate(), { locale: this.$L, utc: false });
+    };
+    var a2 = o2.parse;
+    o2.parse = function(t2) {
+      t2.utc && (this.$u = true), this.$utils().u(t2.$offset) || (this.$offset = t2.$offset), a2.call(this, t2);
+    };
+    var u2 = o2.init;
+    o2.init = function() {
+      if (this.$u) {
+        var t2 = this.$d;
+        this.$y = t2.getUTCFullYear(), this.$M = t2.getUTCMonth(), this.$D = t2.getUTCDate(), this.$W = t2.getUTCDay(), this.$H = t2.getUTCHours(), this.$m = t2.getUTCMinutes(), this.$s = t2.getUTCSeconds(), this.$ms = t2.getUTCMilliseconds();
+      } else
+        u2.call(this);
+    };
+    var c2 = o2.utcOffset;
+    o2.utcOffset = function(r3, i3) {
+      var s3 = this.$utils().u;
+      if (s3(r3))
+        return this.$u ? 0 : s3(this.$offset) ? c2.call(this) : this.$offset;
+      if (typeof r3 == "string" && (r3 = function(t2) {
+        t2 === void 0 && (t2 = "");
+        var r4 = t2.match(e);
+        if (!r4)
+          return null;
+        var i4 = ("" + r4[0]).match(n) || ["-", 0, 0], s4 = i4[0], o4 = 60 * +i4[1] + +i4[2];
+        return o4 === 0 ? 0 : s4 === "+" ? o4 : -o4;
+      }(r3)) === null)
+        return this;
+      var o3 = Math.abs(r3) <= 16 ? 60 * r3 : r3, a3 = this;
+      if (i3)
+        return a3.$offset = o3, a3.$u = r3 === 0, a3;
+      if (r3 !== 0) {
+        var u3 = this.$u ? this.toDate().getTimezoneOffset() : -1 * this.utcOffset();
+        (a3 = this.local().add(o3 + u3, t)).$offset = o3, a3.$x.$localOffset = u3;
+      } else
+        a3 = this.utc();
+      return a3;
+    };
+    var f2 = o2.format;
+    o2.format = function(t2) {
+      var e2 = t2 || (this.$u ? "YYYY-MM-DDTHH:mm:ss[Z]" : "");
+      return f2.call(this, e2);
+    }, o2.valueOf = function() {
+      var t2 = this.$utils().u(this.$offset) ? 0 : this.$offset + (this.$x.$localOffset || new Date().getTimezoneOffset());
+      return this.$d.valueOf() - 6e4 * t2;
+    }, o2.isUTC = function() {
+      return !!this.$u;
+    }, o2.toISOString = function() {
+      return this.toDate().toISOString();
+    }, o2.toString = function() {
+      return this.toDate().toUTCString();
+    };
+    var d2 = o2.toDate;
+    o2.toDate = function(t2) {
+      return t2 === "s" && this.$offset ? s2(this.format("YYYY-MM-DD HH:mm:ss:SSS")).toDate() : d2.call(this);
+    };
+    var h3 = o2.diff;
+    o2.diff = function(t2, e2, n2) {
+      if (t2 && this.$u === t2.$u)
+        return h3.call(this, t2, e2, n2);
+      var r3 = this.local(), i3 = s2(t2).local();
+      return h3.call(r3, i3, e2, n2);
+    };
+  };
+}();
+c.extend(d), c.extend(l), c.extend(p), c.extend($);
+var y = { name: "zh-cn", weekdays: "\u661F\u671F\u65E5_\u661F\u671F\u4E00_\u661F\u671F\u4E8C_\u661F\u671F\u4E09_\u661F\u671F\u56DB_\u661F\u671F\u4E94_\u661F\u671F\u516D".split("_"), weekdaysShort: "\u5468\u65E5_\u5468\u4E00_\u5468\u4E8C_\u5468\u4E09_\u5468\u56DB_\u5468\u4E94_\u5468\u516D".split("_"), weekdaysMin: "\u65E5_\u4E00_\u4E8C_\u4E09_\u56DB_\u4E94_\u516D".split("_"), months: "\u4E00\u6708_\u4E8C\u6708_\u4E09\u6708_\u56DB\u6708_\u4E94\u6708_\u516D\u6708_\u4E03\u6708_\u516B\u6708_\u4E5D\u6708_\u5341\u6708_\u5341\u4E00\u6708_\u5341\u4E8C\u6708".split("_"), monthsShort: "1\u6708_2\u6708_3\u6708_4\u6708_5\u6708_6\u6708_7\u6708_8\u6708_9\u6708_10\u6708_11\u6708_12\u6708".split("_"), ordinal: (t, e) => e === "W" ? `${t}\u5468` : `${t}\u65E5`, weekStart: 1, yearStart: 4, formats: { LT: "HH:mm", LTS: "HH:mm:ss", L: "YYYY/MM/DD", LL: "YYYY\u5E74M\u6708D\u65E5", LLL: "YYYY\u5E74M\u6708D\u65E5Ah\u70B9mm\u5206", LLLL: "YYYY\u5E74M\u6708D\u65E5ddddAh\u70B9mm\u5206", l: "YYYY/M/D", ll: "YYYY\u5E74M\u6708D\u65E5", lll: "YYYY\u5E74M\u6708D\u65E5 HH:mm", llll: "YYYY\u5E74M\u6708D\u65E5dddd HH:mm" }, relativeTime: { future: "%s\u5185", past: "%s\u524D", s: "\u51E0\u79D2", m: "1 \u5206\u949F", mm: "%d \u5206\u949F", h: "1 \u5C0F\u65F6", hh: "%d \u5C0F\u65F6", d: "1 \u5929", dd: "%d \u5929", M: "1 \u4E2A\u6708", MM: "%d \u4E2A\u6708", y: "1 \u5E74", yy: "%d \u5E74" }, meridiem: (t, e) => {
+  const n = 100 * t + e;
+  return n < 600 ? "\u51CC\u6668" : n < 900 ? "\u65E9\u4E0A" : n < 1100 ? "\u4E0A\u5348" : n < 1300 ? "\u4E2D\u5348" : n < 1800 ? "\u4E0B\u5348" : "\u665A\u4E0A";
+} };
+var g = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") };
+c.locale("zh", y), c.locale("en", g);
+var M = c;
+var D = (t, e = {}) => {
+  const { lang: n, timezone: r2, type: i2 } = e;
+  M.locale(((t2 = "en") => {
+    const e2 = t2.toLowerCase();
+    return e2 === "zh" || e2 === "zh-cn" ? "zh" : (e2 === "en-us" || e2 === "en-uk" || e2 === "en" || console.warn(`${t2} locale missing in config`), "en");
+  })(n));
+  const s2 = r2 ? M(t).tz(r2).format("LL") : M(t).format("LL"), o2 = r2 ? M(t).tz(r2).format("HH:mm") : M(t).format("HH:mm");
+  return i2 === "date" ? s2 : i2 === "time" ? o2 : `${s2} ${o2}`;
+};
+var _ = (t, e = {}) => {
+  const { timezone: n } = e;
+  if (t) {
+    if (M(t instanceof Date ? t : t.trim()).isValid()) {
+      const r3 = n ? M(t).tz(n) : M(t), i2 = r3.year(), s2 = r3.month() + 1, o2 = r3.date(), a2 = r3.hour(), u2 = r3.minute(), c2 = r3.second(), f2 = r3.millisecond(), d2 = a2 === 0 && u2 === 0 && c2 === 0 && f2 === 0, h3 = r3.toDate();
+      return { display: D(h3, __spreadValues({ type: d2 ? "date" : "full" }, e)), value: h3, detail: __spreadValues({ year: i2, month: s2, day: o2 }, d2 ? {} : { hour: a2, minute: u2, second: c2 }) };
     }
-  },
-  unmounted(el) {
-    nodeList.delete(el);
+    const r2 = /(?:(\d{2,4})[/-](\d{1,2})[/-](\d{1,2}))?\s*(?:(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/u.exec(t.trim());
+    if (r2) {
+      const [, t2, n2, i2, s2, o2, a2] = r2, u2 = (t3) => t3 === void 0 ? void 0 : Number(t3), c2 = (t3) => s2 && o2 && !a2 ? 0 : t3, f2 = { year: ((t3) => t3 && t3 < 100 ? t3 + 2e3 : t3)(u2(t2)), month: u2(n2), day: u2(i2), hour: u2(s2), minute: u2(o2), second: c2(u2(a2)) }, d2 = t2 === void 0 && n2 === void 0 && i2 === void 0, h3 = s2 === void 0 && o2 === void 0 && a2 === void 0, l2 = M(__spreadProps(__spreadValues({}, f2), { month: f2.month - 1 })).toDate();
+      return { display: D(l2, __spreadValues({ type: h3 ? "date" : d2 ? "time" : "full" }, e)), value: d2 ? void 0 : l2, detail: h3 ? { year: f2.year, month: f2.month, day: f2.day } : d2 ? { hour: f2.hour, minute: f2.minute, second: f2.second } : f2 };
+    }
   }
+  return null;
 };
-
-// ../shared/lib/client/utils/path.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-var HASH_REGEXP = /#.*$/u;
-var getHash = (path) => {
-  const match = HASH_REGEXP.exec(path);
-  if (match)
-    return match[0];
-  return "";
+var Y = (t, e) => {
+  const n = _(typeof t == "number" ? new Date(t) : t), r2 = _(typeof e == "number" ? new Date(e) : e);
+  return n && n.value ? r2 && r2.value ? r2.value.getTime() - n.value.getTime() : -1 : 1;
 };
-var normalizePath = (path) => decodeURI(path).replace(HASH_REGEXP, "").replace(/(index)?\.(md|html)$/, "");
-var isActiveLink = (route, link) => {
-  if (link === void 0)
+var S = (t, e = false) => t ? Array.isArray(t) ? t.map((t2) => typeof t2 == "string" ? { name: t2 } : t2) : typeof t == "string" ? [{ name: t }] : typeof t == "object" && t.name ? [t] : (console.error(`Expect 'author' to be \`AuthorInfo[] | AuthorInfo | string[] | string ${e ? "" : "| false"} | undefined\`, but got`, t), []) : [];
+var w = (t) => {
+  if (t) {
+    if (Array.isArray(t))
+      return t.map(s);
+    if (typeof t == "string")
+      return [s(t)];
+    console.error("Expect 'category' to be `string[] | string | undefined`, but got", t);
+  }
+  return [];
+};
+var O = (t) => {
+  if (t) {
+    if (Array.isArray(t))
+      return t;
+    if (typeof t == "string")
+      return [t];
+    console.error("Expect 'tag' to be `string[] | string | undefined`, but got", t);
+  }
+  return [];
+};
+var b = (t) => {
+  if (typeof t != "string" || t === "")
     return false;
-  const currentPath = normalizePath(route.path);
-  const targetPath = normalizePath(link);
-  const linkHash = getHash(link);
-  if (linkHash)
-    return linkHash === route.hash && (!targetPath || currentPath === targetPath);
-  return currentPath === targetPath;
+  const e = /^(?:\w+:)?\/\/(\S+)$/u.exec(t);
+  if (!e)
+    return false;
+  const n = e[1];
+  return !!n && (/^localhost[:?\d]*(?:[^:?\d]\S*)?$/u.test(n) || /^[^\s.]+\.\S{2,}$/u.test(n));
 };
-
-// ../shared/lib/client/utils/message.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-import "C:/projects/vuepress-theme-hope/packages/shared/lib/client/styles/message.scss";
-var Message = class {
+var L = (t) => t.startsWith("/");
+var T = defineComponent({ name: "IconBase", props: { name: { type: String, default: "" }, color: { type: String, default: "currentColor" } }, setup: (t, { slots: n }) => () => {
+  var _a;
+  return h("svg", { xmlns: "http://www.w3.org/2000/svg", class: ["icon", `${t.name}-icon`], viewBox: "0 0 1024 1024", ariaLabelledby: t.name }, [h("title", { id: t.name, lang: "en" }, `${t.name} icon`), h("g", { fill: t.color }, (_a = n.default) == null ? void 0 : _a.call(n))]);
+} });
+var x = (t) => {
+  const e = r();
+  return computed(() => t[e.value]);
+};
+var H = () => computed(() => i().value.title);
+var z = /* @__PURE__ */ new Map();
+var A;
+document.addEventListener("mousedown", (t) => {
+  A = t;
+}), document.addEventListener("mouseup", (t) => {
+  for (const e of z.values())
+    for (const { documentHandler: n } of e)
+      n(t, A);
+});
+var C = (t, e) => {
+  let n = [];
+  return Array.isArray(e.arg) ? n = e.arg : e.arg instanceof HTMLElement && n.push(e.arg), (r2, i2) => {
+    const s2 = e.instance.popperRef, o2 = r2.target, a2 = i2 == null ? void 0 : i2.target, u2 = !e || !e.instance, c2 = !o2 || !a2, f2 = t.contains(o2) || t.contains(a2), d2 = t === o2, h3 = n.length && n.some((t2) => t2 == null ? void 0 : t2.contains(o2)) || n.length && n.includes(a2), l2 = s2 && (s2.contains(o2) || s2.contains(a2));
+    u2 || c2 || f2 || d2 || h3 || l2 || e.value(r2, i2);
+  };
+};
+var E = { beforeMount(t, e) {
+  z.has(t) || z.set(t, []), z.get(t).push({ documentHandler: C(t, e), bindingFn: e.value });
+}, updated(t, e) {
+  z.has(t) || z.set(t, []);
+  const n = z.get(t), r2 = n.findIndex((t2) => t2.bindingFn === e.oldValue), i2 = { documentHandler: C(t, e), bindingFn: e.value };
+  r2 >= 0 ? n.splice(r2, 1, i2) : n.push(i2);
+}, unmounted(t) {
+  z.delete(t);
+} };
+var U = /#.*$/u;
+var N = (t) => {
+  const e = U.exec(t);
+  return e ? e[0] : "";
+};
+var I = (t) => decodeURI(t).replace(U, "").replace(/(index)?\.(md|html)$/, "");
+var k = (t, e) => {
+  if (e === void 0)
+    return false;
+  const n = I(t.path), r2 = I(e), i2 = N(e);
+  return i2 ? i2 === t.hash && (!r2 || n === r2) : n === r2;
+};
+var W = class {
   constructor() {
-    const containerId = "message-container";
-    const containerElement = document.getElementById(containerId);
-    if (containerElement)
-      this.containerElement = containerElement;
-    else {
-      this.containerElement = document.createElement("div");
-      this.containerElement.id = containerId;
-      document.body.appendChild(this.containerElement);
-    }
+    const t = "message-container", e = document.getElementById(t);
+    e ? this.containerElement = e : (this.containerElement = document.createElement("div"), this.containerElement.id = t, document.body.appendChild(this.containerElement));
   }
-  pop(html, duration = 2e3) {
-    const messageElement = document.createElement("div");
-    messageElement.className = "message move-in";
-    messageElement.innerHTML = html;
-    this.containerElement.appendChild(messageElement);
-    if (duration > 0)
-      setTimeout(() => {
-        this.close(messageElement);
-      }, duration);
+  pop(t, e = 2e3) {
+    const n = document.createElement("div");
+    n.className = "message move-in", n.innerHTML = t, this.containerElement.appendChild(n), e > 0 && setTimeout(() => {
+      this.close(n);
+    }, e);
   }
-  close(messageElement) {
-    messageElement.className = messageElement.className.replace("move-in", "");
-    messageElement.className += "move-out";
-    messageElement.addEventListener("animationend", () => {
-      messageElement.remove();
+  close(t) {
+    t.className = t.className.replace("move-in", ""), t.className += "move-out", t.addEventListener("animationend", () => {
+      t.remove();
     });
   }
 };
-
-// ../shared/lib/client/utils/resolveRouteWithRedirect.js
-init_define_ARTICLE_INFO_LOCALES();
-init_define_BACK_TO_TOP_LOCALES();
-init_define_CODE_COPY_LOCALES();
-init_define_CODE_COPY_OPIONS();
-init_define_CODE_DEMO_OPTIONS();
-init_define_COMMENT_OPTIONS();
-init_define_MERMAID_OPTIONS();
-init_define_PAGINATION_LOCALES();
-init_define_PHOTO_SWIPE_LOCALES();
-init_define_PHOTO_SWIPE_OPTIONS();
-init_define_PWA_LOCALES();
-init_define_READING_TIME_LOCALES();
-init_define_REVEAL_CONFIG();
-init_define_WALINE_LOCALES();
-init_define_EXTERNAL_LINK_ICON_LOCALES();
-import { isFunction, isString } from "@vuepress/shared";
-var resolveRouteWithRedirect = (router, ...args) => {
-  const route = router.resolve(...args);
-  const lastMatched = route.matched[route.matched.length - 1];
-  if (!(lastMatched == null ? void 0 : lastMatched.redirect))
-    return route;
-  const { redirect } = lastMatched;
-  const resolvedRedirect = isFunction(redirect) ? redirect(route) : redirect;
-  const resolvedRedirectObj = isString(resolvedRedirect) ? { path: resolvedRedirect } : resolvedRedirect;
-  return resolveRouteWithRedirect(router, __spreadValues({
-    hash: route.hash,
-    query: route.query,
-    params: route.params
-  }, resolvedRedirectObj));
+Object.freeze({}), Object.freeze([]);
+var F = (t, ...e) => {
+  const n = t.resolve(...e), r2 = n.matched[n.matched.length - 1];
+  if (!(r2 == null ? void 0 : r2.redirect))
+    return n;
+  const { redirect: i2 } = r2, s2 = typeof i2 == "function" ? i2(n) : i2;
+  const o2 = ((t2) => typeof t2 == "string")(s2) ? { path: s2 } : s2;
+  return F(t, __spreadValues({ hash: n.hash, query: n.query, params: n.params }, o2));
 };
-var export_capitalize = import_shared2.capitalize;
-var export_compareDate = import_shared2.compareDate;
-var export_getAuthor = import_shared2.getAuthor;
-var export_getCategory = import_shared2.getCategory;
-var export_getDate = import_shared2.getDate;
-var export_getTag = import_shared2.getTag;
-var export_isAbsoluteUrl = import_shared2.isAbsoluteUrl;
-var export_isUrl = import_shared2.isUrl;
-var export_strictCapitalize = import_shared2.strictCapitalize;
-var export_timeTransformer = import_shared2.timeTransformer;
 export {
-  IconBase,
-  Message,
-  export_capitalize as capitalize,
-  clickOutSideDirective,
-  export_compareDate as compareDate,
-  export_getAuthor as getAuthor,
-  export_getCategory as getCategory,
-  export_getDate as getDate,
-  getHash,
-  export_getTag as getTag,
-  export_isAbsoluteUrl as isAbsoluteUrl,
-  isActiveLink,
-  export_isUrl as isUrl,
-  normalizePath,
-  resolveRouteWithRedirect,
-  export_strictCapitalize as strictCapitalize,
-  export_timeTransformer as timeTransformer,
-  useLocaleConfig,
-  usePageTitle
+  T as IconBase,
+  W as Message,
+  s as capitalize,
+  E as clickOutSideDirective,
+  Y as compareDate,
+  S as getAuthor,
+  w as getCategory,
+  _ as getDate,
+  N as getHash,
+  O as getTag,
+  L as isAbsoluteUrl,
+  k as isActiveLink,
+  b as isUrl,
+  I as normalizePath,
+  F as resolveRouteWithRedirect,
+  o as strictCapitalize,
+  D as timeTransformer,
+  x as useLocaleConfig,
+  H as usePageTitle
 };
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
 //# sourceMappingURL=@mr-hope_vuepress-shared_lib_client.js.map

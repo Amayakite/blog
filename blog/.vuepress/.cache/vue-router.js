@@ -1,6 +1,6 @@
 import {
   setupDevtoolsPlugin
-} from "./chunk-KX764DYK.js";
+} from "./chunk-FJI45OJL.js";
 import {
   computed,
   defineComponent,
@@ -18,8 +18,8 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-G642NIRV.js";
-import "./chunk-HY7UP3Y7.js";
+} from "./chunk-QONNFWLF.js";
+import "./chunk-EERTZB2S.js";
 import {
   init_define_ARTICLE_INFO_LOCALES,
   init_define_BACK_TO_TOP_LOCALES,
@@ -36,7 +36,7 @@ import {
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
   init_define_WALINE_LOCALES
-} from "./chunk-2JB763FX.js";
+} from "./chunk-HAWNBGA3.js";
 
 // dep:vue-router
 init_define_ARTICLE_INFO_LOCALES();
@@ -55,7 +55,7 @@ init_define_REVEAL_CONFIG();
 init_define_WALINE_LOCALES();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 
-// ../../node_modules/vue-router/dist/vue-router.esm-bundler.js
+// node_modules/vue-router/dist/vue-router.esm-bundler.js
 init_define_ARTICLE_INFO_LOCALES();
 init_define_BACK_TO_TOP_LOCALES();
 init_define_CODE_COPY_LOCALES();
