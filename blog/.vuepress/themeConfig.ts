@@ -74,12 +74,12 @@ export default defineThemeConfig({
 
   plugins: {
 
-    blog:true,
+    // blog:true,
 
-    // blog: {
-    //   // 给每个文章生成摘录
-    //   autoExcerpt: true,
-    // },
+    blog: {
+      // 给每个文章生成摘录
+      autoExcerpt: true,
+    },
     // 代码复制
     copyCode: {
       showInMobile: true,
