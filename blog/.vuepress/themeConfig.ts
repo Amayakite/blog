@@ -4,6 +4,7 @@ import sidebar from "./sidebar";
 
 export default defineThemeConfig({
   // 部署的域名
+  //  hostname: "http://www.amayakite.gitee.io",
   hostname: "http://www.amayakite.github.io",
 
   // 嵌套的深度
