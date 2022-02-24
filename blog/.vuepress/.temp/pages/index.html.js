@@ -9,10 +9,10 @@ export const data = {
     "icon": "home",
     "title": "博客主页",
     "heroImage": "/logo.svg",
-    "heroText": "你博客的名称",
+    "heroText": "Amayakite Blog",
     "heroFullScreen": true,
-    "tagline": "你可以在这里放置你的口号与标语",
-    "project": [
+    "tagline": "鱼跃此时海，花开彼岸天",
+    "projects": [
       {
         "type": "project",
         "name": "项目名称",
@@ -39,13 +39,20 @@ export const data = {
       }
     ],
     "footer": "自定义你的页脚文字",
-    "summary": "这是一个博客主页。 要使用此布局，您应该在页面前端设置 layout: Blog 和 home: true。 相关配置文档请见 博客主页。",
+    "summary": "",
     "head": [
       [
         "meta",
         {
           "property": "og:url",
-          "content": "https://vuepress-theme-hope-v2-demo.mrhope.site/"
+          "content": "http://www.amayakite.github.io/"
+        }
+      ],
+      [
+        "meta",
+        {
+          "property": "og:site_name",
+          "content": "Amayakite Blogs"
         }
       ],
       [
@@ -75,27 +82,32 @@ export const data = {
           "name": "twitter:card",
           "content": "summary_large_image"
         }
+      ],
+      [
+        "meta",
+        {
+          "name": "twitter:image:alt",
+          "content": "Amayakite Blogs"
+        }
       ]
     ]
   },
   "excerpt": "",
   "headers": [],
+  "git": {
+    "createdTime": 1645686073000,
+    "updatedTime": 1645686073000,
+    "contributors": [
+      {
+        "name": "Amayakite",
+        "email": "amayakite@qq.com",
+        "commits": 1
+      }
+    ]
+  },
   "readingTime": {
     "minutes": 0.17,
     "words": 50
   },
   "filePathRelative": "README.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

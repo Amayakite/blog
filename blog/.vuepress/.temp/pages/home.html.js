@@ -54,7 +54,7 @@ export const data = {
       },
       {
         "title": "主题色切换",
-        "icon": "skin",
+        "icon": "palette",
         "details": "支持自定义主题色并允许用户在预设的主题颜色之间切换",
         "link": "https://vuepress-theme-hope.github.io/v2/zh/guide/interface/theme-color.html"
       },
@@ -103,7 +103,14 @@ export const data = {
         "meta",
         {
           "property": "og:url",
-          "content": "https://vuepress-theme-hope-v2-demo.mrhope.site/home.html"
+          "content": "http://www.amayakite.github.io/home.html"
+        }
+      ],
+      [
+        "meta",
+        {
+          "property": "og:site_name",
+          "content": "Amayakite Blogs"
         }
       ],
       [
@@ -133,27 +140,32 @@ export const data = {
           "name": "twitter:card",
           "content": "summary_large_image"
         }
+      ],
+      [
+        "meta",
+        {
+          "name": "twitter:image:alt",
+          "content": "Amayakite Blogs"
+        }
       ]
     ]
   },
   "excerpt": "",
   "headers": [],
+  "git": {
+    "createdTime": 1645686073000,
+    "updatedTime": 1645686073000,
+    "contributors": [
+      {
+        "name": "Amayakite",
+        "email": "amayakite@qq.com",
+        "commits": 1
+      }
+    ]
+  },
   "readingTime": {
     "minutes": 0.23,
     "words": 68
   },
   "filePathRelative": "home.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }
