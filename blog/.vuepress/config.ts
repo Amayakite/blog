@@ -8,10 +8,7 @@ export default defineHopeConfig({
   description: "记录我",
 
   dest: "./dist",
-
   
-
-
   head: [
     [
       "link",
