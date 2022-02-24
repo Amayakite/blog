@@ -12,13 +12,13 @@ export default defineHopeConfig({
         apiKey: '0c443a348d38a9f6de9ac2d2d7672024',
         indexName: 'BlogSearch',
         // 显示最近的搜索结果
-        disableUserPersonalization:true,
+        disableUserPersonalization:false,
         locales: {
           '/': {
-            placeholder: '搜索',
+            placeholder: 'Search',
             translations: {
               button: {
-                buttonText: '搜索文档',
+                buttonText: '请输入要搜索的内容',
               },
             },
           },

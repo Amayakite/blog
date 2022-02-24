@@ -10,7 +10,7 @@ export default defineThemeConfig({
   headingDepth:3,
 
   // 深色配置 auto
-  darkmode: "auto",
+  darkmode: "auto-switch",
 
   // 主题颜色配置
   themeColor: {
