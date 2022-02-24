@@ -8,7 +8,7 @@ export default defineNavbarConfig([
     text: "实用链接",
     icon: "note",
     children: [
-      { text: "VuePressTheme-Hope", icon: "vue", link: "https://vuepress-theme-hope.github.io/zh/" },
+      { text: "VuePressTheme-Hope", icon: "vue", link: "https://vuepress-theme-hope.github.io/v2/zh/" },
       {
         text: "Java常用网站", icon: 'java',
         children: [
@@ -16,7 +16,8 @@ export default defineNavbarConfig([
           { text: "HuTool工具类库", icon: 'plugin', link: "https://www.hutool.cn/" },
           { text: "Sa-Token文档", icon: 'lock', link: "https://sa-token.dev33.cn/doc/index.html#/" },
           { text: "Maven仓库地址", icon: 'list', link: "https://mvnrepository.com/" },
-          { text: "Spring官网", icon: 'note', link: "https://spring.io/" }
+          { text: "Spring官网", icon: 'leaf', link: "https://spring.io/" },
+          { text: "Json在线解析", icon: 'script', link: "https://www.json.cn/" }
         ]
       },
     ],
