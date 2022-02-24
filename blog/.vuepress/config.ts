@@ -6,11 +6,21 @@ export default defineHopeConfig({
 
   plugins:[
     [
-      '@vuepress/plugin-search',
+      '@vuepress/docsearch',
       {
+        appId:'ZN9ZT0G3SP',
+        apiKey: '0c443a348d38a9f6de9ac2d2d7672024',
+        indexName: 'BlogSearch',
+        // 显示最近的搜索结果
+        disableUserPersonalization:true,
         locales: {
           '/': {
             placeholder: '搜索',
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+              },
+            },
           },
         },
       },
