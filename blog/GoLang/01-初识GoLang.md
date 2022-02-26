@@ -10,6 +10,10 @@ tag:
 
 长篇大论这里就不多说明了，总之 ，这是一门高并发非常牛逼的语言
 
+额外说一嘴，这并不是一门高级语言，而是一门偏向底层的语言
+
+性能优异的同时，带来的损失为：少了高级语言例如Java中一些灵活的特性，如泛型等
+
 ### 安装和配置 
 
 Windows直接在官网下载安装最新版本即可<https://go.dev/>
@@ -643,3 +647,458 @@ for{
 ### 关于switch
 
 使用起来和其他语言没有区别（不过不用写break）
+
+```go
+package main
+
+func main() {
+	n := 5
+	switch n {
+	case 1:
+		println("one")
+	case 2:
+		println("two")
+	case 3:
+		println("three")
+	case 4:
+		println("four")
+	default:
+		println("unknown")
+	}
+}
+```
+
+当然，在Switch中可以跟很多值，例如`case 1,3,5,7,9`，这里就不演示了
+
+也可以跟判断，例如
+
+```go
+func main() {
+	n := 5
+	switch {
+	case n > 30:
+		println("n is greater than 30")
+	case n > 20:
+		println("n is greater than 20")
+	case n > 10:
+		println("n is greater than 10")
+	default:
+		println("n is less than 10")
+	}
+}
+```
+
+### GOTO  跳到指定的位置
+
+我们都知道`break`是调出循环，然后`continue`是进入下一轮循环
+
+如果想在go语言的循环的循环中调出所有循环，就可以使用GOTO
+
+```go
+package main
+
+func main() {
+
+	for i := 0; i < 1000; i++ {
+
+		for j := 0; j < 1000; j++ {
+			if i*j == 1000 {
+				println(i * j)
+				goto end
+			}
+		}
+		println(i)
+	}
+end: // 这里是label标签 嘛反正通常是跟goto一起使用的
+	println("end")
+}
+```
+
+### GoLang中的字符串对比
+
+这个放心，直接`==`对比就行了，是直接对比值的，和Java不一样的
+
+
+## 数组
+
+### 基本使用
+
+
+```go
+package main
+
+import (
+	"strings"
+)
+
+func main() {
+	// 声明，不指定值 注意 如果声明的是int类型，那么默认值为0
+	// 如果声明的是string类型，那么默认值为空字符串
+	// 如果声明的是bool类型，那么默认值为false
+	var arr [5]string
+	arr[1] = "hello"
+	println(strings.Join(arr[:], "_"))
+
+	// 声明，指定值
+	arr2 := [5]string{"a", "b", "c", "d", "e"}
+	println(strings.Join(arr2[:], "_"))
+
+	// 声明，根据初始化值自动确定长度
+	arr3 := [...]string{"a", "b", "c", "d", "e"}
+	println(strings.Join(arr3[:], "_"))
+	println("数组长度：", len(arr3))
+
+	// 声明，根据索引来初始化指定位置的值
+	arr4 := [5]string{1: "a", 4: "d"}
+	println(strings.Join(arr4[:], "_"))
+
+	// 数组的遍历
+
+	// 先创建一个数组，长度为10 string
+	arr5 := [10]string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
+
+	// 使用普通for循环遍历
+	for i := 0; i < len(arr5); i++ {
+		println(arr5[i])
+	}
+
+	// 使用range遍历 i就是索引，v就是值
+	for i, v := range arr5 {
+		println(i, v)
+	}
+
+	// 创建一个二维数组
+	arr6 := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+	for _, v := range arr6 {
+		for _, v2 := range v {
+			println(v2)
+		}
+	}
+}
+
+
+```
+
+### 切片
+
+emm就是不给定初始长度的数组
+
+注意 如果说通过赋值的方式传递值
+
+例如说通过拷贝数组的方式，则是指针传递，也就是传过去后，修改原来数组的指定位置的值，对应的，切片内的值也会被修改
+
+它自己本身没有任何值，全都是引用其他地方的
+
+那个append之后会说明
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	var arrt []int
+
+	// 添加方式1 支持扩容的
+	arrt = append(arrt, 1)
+	arrt = append(arrt, 2)
+	arrt = append(arrt, 3)
+	arrt = append(arrt, 4)
+	fmt.Println(arrt)
+
+	// 添加方式2
+	var arrt2 []int
+	arr := []int{1, 2, 3, 4}
+	arrt2 = append(arrt2, arr...)
+	fmt.Println(arrt2)
+
+	// 添加方式3
+	var attr3 []int
+	// 包左不包右
+	attr3 = arr[0:2]
+	// 注意 这里都是指针传递
+	arr[0] = 100
+	fmt.Println(attr3)
+
+}
+```
+
+### 切片的本质
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	// 创建一个切片，类型是int，长度是5，容量是10
+	// 长度就相当于初始的数组的长度
+	// 容量就相当于最大的数量
+	s1 := make([]int, 5, 10)
+	fmt.Printf("s1=%v, len(s1)=%d, cap(s1)=%d\n", s1, len(s1), cap(s1))
+	// s1=[0 0 0 0 0], len(s1)=5, cap(s1)=10
+	// 添加11个元素
+	for i := 0; i < 11; i++ {
+		// append：给指定的切片添加一个元素
+		s1 = append(s1, i)
+	}
+	fmt.Printf("s1=%v, len(s1)=%d, cap(s1)=%d\n", s1, len(s1), cap(s1))
+	// s1=[0 0 0 0 0 0 1 2 3 4 5 6 7 8 9 10], len(s1)=16, cap(s1)=20
+}
+```
+
+嘛，这东西，越用越像Java的ArrayList，可以看到，内容是动态添加的....，并且还会*2的扩容
+
+貌似是Java中LinkedList的扩容机制
+
+就是一个框，框柱了一块连续的内存
+
+所以，要判断一个切片是否绑定了数组，需要`arr==nil`,要判断一个切片是否为空，则需要用`len(arr)==0`
+
+> PS:`nil`值切片的长度和容量都是0
+
+两个切片之间是不能通过`==`来判断是否相等的
+
+```go
+package main
+
+func main() {
+
+	var s0 []int
+
+	// true
+	println(s0 == nil)
+
+	s1 := make([]int, 0, 0)
+	// false
+	println(s1 == nil)
+
+}
+```
+
+### 切片的append和copy
+
+就是给切片尾部追加一个元素，达到上限的时候会触发动态扩容机制
+
+> PS 动态扩容机制：开始*2，如果老的容量大于等于1024时，则是1/4的增长 也就是 a + (0.25xa)
+
+使用的时候必须调用原来的切片接收返回值(相当于返回一个对象，就跟Java中ArrayList的底层扩容机制似的，一个数组的长度是不可变的，要想增加只能创建一个新数组并替换老的数组)
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	s1 := []string{"a", "b", "c"}
+
+	s1 = append(s1, "d")
+
+	fmt.Println(s1)
+}
+
+```
+
+当然，Append还可以删除指定的元素，这里就不多做说明了（用到了再去百度）
+
+至于Copy嘛，就非常简单了，就是将一个老的切片的内容复制给一个新的切片
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	arr1 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	arr2 := make([]int, 5, 5)
+	// 第一个参数：接收方
+	// 第二个参数：源
+	copy(arr2, arr1)
+	fmt.Println(arr2)
+
+}
+
+```
+
+注意 上面的运行结果为：`[1 2 3 4 5]`，也就是说，接收方没法接收大于自己长度的切片 超过自己长度的将会被省略
+
+## 指针
+
+在Go语言中，这玩意被封装的还是比较简单的
+
+Go语言中不存在指针的操作，只需要记住两个符号即可
+
+1. `&`获取指针的地址
+2. `*`根据地址取值
+
+对 没错 就这两个，接下来测试下
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	n := 18
+	// 打印内存地址
+	fmt.Println(&n)
+
+	p := &n
+	// 类型是一个指针类型*int
+	fmt.Printf("类型为%T\n", p)
+
+	// 打印指针的值(根据地址取值)
+	fmt.Printf("指针的值为%d\n", *p)
+
+}
+
+```
+
+### 创建指针和指针值的修改
+
+非常简单
+
+```go
+package main
+
+func main() {
+
+	var a *int = new(int)
+	*a = 10
+	// 分别打印地址和值
+	println("地址:", a)
+	println("值:", *a)
+}
+
+```
+
+反正只要记住两点，&是操纵地址，*是操纵(获取)实际的值
+
+
+### 关于make方法
+
+`make`也是用于内存分配的，区别于`new`，它只适用于`slice`、`map`、`channel`的内存创建，而且它的返回值类型就是这三个类型的本身，因为这三种类型本身就是引用类型，所以就没有必要返回他们的指针了，make函数的函数签名如下
+
+```go
+func make(t Type,size ...IntegerType) Type
+```
+
+make函数是无可替代的，在我们使用slice、map以及channel的时候，都需要使用make进行初始化，然后才可以进行对他们的操作，关于`channel`会在后面说明
+
+总结就是如下几点：
+
+1. make和new都是用来申请内存的
+2. new很少用，一般都是来给基本的数据类型申请内存，例如string/int等
+3. make是用来给`slice`、`map`、`channel`申请内存的，make函数返回对应的这三个类型本身
+
+## Map
+
+emm这东西就相当于Java的HashMap或者说JavaScript的Object,用法层面更像是JavaScript
+
+底层实现是hash，也就是无序的key-value结构，并且key是不重复的
+
+在go语言中使用它的时候，必须得先定义才能使用，定义的语法如下
+
+```go
+map[keyType]valueType
+```
+
+- `keyType`:键的类型
+- `valueType`:值的类型
+
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	var myMap map[string]string
+
+	// 在使用之前必须使用make来创建 这里和上面的可以合并成一句话
+	// 上面只是声明，并没有初始化，就像是Java中 public HashMap map;一样
+	myMap = make(map[string]string)
+
+	// 赋值 固定方法
+	myMap["key1"] = "value1"
+	myMap["key2"] = "value2"
+	fmt.Printf("myMap: %v\n", myMap)
+
+	// 取指定值
+	fmt.Printf("myMap[key1]: %v\n", myMap["key1"])
+
+	// 改变值
+	myMap["key1"] = "value1-new"
+	fmt.Printf("myMap[key1]: %v\n", myMap["key1"])
+
+	// 删除指定值 如果删除一个不存在的啥也不会发生
+	delete(myMap, "key1")
+	fmt.Printf("myMap: %v\n", myMap)
+
+	// 判断是否存在指定值
+	value, ok := myMap["key1"]
+	if ok {
+		fmt.Printf("myMap[key1]: %v\n", value)
+	} else {
+		fmt.Printf("myMap[key1] is not exist\n")
+	}
+
+	// 打印map的长度
+	fmt.Printf("myMap length: %v\n", len(myMap))
+
+	// 添加一些内容，并遍历打印
+	myMap["key3"] = "value3"
+	myMap["key4"] = "value4"
+	for key, value := range myMap {
+		fmt.Printf("key: %v, value: %v\n", key, value)
+	}
+
+}
+```
+
+## 函数
+
+和其他语言不同的是，如果有返回值的情况下
+
+可以给返回值指定名字
+
+```go
+package main
+
+func main() {
+
+	var (
+		a int = 1
+		b int = 2
+	)
+
+	println(add(1, 2))
+	println(add2(1, 2))
+	println(add3(&a, &b))
+
+}
+
+// 命名返回值，return的时候可以省略后面的内容（前提是返回值的内容要赋值过）
+func add(x int, y int) (ret int) {
+	ret = x + y
+	return
+}
+
+// 下面这等价于上面
+func add2(x int, y int) int {
+	return x + y
+}
+
+// 也也可以用指针的方式
+func add3(x *int, y *int) int {
+	return *x + *y
+}
+
+```

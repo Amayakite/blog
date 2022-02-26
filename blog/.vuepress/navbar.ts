@@ -19,7 +19,13 @@ export default defineNavbarConfig([
           { text: "Spring官网", icon: 'leaf', link: "https://spring.io/" },
           { text: "Json在线解析", icon: 'script', link: "https://www.json.cn/" }
         ]
-      },
+      }, {
+        text: "GoLang常用网站", icon: 'creative',
+        children: [
+          { text: "GoLang官网", icon: 'leaf', link: "https://golang.org/" },
+          { text: "GoLang中文文档", icon: 'group', link: "https://studygolang.com/pkgdoc" },
+        ]
+      }
     ],
   },
   // {
