@@ -4,7 +4,6 @@ dist
 dist-ssr
 *.local
 .idea
-.vscode
 yarn.lock
 blog/.vuepress/.cache
 blog/.vuepress/.temp
