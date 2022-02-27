@@ -6,7 +6,7 @@ export default defineSidebarConfig({
       text: "1-基础部分",
       icon: "java",
       prefix: "JavaSE/",
-      collapsable:true,
+      collapsable: true,
       children: [
         "01-Java的特点.md",
         "02-开始使用Java.md",
@@ -34,9 +34,9 @@ export default defineSidebarConfig({
       ]
     }, {
       text: "2-JavaWeb",
-      icon: "java-web",
+      icon: "web",
       prefix: "JavaEE/",
-      collapsable:true,
+      collapsable: true,
       children: [
         '01-初识JavaWeb.md',
         '02-Maven.md',
@@ -51,7 +51,7 @@ export default defineSidebarConfig({
       text: "3-SpringFrameWork",
       icon: "spring",
       prefix: "SpringFrameWork/",
-      collapsable:true,
+      collapsable: true,
       children: [
         "01-Spring.md",
         "02-Spring配置数据源.md",
@@ -70,7 +70,7 @@ export default defineSidebarConfig({
     }, {
       text: "4-SpringBoot",
       icon: "spring-boot",
-      collapsable:true,
+      collapsable: true,
       prefix: "SpringBoot/",
       children: [
         "01-Spring_Boot基础.md",
@@ -85,7 +85,7 @@ export default defineSidebarConfig({
     }, {
       text: "5-SpringCloud",
       icon: "spring-cloud",
-      collapsable:true,
+      collapsable: true,
       prefix: "SpringCloud/",
       children: [
         "00-Docker.md",
@@ -119,8 +119,8 @@ export default defineSidebarConfig({
       ]
     }, {
       text: "6-Thread",
-      icon: "java-thread",
-      collapsable:true,
+      icon: "thread",
+      collapsable: true,
       prefix: "Thread/",
       children: [
         "1-线程的基本介绍.md",
@@ -130,6 +130,18 @@ export default defineSidebarConfig({
         "5-共享模型之无锁.md",
         "6-连接池和线程池.md",
         "7-JUC.md",
+      ]
+    }
+  ],
+  "/GoLang/": [
+    {
+      collapsable: true,
+      text: "Golang基础",
+      icon: "golang",
+      prefix: "Base/",
+      children: [
+        "01-初识GoLang.md",
+        "02-类.md"
       ]
     }
   ]
