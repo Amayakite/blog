@@ -8,7 +8,7 @@ export default defineThemeConfig({
   hostname: "http://www.amayakite.github.io",
 
   // 嵌套的深度
-  headingDepth:3,
+  headingDepth: 3,
 
   // 深色配置 auto
   darkmode: "auto-switch",
@@ -35,14 +35,14 @@ export default defineThemeConfig({
   repo: "https://github.com/Amayakite/blog",
   repoLabel: "GitHub",
   // 文档在的仓库
-  docsRepo:"https://github.com/Amayakite/blog",
+  docsRepo: "https://github.com/Amayakite/blog",
   // 文档在的分支
   docsBranch: "master",
   docsDir: "blog",
 
-  lastUpdated:true,
-  contributors:true,
-  editLink:true,
+  lastUpdated: true,
+  contributors: true,
+  editLink: true,
 
 
   // navbar
@@ -104,6 +104,10 @@ export default defineThemeConfig({
 
     mdEnhance: {
       enableAll: true,
+      // 开启标注
+      container: true,
+      // 开启任务列表
+      tasklist: true,
       presentation: {
         plugins: ["highlight", "math", "search", "notes", "zoom"],
       },
