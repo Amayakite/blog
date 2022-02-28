@@ -141,7 +141,9 @@ export default defineSidebarConfig({
       prefix: "Base/",
       children: [
         "01-初识GoLang.md",
-        "02-类.md"
+        "02-类.md",
+        "03-IO.md",
+        "04-反射.md",
       ]
     }
   ]

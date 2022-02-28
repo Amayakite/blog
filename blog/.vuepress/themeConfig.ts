@@ -8,7 +8,7 @@ export default defineThemeConfig({
   hostname: "http://www.amayakite.github.io",
 
   // 嵌套的深度
-  headingDepth: 3,
+  headingDepth: 4,
 
   // 深色配置 auto
   darkmode: "auto-switch",

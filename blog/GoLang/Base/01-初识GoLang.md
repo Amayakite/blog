@@ -1270,9 +1270,11 @@ func main() {
 }
 ```
 
-### 关于异常
+## 异常
 
 这有可能是 Go 语言中最傻\*的地方，之后写代码有概率满屏幕的`if(err!=null)`之类的语句出现，对，都是因为异常捕获机制造成的...
+
+### 不推荐使用的异常捕获方式
 
 不同于其他语言的`try...catch`，在 go 中，异常有两个定义
 
@@ -1356,6 +1358,172 @@ CCCCC
 
 1. **recover()必须搭配 defer 使用**
 2. defer 一定要在**可能会产生** panic 的代码之前定义
+
+这个已经过时了，现在不推荐这样使用，而是这样
+
+### 定义异常
+
+在 Golang 中利用 error 类型实现了 error 接口，并且可以通过 errors.New 或者 fmt.Errorf 来快速创建错误实例。
+
+主要应用场景: 在 Go 语言中，错误是可以预期的，并且不是非常严重，不会影响程序的运行。对于这类问题可以用返回错误给调用者的方法，让调用者自己决定如何处理，通常采用 error 接口进行实现。
+
+error 接口定义:
+
+```go
+type error interface {
+  Error() string
+}
+```
+
+Go 语言的标准库代码包 errors 方法：
+
+```go
+// 方式1.在errors包中的New方法（Go 1.13 版本）。
+package errors
+// go提供了errorString结构体，其则实现了error接口
+type errorString struct {
+  text string
+}
+func (e *errorString) Error() string {
+  return e.text
+}
+
+// 在errors包中，还提供了New函数，来实例化errorString，如下：
+func New(text string) error {
+  return &errorString{text}
+}
+
+// 方式2.另一个可以生成error类型值的方法是调用fmt包中的Errorf函数(Go 1.13 版本以后)
+package fmt
+import "errors"
+func Errorf(format string, args ...interface{}) error{
+	return errors.New(Sprintf(format,args...))
+}
+```
+
+采用 errors 包中装饰一个错误;
+
+```go
+errors.Unwrap(err error)	//通过 errors.Unwrap 函数得到被嵌套的 error。
+errors.Is(err, target error)	//用来判断两个 error 是否是同一个
+errors.As(err error, target interface{})	//error 断言
+```
+
+实际示例 1:
+
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+	"math"
+)
+
+// 错误处理
+// 1.Error
+func demo1() {
+	// 1.声明并初始化为error类型
+	var errNew error = errors.New("# 错误信息来自 errors.New 方法。")
+	fmt.Println(errNew)
+
+	// 2.调用标准库中Errorf方法
+	errorfFun := fmt.Errorf("- %s", "错误信息来自 fmt.Errorf 方法。")
+	fmt.Println(errorfFun)
+
+	// 3.实际案例
+	result, err := func(a, b float64) (ret float64, err error) {
+		err = nil
+		if b == 0 {
+			err = errors.New("此处幂指数不能为0值,其结果都为1")
+			ret = 1
+		} else {
+			ret = math.Pow(a, b)
+		}
+		return
+	}(5, 0)
+
+	if err != nil {
+		fmt.Println("# 输出错误信息:", err)
+		fmt.Printf("5 ^ 0 = %v", result)
+	} else {
+		fmt.Printf("5 ^ 2 = %v", result)
+	}
+}
+
+func main() {
+	demo1()
+}
+```
+
+执行结果:
+
+```text
+错误信息来自 errors.New 方法。
+错误信息来自 fmt.Errorf 方法。
+输出错误信息: 此处幂指数不能为 0 值,其结果都为 1
+5 ^ 0 = 1
+```
+
+实际示例 2:
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+// 定义一个 DivideError 结构 (值得学习)
+type DivideError struct {
+  dividee int
+  divider int
+}
+// 实现 `error` 接口 (值得学习)
+func (de *DivideError) Error() string {
+  strFormat := `
+  Cannot proceed, the divider is zero.
+  dividee: %d
+  divider: 0
+`
+  return fmt.Sprintf(strFormat, de.dividee)
+}
+
+// 定义 `int` 类型除法运算的函数
+func Divide(varDividee int, varDivider int) (result int, errorMsg string) {
+  if varDivider == 0 {
+    dData := DivideError{
+            dividee: varDividee,
+            divider: varDivider,
+    }
+    errorMsg = dData.Error()
+    return
+  } else {
+    return varDividee / varDivider, ""
+  }
+}
+
+func main() {
+  // 正常情况
+  if result, errorMsg := Divide(100, 10); errorMsg == "" {
+    fmt.Println("100/10 = ", result)
+  }
+  // 当除数为零的时候会返回错误信息
+  if _, errorMsg := Divide(100, 0); errorMsg != "" {
+    fmt.Println("errorMsg is: ", errorMsg)
+  }
+}
+```
+
+执行结果:
+
+```text
+100/10 =  10
+errorMsg is:
+  Cannot proceed, the divider is zero.
+  dividee: 100
+  divider: 0
+```
 
 ## 常用库-fmt
 
