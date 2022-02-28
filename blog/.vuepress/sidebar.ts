@@ -144,6 +144,7 @@ export default defineSidebarConfig({
         "02-类.md",
         "03-IO.md",
         "04-反射.md",
+        "05-线程.md",
       ]
     }
   ]
