@@ -147,6 +147,7 @@ export default defineSidebarConfig({
         "05-线程.md",
         "06-网络和测试.md",
         "07-操作数据库.md",
+        "08-依赖管理和包.md",
       ]
     }
   ]

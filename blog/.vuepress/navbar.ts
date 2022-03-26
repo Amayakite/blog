@@ -24,7 +24,8 @@ export default defineNavbarConfig([
         text: "GoLang常用网站", icon: 'creative',
         children: [
           { text: "GoLang官网", icon: 'golang', link: "https://golang.org/" },
-          { text: "GoLang中文文档", icon: 'group', link: "https://studygolang.com/pkgdoc" },
+          // { text: "GoLang中文文档", icon: 'group', link: "https://studygolang.com/pkgdoc" },
+          { text: "GoLang学习文档", icon: 'group', link: "https://www.topgoer.com/" },
         ]
       }
     ],
