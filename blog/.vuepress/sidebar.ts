@@ -148,6 +148,8 @@ export default defineSidebarConfig({
         "06-网络和测试.md",
         "07-操作数据库.md",
         "08-依赖管理和包.md",
+        "09-Etdc和Es.md",
+        "10-GIN.md",
       ]
     }
   ]
