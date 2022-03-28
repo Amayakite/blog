@@ -134,6 +134,8 @@ func main() {
 }
 ```
 
+## 请求
+
 ### 如何获取API参数
 
 无非就三种参数，直接获取即可
@@ -389,7 +391,395 @@ func main() {
 }
 ```
 
+### [重要]接收数据并绑定对象
+
+使用起来还是比较简单的，指定解析即可
+
+```go {23}
+package main
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+type LoginUser struct {
+	// 用户名 form 表单参数，其余的正常参数 uri是路径参数 bingding=required 表示必须有这个字段（不能为空），没有的话会报错
+	Username string `form:"username" json:"username" xml:"username" uri:"username"  binding:"required"`
+	Password string `form:"password" json:"password" xml:"password" uri:"password"  binding:"required"`
+}
+
+func main() {
+	r := gin.Default()
+
+	r.POST("/login", func(c *gin.Context) {
+		// 声明接收的变量
+		var user LoginUser
+		// 把接收到的数据绑定到变量上 json
+		// 会将request的body中的数据自动解析到结构体 例如上方中，标记了json:username，则会解析请求体中json部分的username字段给到这里
+		err := c.ShouldBindJSON(&user)
+		// 如果出问题了
+		if err != nil {
+			// 返回错误信息
+			// gin.H封装了生成json的工具
+			c.JSON(http.StatusBadRequest, gin.H{
+				"msg": err.Error(),
+			})
+			return
+
+		}
+		// 判断用户名和密码是否正确
+		if user.Username != "admin" || user.Password != "admin" {
+			c.JSON(http.StatusUnauthorized, gin.H{
+				"msg": "用户名或密码错误",
+			})
+			return
+		}
+		// 返回登录成功
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "登录成功",
+		})
+
+	})
+
+	r.Run(":8000")
+}
+```
+
+::: tip
+
+同理，还可以解析form和xml之类的，或者如下方所示通过`Bind`自动推断
+
+:::
+
+```go {25}
+package main
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+type LoginUser struct {
+	// 用户名 form 表单参数，其余的正常参数 uri是路径参数 bingding=required 表示必须有这个字段（不能为空），没有的话会报错
+	Username string `form:"username" json:"username" xml:"username" uri:"username"  binding:"required"`
+	Password string `form:"password" json:"password" xml:"password" uri:"password"  binding:"required"`
+}
+
+func main() {
+	r := gin.Default()
+
+	r.POST("/login", func(c *gin.Context) {
+		// 声明接收的变量
+		var user LoginUser
+		// 把接收到的数据绑定到变量上 json
+		// 会将request的body中的数据自动解析到结构体
+
+		// 使用c.Bind会根据请求头中的content-type自动解析
+		err := c.Bind(&user)
+		// 如果出问题了
+		if err != nil {
+			// 返回错误信息
+			// gin.H封装了生成json的工具
+			c.JSON(http.StatusBadRequest, gin.H{
+				"msg": err.Error(),
+			})
+			return
+
+		}
+		// 判断用户名和密码是否正确
+		if user.Username != "admin" || user.Password != "admin" {
+			c.JSON(http.StatusUnauthorized, gin.H{
+				"msg": "用户名或密码错误",
+			})
+			return
+		}
+		// 返回登录成功
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "登录成功",
+		})
+
+	})
+
+	r.Run(":8000")
+}
+```
+
+
+::: info 说明
+
+当然，也可以直接解析uri中的参数
+
+:::
+
+```go {21-22}
+package main
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+type LoginUser struct {
+	// 用户名 form 表单参数，其余的正常参数 uri是路径参数 bingding=required 表示必须有这个字段（不能为空），没有的话会报错
+	Username string `form:"username" json:"username" xml:"username" uri:"username"  binding:"required"`
+	Password string `form:"password" json:"password" xml:"password" uri:"password"  binding:"required"`
+}
+
+func main() {
+	r := gin.Default()
+
+	r.POST("/login/:username/:password", func(c *gin.Context) {
+		// 声明接收的变量
+		var user LoginUser
+		// 把uri中的参数绑定到user中 注意 如果是uri绑定的话，没有传入指定参数则是直接返回404 not found
+		err := c.ShouldBindUri(&user)
+		// 如果出问题了
+		if err != nil {
+			// 返回错误信息
+			// gin.H封装了生成json的工具
+			c.JSON(http.StatusBadRequest, gin.H{
+				"msg": err.Error(),
+			})
+			return
+
+		}
+		// 判断用户名和密码是否正确
+		if user.Username != "admin" || user.Password != "admin" {
+			c.JSON(http.StatusUnauthorized, gin.H{
+				"msg": "用户名或密码错误",
+			})
+			return
+		}
+		// 返回登录成功
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "登录成功",
+		})
+
+	})
+
+	r.Run(":8000")
+}
+```
+
+## 响应
+
+响应客户端数据的方式有很多，下面简单说明下，一般也是用json比较多
+
+### 通常数据：Json、XML、Yaml等
+
+```go
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+
+	ri := r.Group("/test")
+	{
+		ri.GET("/exampleJson", func(c *gin.Context) {
+			// 响应普通的json
+			c.JSON(200, gin.H{
+				"message": "hello world",
+			})
+		})
+		// 响应对象类型json
+		ri.GET("/exampleJson2", func(c *gin.Context) {
+			var msg struct {
+				Code    int         `json:"code"`
+				Message string      `json:"message"`
+				Data    interface{} `json:"data"`
+			}
+			msg.Code = 200
+			msg.Message = "hello world"
+			msg.Data = "hello world"
+			c.JSON(200, msg)
+		})
+		// 响应xml
+		ri.GET("/exampleXml", func(c *gin.Context) {
+			c.XML(200, gin.H{
+				"message": "hello world",
+			})
+		})
+		// 响应Yaml
+		ri.GET("/exampleYaml", func(c *gin.Context) {
+			c.YAML(200, gin.H{
+				"message": "hello world",
+			})
+		})
+		// 响应文件
+		ri.GET("/exampleFile", func(c *gin.Context) {
+			c.File("./main.go")
+		})
+		// 相应html
+		ri.GET("/exampleHtml", func(c *gin.Context) {
+			c.HTML(200, "index.tmpl", gin.H{
+				"title": "Main website",
+			})
+		})
+
+	}
+
+	r.Run(":8000")
+}
+```
+
+### 模板渲染HTML
+
+Gin支持加载HTML模板，然后根据模板参数进行配置并返回相应的数据，**本质上就是字符串替换**
+
+使用`LoadHtmlGlob()`方法可以加载模板文件
+
+例如我们先写一个简单的支持渲染的html模板`templates/index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.title}}</title>
+</head>
+
+<body>
+    <!-- 下面是一个h1标签 -->
+    <h1>{{.message}}</h1>
+
+</body>
+
+</html>
+```
+
+然后根据语法开始进行渲染
+
+```go
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+	r.LoadHTMLGlob("templates/*")
+	// 也可以直接加载单个文件 不过一般都不会加载单个文件，而是指定文件夹
+	// r.LoadHTMLGlob("templates/index.html")
+	r.GET("/", func(c *gin.Context) {
+		// 第二个参数是要渲染的文件的文件名，第三个是替换模板的数据
+		c.HTML(200, "index.html", gin.H{
+			"title":   "Main website",
+			"message": "Hello, World!",
+		})
+	})
+
+	r.Run(":8000")
+}
+```
+
+接着访问，就可以得到如下内容
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Main website</title>
+</head>
+
+<body>
+	<h1>Hello, World!</h1>
+</body>
+</html>
+```
+
+### 重定向
+
+这个也是比较简单的，因为所有内容都封装在了`gin.Context`内，所以可以非常方便的调用
+
+我们想要重定向到百度的话，只需要这样做
+
+```go
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+
+	r.GET("/rediect", func(ctx *gin.Context) {
+		ctx.Redirect(302, "https://www.baidu.com")
+	})
+
+	r.Run(":8000")
+}
+```
+
+### 异步处理
+
+有的时候，想要分批次存储数据的话，或者想异步写日志的话，就可以使用它了
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+
+	r.GET("/sync", func(ctx *gin.Context) {
+		// 首先获取一个上下文副本
+		copyContex := ctx.Copy()
+		// 异步处理
+		go func() {
+			time.Sleep(time.Second * 3)
+			fmt.Println("异步执行结束：", copyContex.Request.URL.Path)
+			// 异步无法返回值
+			// copyContex.JSON(200, gin.H{
+			// 	"message": "异步执行结束",
+			// })
+		}()
+		// 注意 副本没法返回值，必须得用原始的上下文才能返回信息
+		ctx.JSON(200, gin.H{
+			"message": "异步执行中",
+		})
+
+	})
+	r.GET("/no_sync", func(ctx *gin.Context) {
+		// 同步执行
+		time.Sleep(time.Second * 3)
+		fmt.Println("同步执行结束：", ctx.Request.URL.Path)
+		ctx.JSON(200, gin.H{
+			"message": "同步执行结束",
+		})
+	})
+
+	r.Run(":8000")
+}
+```
+
+
+
 ## 路由
+
+这个在Gin框架中并不是复杂的东西，很简单就可以使用了
 
 ### 设置前置路由（路由组）
 
@@ -427,3 +817,348 @@ func main() {
 路由在各大语言中一般是以红黑树的形式存储，这样可以非常方便快捷的查询到想要的路由
 
 :::
+
+## 中间件
+
+这个应该不陌生了，就相当于是NodeJS/Koa中的中间件，或者说Java的Filter、SpringBoot的Interceptor、handler
+
+可以在请求前后对数据进行校验、处理、加工等操作
+
+- Gin可以构建中间件，但它只对注册过的路由函数起作用
+- 对于分组路由，嵌套使用中间件，可以限定中间件的作用范围
+- 中间件分为全局中间件、单个路由中间件和群组中间件
+- **Gin中间件必须是一个`gin.HandlerFunc`类型**
+
+### 定义一个简单的中间件
+
+这里先来定义一个简单的中间件
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+	// 注册全局中间件
+	r.Use(MiddleWare())
+	// 注册路由
+	r.GET("/hello", func(c *gin.Context) {
+		// get 获取上下文中的变量 如果返回的第二个值是false，则说明没有这个变量
+		value, exists := c.Get("name")
+		if exists {
+			fmt.Println("获取到上下文的变量：", value)
+
+		}
+		c.JSON(200, gin.H{
+			"message": "hello",
+			// 获取上下文的变量 MustGet：如果不存在则抛出异常
+			"name": c.MustGet("name"),
+		})
+
+	})
+
+	r.Run(":8000")
+}
+
+// 定义中间件
+func MiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		fmt.Println("中间件开始执行了")
+		// 获取请求的路径并打印
+		path := c.Request.URL.Path
+		fmt.Println("请求的路径是：", path)
+		// 给上下文添加一个变量
+		c.Set("name", "张三")
+		// 放行 如果这里是鉴权的话，还可以直接返回鉴权错误时要返回的值
+		c.Next()
+	}
+}
+
+```
+
+整体来说还是和Node中使用的方式差不多的，上面我们自己写了一个中间件并且注册到了全局，所以说有的请求都会走这个中间件
+
+### 全局中间件和局部中间件
+
+有些时候，不仅仅是全局要走中间件，局部也有可能要单独设立一个中间件，例如`/admin`路由下的东西需要鉴权才能访问
+
+所以可以这样操作
+
+```go {15-16}
+package main
+
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+	// 注册全局中间件
+	r.Use(GlobalMiddleWare())
+	// 注册路由
+	rg := r.Group("/admin")
+	// 注册局部中间件
+	rg.Use(AdminMiddleWare())
+	{
+		rg.GET("/index", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"code":   200,
+				"userId": c.GetInt("userId"),
+				"Auth":   c.GetString("Auth"),
+			})
+		})
+	}
+
+	r.Run(":8000")
+}
+
+// 定义全局中间件
+func GlobalMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		fmt.Println("全局中间件")
+		// 获取请求的路径并打印
+		path := c.Request.URL.Path
+		fmt.Println("请求的路径是：", path)
+		// 给上下文添加一个变量
+		c.Set("name", "张三")
+		// 放行 如果这里是鉴权的话，还可以直接返回鉴权错误时要返回的值
+		c.Next()
+	}
+}
+
+// 定义admin中间件
+func AdminMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 判断请求头中是否有Authorization
+		Authorization := c.Request.Header.Get("Authorization")
+		if Authorization == "" {
+			// auth不存在，返回错误
+			c.JSON(401, gin.H{
+				"code": 401,
+				"msg":  "请求头中无Authorization",
+			})
+			fmt.Println("鉴权不通过")
+			// 终止请求，不再调用后续的handler和中间件
+			c.Abort()
+			return
+		}
+		// auth存在，TODO 鉴权逻辑
+		fmt.Println("鉴权通过")
+		c.Set("userId", 1)
+		c.Set("Auth", Authorization)
+		// 放行
+		c.Next()
+	}
+}
+```
+
+::: tip 
+
+当然，我们还可以给某个路由单独定义使用额外的中间件，例如：
+
+```go {14-15}
+package main
+
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+	// 注册全局中间件
+	r.Use(GlobalMiddleWare())
+
+	// 针对单个路由注册中间件，则这个路由会额外走一遍指定的中间件
+	r.GET("/authApi", AdminMiddleWare(), func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"code":   200,
+			"userId": c.GetInt("userId"),
+			"Auth":   c.GetString("Auth"),
+		})
+	})
+
+	r.Run(":8000")
+}
+
+// 定义全局中间件
+func GlobalMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		fmt.Println("全局中间件")
+		// 获取请求的路径并打印
+		path := c.Request.URL.Path
+		fmt.Println("请求的路径是：", path)
+		// 给上下文添加一个变量
+		c.Set("name", "张三")
+		// 放行 如果这里是鉴权的话，还可以直接返回鉴权错误时要返回的值
+		c.Next()
+	}
+}
+
+// 定义admin中间件
+func AdminMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 判断请求头中是否有Authorization
+		Authorization := c.Request.Header.Get("Authorization")
+		if Authorization == "" {
+			// auth不存在，返回错误
+			c.JSON(401, gin.H{
+				"code": 401,
+				"msg":  "请求头中无Authorization",
+			})
+			fmt.Println("鉴权不通过")
+			// 终止请求，不再调用后续的handler和中间件
+			c.Abort()
+			return
+		}
+		// auth存在，TODO 鉴权逻辑
+		fmt.Println("鉴权通过")
+		c.Set("userId", 1)
+		c.Set("Auth", Authorization)
+		// 放行
+		c.Next()
+	}
+}
+```
+:::
+
+### 例子：中间件统计程序执行用时
+
+其实非常简单，Next之后是还可以跟代码的，所以只需要这样操作即可
+
+
+```go
+func GlobalMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 获取当前系统时间
+		start := time.Now()
+		fmt.Println("全局中间件")
+		// 获取请求的路径并打印
+		path := c.Request.URL.Path
+		fmt.Println("请求的路径是：", path)
+		// 放行
+		c.Next()
+		// 获取当前时间
+		end := time.Now()
+		// 计算请求时间
+		cost := end.Sub(start)
+		// 打印花了多少毫秒
+		fmt.Printf("本次请求用时%d毫秒，%d纳秒\n", cost.Milliseconds(), cost.Nanoseconds())
+	}
+}
+```
+
+使用：
+
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+	// 注册全局中间件
+	r.Use(GlobalMiddleWare())
+
+	// 针对单个路由注册中间件
+	r.GET("/index", AdminMiddleWare(), func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"code":   200,
+			"userId": c.GetInt("userId"),
+			"Auth":   c.GetString("Auth"),
+		})
+	})
+
+	r.Run(":8000")
+}
+
+// 定义全局中间件
+func GlobalMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 获取当前系统时间
+		start := time.Now()
+		fmt.Println("全局中间件")
+		// 获取请求的路径并打印
+		path := c.Request.URL.Path
+		fmt.Println("请求的路径是：", path)
+		c.Next()
+		// 获取当前时间
+		end := time.Now()
+		// 计算请求时间
+		cost := end.Sub(start)
+		// 打印花了多少毫秒
+		fmt.Printf("本次请求用时%d毫秒，%d纳秒\n", cost.Milliseconds(), cost.Nanoseconds())
+	}
+}
+
+// 定义admin中间件
+func AdminMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 判断请求头中是否有Authorization
+		Authorization := c.Request.Header.Get("Authorization")
+		if Authorization == "" {
+			// auth不存在，返回错误
+			c.JSON(401, gin.H{
+				"code": 401,
+				"msg":  "请求头中无Authorization",
+			})
+			fmt.Println("鉴权不通过")
+			// 终止请求，不再调用后续的handler和中间件
+			c.Abort()
+			return
+		}
+		// auth存在，TODO 鉴权逻辑
+		fmt.Println("鉴权通过")
+		c.Set("userId", 1)
+		c.Set("Auth", Authorization)
+		// 放行
+		c.Next()
+	}
+}
+
+```
+
+## 鉴权
+
+### COOKIE
+
+获取和设置比较简单
+
+```go
+r.GET("/index", AdminMiddleWare(), func(c *gin.Context) {
+	// 颁发cookie
+	c.SetCookie("name", "value", 3600, "/", "localhost", false, true)
+	// 获取cookie
+	name, err := c.Cookie("name")
+	if err != nil {
+		fmt.Println("获取cookie失败")
+		c.JSON(200, gin.H{
+			"code": 200,
+		})
+	}
+	fmt.Println("获取cookie成功", name)
+
+	c.JSON(200, gin.H{
+		"code": 200,
+	})
+
+})
+```
+
+当然，也可以在中间件内完成获取并鉴权之类的东西
+
+
