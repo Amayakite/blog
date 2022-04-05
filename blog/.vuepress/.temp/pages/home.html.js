@@ -133,20 +133,6 @@ export const data = {
           "property": "og:locale",
           "content": "zh-CN"
         }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:card",
-          "content": "summary_large_image"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:image:alt",
-          "content": "Amayakite Blogs"
-        }
       ]
     ]
   },

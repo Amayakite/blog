@@ -1,6 +1,6 @@
 {
-  "hash": "a08c9a17",
-  "browserHash": "680941af",
+  "hash": "06183f6e",
+  "browserHash": "63dee848",
   "optimized": {
     "vue": {
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/vue.js",
@@ -17,54 +17,9 @@
       "src": "E:/AmayakiteBlog/node_modules/@vue/devtools-api/lib/esm/index.js",
       "needsInterop": false
     },
-    "@vueuse/core": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@vueuse_core.js",
-      "src": "E:/AmayakiteBlog/node_modules/@vueuse/core/index.mjs",
-      "needsInterop": false
-    },
-    "bcryptjs": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/bcryptjs.js",
-      "src": "E:/AmayakiteBlog/node_modules/bcryptjs/dist/bcrypt.js",
-      "needsInterop": true
-    },
-    "body-scroll-lock": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/body-scroll-lock.js",
-      "src": "E:/AmayakiteBlog/node_modules/body-scroll-lock/lib/bodyScrollLock.esm.js",
-      "needsInterop": false
-    },
-    "lodash.throttle": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/lodash_throttle.js",
-      "src": "E:/AmayakiteBlog/node_modules/lodash.throttle/index.js",
-      "needsInterop": true
-    },
-    "@mr-hope/vuepress-shared/lib/client": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@mr-hope_vuepress-shared_lib_client.js",
-      "src": "E:/AmayakiteBlog/node_modules/@mr-hope/vuepress-shared/lib/client/index.js",
-      "needsInterop": false
-    },
-    "dayjs": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs.js",
-      "src": "E:/AmayakiteBlog/node_modules/dayjs/dayjs.min.js",
-      "needsInterop": true
-    },
-    "dayjs/plugin/localizedFormat": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_localizedFormat.js",
-      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/localizedFormat.js",
-      "needsInterop": true
-    },
-    "dayjs/plugin/objectSupport": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_objectSupport.js",
-      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/objectSupport.js",
-      "needsInterop": true
-    },
-    "dayjs/plugin/timezone": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_timezone.js",
-      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/timezone.js",
-      "needsInterop": true
-    },
-    "dayjs/plugin/utc": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_utc.js",
-      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/utc.js",
+    "nprogress": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/nprogress.js",
+      "src": "E:/AmayakiteBlog/node_modules/nprogress/nprogress.js",
       "needsInterop": true
     },
     "lodash.debounce": {
@@ -72,20 +27,20 @@
       "src": "E:/AmayakiteBlog/node_modules/lodash.debounce/index.js",
       "needsInterop": true
     },
-    "screenfull": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/screenfull.js",
-      "src": "E:/AmayakiteBlog/node_modules/screenfull/dist/screenfull.js",
-      "needsInterop": true
-    },
-    "nprogress": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/nprogress.js",
-      "src": "E:/AmayakiteBlog/node_modules/nprogress/nprogress.js",
-      "needsInterop": true
+    "@vueuse/core": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@vueuse_core.js",
+      "src": "E:/AmayakiteBlog/node_modules/@vueuse/core/index.mjs",
+      "needsInterop": false
     },
     "@waline/client": {
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@waline_client.js",
       "src": "E:/AmayakiteBlog/node_modules/@waline/client/dist/Waline.min.js",
       "needsInterop": true
+    },
+    "chart.js/auto": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/chart_js_auto.js",
+      "src": "E:/AmayakiteBlog/node_modules/chart.js/auto/auto.esm.js",
+      "needsInterop": false
     },
     "flowchart.js": {
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/flowchart_js.js",
@@ -134,13 +89,8 @@
     },
     "photoswipe": {
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/photoswipe.js",
-      "src": "E:/AmayakiteBlog/node_modules/photoswipe/dist/photoswipe.js",
-      "needsInterop": true
-    },
-    "photoswipe/dist/photoswipe-ui-default": {
-      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/photoswipe_dist_photoswipe-ui-default.js",
-      "src": "E:/AmayakiteBlog/node_modules/photoswipe/dist/photoswipe-ui-default.js",
-      "needsInterop": true
+      "src": "E:/AmayakiteBlog/node_modules/photoswipe/dist/photoswipe.esm.js",
+      "needsInterop": false
     },
     "mitt": {
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/mitt.js",
@@ -151,6 +101,46 @@
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/register-service-worker.js",
       "src": "E:/AmayakiteBlog/node_modules/register-service-worker/index.js",
       "needsInterop": false
+    },
+    "bcryptjs": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/bcryptjs.js",
+      "src": "E:/AmayakiteBlog/node_modules/bcryptjs/dist/bcrypt.js",
+      "needsInterop": true
+    },
+    "lodash.throttle": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/lodash_throttle.js",
+      "src": "E:/AmayakiteBlog/node_modules/lodash.throttle/index.js",
+      "needsInterop": true
+    },
+    "@mr-hope/vuepress-shared/lib/client": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@mr-hope_vuepress-shared_lib_client.js",
+      "src": "E:/AmayakiteBlog/node_modules/@mr-hope/vuepress-shared/lib/client/index.js",
+      "needsInterop": false
+    },
+    "dayjs": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/dayjs.min.js",
+      "needsInterop": true
+    },
+    "dayjs/plugin/localizedFormat": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_localizedFormat.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/localizedFormat.js",
+      "needsInterop": true
+    },
+    "dayjs/plugin/objectSupport": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_objectSupport.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/objectSupport.js",
+      "needsInterop": true
+    },
+    "dayjs/plugin/timezone": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_timezone.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/timezone.js",
+      "needsInterop": true
+    },
+    "dayjs/plugin/utc": {
+      "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/dayjs_plugin_utc.js",
+      "src": "E:/AmayakiteBlog/node_modules/dayjs/plugin/utc.js",
+      "needsInterop": true
     },
     "@vuepress/shared": {
       "file": "E:/AmayakiteBlog/blog/.vuepress/.cache/@vuepress_shared.js",

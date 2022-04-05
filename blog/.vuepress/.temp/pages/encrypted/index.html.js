@@ -1,9 +1,10 @@
 export const data = {
   "key": "v-75ed4ea4",
   "path": "/encrypted/",
-  "title": "",
+  "title": "加密",
   "lang": "zh-CN",
   "frontmatter": {
+    "title": "加密",
     "blog": {
       "type": "type",
       "key": "encrypted"
@@ -28,6 +29,13 @@ export const data = {
       [
         "meta",
         {
+          "property": "og:title",
+          "content": "加密"
+        }
+      ],
+      [
+        "meta",
+        {
           "property": "og:type",
           "content": "website"
         }
@@ -37,20 +45,6 @@ export const data = {
         {
           "property": "og:locale",
           "content": "zh-CN"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:card",
-          "content": "summary_large_image"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:image:alt",
-          "content": "Amayakite Blogs"
         }
       ]
     ]

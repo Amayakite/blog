@@ -1,9 +1,10 @@
 export const data = {
   "key": "v-154dc4c4",
   "path": "/star/",
-  "title": "",
+  "title": "收藏",
   "lang": "zh-CN",
   "frontmatter": {
+    "title": "收藏",
     "blog": {
       "type": "type",
       "key": "star"
@@ -28,6 +29,13 @@ export const data = {
       [
         "meta",
         {
+          "property": "og:title",
+          "content": "收藏"
+        }
+      ],
+      [
+        "meta",
+        {
           "property": "og:type",
           "content": "website"
         }
@@ -37,20 +45,6 @@ export const data = {
         {
           "property": "og:locale",
           "content": "zh-CN"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:card",
-          "content": "summary_large_image"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:image:alt",
-          "content": "Amayakite Blogs"
         }
       ]
     ]

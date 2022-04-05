@@ -6,6 +6,7 @@ import {
   init_define_CODE_COPY_OPIONS,
   init_define_CODE_DEMO_OPTIONS,
   init_define_COMMENT_OPTIONS,
+  init_define_DOCSEARCH_OPTIONS,
   init_define_EXTERNAL_LINK_ICON_LOCALES,
   init_define_MERMAID_OPTIONS,
   init_define_PAGINATION_LOCALES,
@@ -14,8 +15,9 @@ import {
   init_define_PWA_LOCALES,
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
+  init_define_TOC_LOCALES,
   init_define_WALINE_LOCALES
-} from "./chunk-HAWNBGA3.js";
+} from "./chunk-XBB3AEBG.js";
 
 // node_modules/flowchart.js/src/flowchart.shim.js
 var require_flowchart_shim = __commonJS({
@@ -33,7 +35,9 @@ var require_flowchart_shim = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     if (!Array.prototype.indexOf) {
       Array.prototype.indexOf = function(searchElement) {
@@ -120,7 +124,9 @@ var require_raphael_min = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     !function(t, e) {
       typeof exports == "object" && typeof module == "object" ? module.exports = e() : typeof define == "function" && define.amd ? define([], e) : typeof exports == "object" ? exports.Raphael = e() : t.Raphael = e();
@@ -2554,7 +2560,9 @@ var require_flowchart_helpers = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     function _defaults(options, defaultOptions) {
       if (!options || typeof options === "function") {
@@ -2618,7 +2626,9 @@ var require_flowchart_defaults = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     module.exports = {
       "x": 0,
@@ -2665,7 +2675,9 @@ var require_flowchart_functions = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     function drawPath(chart, location, points) {
       var i, len;
@@ -2835,7 +2847,9 @@ var require_flowchart_symbol = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var drawAPI = require_flowchart_functions();
     var drawLine = drawAPI.drawLine;
@@ -3381,7 +3395,9 @@ var require_flowchart_symbol_condition = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -3553,7 +3569,9 @@ var require_flowchart_symbol_parallel = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -3755,7 +3773,9 @@ var require_flowchart_chart = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Raphael = require_raphael_min();
     var defaults = require_flowchart_helpers().defaults;
@@ -3922,7 +3942,9 @@ var require_flowchart_symbol_start = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -3953,7 +3975,9 @@ var require_flowchart_symbol_end = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -3984,7 +4008,9 @@ var require_flowchart_symbol_operation = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -4014,7 +4040,9 @@ var require_flowchart_symbol_inputoutput = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -4094,7 +4122,9 @@ var require_flowchart_symbol_subroutine = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var Symbol2 = require_flowchart_symbol();
     var inherits = require_flowchart_helpers().inherits;
@@ -4160,7 +4190,9 @@ var require_flowchart_parse = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     var FlowChart = require_flowchart_chart();
     var Start = require_flowchart_symbol_start();
@@ -4494,7 +4526,9 @@ var require_jquery_plugin = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     if (typeof jQuery != "undefined") {
       parse = require_flowchart_parse();
@@ -4579,7 +4613,9 @@ var require_flowchart = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     require_flowchart_shim();
     var parse = require_flowchart_parse();
@@ -4608,7 +4644,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 var flowchart_js_default = require_flowchart();
 export {

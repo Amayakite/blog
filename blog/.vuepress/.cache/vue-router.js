@@ -1,6 +1,6 @@
 import {
   setupDevtoolsPlugin
-} from "./chunk-FJI45OJL.js";
+} from "./chunk-2FEHJ7HW.js";
 import {
   computed,
   defineComponent,
@@ -18,8 +18,8 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-QONNFWLF.js";
-import "./chunk-EERTZB2S.js";
+} from "./chunk-JJGQZPC2.js";
+import "./chunk-HQNZ6TY2.js";
 import {
   init_define_ARTICLE_INFO_LOCALES,
   init_define_BACK_TO_TOP_LOCALES,
@@ -27,6 +27,7 @@ import {
   init_define_CODE_COPY_OPIONS,
   init_define_CODE_DEMO_OPTIONS,
   init_define_COMMENT_OPTIONS,
+  init_define_DOCSEARCH_OPTIONS,
   init_define_EXTERNAL_LINK_ICON_LOCALES,
   init_define_MERMAID_OPTIONS,
   init_define_PAGINATION_LOCALES,
@@ -35,8 +36,9 @@ import {
   init_define_PWA_LOCALES,
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
+  init_define_TOC_LOCALES,
   init_define_WALINE_LOCALES
-} from "./chunk-HAWNBGA3.js";
+} from "./chunk-XBB3AEBG.js";
 
 // dep:vue-router
 init_define_ARTICLE_INFO_LOCALES();
@@ -52,7 +54,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 
 // node_modules/vue-router/dist/vue-router.esm-bundler.js
@@ -69,7 +73,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 var hasSymbol = typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol";
 var PolySymbol = (name) => hasSymbol ? Symbol(true ? "[vue-router]: " + name : name) : (true ? "[vue-router]: " : "_vr_") + name;
@@ -968,7 +974,7 @@ function createRouterMatcher(routes, globalOptions) {
   }
   function insertMatcher(matcher) {
     let i = 0;
-    while (i < matchers.length && comparePathParserScore(matcher, matchers[i]) >= 0)
+    while (i < matchers.length && comparePathParserScore(matcher, matchers[i]) >= 0 && (matcher.record.path !== matchers[i].record.path || !isRecordChildOf(matcher, matchers[i])))
       i++;
     matchers.splice(i, 0, matcher);
     if (matcher.record.name && !isAliasRecord(matcher))
@@ -991,7 +997,7 @@ function createRouterMatcher(routes, globalOptions) {
     } else if ("path" in location2) {
       path = location2.path;
       if (!path.startsWith("/")) {
-        warn(`The Matcher cannot resolve relative paths but received "${path}". Unless you directly called \`matcher.resolve("${path}")\`, this is probably a bug in vue-router. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/vue-router-next.`);
+        warn(`The Matcher cannot resolve relative paths but received "${path}". Unless you directly called \`matcher.resolve("${path}")\`, this is probably a bug in vue-router. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/router.`);
       }
       matcher = matchers.find((m) => m.re.test(path));
       if (matcher) {
@@ -1098,6 +1104,9 @@ function checkMissingParamsInAbsolutePath(record, parent) {
     if (!record.keys.find(isSameParam.bind(null, key)))
       return warn(`Absolute path "${record.record.path}" should have the exact same param named "${key.name}" as its parent "${parent.record.path}".`);
   }
+}
+function isRecordChildOf(record, parent) {
+  return parent.children.some((child) => child === record || isRecordChildOf(record, child));
 }
 var HASH_RE = /#/g;
 var AMPERSAND_RE = /&/g;
@@ -1598,8 +1607,8 @@ function addDevtools(app, router, matcher) {
     id: "org.vuejs.router" + (id ? "." + id : ""),
     label: "Vue Router",
     packageName: "vue-router",
-    homepage: "https://next.router.vuejs.org/",
-    logo: "https://vuejs.org/images/icons/favicon-96x96.png",
+    homepage: "https://router.vuejs.org",
+    logo: "https://router.vuejs.org/logo.png",
     componentStateTypes: ["Routing"],
     app
   }, (api) => {
@@ -1663,7 +1672,7 @@ function addDevtools(app, router, matcher) {
           title: "Error during Navigation",
           subtitle: to.fullPath,
           logType: "error",
-          time: Date.now(),
+          time: api.now(),
           data: { error },
           groupId: to.meta.__navigationId
         }
@@ -1682,7 +1691,7 @@ function addDevtools(app, router, matcher) {
       api.addTimelineEvent({
         layerId: navigationsLayerId,
         event: {
-          time: Date.now(),
+          time: api.now(),
           title: "Start of navigation",
           subtitle: to.fullPath,
           data,
@@ -1715,7 +1724,7 @@ function addDevtools(app, router, matcher) {
         event: {
           title: "End of navigation",
           subtitle: to.fullPath,
-          time: Date.now(),
+          time: api.now(),
           data,
           logType: failure ? "warning" : "default",
           groupId: to.meta.__navigationId
@@ -2107,7 +2116,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
       failure = createRouterError(16, { to: toLocation, from });
       handleScroll(from, from, true, false);
     }
-    return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? error : triggerError(error, toLocation, from)).then((failure2) => {
+    return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? isNavigationFailure(error, 2) ? error : markAsReady(error) : triggerError(error, toLocation, from)).then((failure2) => {
       if (failure2) {
         if (isNavigationFailure(failure2, 2)) {
           if (isSameRouteLocation(stringifyQuery$1, resolve(failure2.to), toLocation) && redirectedFrom && (redirectedFrom._count = redirectedFrom._count ? redirectedFrom._count + 1 : 1) > 10) {
@@ -2274,12 +2283,13 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     });
   }
   function markAsReady(err) {
-    if (ready)
-      return;
-    ready = true;
-    setupListeners();
-    readyHandlers.list().forEach(([resolve2, reject]) => err ? reject(err) : resolve2());
-    readyHandlers.reset();
+    if (!ready) {
+      ready = !err;
+      setupListeners();
+      readyHandlers.list().forEach(([resolve2, reject]) => err ? reject(err) : resolve2());
+      readyHandlers.reset();
+    }
+    return err;
   }
   function handleScroll(to, from, isPush, isFirstNavigation) {
     const { scrollBehavior } = options;
@@ -2408,8 +2418,8 @@ export {
   viewDepthKey
 };
 /*!
-  * vue-router v4.0.12
-  * (c) 2021 Eduardo San Martin Morote
+  * vue-router v4.0.14
+  * (c) 2022 Eduardo San Martin Morote
   * @license MIT
   */
 //# sourceMappingURL=vue-router.js.map

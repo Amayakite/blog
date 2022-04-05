@@ -1,9 +1,10 @@
 export const data = {
   "key": "v-5bc93818",
   "path": "/category/",
-  "title": "",
+  "title": "分类",
   "lang": "zh-CN",
   "frontmatter": {
+    "title": "分类",
     "blog": {
       "type": "category",
       "key": "category"
@@ -28,6 +29,13 @@ export const data = {
       [
         "meta",
         {
+          "property": "og:title",
+          "content": "分类"
+        }
+      ],
+      [
+        "meta",
+        {
           "property": "og:type",
           "content": "website"
         }
@@ -37,20 +45,6 @@ export const data = {
         {
           "property": "og:locale",
           "content": "zh-CN"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:card",
-          "content": "summary_large_image"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:image:alt",
-          "content": "Amayakite Blogs"
         }
       ]
     ]

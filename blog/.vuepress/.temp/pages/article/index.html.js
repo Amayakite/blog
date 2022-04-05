@@ -1,9 +1,10 @@
 export const data = {
   "key": "v-e52c881c",
   "path": "/article/",
-  "title": "",
+  "title": "文章",
   "lang": "zh-CN",
   "frontmatter": {
+    "title": "文章",
     "blog": {
       "type": "type",
       "key": "article"
@@ -28,6 +29,13 @@ export const data = {
       [
         "meta",
         {
+          "property": "og:title",
+          "content": "文章"
+        }
+      ],
+      [
+        "meta",
+        {
           "property": "og:type",
           "content": "website"
         }
@@ -37,20 +45,6 @@ export const data = {
         {
           "property": "og:locale",
           "content": "zh-CN"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:card",
-          "content": "summary_large_image"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:image:alt",
-          "content": "Amayakite Blogs"
         }
       ]
     ]

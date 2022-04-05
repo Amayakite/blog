@@ -10,6 +10,7 @@ import {
   init_define_CODE_COPY_OPIONS,
   init_define_CODE_DEMO_OPTIONS,
   init_define_COMMENT_OPTIONS,
+  init_define_DOCSEARCH_OPTIONS,
   init_define_EXTERNAL_LINK_ICON_LOCALES,
   init_define_MERMAID_OPTIONS,
   init_define_PAGINATION_LOCALES,
@@ -18,8 +19,9 @@ import {
   init_define_PWA_LOCALES,
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
+  init_define_TOC_LOCALES,
   init_define_WALINE_LOCALES
-} from "./chunk-HAWNBGA3.js";
+} from "./chunk-XBB3AEBG.js";
 
 // browser-external:crypto
 var crypto_exports = {};
@@ -42,7 +44,9 @@ var init_crypto = __esm({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     crypto_default = new Proxy({}, {
       get() {
@@ -68,7 +72,9 @@ var require_bcrypt = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     (function(global, factory) {
       if (typeof define === "function" && define["amd"])
@@ -1895,7 +1901,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 var bcryptjs_default = require_bcrypt();
 export {

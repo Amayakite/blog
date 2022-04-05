@@ -3,8 +3,30 @@ export const pagesData = {
   "v-79fdd481": () => import(/* webpackChunkName: "v-79fdd481" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/home.html.js").then(({ data }) => data),
   // path: /
   "v-8daa1a0e": () => import(/* webpackChunkName: "v-8daa1a0e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/index.html.js").then(({ data }) => data),
+  // path: /GoLang/
+  "v-50b2ea80": () => import(/* webpackChunkName: "v-50b2ea80" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/index.html.js").then(({ data }) => data),
   // path: /JavaLang/
   "v-42908c06": () => import(/* webpackChunkName: "v-42908c06" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/index.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/01-%E5%88%9D%E8%AF%86GoLang.html
+  "v-79e38338": () => import(/* webpackChunkName: "v-79e38338" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/01-初识GoLang.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/02-%E7%B1%BB.html
+  "v-be3cab44": () => import(/* webpackChunkName: "v-be3cab44" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/02-类.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/03-IO.html
+  "v-734f98c7": () => import(/* webpackChunkName: "v-734f98c7" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/03-IO.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/04-%E5%8F%8D%E5%B0%84.html
+  "v-f1849604": () => import(/* webpackChunkName: "v-f1849604" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/04-反射.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/05-%E7%BA%BF%E7%A8%8B.html
+  "v-a20e04fe": () => import(/* webpackChunkName: "v-a20e04fe" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/05-线程.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/06-%E7%BD%91%E7%BB%9C%E5%92%8C%E6%B5%8B%E8%AF%95.html
+  "v-1998b28d": () => import(/* webpackChunkName: "v-1998b28d" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/06-网络和测试.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/07-%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93.html
+  "v-06f4376b": () => import(/* webpackChunkName: "v-06f4376b" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/07-操作数据库.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/08-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%92%8C%E5%8C%85.html
+  "v-dd2ed91e": () => import(/* webpackChunkName: "v-dd2ed91e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/08-依赖管理和包.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/09-Etdc%E5%92%8CEs.html
+  "v-1b9dd878": () => import(/* webpackChunkName: "v-1b9dd878" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/09-Etdc和Es.html.js").then(({ data }) => data),
+  // path: /GoLang/Base/10-GIN.html
+  "v-562eed86": () => import(/* webpackChunkName: "v-562eed86" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/10-GIN.html.js").then(({ data }) => data),
   // path: /JavaLang/JavaEE/01-%E5%88%9D%E8%AF%86JavaWeb.html
   "v-824593c6": () => import(/* webpackChunkName: "v-824593c6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaEE/01-初识JavaWeb.html.js").then(({ data }) => data),
   // path: /JavaLang/JavaEE/02-1-%E9%80%9A%E8%BF%87%E7%A9%BA%E7%99%BD%E7%9A%84Maven%E6%A8%A1%E6%9D%BF%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAWeb%E9%A1%B9%E7%9B%AE.html
@@ -21,22 +43,6 @@ export const pagesData = {
   "v-00b7e233": () => import(/* webpackChunkName: "v-00b7e233" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaEE/05-JSP.html.js").then(({ data }) => data),
   // path: /JavaLang/JavaEE/3-0%E8%A7%84%E8%8C%83%E7%9A%84%E5%AD%A6%E4%B9%A0Servlet.html
   "v-c2940eea": () => import(/* webpackChunkName: "v-c2940eea" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaEE/3-0规范的学习Servlet.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/01-Spring_Boot%E5%9F%BA%E7%A1%80.html
-  "v-0133c41f": () => import(/* webpackChunkName: "v-0133c41f" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/01-Spring_Boot基础.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/02-Spring_Boot%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD.html
-  "v-595e7a3e": () => import(/* webpackChunkName: "v-595e7a3e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/02-Spring_Boot核心功能.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/03-Spring_Boot%E6%95%B4%E5%90%88%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html
-  "v-db954014": () => import(/* webpackChunkName: "v-db954014" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/03-Spring_Boot整合数据访问.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/04-Redis.html
-  "v-7ec58a7d": () => import(/* webpackChunkName: "v-7ec58a7d" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/04-Redis.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/05-SpringSecurity.html
-  "v-cd13e2a4": () => import(/* webpackChunkName: "v-cd13e2a4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/05-SpringSecurity.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/06-RabbitMQ.html
-  "v-14a0023e": () => import(/* webpackChunkName: "v-14a0023e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/06-RabbitMQ.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/07-Nginx.html
-  "v-05aad7db": () => import(/* webpackChunkName: "v-05aad7db" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/07-Nginx.html.js").then(({ data }) => data),
-  // path: /JavaLang/SpringBoot/08-Elasticsearch.html
-  "v-719d6ef7": () => import(/* webpackChunkName: "v-719d6ef7" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/08-Elasticsearch.html.js").then(({ data }) => data),
   // path: /JavaLang/JavaSE/01-Java%E7%9A%84%E7%89%B9%E7%82%B9.html
   "v-fd792a00": () => import(/* webpackChunkName: "v-fd792a00" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaSE/01-Java的特点.html.js").then(({ data }) => data),
   // path: /JavaLang/JavaSE/02-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8Java.html
@@ -83,6 +89,22 @@ export const pagesData = {
   "v-5bab3f14": () => import(/* webpackChunkName: "v-5bab3f14" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaSE/22-JDBC和数据库连接池.html.js").then(({ data }) => data),
   // path: /JavaLang/JavaSE/23-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html
   "v-72bde952": () => import(/* webpackChunkName: "v-72bde952" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaSE/23-正则表达式.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/01-Spring_Boot%E5%9F%BA%E7%A1%80.html
+  "v-0133c41f": () => import(/* webpackChunkName: "v-0133c41f" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/01-Spring_Boot基础.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/02-Spring_Boot%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD.html
+  "v-595e7a3e": () => import(/* webpackChunkName: "v-595e7a3e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/02-Spring_Boot核心功能.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/03-Spring_Boot%E6%95%B4%E5%90%88%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html
+  "v-db954014": () => import(/* webpackChunkName: "v-db954014" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/03-Spring_Boot整合数据访问.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/04-Redis.html
+  "v-7ec58a7d": () => import(/* webpackChunkName: "v-7ec58a7d" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/04-Redis.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/05-SpringSecurity.html
+  "v-cd13e2a4": () => import(/* webpackChunkName: "v-cd13e2a4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/05-SpringSecurity.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/06-RabbitMQ.html
+  "v-14a0023e": () => import(/* webpackChunkName: "v-14a0023e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/06-RabbitMQ.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/07-Nginx.html
+  "v-05aad7db": () => import(/* webpackChunkName: "v-05aad7db" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/07-Nginx.html.js").then(({ data }) => data),
+  // path: /JavaLang/SpringBoot/08-Elasticsearch.html
+  "v-719d6ef7": () => import(/* webpackChunkName: "v-719d6ef7" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/08-Elasticsearch.html.js").then(({ data }) => data),
   // path: /JavaLang/SpringCloud/00-Docker.html
   "v-334973b9": () => import(/* webpackChunkName: "v-334973b9" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringCloud/00-Docker.html.js").then(({ data }) => data),
   // path: /JavaLang/SpringCloud/01-%E5%BE%AE%E6%9C%8D%E5%8A%A1.html
@@ -195,52 +217,70 @@ export const pagesData = {
   "v-154dc4c4": () => import(/* webpackChunkName: "v-154dc4c4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/star/index.html.js").then(({ data }) => data),
   // path: /timeline/
   "v-01560935": () => import(/* webpackChunkName: "v-01560935" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/timeline/index.html.js").then(({ data }) => data),
+  // path: /category/golang/
+  "v-e9a125fe": () => import(/* webpackChunkName: "v-e9a125fe" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/golang/index.html.js").then(({ data }) => data),
+  // path: /tag/golang/
+  "v-0033da0b": () => import(/* webpackChunkName: "v-0033da0b" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/golang/index.html.js").then(({ data }) => data),
   // path: /category/javaweb/
   "v-3edf0895": () => import(/* webpackChunkName: "v-3edf0895" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/javaweb/index.html.js").then(({ data }) => data),
-  // path: /tag/java/
-  "v-28a1d8bf": () => import(/* webpackChunkName: "v-28a1d8bf" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/java/index.html.js").then(({ data }) => data),
-  // path: /category/springboot/
-  "v-0667aa78": () => import(/* webpackChunkName: "v-0667aa78" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/springboot/index.html.js").then(({ data }) => data),
-  // path: /tag/javaweb/
-  "v-6a683ccb": () => import(/* webpackChunkName: "v-6a683ccb" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/javaweb/index.html.js").then(({ data }) => data),
+  // path: /tag/io/
+  "v-0da0cabb": () => import(/* webpackChunkName: "v-0da0cabb" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/io/index.html.js").then(({ data }) => data),
   // path: /category/javase/
   "v-128b43a3": () => import(/* webpackChunkName: "v-128b43a3" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/javase/index.html.js").then(({ data }) => data),
-  // path: /tag/maven/
-  "v-1e90405c": () => import(/* webpackChunkName: "v-1e90405c" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/maven/index.html.js").then(({ data }) => data),
+  // path: /tag/file/
+  "v-286cf8a5": () => import(/* webpackChunkName: "v-286cf8a5" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/file/index.html.js").then(({ data }) => data),
+  // path: /category/springboot/
+  "v-0667aa78": () => import(/* webpackChunkName: "v-0667aa78" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/springboot/index.html.js").then(({ data }) => data),
+  // path: /tag/time/
+  "v-29324574": () => import(/* webpackChunkName: "v-29324574" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/time/index.html.js").then(({ data }) => data),
   // path: /category/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%BE%AE%E6%9C%8D%E5%8A%A1/
   "v-053ee23f": () => import(/* webpackChunkName: "v-053ee23f" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/分布式-微服务/index.html.js").then(({ data }) => data),
-  // path: /tag/request/
-  "v-759433ce": () => import(/* webpackChunkName: "v-759433ce" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/request/index.html.js").then(({ data }) => data),
+  // path: /tag/proxy/
+  "v-1279d962": () => import(/* webpackChunkName: "v-1279d962" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/proxy/index.html.js").then(({ data }) => data),
   // path: /category/spring-framework/
   "v-2c71d899": () => import(/* webpackChunkName: "v-2c71d899" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/spring-framework/index.html.js").then(({ data }) => data),
-  // path: /tag/response/
-  "v-c27dad00": () => import(/* webpackChunkName: "v-c27dad00" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/response/index.html.js").then(({ data }) => data),
+  // path: /tag/reflect/
+  "v-624fd560": () => import(/* webpackChunkName: "v-624fd560" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/reflect/index.html.js").then(({ data }) => data),
   // path: /category/thread/
   "v-2f44b04d": () => import(/* webpackChunkName: "v-2f44b04d" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/thread/index.html.js").then(({ data }) => data),
+  // path: /tag/thread/
+  "v-b76dc552": () => import(/* webpackChunkName: "v-b76dc552" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/thread/index.html.js").then(({ data }) => data),
+  // path: /tag/web/
+  "v-b3026aae": () => import(/* webpackChunkName: "v-b3026aae" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/web/index.html.js").then(({ data }) => data),
+  // path: /tag/socket/
+  "v-7a84390e": () => import(/* webpackChunkName: "v-7a84390e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/socket/index.html.js").then(({ data }) => data),
+  // path: /tag/http/
+  "v-288e4719": () => import(/* webpackChunkName: "v-288e4719" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/http/index.html.js").then(({ data }) => data),
+  // path: /tag/test/
+  "v-29308c4f": () => import(/* webpackChunkName: "v-29308c4f" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/test/index.html.js").then(({ data }) => data),
+  // path: /tag/mysql/
+  "v-1bee38ca": () => import(/* webpackChunkName: "v-1bee38ca" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/mysql/index.html.js").then(({ data }) => data),
+  // path: /tag/redis/
+  "v-0d1f4c3c": () => import(/* webpackChunkName: "v-0d1f4c3c" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/redis/index.html.js").then(({ data }) => data),
+  // path: /tag/gomodule/
+  "v-0ee9facd": () => import(/* webpackChunkName: "v-0ee9facd" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/gomodule/index.html.js").then(({ data }) => data),
+  // path: /tag/context/
+  "v-6b3454ae": () => import(/* webpackChunkName: "v-6b3454ae" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/context/index.html.js").then(({ data }) => data),
+  // path: /tag/etcd/
+  "v-2863bf51": () => import(/* webpackChunkName: "v-2863bf51" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/etcd/index.html.js").then(({ data }) => data),
+  // path: /tag/elasticsearch/
+  "v-2cce94e0": () => import(/* webpackChunkName: "v-2cce94e0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/elasticsearch/index.html.js").then(({ data }) => data),
+  // path: /tag/gin/
+  "v-b310d59e": () => import(/* webpackChunkName: "v-b310d59e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/gin/index.html.js").then(({ data }) => data),
+  // path: /tag/java/
+  "v-28a1d8bf": () => import(/* webpackChunkName: "v-28a1d8bf" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/java/index.html.js").then(({ data }) => data),
+  // path: /tag/javaweb/
+  "v-6a683ccb": () => import(/* webpackChunkName: "v-6a683ccb" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/javaweb/index.html.js").then(({ data }) => data),
+  // path: /tag/maven/
+  "v-1e90405c": () => import(/* webpackChunkName: "v-1e90405c" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/maven/index.html.js").then(({ data }) => data),
+  // path: /tag/request/
+  "v-759433ce": () => import(/* webpackChunkName: "v-759433ce" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/request/index.html.js").then(({ data }) => data),
+  // path: /tag/response/
+  "v-c27dad00": () => import(/* webpackChunkName: "v-c27dad00" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/response/index.html.js").then(({ data }) => data),
   // path: /tag/jsp/
   "v-b30dcfd4": () => import(/* webpackChunkName: "v-b30dcfd4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/jsp/index.html.js").then(({ data }) => data),
   // path: /tag/servlet/
   "v-41896a50": () => import(/* webpackChunkName: "v-41896a50" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/servlet/index.html.js").then(({ data }) => data),
-  // path: /tag/springboot/
-  "v-59fa8282": () => import(/* webpackChunkName: "v-59fa8282" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springboot/index.html.js").then(({ data }) => data),
-  // path: /tag/springmvc/
-  "v-9f510020": () => import(/* webpackChunkName: "v-9f510020" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springmvc/index.html.js").then(({ data }) => data),
-  // path: /tag/jdbc/
-  "v-28a2eb06": () => import(/* webpackChunkName: "v-28a2eb06" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/jdbc/index.html.js").then(({ data }) => data),
-  // path: /tag/mybatis/
-  "v-757f190a": () => import(/* webpackChunkName: "v-757f190a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/mybatis/index.html.js").then(({ data }) => data),
-  // path: /tag/mybatisplus/
-  "v-029e5930": () => import(/* webpackChunkName: "v-029e5930" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/mybatisplus/index.html.js").then(({ data }) => data),
-  // path: /tag/redis/
-  "v-0d1f4c3c": () => import(/* webpackChunkName: "v-0d1f4c3c" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/redis/index.html.js").then(({ data }) => data),
-  // path: /tag/springsecurity/
-  "v-509cc574": () => import(/* webpackChunkName: "v-509cc574" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springsecurity/index.html.js").then(({ data }) => data),
-  // path: /tag/rabbitmq/
-  "v-63bcc623": () => import(/* webpackChunkName: "v-63bcc623" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/rabbitmq/index.html.js").then(({ data }) => data),
-  // path: /tag/nginx/
-  "v-1a8900ba": () => import(/* webpackChunkName: "v-1a8900ba" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/nginx/index.html.js").then(({ data }) => data),
-  // path: /tag/elasticsearch/
-  "v-2cce94e0": () => import(/* webpackChunkName: "v-2cce94e0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/elasticsearch/index.html.js").then(({ data }) => data),
   // path: /tag/javase/
   "v-f0e09ea6": () => import(/* webpackChunkName: "v-f0e09ea6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/javase/index.html.js").then(({ data }) => data),
   // path: /tag/object/
@@ -257,20 +297,30 @@ export const pagesData = {
   "v-28c1a1c3": () => import(/* webpackChunkName: "v-28c1a1c3" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/list/index.html.js").then(({ data }) => data),
   // path: /tag/jwt/
   "v-b30db0d4": () => import(/* webpackChunkName: "v-b30db0d4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/jwt/index.html.js").then(({ data }) => data),
-  // path: /tag/thread/
-  "v-b76dc552": () => import(/* webpackChunkName: "v-b76dc552" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/thread/index.html.js").then(({ data }) => data),
   // path: /tag/lambda/
   "v-1e44e18c": () => import(/* webpackChunkName: "v-1e44e18c" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/lambda/index.html.js").then(({ data }) => data),
-  // path: /tag/io/
-  "v-0da0cabb": () => import(/* webpackChunkName: "v-0da0cabb" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/io/index.html.js").then(({ data }) => data),
   // path: /tag/internet/
   "v-318ed680": () => import(/* webpackChunkName: "v-318ed680" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/internet/index.html.js").then(({ data }) => data),
   // path: /tag/class/
   "v-3f8dd4f6": () => import(/* webpackChunkName: "v-3f8dd4f6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/class/index.html.js").then(({ data }) => data),
-  // path: /tag/mysql/
-  "v-1bee38ca": () => import(/* webpackChunkName: "v-1bee38ca" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/mysql/index.html.js").then(({ data }) => data),
+  // path: /tag/jdbc/
+  "v-28a2eb06": () => import(/* webpackChunkName: "v-28a2eb06" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/jdbc/index.html.js").then(({ data }) => data),
   // path: /tag/regexp/
   "v-34c37238": () => import(/* webpackChunkName: "v-34c37238" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/regexp/index.html.js").then(({ data }) => data),
+  // path: /tag/springboot/
+  "v-59fa8282": () => import(/* webpackChunkName: "v-59fa8282" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springboot/index.html.js").then(({ data }) => data),
+  // path: /tag/springmvc/
+  "v-9f510020": () => import(/* webpackChunkName: "v-9f510020" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springmvc/index.html.js").then(({ data }) => data),
+  // path: /tag/mybatis/
+  "v-757f190a": () => import(/* webpackChunkName: "v-757f190a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/mybatis/index.html.js").then(({ data }) => data),
+  // path: /tag/mybatisplus/
+  "v-029e5930": () => import(/* webpackChunkName: "v-029e5930" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/mybatisplus/index.html.js").then(({ data }) => data),
+  // path: /tag/springsecurity/
+  "v-509cc574": () => import(/* webpackChunkName: "v-509cc574" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springsecurity/index.html.js").then(({ data }) => data),
+  // path: /tag/rabbitmq/
+  "v-63bcc623": () => import(/* webpackChunkName: "v-63bcc623" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/rabbitmq/index.html.js").then(({ data }) => data),
+  // path: /tag/nginx/
+  "v-1a8900ba": () => import(/* webpackChunkName: "v-1a8900ba" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/nginx/index.html.js").then(({ data }) => data),
   // path: /tag/docker/
   "v-6106c001": () => import(/* webpackChunkName: "v-6106c001" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/docker/index.html.js").then(({ data }) => data),
   // path: /tag/%E5%BE%AE%E6%9C%8D%E5%8A%A1/
@@ -351,6 +401,4 @@ export const pagesData = {
   "v-76c115ca": () => import(/* webpackChunkName: "v-76c115ca" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/execption/index.html.js").then(({ data }) => data),
   // path: /tag/aop/
   "v-b3161c8a": () => import(/* webpackChunkName: "v-b3161c8a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/aop/index.html.js").then(({ data }) => data),
-  // path: /tag/springmvc/
-  "v-9f510020": () => import(/* webpackChunkName: "v-9f510020" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/springmvc/index.html.js").then(({ data }) => data),
 }

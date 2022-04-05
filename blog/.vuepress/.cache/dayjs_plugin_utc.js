@@ -6,6 +6,7 @@ import {
   init_define_CODE_COPY_OPIONS,
   init_define_CODE_DEMO_OPTIONS,
   init_define_COMMENT_OPTIONS,
+  init_define_DOCSEARCH_OPTIONS,
   init_define_EXTERNAL_LINK_ICON_LOCALES,
   init_define_MERMAID_OPTIONS,
   init_define_PAGINATION_LOCALES,
@@ -14,8 +15,9 @@ import {
   init_define_PWA_LOCALES,
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
+  init_define_TOC_LOCALES,
   init_define_WALINE_LOCALES
-} from "./chunk-HAWNBGA3.js";
+} from "./chunk-XBB3AEBG.js";
 
 // node_modules/dayjs/plugin/utc.js
 var require_utc = __commonJS({
@@ -33,7 +35,9 @@ var require_utc = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     !function(t, i) {
       typeof exports == "object" && typeof module != "undefined" ? module.exports = i() : typeof define == "function" && define.amd ? define(i) : (t = typeof globalThis != "undefined" ? globalThis : t || self).dayjs_plugin_utc = i();
@@ -75,7 +79,7 @@ var require_utc = __commonJS({
               return null;
             var f3 = ("" + s3[0]).match(e) || ["-", 0, 0], n3 = f3[0], u3 = 60 * +f3[1] + +f3[2];
             return u3 === 0 ? 0 : n3 === "+" ? u3 : -u3;
-          }(s2)) === null)
+          }(s2), s2 === null))
             return this;
           var u2 = Math.abs(s2) <= 16 ? 60 * s2 : s2, o2 = this;
           if (f2)
@@ -131,7 +135,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 var dayjs_plugin_utc_default = require_utc();
 export {

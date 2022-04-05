@@ -8,6 +8,7 @@ import clientAppEnhance6 from 'E:/AmayakiteBlog/node_modules/vuepress-theme-hope
 import clientAppEnhance7 from 'E:/AmayakiteBlog/node_modules/vuepress-theme-hope/lib/client/module/navbar/appEnhance.js'
 import clientAppEnhance8 from 'E:/AmayakiteBlog/node_modules/vuepress-theme-hope/lib/client/module/sidebar/appEnhance.js'
 import clientAppEnhance9 from 'E:/AmayakiteBlog/node_modules/vuepress-theme-hope/lib/client/module/blog/appEnhance.js'
+import clientAppEnhance10 from 'E:/AmayakiteBlog/node_modules/@vuepress/plugin-docsearch/lib/client/clientAppEnhance.js'
 
 export const clientAppEnhances = [
   clientAppEnhance0,
@@ -20,4 +21,5 @@ export const clientAppEnhances = [
   clientAppEnhance7,
   clientAppEnhance8,
   clientAppEnhance9,
+  clientAppEnhance10,
 ]

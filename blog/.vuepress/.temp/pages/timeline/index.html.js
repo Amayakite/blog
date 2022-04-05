@@ -1,9 +1,10 @@
 export const data = {
   "key": "v-01560935",
   "path": "/timeline/",
-  "title": "",
+  "title": "时间轴",
   "lang": "zh-CN",
   "frontmatter": {
+    "title": "时间轴",
     "blog": {
       "type": "type",
       "key": "timeline"
@@ -28,6 +29,13 @@ export const data = {
       [
         "meta",
         {
+          "property": "og:title",
+          "content": "时间轴"
+        }
+      ],
+      [
+        "meta",
+        {
           "property": "og:type",
           "content": "website"
         }
@@ -37,20 +45,6 @@ export const data = {
         {
           "property": "og:locale",
           "content": "zh-CN"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:card",
-          "content": "summary_large_image"
-        }
-      ],
-      [
-        "meta",
-        {
-          "name": "twitter:image:alt",
-          "content": "Amayakite Blogs"
         }
       ]
     ]

@@ -6,6 +6,7 @@ import {
   init_define_CODE_COPY_OPIONS,
   init_define_CODE_DEMO_OPTIONS,
   init_define_COMMENT_OPTIONS,
+  init_define_DOCSEARCH_OPTIONS,
   init_define_EXTERNAL_LINK_ICON_LOCALES,
   init_define_MERMAID_OPTIONS,
   init_define_PAGINATION_LOCALES,
@@ -14,8 +15,9 @@ import {
   init_define_PWA_LOCALES,
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
+  init_define_TOC_LOCALES,
   init_define_WALINE_LOCALES
-} from "./chunk-HAWNBGA3.js";
+} from "./chunk-XBB3AEBG.js";
 
 // node_modules/dayjs/plugin/timezone.js
 var require_timezone = __commonJS({
@@ -33,7 +35,9 @@ var require_timezone = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     !function(t, e) {
       typeof exports == "object" && typeof module != "undefined" ? module.exports = e() : typeof define == "function" && define.amd ? define(e) : (t = typeof globalThis != "undefined" ? globalThis : t || self).dayjs_plugin_timezone = e();
@@ -43,12 +47,12 @@ var require_timezone = __commonJS({
       return function(n, i, o) {
         var r, a = function(t2, n2, i2) {
           i2 === void 0 && (i2 = {});
-          var o2 = new Date(t2);
-          return function(t3, n3) {
+          var o2 = new Date(t2), r2 = function(t3, n3) {
             n3 === void 0 && (n3 = {});
-            var i3 = n3.timeZoneName || "short", o3 = t3 + "|" + i3, r2 = e[o3];
-            return r2 || (r2 = new Intl.DateTimeFormat("en-US", { hour12: false, timeZone: t3, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: i3 }), e[o3] = r2), r2;
-          }(n2, i2).formatToParts(o2);
+            var i3 = n3.timeZoneName || "short", o3 = t3 + "|" + i3, r3 = e[o3];
+            return r3 || (r3 = new Intl.DateTimeFormat("en-US", { hour12: false, timeZone: t3, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: i3 }), e[o3] = r3), r3;
+          }(n2, i2);
+          return r2.formatToParts(o2);
         }, u = function(e2, n2) {
           for (var i2 = a(e2, n2), r2 = [], u2 = 0; u2 < i2.length; u2 += 1) {
             var f2 = i2[u2], s2 = f2.type, m = f2.value, c = t[s2];
@@ -113,7 +117,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 var dayjs_plugin_timezone_default = require_timezone();
 export {

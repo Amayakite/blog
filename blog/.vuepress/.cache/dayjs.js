@@ -6,6 +6,7 @@ import {
   init_define_CODE_COPY_OPIONS,
   init_define_CODE_DEMO_OPTIONS,
   init_define_COMMENT_OPTIONS,
+  init_define_DOCSEARCH_OPTIONS,
   init_define_EXTERNAL_LINK_ICON_LOCALES,
   init_define_MERMAID_OPTIONS,
   init_define_PAGINATION_LOCALES,
@@ -14,8 +15,9 @@ import {
   init_define_PWA_LOCALES,
   init_define_READING_TIME_LOCALES,
   init_define_REVEAL_CONFIG,
+  init_define_TOC_LOCALES,
   init_define_WALINE_LOCALES
-} from "./chunk-HAWNBGA3.js";
+} from "./chunk-XBB3AEBG.js";
 
 // node_modules/dayjs/dayjs.min.js
 var require_dayjs_min = __commonJS({
@@ -33,7 +35,9 @@ var require_dayjs_min = __commonJS({
     init_define_PWA_LOCALES();
     init_define_READING_TIME_LOCALES();
     init_define_REVEAL_CONFIG();
+    init_define_TOC_LOCALES();
     init_define_WALINE_LOCALES();
+    init_define_DOCSEARCH_OPTIONS();
     init_define_EXTERNAL_LINK_ICON_LOCALES();
     !function(t, e) {
       typeof exports == "object" && typeof module != "undefined" ? module.exports = e() : typeof define == "function" && define.amd ? define(e) : (t = typeof globalThis != "undefined" ? globalThis : t || self).dayjs = e();
@@ -56,21 +60,25 @@ var require_dayjs_min = __commonJS({
         return { M: f, y: c, w: o, d: a, D: d, h: u, m: s, s: i, ms: r, Q: h }[t2] || String(t2 || "").toLowerCase().replace(/s$/, "");
       }, u: function(t2) {
         return t2 === void 0;
-      } }, D = "en", v = {};
-      v[D] = M;
+      } }, v = "en", D = {};
+      D[v] = M;
       var p = function(t2) {
         return t2 instanceof _;
-      }, S = function(t2, e2, n2) {
-        var r2;
-        if (!t2)
-          return D;
-        if (typeof t2 == "string")
-          v[t2] && (r2 = t2), e2 && (v[t2] = e2, r2 = t2);
-        else {
-          var i2 = t2.name;
-          v[i2] = t2, r2 = i2;
+      }, S = function t2(e2, n2, r2) {
+        var i2;
+        if (!e2)
+          return v;
+        if (typeof e2 == "string") {
+          var s2 = e2.toLowerCase();
+          D[s2] && (i2 = s2), n2 && (D[s2] = n2, i2 = s2);
+          var u2 = e2.split("-");
+          if (!i2 && u2.length > 1)
+            return t2(u2[0]);
+        } else {
+          var a2 = e2.name;
+          D[a2] = e2, i2 = a2;
         }
-        return !n2 && r2 && (D = r2), r2 || !n2 && D;
+        return !r2 && i2 && (v = i2), i2 || !r2 && v;
       }, w = function(t2, e2) {
         if (p(t2))
           return t2.clone();
@@ -136,8 +144,8 @@ var require_dayjs_min = __commonJS({
             case f:
               return r2 ? $2(1, M3) : $2(0, M3 + 1);
             case o:
-              var D2 = this.$locale().weekStart || 0, v2 = (y2 < D2 ? y2 + 7 : y2) - D2;
-              return $2(r2 ? m3 - v2 : m3 + (6 - v2), M3);
+              var v2 = this.$locale().weekStart || 0, D2 = (y2 < v2 ? y2 + 7 : y2) - v2;
+              return $2(r2 ? m3 - D2 : m3 + (6 - D2), M3);
             case a:
             case d:
               return l2(g2 + "Hours", 0);
@@ -201,12 +209,12 @@ var require_dayjs_min = __commonJS({
         }, m2.utcOffset = function() {
           return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
         }, m2.diff = function(r2, d2, $2) {
-          var l2, y2 = O.p(d2), M3 = w(r2), m3 = (M3.utcOffset() - this.utcOffset()) * e, g2 = this - M3, D2 = O.m(this, M3);
-          return D2 = (l2 = {}, l2[c] = D2 / 12, l2[f] = D2, l2[h] = D2 / 3, l2[o] = (g2 - m3) / 6048e5, l2[a] = (g2 - m3) / 864e5, l2[u] = g2 / n, l2[s] = g2 / e, l2[i] = g2 / t, l2)[y2] || g2, $2 ? D2 : O.a(D2);
+          var l2, y2 = O.p(d2), M3 = w(r2), m3 = (M3.utcOffset() - this.utcOffset()) * e, g2 = this - M3, v2 = O.m(this, M3);
+          return v2 = (l2 = {}, l2[c] = v2 / 12, l2[f] = v2, l2[h] = v2 / 3, l2[o] = (g2 - m3) / 6048e5, l2[a] = (g2 - m3) / 864e5, l2[u] = g2 / n, l2[s] = g2 / e, l2[i] = g2 / t, l2)[y2] || g2, $2 ? v2 : O.a(v2);
         }, m2.daysInMonth = function() {
           return this.endOf(f).$D;
         }, m2.$locale = function() {
-          return v[this.$L];
+          return D[this.$L];
         }, m2.locale = function(t2, e2) {
           if (!t2)
             return this.$L;
@@ -232,7 +240,7 @@ var require_dayjs_min = __commonJS({
         return t2.$i || (t2(e2, _, w), t2.$i = true), w;
       }, w.locale = S, w.isDayjs = p, w.unix = function(t2) {
         return w(1e3 * t2);
-      }, w.en = v[D], w.Ls = v, w.p = {}, w;
+      }, w.en = D[v], w.Ls = D, w.p = {}, w;
     });
   }
 });
@@ -251,7 +259,9 @@ init_define_PHOTO_SWIPE_OPTIONS();
 init_define_PWA_LOCALES();
 init_define_READING_TIME_LOCALES();
 init_define_REVEAL_CONFIG();
+init_define_TOC_LOCALES();
 init_define_WALINE_LOCALES();
+init_define_DOCSEARCH_OPTIONS();
 init_define_EXTERNAL_LINK_ICON_LOCALES();
 var dayjs_default = require_dayjs_min();
 export {
