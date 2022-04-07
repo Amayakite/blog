@@ -1555,7 +1555,9 @@ select rand(232332323);
 
 ![image-20211121165926182](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211121165926182.png)
 
-![image-20211121172736581](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211121172736581.png)![image-20211121172709333](/images/JavaSE/21-MySql/image-20211121172709333.png)
+![image-20211121172736581](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211121172736581.png)
+
+![image-20211121172709333](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211121172709333.png)
 
 ![image-20211121173857683](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211121173857683.png)
 
@@ -3740,7 +3742,9 @@ commit;
 
 ![image-20211123122055639](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211123122055639.png)
 
-![image-20211123122248185](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211123122248185.png)![image-20211123132241153](/images/JavaSE/21-MySql/image-20211123132241153.png)
+![image-20211123122248185](http://81.68.162.137:9300/blog-notes/images/JavaSE/21-MySql/image-20211123122248185.png)
+
+![image-20211123132241153](http://81.68.162.137:9300/images/JavaSE/21-MySql/image-20211123132241153.png)
 
 ## 引擎使用
 
