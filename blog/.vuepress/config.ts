@@ -3,9 +3,9 @@ import themeConfig from "./themeConfig";
 
 export default defineHopeConfig({
   base: "/",
-
   plugins: [
     [
+      // npm i @gerhobbelt/markdown-it-replace-link
       '@vuepress/docsearch',
       {
         appId: 'ZN9ZT0G3SP',

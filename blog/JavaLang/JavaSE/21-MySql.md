@@ -616,7 +616,9 @@ CREATE TABLE db3(
 
 ![image-20211120190547035](/images/JavaSE/21-MySql/image-20211120190547035.png)
 
-![image-20211120185843253](/images/JavaSE/21-MySql/image-20211120185726028.png" alt="image-20211120185726028" style="zoom:50%;" /><img src="/images/JavaSE/21-MySql/image-20211120185843253.png)
+![image-20211120185843253](/images/JavaSE/21-MySql/image-20211120185726028.png)
+
+![image-20211120185843253.png](/images/JavaSE/21-MySql/image-20211120185843253.png)
 
 #### 时间相关类型额外说明default值和on update值
 
@@ -2677,7 +2679,9 @@ create table 表名(
 
 ![image-20211122170615206](/images/JavaSE/21-MySql/image-20211122170615206.png)
 
-![image-20211122164935895](/images/JavaSE/21-MySql/image-20211122164902068.png" alt="image-20211122164902068" style="zoom: 25%;" /><img src="/images/JavaSE/21-MySql/image-20211122164935895.png)
+![image-20211122164902068](/images/JavaSE/21-MySql/image-20211122164902068.png)
+
+![image-20211122164935895](/images/JavaSE/21-MySql/image-20211122164935895.png)
 
 ```sql
 create table class_tab(

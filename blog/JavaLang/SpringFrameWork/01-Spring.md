@@ -286,12 +286,12 @@ UserDaoImpl.save()
 
 除了上述两个属性，我们还可以配置scope：对象的作用范围，取值如下
 
-|    取值范围    | 说明                                                         |
-| :------------: | ------------------------------------------------------------ |
-| **singleton**  | 单例的，默认值                                               |
-| **prototype**  | 多例的                                                       |
-|    request     | Web项目中，Spring创建一个Bean对象，将对象存入到request域中<br />单次的请求域 |
-|    session     | Web项目中，Spring创建一个Bean对象，将对象存储到session域中<br />单个会话的域 |
+|    取值范围    | 说明                                                                               |
+| :------------: | ---------------------------------------------------------------------------------- |
+| **singleton**  | 单例的，默认值                                                                     |
+| **prototype**  | 多例的                                                                             |
+|    request     | Web项目中，Spring创建一个Bean对象，将对象存入到request域中<br />单次的请求域       |
+|    session     | Web项目中，Spring创建一个Bean对象，将对象存储到session域中<br />单个会话的域       |
 | global session | Web项目中，应用在Portlet环境，如果没有Portlet环境，nameglobal session等同于session |
 
 接下来我们主要说明singleton和prototype（其他的几个之后再说）

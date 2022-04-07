@@ -60,29 +60,14 @@ doGet(HttpServletRequest req, HttpServletResponse resp){
       3. 处理完毕后，将处理结果返回至客户端------>
       4. web服务终止时被销毁。
 
-​  其中的2、3步骤，在web服务运行期间，可能会因为客户端的多次请求而执行多次，1、4步骤也有可能因为服务的重启或者主动销毁而多次执行。
+​其中的2、3步骤，在web服务运行期间，可能会因为客户端的多次请求而执行多次，1、4步骤也有可能因为服务的重启或者主动销毁而多次执行。
 
-### Http请求中包含的信息
-
-HttpServletRequest中包含了客户端HTTP请求的所有信息，其中主要为三部分信息：请求行、请求头、请求正文，这样说大家可能会不太明白，下面我们通过几张图片来说明一下：
-
-![资源分配图](/images/JavaEE/03-1Response和Requests/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70-16385397719285.jpeg)
-
-上图还是我们的老朋友HelloServlet在Chrome中的运行页面（前几篇博客中有说明），我们打开可以通过右击–>检查（或F12）打开开发者工具主面板，点击NetWork，点击请求的连接（HttpServlet）可以查看客户端向服务器的Http请求信息，红框中的信息即为Http请求中的部分信息为总览；
-
-![资源分配图](/images/JavaEE/03-1Response和Requests/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70.jpeg)
-
-Http请求中还包含请求头信息，其中包含许多的header；
-
-![资源分配图](/images/JavaEE/03-1Response和Requests/20200305162507214.jpg)
-
-   如果Http请求方式为post，装在请求体中的数据可以在Form Data中看到，Query String Parameters和Form Data是可以共存的，即Http协议既允许我们通过url传参，也可以通过请求体传参，Get、Post方式更多的是对请求进行规范化，开发中还是尽量只使用一种方式传参。
 
 ### HttpServletRequest中获取请求行信息的方法
 
-​  Http的请求行中，会包含请求方法、请求资源名、请求路径、Http版本等信息
+Http的请求行中，会包含请求方法、请求资源名、请求路径、Http版本等信息
 
-​  我们可以在tomcat的安装目录–>logs—>localhost_access_log.xxx.txt中查看在某日期中(xxx为日期，格式为yyyy-MM-dd)请求本Tomcat的所有Http请求的请求头信息
+我们可以在tomcat的安装目录–>logs—>localhost_access_log.xxx.txt中查看在某日期中(xxx为日期，格式为yyyy-MM-dd)请求本Tomcat的所有Http请求的请求头信息
 
 如果你是在IEDA中启动tomcat的话，那么可以通过ieda的tomcat配置页面来设置log存放的路径：这两个勾上并配置即可
 
@@ -92,29 +77,29 @@ Http请求中还包含请求头信息，其中包含许多的header；
 
 ![image-20211203220705031](/images/JavaEE/03-1Response和Requests/image-20211203220705031.png)
 
-​  在log信息中，括起来的为请求行信息，`GET`表示请求方式，`/`为请求url，`HTTP/1.1`为请求的协议及版本。
+在log信息中，括起来的为请求行信息，`GET`表示请求方式，`/`为请求url，`HTTP/1.1`为请求的协议及版本。
 
 请求行后跟的200为Http响应的状态码（Status Code），11363为响应内容的长度（Content-Length）。
 
 为了获取请求行中对应的信息，HttpServletRequest中实现了一堆的方法，让我们的操作变得更加简单快捷。相关方法如下：
 
-|            方法名            | 描述                                                         |
-| :--------------------------: | ------------------------------------------------------------ |
-|      String getMehod()       | 该方法用于获取HTTP请求消息中的请求方式<br />（如GET、POST等） |
-|    String getRequestUrl()    | 该方法用于获取请求行中的资源名称部分<br />即位于URL的主机端口之后、参数部分之前的部分 |
-|   String getQueryString()    | 该方法用于获取请求体中的参数部分<br />例如：`localhost:8080/aa/b?name=hello&pwd=123`<br />则获取到的内容为：`name=hello&pwd=123` |
-|     String getProtocol()     | 该方法用户获取请求体中的协议名称和版本<br />例如：`HTTP/1.0`或`HTTP/1.1` |
-|   String getContextPath()    | 这个方法用于获取这个URL位于我们WEB应用程序的路径<br />例如访问`localhost:8080/aa/bb/cc`<br />则返回`/aa/bb/cc`<br />如果说访问的路径是根目录，则返回空字符串(不是null) |
-|   String getServletPath()    | 该方法用户获取 Servlet 的名称或Servlet所映射的路径             |
-|    String getRemoteAddr()    | 该方法用户获取客户端的IP地址，格式类似于"192.168.0.3"        |
-|    String getRemoteHost()    | 该方法用户获取客户端的完整主机名，其格式类似于`localhost`<br />需要注意的是，如果无法解析出该主机名，会返回客户端的IP地址 |
-|     int getRemotePort()      | 获取请求客户端网络连接的端口号                               |
-|    String getLocalAddr()     | 获取web服务器上接收当前请求网络连接的IP地址                  |
-|    String getLocalName()     | 获取web服务器上接收当前请求网络连接的IP地址所对应的主机名    |
-|      int getLocalPort()      | 获取web服务器上接收当前请求网络连接的端口号                  |
-|    String getServerName()    | 该方法用于获取当前请求所指向的主机名<br />即：HTTP请求消息中Host头字段所对应的主机名部分 |
-|     int getServerPort()      | 该方法用户获取当前请求所连接的服务器端口号<br />即如果是HTTP请求消息中Host头字段所有对应端口号部分 |
-|      String getSchme()       | 该方法用户获取请求的协议名，例如`http`、`https`或`ftp`       |
+|            方法名            | 描述                                                                                                                                                                        |
+| :--------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      String getMehod()       | 该方法用于获取HTTP请求消息中的请求方式<br />（如GET、POST等）                                                                                                               |
+|    String getRequestUrl()    | 该方法用于获取请求行中的资源名称部分<br />即位于URL的主机端口之后、参数部分之前的部分                                                                                       |
+|   String getQueryString()    | 该方法用于获取请求体中的参数部分<br />例如：`localhost:8080/aa/b?name=hello&pwd=123`<br />则获取到的内容为：`name=hello&pwd=123`                                            |
+|     String getProtocol()     | 该方法用户获取请求体中的协议名称和版本<br />例如：`HTTP/1.0`或`HTTP/1.1`                                                                                                    |
+|   String getContextPath()    | 这个方法用于获取这个URL位于我们WEB应用程序的路径<br />例如访问`localhost:8080/aa/bb/cc`<br />则返回`/aa/bb/cc`<br />如果说访问的路径是根目录，则返回空字符串(不是null)      |
+|   String getServletPath()    | 该方法用户获取 Servlet 的名称或Servlet所映射的路径                                                                                                                          |
+|    String getRemoteAddr()    | 该方法用户获取客户端的IP地址，格式类似于"192.168.0.3"                                                                                                                       |
+|    String getRemoteHost()    | 该方法用户获取客户端的完整主机名，其格式类似于`localhost`<br />需要注意的是，如果无法解析出该主机名，会返回客户端的IP地址                                                   |
+|     int getRemotePort()      | 获取请求客户端网络连接的端口号                                                                                                                                              |
+|    String getLocalAddr()     | 获取web服务器上接收当前请求网络连接的IP地址                                                                                                                                 |
+|    String getLocalName()     | 获取web服务器上接收当前请求网络连接的IP地址所对应的主机名                                                                                                                   |
+|      int getLocalPort()      | 获取web服务器上接收当前请求网络连接的端口号                                                                                                                                 |
+|    String getServerName()    | 该方法用于获取当前请求所指向的主机名<br />即：HTTP请求消息中Host头字段所对应的主机名部分                                                                                    |
+|     int getServerPort()      | 该方法用户获取当前请求所连接的服务器端口号<br />即如果是HTTP请求消息中Host头字段所有对应端口号部分                                                                          |
+|      String getSchme()       | 该方法用户获取请求的协议名，例如`http`、`https`或`ftp`                                                                                                                      |
 | StringBuffer getRequestURL() | 获取客户端发出请求的完整URL<br />包括协议、服务名、端口号、资源路径等信息<br />但是不包括后面的查询参数(params)部分<br />这玩意返回的是StringBuffer类型，更方便对结果的修改 |
 
 为了更好的理解，我们通过一个例子来看下每个方法的返回值
@@ -161,21 +146,21 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
  当客户端请求Servlet时，需要通过请求头向服务器传递附加信息，例如客户端可以接受的数据类型、请求源、消息正文的长度、是否保持TCP连接等，我们先来看下Http中常见的请求头信息：
 
-![资源分配图](https://img-blog.csdnimg.cn/20200305162936951.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70)
+![资源分配图](/images/JavaEE/03-1Response和Requests/20200305162936951.jpg)
 
  同样的，为了方便的获取请求头中对应的信息，HttpServletRequest也提供了一系列的方法，相关方法如下：
 
-|               方法名                | 描述                                                         |
-| :---------------------------------: | ------------------------------------------------------------ |
+|               方法名                | 描述                                                                                                                                                                                       |
+| :---------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |    String getHeader(String name)    | 该方法用于获取一个指定头字段<br />如果请求消息中没有包括指定的头字段，getHeader()方法就返回null<br />如果过请求消息中包含有多个指定名称的头字段，<br />getHeader()返回其中第一个头字段的值 |
-| Enumeration getHeaders(String name) | 该方法返回一个`Enumeration<String>`集合对象<br />该机和对象有请求消息中出现的某个指定名称的所有头字段组成<br />在多数情况下，一个头字段名在请求消息中只出现一次<br />但有时候可能出现多次 |
-|    Enumeration getHeaderNames()     | 获取所有请求头字段**名称**的`Enumeration<String>`对象        |
-|    int getIntHeader(String name)    | 获取指定名称的头字段，并且将其转换为`int`类型<br />如果指定名称的头字段不存在，返回-1<br />如果获取到的头字段不能转换为int，则抛出<br />NumberFormatException异常 |
-|   long getDateHeader(String name)   | 该方法用户获取指定头字段的值<br />并且按照GMT时间格式转换成一个代表日期的长整数（时间戳） |
-|       String getContentType()       | 该方法用于获取`content-Type`头字段的值，结果为String类型     |
-|       int getContentLength()        | 该方法用于获取Content-Length头字段的值，结果为int类型        |
-|    String getCharacterEncoding()    | 返回请求消息的试题部分的字符集编码，通常是从`content-Type`头字段中进行提取，结果为String类型 |
-|        Cookie[] getCookies()        | 该方法用于获取所有的客户端传来的Cookie对象，如果客户端没有发送Cookie，则返回null |
+| Enumeration getHeaders(String name) | 该方法返回一个`Enumeration<String>`集合对象<br />该机和对象有请求消息中出现的某个指定名称的所有头字段组成<br />在多数情况下，一个头字段名在请求消息中只出现一次<br />但有时候可能出现多次  |
+|    Enumeration getHeaderNames()     | 获取所有请求头字段**名称**的`Enumeration<String>`对象                                                                                                                                      |
+|    int getIntHeader(String name)    | 获取指定名称的头字段，并且将其转换为`int`类型<br />如果指定名称的头字段不存在，返回-1<br />如果获取到的头字段不能转换为int，则抛出<br />NumberFormatException异常                          |
+|   long getDateHeader(String name)   | 该方法用户获取指定头字段的值<br />并且按照GMT时间格式转换成一个代表日期的长整数（时间戳）                                                                                                  |
+|       String getContentType()       | 该方法用于获取`content-Type`头字段的值，结果为String类型                                                                                                                                   |
+|       int getContentLength()        | 该方法用于获取Content-Length头字段的值，结果为int类型                                                                                                                                      |
+|    String getCharacterEncoding()    | 返回请求消息的试题部分的字符集编码，通常是从`content-Type`头字段中进行提取，结果为String类型                                                                                               |
+|        Cookie[] getCookies()        | 该方法用于获取所有的客户端传来的Cookie对象，如果客户端没有发送Cookie，则返回null                                                                                                           |
 
 我们接着之前的代码，加上如下代码，然后跑起来访问一下看看：
 
@@ -207,12 +192,12 @@ for(Cookie cookie: cookies) {
 
 ​   当然，为了方便获取页面中的参数，HttpServletRequest也也也提供了一系列的方法，相关方法如下：
 
-|                 方法声明                 | 功能描述                                                     |
-| :--------------------------------------: | :----------------------------------------------------------- |
+|                 方法声明                 | 功能描述                                                                                                                           |
+| :--------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------- |
 |     String getParameter(String name)     | 获取某个指定名称的参数值<br />如果在请求消息中没有包含指定名称的参数值<br />则返回null<br />如果有多个该指定名称的参数，返回第一个 |
-| String[] getParameterValues(String name) | 获取某个指定名称的参数值<br />和上面不同的是，这玩意是处理多个该指定名称的参数的 |
-|      Enumeration getParamentNames()      | 返回一个包含请求消息中所有参数名的Enumeration 对象<br />在基础上，可以对请求消息中的所有参数进行遍历处理 |
-|          Map getParameterMap()           | 将请求信息中的所有参数名和值装入一个Map中返回                |
+| String[] getParameterValues(String name) | 获取某个指定名称的参数值<br />和上面不同的是，这玩意是处理多个该指定名称的参数的                                                   |
+|      Enumeration getParamentNames()      | 返回一个包含请求消息中所有参数名的Enumeration 对象<br />在基础上，可以对请求消息中的所有参数进行遍历处理                           |
+|          Map getParameterMap()           | 将请求信息中的所有参数名和值装入一个Map中返回                                                                                      |
 
 # HttpServletResponse
 

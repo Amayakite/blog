@@ -1629,8 +1629,6 @@ public class Producer {
 
 还可以完成非常有效的秒杀队列、流量削峰
 
-![img](https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/03/04/kuangstudyf2d1ac21-e710-45dc-a166-6b531c95945f.png)
-
 04、分布式事务的可靠消费和可靠生产
 05、索引、缓存、静态化处理的数据同步
 06、流量监控
