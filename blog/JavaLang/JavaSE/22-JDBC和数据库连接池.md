@@ -607,7 +607,7 @@ select * from actors;
       4. 这里面就是存放了查询到的这一行的所有的数据，以byte数组的形式保存
    2. 这里可以通过Debug查看的更明确一点
 
-<img src="/images/JavaSE/22-JDBC和数据库连接池/image-20211124002543231.png" alt="image-20211124002543231"  />
+![image-20211124002543231](http://81.68.162.137:9300/blog-notes/images/JavaSE/22-JDBC和数据库连接池/image-20211124002543231.png)
 
 ![image-20211124002353136](http://81.68.162.137:9300/blog-notes/images/JavaSE/22-JDBC和数据库连接池/image-20211124002353136.png)
 
