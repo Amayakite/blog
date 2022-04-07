@@ -169,41 +169,41 @@ public class MyThread {
 
 首先是可以看到x在栈帧内部的值
 
-![栈帧1](/images/JavaThread/2-Java线程/1642237335675.png)
+![栈帧1](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642237335675.png)
 
 接着能看到y的值
 
-![栈帧2](/images/JavaThread/2-Java线程/1642237476489.png)
+![栈帧2](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642237476489.png)
 
 继续执行，就可以看到我们的Object被创建出来了，栈帧内同理显示了对应的值
 
-![栈帧3](/images/JavaThread/2-Java线程/1642237536732.png)
+![栈帧3](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642237536732.png)
 
 可能这样不是特别直观，接下来用图解的方式来说明
 
 - 首先在加载的时候，我们的所有内容都会被加载到方法区
 
-![原理1](/images/JavaThread/2-Java线程/1642237635205.png)
+![原理1](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642237635205.png)
 
 然后我们的main线程启动，并调用method1的画风是这样的
 
-![原理2](/images/JavaThread/2-Java线程/1642237846435.png)
+![原理2](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642237846435.png)
 
 这里的程序计数器是用来记录下一个要执行啥，我们在这一步已经执行完method1的main中的method方法，接下来要调用method中的对应方法
 
-![原理3](/images/JavaThread/2-Java线程/1642237953000.png)
+![原理3](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642237953000.png)
 
 自此，已经执行完毕method1内的`int y = x +1;`接下来要执行它之中调用method2的方法
 
-![原理4](/images/JavaThread/2-Java线程/1642238083279.png)
+![原理4](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642238083279.png)
 
 在method2被调用完毕后，它这里面的内存就没啥用了，因此会被释放掉
 
-![原理5](/images/JavaThread/2-Java线程/1642238125268.png)
+![原理5](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642238125268.png)
 
 接下来是执行打印，打印完毕后，我们的method1也完成了，它的内存也会被释放掉
 
-![原理6](/images/JavaThread/2-Java线程/1642238196793.png)
+![原理6](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642238196793.png)
 
 接下来主方法也没啥要做的，自此程序结束
 
@@ -230,30 +230,30 @@ public class MyThread {
 - 状态程序包括程序计数器，虚拟机栈内存中的每个栈帧信息，如局部变量、操作数栈、返回地址等
 - Context Switch频繁发生会影响性能
 
-![Context Switch](/images/JavaThread/2-Java线程/1642238680325.png)
+![Context Switch](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642238680325.png)
 
 ## 线程的方法
 
 ### 常用方法一览
 
-|       方法名        | static  | 功能说明                      | 注意                                                                                                                                |
-|:----------------:|:--------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-|     start()      | 启动一个新线程 | 启动一个新线程，在新的线程 运行run方法中的代码 | start 方法只是让线程进入就绪，里面代码不一定立刻 运行（CPU 的时间片还没分给它）。<br/>每个线程对象的 start方法只能调用一次，如果调用了多次会出现IllegalThreadStateException                    |
-|      run()       |         | 新线程启动后会调用的方法              | 如果在构造 Thread 对象时传递了 Runnable 参数，则线程启动后会调用 Runnable 中的 run 方法，否则默 认不执行任何操作。但可以创建 Thread 的子类对象， 来覆盖默认行为                             |
-|      join()      |         | 等待线程运行结束 join(long n)     | 等待线程运行结 束,最多等待 n 毫秒                                                                                                               |
-|     getId()      |         | 获取线程长整型的 id               | id是唯一的                                                                                                                            |
-|    getName()     |         | 获取线程名                     |                                                                                                                                   |
-| setName(String)  |         | 修改线程名                     |                                                                                                                                   |
-|  getPriority()   |         | 获取线程优先级                   |                                                                                                                                   |
-| setPriority(int) |         | 修改线程优先级                   | java中规定线程优先级是1~10 的整数，较大的优先级 能提高该线程被 CPU 调度的机率                                                                                    |
-|    getState()    |         | 获取线程状态 Java 中线程状态         | Java 中线程状态是用 6 个 enum 表示，分别为：<br />`NEW`<br />`RUNNABLE`<br />`BLOCKEDWAITING`<br />`TIMED_WAITING`<br />`TERMINATED`             |
-| isInterrupted()  |         | 判断是否被打断                   | 不会清除打断标记                                                                                                                          |
-|   interrupt()    |         | 打断线程                      | 如果被打断线程正在 sleep，wait，join状态下 <br />会导致被打断的线程抛出 InterruptedException，并清除 打断标记<br />如果打断的正在运行的线程，则会设置打断标记<br />park 的线程被打断，也会设置打断标记 |
-|  interrupted()   | static  | 判断当前线程是否被打断               | 会清除打断标记                                                                                                                           |
-|    isAlive()     |         | 线程是否存活                    | 判断是否还没有运行完毕                                                                                                                       |
-| currentThread()  | static  | 获取当前正在执行的线程               |                                                                                                                                   |
-|  sleep(long n)   | static  | 让当前执行的线 程休眠n毫秒            | 休眠时让出cpu的时间片给其它线程                                                                                                                 |
-|     yield()      | static  | 提示线程调度器 让出当前线程对 CPU的使用    | 主要是为了测试和调试 不一定成功                                                                                                                  |
+|      方法名      | static         | 功能说明                                       | 注意                                                                                                                                                                                                   |
+| :--------------: | :------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|     start()      | 启动一个新线程 | 启动一个新线程，在新的线程 运行run方法中的代码 | start 方法只是让线程进入就绪，里面代码不一定立刻 运行（CPU 的时间片还没分给它）。<br/>每个线程对象的 start方法只能调用一次，如果调用了多次会出现IllegalThreadStateException                            |
+|      run()       |                | 新线程启动后会调用的方法                       | 如果在构造 Thread 对象时传递了 Runnable 参数，则线程启动后会调用 Runnable 中的 run 方法，否则默 认不执行任何操作。但可以创建 Thread 的子类对象， 来覆盖默认行为                                        |
+|      join()      |                | 等待线程运行结束 join(long n)                  | 等待线程运行结 束,最多等待 n 毫秒                                                                                                                                                                      |
+|     getId()      |                | 获取线程长整型的 id                            | id是唯一的                                                                                                                                                                                             |
+|    getName()     |                | 获取线程名                                     |                                                                                                                                                                                                        |
+| setName(String)  |                | 修改线程名                                     |                                                                                                                                                                                                        |
+|  getPriority()   |                | 获取线程优先级                                 |                                                                                                                                                                                                        |
+| setPriority(int) |                | 修改线程优先级                                 | java中规定线程优先级是1~10 的整数，较大的优先级 能提高该线程被 CPU 调度的机率                                                                                                                          |
+|    getState()    |                | 获取线程状态 Java 中线程状态                   | Java 中线程状态是用 6 个 enum 表示，分别为：<br />`NEW`<br />`RUNNABLE`<br />`BLOCKEDWAITING`<br />`TIMED_WAITING`<br />`TERMINATED`                                                                   |
+| isInterrupted()  |                | 判断是否被打断                                 | 不会清除打断标记                                                                                                                                                                                       |
+|   interrupt()    |                | 打断线程                                       | 如果被打断线程正在 sleep，wait，join状态下 <br />会导致被打断的线程抛出 InterruptedException，并清除 打断标记<br />如果打断的正在运行的线程，则会设置打断标记<br />park 的线程被打断，也会设置打断标记 |
+|  interrupted()   | static         | 判断当前线程是否被打断                         | 会清除打断标记                                                                                                                                                                                         |
+|    isAlive()     |                | 线程是否存活                                   | 判断是否还没有运行完毕                                                                                                                                                                                 |
+| currentThread()  | static         | 获取当前正在执行的线程                         |                                                                                                                                                                                                        |
+|  sleep(long n)   | static         | 让当前执行的线 程休眠n毫秒                     | 休眠时让出cpu的时间片给其它线程                                                                                                                                                                        |
+|     yield()      | static         | 提示线程调度器 让出当前线程对 CPU的使用        | 主要是为了测试和调试 不一定成功                                                                                                                                                                        |
 
 ### Sleep
 
@@ -419,7 +419,7 @@ public class TestHint {
 
 这里很明显地能看到，线程2比线程1早了一大堆数值提前完成内容
 
-![Thread](/images/JavaThread/2-Java线程/1642241640367.png)
+![Thread](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642241640367.png)
 
 ### join
 
@@ -571,7 +571,7 @@ public class MyThread {
 
 也就是
 
-![ThreadJoin](/images/JavaThread/2-Java线程/1642243700670.png)
+![ThreadJoin](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642243700670.png)
 
 ### Join设定最大时间
 
@@ -698,7 +698,7 @@ public class MyThread {
 
 再来看看两阶段终止模式
 
-![两阶段终止模式](/images/JavaThread/2-Java线程/1642245490789.png)
+![两阶段终止模式](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642245490789.png)
 
 实现也是非常地简单，注意这个两阶段终止模式，以后要用的
 
@@ -761,7 +761,7 @@ class TwoPhaseTermination {
 
 运行结果：
 
-![两阶段终止打断模式](/images/JavaThread/2-Java线程/1642246422569.png)
+![两阶段终止打断模式](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642246422569.png)
 
 ### Thread.isInterrupted和普通的isInterrupted的区别
 
@@ -818,11 +818,11 @@ public class MyThread {
 
 ### 不推荐使用的方法
 
-| 方法名       | static | 功能说明        |
-|-----------|--------|-------------|
-| stop()    | false  | 停止线程运行      |
+| 方法名    | static | 功能说明             |
+| --------- | ------ | -------------------- |
+| stop()    | false  | 停止线程运行         |
 | suspend() | false  | 挂起(暂停)线程的运行 |
-| resume()  | false  | 恢复线程运行      |
+| resume()  | false  | 恢复线程运行         |
 
 不推荐使用的原因非常简单，他们都是直接暂停之类的，**会造成对象的锁得不到释放，从而导致线程死锁，程序出问题**
 
@@ -830,7 +830,7 @@ public class MyThread {
 
 我们也可以在方法上看到不推荐使用的原因
 
-![不推荐使用的线程方法](/images/JavaThread/2-Java线程/1642247789049.png)
+![不推荐使用的线程方法](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642247789049.png)
 
 ### 主线程和守护线程
 
@@ -864,7 +864,7 @@ public class MyThread {
 
 运行：
 
-![主线程和守护线程1](/images/JavaThread/2-Java线程/1642248115066.png)
+![主线程和守护线程1](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642248115066.png)
 
 可以看到，虽然我们的主线程结束了，但是我们的附属线程t1并没有结束，所以整个Java进程还没有结束
 
@@ -895,7 +895,7 @@ public class MyThread {
 
 然后你就能看到
 
-![主线程和守护线程2](/images/JavaThread/2-Java线程/1642248337058.png)
+![主线程和守护线程2](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642248337058.png)
 
 你可以看到，t1方法内的最后一句话没有打印出来，因为他是在循环内直接强制结束的，所以后续的代码也不会继续执行
 
@@ -908,7 +908,7 @@ public class MyThread {
 
 这是从操作系统的角度来看的
 
-![线程的五种状态](/images/JavaThread/2-Java线程/1642248656488.png)
+![线程的五种状态](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642248656488.png)
 
 - 【初始状态-NEW】：仅仅是在语言层面创建了线程对象，还未与操作系统线程关联
 - 【可运行状态-RUNNABLE】：也就是就绪状态，说明线程准备好了，CPU可以来执行它了
@@ -923,11 +923,11 @@ public class MyThread {
 
 这是从Java API层面来描述的，根据`Thread.State`枚举，分为六种状态
 
-![线程的六种状态](/images/JavaThread/2-Java线程/1642249035413.png)
+![线程的六种状态](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/1642249035413.png)
 
 当然这个我们在之前的Java基础中也完完整整的了解过了，这里还是搬出韩顺平老师的那张图片
 
-![线程的完整状态](/images/JavaThread/2-Java线程/Java线程生命周期-16367276068553.svg)
+![线程的完整状态](http://81.68.162.137:9300/blog-notes/images/JavaThread/2-Java线程/Java线程生命周期-16367276068553.svg)
 
 - NEW 线程刚刚被创建的时候，但是还没有调用`start()`方法
 - RUNNABLE 当调用了`start()`方法之后，注意，**Java API**层面导致的`RUNNABLE`状态涵盖了操作系统层面的【可运行状态】、【运行状态】和【阻塞状态】（由于BIO导致的线程阻塞，在Java内无法区分，依旧认为是可运行）

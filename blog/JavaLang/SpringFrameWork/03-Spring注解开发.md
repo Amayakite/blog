@@ -53,7 +53,7 @@ Spring的注解分为两种，但是实际上都可以用
 
 我们先创建如下文件：
 
-![image-20211210155656323](/images/SpringFrameWork/03-Spring注解开发/image-20211210155656323.png)
+![image-20211210155656323](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/03-Spring注解开发/image-20211210155656323.png)
 
 UserDao里面就一个save方法，IMPL实现了，打印了一句话
 
@@ -464,7 +464,7 @@ public class UserDaoImpl implements UserDao {
 
 测试一下：
 
-![image-20211210172350241](/images/SpringFrameWork/03-Spring注解开发/image-20211210172350241.png)
+![image-20211210172350241](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/03-Spring注解开发/image-20211210172350241.png)
 
 ## Spring新注解
 
@@ -496,13 +496,13 @@ public class UserDaoImpl implements UserDao {
 
 ## ✨新注解中包含的内容一览
 
-| 注解            | 说明                                                         | 实例                                       |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------ |
-| @Configuration  | 用于指定当前类是一个Spring的配置类<br />当创建容器时会从该类上加载注解<br />也就是声明一个类是Spring配置文件 | @Configuration                             |
+| 注解            | 说明                                                                                                                                  | 实例                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| @Configuration  | 用于指定当前类是一个Spring的配置类<br />当创建容器时会从该类上加载注解<br />也就是声明一个类是Spring配置文件                          | @Configuration                             |
 | @ComponentScan  | 用于指定Spring在初始化容器时需要扫描的包<br />作用和在Spring的xml配置文件中的<br />`content:component-scan base-package="包名"/>`一样 | @ComponentScan("com.MySpring")             |
-| @Bean           | 用在方法上，标注将该方法的返回值存储到Spring容器中<br />等同于Bean标签创建 | @Bean(name = "dataSource")                 |
-| @PropertySource | 用于加载`.properties`文件中的配置                            | @PropertySource("classpath:db.properties") |
-| @Import         | 用于导入其他配置类                                           | @Import({类1.class，类2.class...})         |
+| @Bean           | 用在方法上，标注将该方法的返回值存储到Spring容器中<br />等同于Bean标签创建                                                            | @Bean(name = "dataSource")                 |
+| @PropertySource | 用于加载`.properties`文件中的配置                                                                                                     | @PropertySource("classpath:db.properties") |
+| @Import         | 用于导入其他配置类                                                                                                                    | @Import({类1.class，类2.class...})         |
 
 ### 新注解的使用
 

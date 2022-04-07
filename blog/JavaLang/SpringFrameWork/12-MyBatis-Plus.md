@@ -256,7 +256,7 @@ public class UserMapperTest {
 
 TMD我知道现在知道，测试的时候 log4j会自动打印消息
 
-![image-20211217001624446](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217001624446.png)
+![image-20211217001624446](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217001624446.png)
 
 不信你可以把log4j.properties删掉试试
 
@@ -511,7 +511,7 @@ TMD我知道现在知道，测试的时候 log4j会自动打印消息
 
 它包含如下非常直观的方法：
 
-![image-20211217121846161](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217121846161.png)
+![image-20211217121846161](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217121846161.png)
 
 ```java
 /**
@@ -691,28 +691,28 @@ public class UserMapperTest {
 
 然后不出意外的出意外了
 
-![image-20211217123932091](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217123932091.png)
+![image-20211217123932091](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217123932091.png)
 
 我们现在大概能猜出来原因---应该是这玩意如果检测到空值会转换成某些最大值赋值给数据库
 
 在[官方文档](https://baomidou.com/pages/223848/#tableid)中，我们可以看到一个@TableId的注解
 
-![image-20211217124716328](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217124716328.png)
+![image-20211217124716328](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217124716328.png)
 
 也就是说，可以通过它来制定主键ID是什么样的
 
 接下来测试一下：
 
-| 值                | 描述                                                         |
-| :---------------- | :----------------------------------------------------------- |
-| AUTO              | 数据库 ID 自增                                               |
-| NONE              | 无状态，该类型为未设置主键类型（注解里等于跟随全局，全局里约等于 INPUT），默认值 |
-| INPUT             | insert 前自行 set 主键值                                     |
+| 值                | 描述                                                                                                                                                            |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AUTO              | 数据库 ID 自增                                                                                                                                                  |
+| NONE              | 无状态，该类型为未设置主键类型（注解里等于跟随全局，全局里约等于 INPUT），默认值                                                                                |
+| INPUT             | insert 前自行 set 主键值                                                                                                                                        |
 | ASSIGN_ID         | 分配 ID(主键类型为 Number(Long 和 Integer)或 String)(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextId`(默认实现类为`DefaultIdentifierGenerator`雪花算法) |
-| ASSIGN_UUID       | 分配 UUID,主键类型为 String(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextUUID`(默认 default 方法) |
-| ~~ID_WORKER~~     | 分布式全局唯一 ID 长整型类型(please use `ASSIGN_ID`)         |
-| ~~UUID~~          | 32 位 UUID 字符串(please use `ASSIGN_UUID`)                  |
-| ~~ID_WORKER_STR~~ | 分布式全局唯一 ID 字符串类型(please use `ASSIGN_ID`)         |
+| ASSIGN_UUID       | 分配 UUID,主键类型为 String(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextUUID`(默认 default 方法)                                                       |
+| ~~ID_WORKER~~     | 分布式全局唯一 ID 长整型类型(please use `ASSIGN_ID`)                                                                                                            |
+| ~~UUID~~          | 32 位 UUID 字符串(please use `ASSIGN_UUID`)                                                                                                                     |
+| ~~ID_WORKER_STR~~ | 分布式全局唯一 ID 字符串类型(please use `ASSIGN_ID`)                                                                                                            |
 
 一看就知道要用第一个
 
@@ -730,9 +730,9 @@ public class User {
 
 结果：完美运行
 
-![image-20211217125223213](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217125223213.png)
+![image-20211217125223213](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217125223213.png)
 
-![image-20211217125239536](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217125239536.png)
+![image-20211217125239536](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217125239536.png)
 
 ### Select
 
@@ -773,16 +773,16 @@ public class User {
 
 相应属性可以看这个[链接](https://baomidou.com/pages/223848/#idtype)，当然如果你懒的话
 
-| 值                | 描述                                                         |
-| :---------------- | :----------------------------------------------------------- |
-| AUTO              | 数据库 ID 自增                                               |
-| NONE              | 无状态，该类型为未设置主键类型（注解里等于跟随全局，全局里约等于 INPUT），默认值 |
-| INPUT             | insert 前自行 set 主键值                                     |
+| 值                | 描述                                                                                                                                                            |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AUTO              | 数据库 ID 自增                                                                                                                                                  |
+| NONE              | 无状态，该类型为未设置主键类型（注解里等于跟随全局，全局里约等于 INPUT），默认值                                                                                |
+| INPUT             | insert 前自行 set 主键值                                                                                                                                        |
 | ASSIGN_ID         | 分配 ID(主键类型为 Number(Long 和 Integer)或 String)(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextId`(默认实现类为`DefaultIdentifierGenerator`雪花算法) |
-| ASSIGN_UUID       | 分配 UUID,主键类型为 String(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextUUID`(默认 default 方法) |
-| ~~ID_WORKER~~     | 分布式全局唯一 ID 长整型类型(please use `ASSIGN_ID`)         |
-| ~~UUID~~          | 32 位 UUID 字符串(please use `ASSIGN_UUID`)                  |
-| ~~ID_WORKER_STR~~ | 分布式全局唯一 ID 字符串类型(please use `ASSIGN_ID`)         |
+| ASSIGN_UUID       | 分配 UUID,主键类型为 String(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextUUID`(默认 default 方法)                                                       |
+| ~~ID_WORKER~~     | 分布式全局唯一 ID 长整型类型(please use `ASSIGN_ID`)                                                                                                            |
+| ~~UUID~~          | 32 位 UUID 字符串(please use `ASSIGN_UUID`)                                                                                                                     |
+| ~~ID_WORKER_STR~~ | 分布式全局唯一 ID 字符串类型(please use `ASSIGN_ID`)                                                                                                            |
 
 #### 额外说明-插入时会自动给传入的对象填充id属性
 
@@ -798,7 +798,7 @@ public void save() {
 
 我当前是这样插入的，获取到的结果为：
 
-![image-20211217134750080](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217134750080.png)
+![image-20211217134750080](http://81.68.162.137:9300/blog-notes/images/SpringFrameWork/12-MyBatis-Plus/image-20211217134750080.png)
 
 ### @TableFiled-指定属性对应表的哪个字段
 

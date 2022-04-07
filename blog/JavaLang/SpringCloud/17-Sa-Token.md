@@ -229,7 +229,7 @@ public SaResult testAuth() {
 
 可以看到，这个StpUtil是直接调用了我们刚刚的`StpInterfaceImpl`类，所以直接打印出来了该类中的内容
 
-![image-20220121154717209](/images/SpringCloud/17-Sa-Token/image-20220121154717209.png)
+![image-20220121154717209](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/image-20220121154717209.png)
 
 前端中返回的内容
 
@@ -810,7 +810,7 @@ SaSessionCustomUtil.deleteSessionById("goods-10001");
 
 **假设三个客户端登录同一账号，且配置了不共享token，那么此时的Session模型是：**
 
-![session-model](/images/SpringCloud/17-Sa-Token/session-model3.png)
+![session-model](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/session-model3.png)
 
 简而言之：
 
@@ -934,30 +934,30 @@ sa-token:
 
 可以配置的参数如下：
 
-| 参数名称               | 类型    | 默认值               | 说明                                                         |
-| ---------------------- | ------- | -------------------- | ------------------------------------------------------------ |
-| tokenName              | String  | satoken              | token名称 (同时也是cookie名称)                               |
-| timeout                | long    | 2592000              | token有效期，单位/秒 默认30天，-1代表永久有效 [参考：token有效期详解](https://sa-token.dev33.cn/doc/index.html#/fun/token-timeout) |
+| 参数名称               | 类型    | 默认值               | 说明                                                                                                                                                                                                            |
+| ---------------------- | ------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tokenName              | String  | satoken              | token名称 (同时也是cookie名称)                                                                                                                                                                                  |
+| timeout                | long    | 2592000              | token有效期，单位/秒 默认30天，-1代表永久有效 [参考：token有效期详解](https://sa-token.dev33.cn/doc/index.html#/fun/token-timeout)                                                                              |
 | activityTimeout        | long    | -1                   | token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒, 默认-1 代表不限制 (例如可以设置为1800代表30分钟内无操作就过期) [参考：token有效期详解](https://sa-token.dev33.cn/doc/index.html#/fun/token-timeout) |
-| isConcurrent           | Boolean | true                 | 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录) |
-| isShare                | Boolean | true                 | 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token) |
-| isReadBody             | Boolean | true                 | 是否尝试从 请求体 里读取 Token                               |
-| isReadHead             | Boolean | true                 | 是否尝试从 header 里读取 Token                               |
-| isReadCookie           | Boolean | true                 | 是否尝试从 cookie 里读取 Token                               |
-| tokenStyle             | String  | uuid                 | token风格, [参考：自定义Token风格](https://sa-token.dev33.cn/doc/index.html#/up/token-style) |
-| dataRefreshPeriod      | int     | 30                   | 默认dao层实现类中，每次清理过期数据间隔的时间 (单位: 秒) ，默认值30秒，设置为-1代表不启动定时清理 |
-| tokenSessionCheckLogin | Boolean | true                 | 获取 `Token-Session` 时是否必须登录 (如果配置为true，会在每次获取 `Token-Session` 时校验是否登录) |
-| autoRenew              | Boolean | true                 | 是否打开自动续签 (如果此值为true, 框架会在每次直接或间接调用 `getLoginId()` 时进行一次过期检查与续签操作) |
-| tokenPrefix            | String  | null                 | token前缀, 例如填写 `Bearer` 实际传参 `satoken: Bearer xxxx-xxxx-xxxx-xxxx` [参考：自定义Token前缀](https://sa-token.dev33.cn/doc/index.html#/up/token-prefix) |
-| isPrint                | Boolean | true                 | 是否在初始化配置时打印版本字符画                             |
-| isLog                  | Boolean | false                | 是否打印操作日志                                             |
-| jwtSecretKey           | String  | null                 | jwt秘钥 (只有集成 `sa-token-temp-jwt` 模块时此参数才会生效)  |
-| idTokenTimeout         | long    | 86400                | Id-Token的有效期 (单位: 秒)                                  |
-| basic                  | String  | ""                   | Http Basic 认证的账号和密码 [参考：Http Basic 认证](https://sa-token.dev33.cn/doc/index.html#/up/basic-auth) |
-| currDomain             | String  | null                 | 配置当前项目的网络访问地址                                   |
-| checkIdToken           | Boolean | false                | 是否校验Id-Token（部分rpc插件有效）                          |
-| sso                    | Object  | new SaSsoConfig()    | SSO 单点登录相关配置                                         |
-| cookie                 | Object  | new SaCookieConfig() | Cookie配置对象                                               |
+| isConcurrent           | Boolean | true                 | 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)                                                                                                                                      |
+| isShare                | Boolean | true                 | 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)                                                                                                         |
+| isReadBody             | Boolean | true                 | 是否尝试从 请求体 里读取 Token                                                                                                                                                                                  |
+| isReadHead             | Boolean | true                 | 是否尝试从 header 里读取 Token                                                                                                                                                                                  |
+| isReadCookie           | Boolean | true                 | 是否尝试从 cookie 里读取 Token                                                                                                                                                                                  |
+| tokenStyle             | String  | uuid                 | token风格, [参考：自定义Token风格](https://sa-token.dev33.cn/doc/index.html#/up/token-style)                                                                                                                    |
+| dataRefreshPeriod      | int     | 30                   | 默认dao层实现类中，每次清理过期数据间隔的时间 (单位: 秒) ，默认值30秒，设置为-1代表不启动定时清理                                                                                                               |
+| tokenSessionCheckLogin | Boolean | true                 | 获取 `Token-Session` 时是否必须登录 (如果配置为true，会在每次获取 `Token-Session` 时校验是否登录)                                                                                                               |
+| autoRenew              | Boolean | true                 | 是否打开自动续签 (如果此值为true, 框架会在每次直接或间接调用 `getLoginId()` 时进行一次过期检查与续签操作)                                                                                                       |
+| tokenPrefix            | String  | null                 | token前缀, 例如填写 `Bearer` 实际传参 `satoken: Bearer xxxx-xxxx-xxxx-xxxx` [参考：自定义Token前缀](https://sa-token.dev33.cn/doc/index.html#/up/token-prefix)                                                  |
+| isPrint                | Boolean | true                 | 是否在初始化配置时打印版本字符画                                                                                                                                                                                |
+| isLog                  | Boolean | false                | 是否打印操作日志                                                                                                                                                                                                |
+| jwtSecretKey           | String  | null                 | jwt秘钥 (只有集成 `sa-token-temp-jwt` 模块时此参数才会生效)                                                                                                                                                     |
+| idTokenTimeout         | long    | 86400                | Id-Token的有效期 (单位: 秒)                                                                                                                                                                                     |
+| basic                  | String  | ""                   | Http Basic 认证的账号和密码 [参考：Http Basic 认证](https://sa-token.dev33.cn/doc/index.html#/up/basic-auth)                                                                                                    |
+| currDomain             | String  | null                 | 配置当前项目的网络访问地址                                                                                                                                                                                      |
+| checkIdToken           | Boolean | false                | 是否校验Id-Token（部分rpc插件有效）                                                                                                                                                                             |
+| sso                    | Object  | new SaSsoConfig()    | SSO 单点登录相关配置                                                                                                                                                                                            |
+| cookie                 | Object  | new SaCookieConfig() | Cookie配置对象                                                                                                                                                                                                  |
 
 ## 深入
 
@@ -1081,7 +1081,7 @@ spring:
 
 然后正常登陆，你就能在你的Redis内看到如下内容
 
-![image-20220121171641113](/images/SpringCloud/17-Sa-Token/image-20220121171641113.png)
+![image-20220121171641113](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/image-20220121171641113.png)
 
 注意：
 
@@ -1134,7 +1134,7 @@ spring:
 
 然后我们在前端访问只需要额外加一个请求头，名字为tokenName，value为tokenValue即可
 
-![image-20220121172519180](/images/SpringCloud/17-Sa-Token/image-20220121172519180.png)
+![image-20220121172519180](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/image-20220121172519180.png)
 
 然后普通的解决方式这里就不说了，这里说下UniAPP的发送方式
 
@@ -1275,7 +1275,7 @@ sa-token:
 
 如图所示，一般网站的登录界面都会有一个 **`[记住我]`** 按钮，当你勾选它后，即使你关闭浏览器再次打开网站，也依然会处于登录状态，无须重复验证密码
 
-![../static/login-view.png](/images/SpringCloud/17-Sa-Token/login-view.png)
+![../static/login-view.png](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/login-view.png)
 
 那么在Sa-Token中，如何做到 [ 记住我 ] 功能呢？
 
@@ -1516,11 +1516,11 @@ public SaResult test3() {
 
 然后我们访问这个接口时，浏览器会强制弹出一个表单：
 
-![sa-basic.png](/images/SpringCloud/17-Sa-Token/sa-basic.png)
+![sa-basic.png](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/sa-basic.png)
 
 当我们输入账号密码后 `（sa / 123456）`，才可以继续访问数据：
 
-![sa-basic-ok.png](/images/SpringCloud/17-Sa-Token/sa-basic-ok.png)
+![sa-basic-ok.png](http://81.68.162.137:9300/blog-notes/images/SpringCloud/17-Sa-Token/sa-basic-ok.png)
 
 > 其他启用方式
 

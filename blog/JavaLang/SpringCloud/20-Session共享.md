@@ -13,7 +13,7 @@ tag:
 
 虽然说可以通过tomcat的hash负载来解决，但是那样太拉胯了
 
-![image-20220204231014917](/images/SpringCloud/20-Session共享/image-20220204231014917.png)
+![image-20220204231014917](http://81.68.162.137:9300/blog-notes/images/SpringCloud/20-Session共享/image-20220204231014917.png)
 
 ### 依赖和配置
 
