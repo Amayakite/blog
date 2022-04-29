@@ -150,6 +150,7 @@ export default defineSidebarConfig({
         "08-依赖管理和包.md",
         "09-Etdc和Es.md",
         "10-GIN.md",
+        "11-GoLang常用包.md",
       ]
     }
   ]
