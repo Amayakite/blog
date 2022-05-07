@@ -4,6 +4,5 @@ dist
 dist-ssr
 *.local
 .idea
-yarn.lock
 blog/.vuepress/.cache
 blog/.vuepress/.temp
