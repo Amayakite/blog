@@ -29,6 +29,8 @@ export const pagesComponents = {
   "v-1b9dd878": defineAsyncComponent(() => import(/* webpackChunkName: "v-1b9dd878" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/09-Etdc和Es.html.vue")),
   // path: /GoLang/Base/10-GIN.html
   "v-562eed86": defineAsyncComponent(() => import(/* webpackChunkName: "v-562eed86" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/10-GIN.html.vue")),
+  // path: /GoLang/Base/11-GoLang%E5%B8%B8%E7%94%A8%E5%8C%85.html
+  "v-2d014495": defineAsyncComponent(() => import(/* webpackChunkName: "v-2d014495" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/GoLang/Base/11-GoLang常用包.html.vue")),
   // path: /JavaLang/JavaEE/01-%E5%88%9D%E8%AF%86JavaWeb.html
   "v-824593c6": defineAsyncComponent(() => import(/* webpackChunkName: "v-824593c6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/JavaEE/01-初识JavaWeb.html.vue")),
   // path: /JavaLang/JavaEE/02-1-%E9%80%9A%E8%BF%87%E7%A9%BA%E7%99%BD%E7%9A%84Maven%E6%A8%A1%E6%9D%BF%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAWeb%E9%A1%B9%E7%9B%AE.html
@@ -107,32 +109,6 @@ export const pagesComponents = {
   "v-05aad7db": defineAsyncComponent(() => import(/* webpackChunkName: "v-05aad7db" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/07-Nginx.html.vue")),
   // path: /JavaLang/SpringBoot/08-Elasticsearch.html
   "v-719d6ef7": defineAsyncComponent(() => import(/* webpackChunkName: "v-719d6ef7" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringBoot/08-Elasticsearch.html.vue")),
-  // path: /JavaLang/SpringFrameWork/01-Spring.html
-  "v-453e79e4": defineAsyncComponent(() => import(/* webpackChunkName: "v-453e79e4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/01-Spring.html.vue")),
-  // path: /JavaLang/SpringFrameWork/02-Spring%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E6%BA%90.html
-  "v-57c67ef6": defineAsyncComponent(() => import(/* webpackChunkName: "v-57c67ef6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/02-Spring配置数据源.html.vue")),
-  // path: /JavaLang/SpringFrameWork/03-Spring%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91.html
-  "v-3ad2419b": defineAsyncComponent(() => import(/* webpackChunkName: "v-3ad2419b" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/03-Spring注解开发.html.vue")),
-  // path: /JavaLang/SpringFrameWork/04-1-%E6%89%A9%E5%B1%95-%E6%B3%A8%E8%A7%A3.html
-  "v-4e15e86a": defineAsyncComponent(() => import(/* webpackChunkName: "v-4e15e86a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/04-1-扩展-注解.html.vue")),
-  // path: /JavaLang/SpringFrameWork/04-Spring-Web.html
-  "v-7430a6e0": defineAsyncComponent(() => import(/* webpackChunkName: "v-7430a6e0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/04-Spring-Web.html.vue")),
-  // path: /JavaLang/SpringFrameWork/05-SpringMVC.html
-  "v-0cb0f7f0": defineAsyncComponent(() => import(/* webpackChunkName: "v-0cb0f7f0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/05-SpringMVC.html.vue")),
-  // path: /JavaLang/SpringFrameWork/06-JdbcTemplate.html
-  "v-53dc6721": defineAsyncComponent(() => import(/* webpackChunkName: "v-53dc6721" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/06-JdbcTemplate.html.vue")),
-  // path: /JavaLang/SpringFrameWork/07-SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8.html
-  "v-4ef6028d": defineAsyncComponent(() => import(/* webpackChunkName: "v-4ef6028d" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/07-SpringMVC拦截器.html.vue")),
-  // path: /JavaLang/SpringFrameWork/08-AOP.html
-  "v-39ddfbf8": defineAsyncComponent(() => import(/* webpackChunkName: "v-39ddfbf8" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/08-AOP.html.vue")),
-  // path: /JavaLang/SpringFrameWork/09-%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6.html
-  "v-4a924692": defineAsyncComponent(() => import(/* webpackChunkName: "v-4a924692" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/09-事务控制.html.vue")),
-  // path: /JavaLang/SpringFrameWork/10-Mybatis.html
-  "v-4d4f7b90": defineAsyncComponent(() => import(/* webpackChunkName: "v-4d4f7b90" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/10-Mybatis.html.vue")),
-  // path: /JavaLang/SpringFrameWork/11-SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88.html
-  "v-23ea9f5a": defineAsyncComponent(() => import(/* webpackChunkName: "v-23ea9f5a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/11-SSM框架的整合.html.vue")),
-  // path: /JavaLang/SpringFrameWork/12-MyBatis-Plus.html
-  "v-fc32fe46": defineAsyncComponent(() => import(/* webpackChunkName: "v-fc32fe46" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/12-MyBatis-Plus.html.vue")),
   // path: /JavaLang/SpringCloud/00-Docker.html
   "v-334973b9": defineAsyncComponent(() => import(/* webpackChunkName: "v-334973b9" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringCloud/00-Docker.html.vue")),
   // path: /JavaLang/SpringCloud/01-%E5%BE%AE%E6%9C%8D%E5%8A%A1.html
@@ -189,6 +165,32 @@ export const pagesComponents = {
   "v-144f0379": defineAsyncComponent(() => import(/* webpackChunkName: "v-144f0379" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringCloud/23-幂等性问题.html.vue")),
   // path: /JavaLang/SpringCloud/24-%E6%9C%AC%E5%9C%B0%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html
   "v-b5dbad80": defineAsyncComponent(() => import(/* webpackChunkName: "v-b5dbad80" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringCloud/24-本地事务失效解决方案.html.vue")),
+  // path: /JavaLang/SpringFrameWork/01-Spring.html
+  "v-453e79e4": defineAsyncComponent(() => import(/* webpackChunkName: "v-453e79e4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/01-Spring.html.vue")),
+  // path: /JavaLang/SpringFrameWork/02-Spring%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E6%BA%90.html
+  "v-57c67ef6": defineAsyncComponent(() => import(/* webpackChunkName: "v-57c67ef6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/02-Spring配置数据源.html.vue")),
+  // path: /JavaLang/SpringFrameWork/03-Spring%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91.html
+  "v-3ad2419b": defineAsyncComponent(() => import(/* webpackChunkName: "v-3ad2419b" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/03-Spring注解开发.html.vue")),
+  // path: /JavaLang/SpringFrameWork/04-1-%E6%89%A9%E5%B1%95-%E6%B3%A8%E8%A7%A3.html
+  "v-4e15e86a": defineAsyncComponent(() => import(/* webpackChunkName: "v-4e15e86a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/04-1-扩展-注解.html.vue")),
+  // path: /JavaLang/SpringFrameWork/04-Spring-Web.html
+  "v-7430a6e0": defineAsyncComponent(() => import(/* webpackChunkName: "v-7430a6e0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/04-Spring-Web.html.vue")),
+  // path: /JavaLang/SpringFrameWork/05-SpringMVC.html
+  "v-0cb0f7f0": defineAsyncComponent(() => import(/* webpackChunkName: "v-0cb0f7f0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/05-SpringMVC.html.vue")),
+  // path: /JavaLang/SpringFrameWork/06-JdbcTemplate.html
+  "v-53dc6721": defineAsyncComponent(() => import(/* webpackChunkName: "v-53dc6721" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/06-JdbcTemplate.html.vue")),
+  // path: /JavaLang/SpringFrameWork/07-SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8.html
+  "v-4ef6028d": defineAsyncComponent(() => import(/* webpackChunkName: "v-4ef6028d" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/07-SpringMVC拦截器.html.vue")),
+  // path: /JavaLang/SpringFrameWork/08-AOP.html
+  "v-39ddfbf8": defineAsyncComponent(() => import(/* webpackChunkName: "v-39ddfbf8" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/08-AOP.html.vue")),
+  // path: /JavaLang/SpringFrameWork/09-%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6.html
+  "v-4a924692": defineAsyncComponent(() => import(/* webpackChunkName: "v-4a924692" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/09-事务控制.html.vue")),
+  // path: /JavaLang/SpringFrameWork/10-Mybatis.html
+  "v-4d4f7b90": defineAsyncComponent(() => import(/* webpackChunkName: "v-4d4f7b90" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/10-Mybatis.html.vue")),
+  // path: /JavaLang/SpringFrameWork/11-SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88.html
+  "v-23ea9f5a": defineAsyncComponent(() => import(/* webpackChunkName: "v-23ea9f5a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/11-SSM框架的整合.html.vue")),
+  // path: /JavaLang/SpringFrameWork/12-MyBatis-Plus.html
+  "v-fc32fe46": defineAsyncComponent(() => import(/* webpackChunkName: "v-fc32fe46" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/SpringFrameWork/12-MyBatis-Plus.html.vue")),
   // path: /JavaLang/Thread/1-%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D.html
   "v-2659396b": defineAsyncComponent(() => import(/* webpackChunkName: "v-2659396b" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/JavaLang/Thread/1-线程的基本介绍.html.vue")),
   // path: /JavaLang/Thread/2-Java%E7%BA%BF%E7%A8%8B.html
@@ -235,12 +237,12 @@ export const pagesComponents = {
   "v-0667aa78": defineAsyncComponent(() => import(/* webpackChunkName: "v-0667aa78" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/springboot/index.html.vue")),
   // path: /tag/time/
   "v-29324574": defineAsyncComponent(() => import(/* webpackChunkName: "v-29324574" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/time/index.html.vue")),
-  // path: /category/spring-framework/
-  "v-2c71d899": defineAsyncComponent(() => import(/* webpackChunkName: "v-2c71d899" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/spring-framework/index.html.vue")),
-  // path: /tag/proxy/
-  "v-1279d962": defineAsyncComponent(() => import(/* webpackChunkName: "v-1279d962" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/proxy/index.html.vue")),
   // path: /category/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%BE%AE%E6%9C%8D%E5%8A%A1/
   "v-053ee23f": defineAsyncComponent(() => import(/* webpackChunkName: "v-053ee23f" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/分布式-微服务/index.html.vue")),
+  // path: /tag/proxy/
+  "v-1279d962": defineAsyncComponent(() => import(/* webpackChunkName: "v-1279d962" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/proxy/index.html.vue")),
+  // path: /category/spring-framework/
+  "v-2c71d899": defineAsyncComponent(() => import(/* webpackChunkName: "v-2c71d899" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/category/spring-framework/index.html.vue")),
   // path: /tag/reflect/
   "v-624fd560": defineAsyncComponent(() => import(/* webpackChunkName: "v-624fd560" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/reflect/index.html.vue")),
   // path: /category/thread/
@@ -269,6 +271,10 @@ export const pagesComponents = {
   "v-2cce94e0": defineAsyncComponent(() => import(/* webpackChunkName: "v-2cce94e0" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/elasticsearch/index.html.vue")),
   // path: /tag/gin/
   "v-b310d59e": defineAsyncComponent(() => import(/* webpackChunkName: "v-b310d59e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/gin/index.html.vue")),
+  // path: /tag/module/
+  "v-3d319135": defineAsyncComponent(() => import(/* webpackChunkName: "v-3d319135" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/module/index.html.vue")),
+  // path: /tag/package/
+  "v-8c73ae12": defineAsyncComponent(() => import(/* webpackChunkName: "v-8c73ae12" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/package/index.html.vue")),
   // path: /tag/java/
   "v-28a1d8bf": defineAsyncComponent(() => import(/* webpackChunkName: "v-28a1d8bf" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/java/index.html.vue")),
   // path: /tag/javaweb/
@@ -323,24 +329,6 @@ export const pagesComponents = {
   "v-63bcc623": defineAsyncComponent(() => import(/* webpackChunkName: "v-63bcc623" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/rabbitmq/index.html.vue")),
   // path: /tag/nginx/
   "v-1a8900ba": defineAsyncComponent(() => import(/* webpackChunkName: "v-1a8900ba" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/nginx/index.html.vue")),
-  // path: /tag/spring/
-  "v-7d0ba9b4": defineAsyncComponent(() => import(/* webpackChunkName: "v-7d0ba9b4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/spring/index.html.vue")),
-  // path: /tag/junit/
-  "v-26a0ce62": defineAsyncComponent(() => import(/* webpackChunkName: "v-26a0ce62" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/junit/index.html.vue")),
-  // path: /tag/%E6%B3%A8%E8%A7%A3/
-  "v-224dc3ae": defineAsyncComponent(() => import(/* webpackChunkName: "v-224dc3ae" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/注解/index.html.vue")),
-  // path: /tag/annotation/
-  "v-4bab9bd2": defineAsyncComponent(() => import(/* webpackChunkName: "v-4bab9bd2" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/annotation/index.html.vue")),
-  // path: /tag/%E6%8B%A6%E6%88%AA%E5%99%A8/
-  "v-55272fa6": defineAsyncComponent(() => import(/* webpackChunkName: "v-55272fa6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/拦截器/index.html.vue")),
-  // path: /tag/%E8%BF%87%E6%BB%A4%E5%99%A8/
-  "v-d4e01132": defineAsyncComponent(() => import(/* webpackChunkName: "v-d4e01132" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/过滤器/index.html.vue")),
-  // path: /tag/%E5%BC%82%E5%B8%B8/
-  "v-78df71cc": defineAsyncComponent(() => import(/* webpackChunkName: "v-78df71cc" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/异常/index.html.vue")),
-  // path: /tag/execption/
-  "v-76c115ca": defineAsyncComponent(() => import(/* webpackChunkName: "v-76c115ca" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/execption/index.html.vue")),
-  // path: /tag/aop/
-  "v-b3161c8a": defineAsyncComponent(() => import(/* webpackChunkName: "v-b3161c8a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/aop/index.html.vue")),
   // path: /tag/docker/
   "v-6106c001": defineAsyncComponent(() => import(/* webpackChunkName: "v-6106c001" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/docker/index.html.vue")),
   // path: /tag/%E5%BE%AE%E6%9C%8D%E5%8A%A1/
@@ -403,4 +391,22 @@ export const pagesComponents = {
   "v-1b775c1e": defineAsyncComponent(() => import(/* webpackChunkName: "v-1b775c1e" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/幂等性问题/index.html.vue")),
   // path: /tag/transactional/
   "v-850f98d8": defineAsyncComponent(() => import(/* webpackChunkName: "v-850f98d8" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/transactional/index.html.vue")),
+  // path: /tag/spring/
+  "v-7d0ba9b4": defineAsyncComponent(() => import(/* webpackChunkName: "v-7d0ba9b4" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/spring/index.html.vue")),
+  // path: /tag/junit/
+  "v-26a0ce62": defineAsyncComponent(() => import(/* webpackChunkName: "v-26a0ce62" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/junit/index.html.vue")),
+  // path: /tag/%E6%B3%A8%E8%A7%A3/
+  "v-224dc3ae": defineAsyncComponent(() => import(/* webpackChunkName: "v-224dc3ae" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/注解/index.html.vue")),
+  // path: /tag/annotation/
+  "v-4bab9bd2": defineAsyncComponent(() => import(/* webpackChunkName: "v-4bab9bd2" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/annotation/index.html.vue")),
+  // path: /tag/%E6%8B%A6%E6%88%AA%E5%99%A8/
+  "v-55272fa6": defineAsyncComponent(() => import(/* webpackChunkName: "v-55272fa6" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/拦截器/index.html.vue")),
+  // path: /tag/%E8%BF%87%E6%BB%A4%E5%99%A8/
+  "v-d4e01132": defineAsyncComponent(() => import(/* webpackChunkName: "v-d4e01132" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/过滤器/index.html.vue")),
+  // path: /tag/%E5%BC%82%E5%B8%B8/
+  "v-78df71cc": defineAsyncComponent(() => import(/* webpackChunkName: "v-78df71cc" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/异常/index.html.vue")),
+  // path: /tag/execption/
+  "v-76c115ca": defineAsyncComponent(() => import(/* webpackChunkName: "v-76c115ca" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/execption/index.html.vue")),
+  // path: /tag/aop/
+  "v-b3161c8a": defineAsyncComponent(() => import(/* webpackChunkName: "v-b3161c8a" */"E:/AmayakiteBlog/blog/.vuepress/.temp/pages/tag/aop/index.html.vue")),
 }

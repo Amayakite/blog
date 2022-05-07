@@ -5,7 +5,7 @@ export default defineNavbarConfig([
   // "/home",
   { text: "Java学习笔记", link: "/JavaLang/", icon: "java" },
   { text: "Go学习笔记", link: "/GoLang/", icon: "golang" },
-  { text: "Golang常用包", link: "/GoLang/11-Golang常用包.md", icon: "golang" },
+  { text: "Golang常用包", link: "/GoLang/Base/11-Golang常用包.md", icon: "golang" },
   {
     text: "实用链接",
     icon: "note",

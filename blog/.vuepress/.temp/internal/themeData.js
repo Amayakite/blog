@@ -183,7 +183,8 @@ export const themeData = {
               "07-操作数据库.md",
               "08-依赖管理和包.md",
               "09-Etdc和Es.md",
-              "10-GIN.md"
+              "10-GIN.md",
+              "11-GoLang常用包.md"
             ]
           }
         ]
@@ -214,6 +215,11 @@ export const themeData = {
         {
           "text": "Go学习笔记",
           "link": "/GoLang/",
+          "icon": "golang"
+        },
+        {
+          "text": "Golang常用包",
+          "link": "/GoLang/Base/11-Golang常用包.md",
           "icon": "golang"
         },
         {
