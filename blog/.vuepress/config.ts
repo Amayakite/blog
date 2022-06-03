@@ -40,10 +40,11 @@ export default defineHopeConfig({
         href: "//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css",
       }
     ], [
+      // 下面这个才是自己的 上面的是官方的
       "link",
       {
         rel: "stylesheet",
-        href: "//at.alicdn.com/t/font_2768690_m8k7h6kvufb.css",
+        href: "//at.alicdn.com/t/font_2768690_hmnt01bfrp8.css",
       }
     ]
   ],

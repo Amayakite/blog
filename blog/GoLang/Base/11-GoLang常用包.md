@@ -51,6 +51,36 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+### 假数据生成
+
+导包
+
+```shell
+go get github.com/manveru/faker
+```
+
+使用
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/manveru/faker"
+)
+
+func main() {
+	f, err := faker.New("zh-CN")
+	if err != nil {
+		fmt.Printf("异常: %v\n", err)
+		return
+	}
+
+}
+```
+
+
 
 ## 数据层
 

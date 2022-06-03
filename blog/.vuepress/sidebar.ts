@@ -131,6 +131,19 @@ export default defineSidebarConfig({
         "6-连接池和线程池.md",
         "7-JUC.md",
       ]
+    }, {
+      text: "7-Netty",
+      icon: "reactor-netty",
+      prefix: "Netty/",
+      collapsable: true,
+      children: [
+        "01-NIO.md",
+        "02-Netty入门.md",
+        "03-Netty-GoogleProtobuf.md",
+        "04-Netty-RPC.md",
+        "05-Dubbo入门.md",
+      ]
+
     }
   ],
   "/GoLang/": [
