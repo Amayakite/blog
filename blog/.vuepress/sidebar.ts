@@ -80,7 +80,8 @@ export default defineSidebarConfig({
         "05-SpringSecurity.md",
         "06-RabbitMQ.md",
         "07-Nginx.md",
-        "08-Elasticsearch.md"
+        "08-Elasticsearch.md",
+        "10-Jackson.md"
       ]
     }, {
       text: "5-SpringCloud",
