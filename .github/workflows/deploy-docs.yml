@@ -46,4 +46,4 @@ jobs:
           repository-name: ${{ secrets.REPO }}
           token: ${{ secrets.ACCESS_TOKEN }}
           # 覆盖之前的
-          force: true
+          # force: true
