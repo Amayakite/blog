@@ -1,17 +1,17 @@
-import { defineThemeConfig } from "vuepress-theme-hope";
+import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar";
 import sidebar from "./sidebar";
 
-export default defineThemeConfig({
+export default hopeTheme({
   // 部署的域名
   //  hostname: "http://www.amayakite.gitee.io",
   hostname: "http://www.amayakite.github.io",
 
   // 嵌套的深度
-  headingDepth: 4,
+  headerDepth: 4,
 
   // 深色配置 auto
-  darkmode: "auto-switch",
+  darkmode: "auto",
 
   // 主题颜色配置
   themeColor: {
@@ -95,12 +95,8 @@ export default defineThemeConfig({
       showInMobile: true,
     },
 
-    comment: {
-      type: "waline",
-      // 不启用评论的功能
-      comment: false,
-      serverURL: "https://vuepress-theme-hope-comment.vercel.app",
-    },
+    // 不启用评论功能
+    comment: false,
 
     mdEnhance: {
       enableAll: true,
@@ -113,66 +109,69 @@ export default defineThemeConfig({
       },
     },
 
-    pwa: {
-      maxPicSize: 1024 * 2000,
-      maxSize: 1024 * 20000,
-      favicon: "/favicon.ico",
-      cachePic: true,
-      // apple: {
-      //   icon: "/assets/icon/apple-icon-152.png",
-      //   statusBarColor: "black",
-      // },
-      // msTile: {
-      //   image: "/assets/icon/ms-icon-144.png",
-      //   color: "#ffffff",
-      // },
-      // manifest: {
-      //   icons: [
-      //     {
-      //       src: "/assets/icon/chrome-mask-512.png",
-      //       sizes: "512x512",
-      //       purpose: "maskable",
-      //       type: "image/png",
-      //     },
-      //     {
-      //       src: "/assets/icon/chrome-mask-192.png",
-      //       sizes: "192x192",
-      //       purpose: "maskable",
-      //       type: "image/png",
-      //     },
-      //     {
-      //       src: "/assets/icon/chrome-512.png",
-      //       sizes: "512x512",
-      //       type: "image/png",
-      //     },
-      //     {
-      //       src: "/assets/icon/chrome-192.png",
-      //       sizes: "192x192",
-      //       type: "image/png",
-      //     },
-      //   ],
-      //   shortcuts: [
-      //     {
-      //       name: "Guide",
-      //       short_name: "Guide",
-      //       url: "/guide/",
-      //       icons: [
-      //         {
-      //           src: "/assets/icon/guide-maskable.png",
-      //           sizes: "192x192",
-      //           purpose: "maskable",
-      //           type: "image/png",
-      //         },
-      //         {
-      //           src: "/assets/icon/guide-monochrome.png",
-      //           sizes: "192x192",
-      //           purpose: "monochrome",
-      //           type: "image/png",
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
-    },
+    // 暂时不启用pwa
+    pwa: false,
+
+    // pwa: {
+    //   maxPicSize: 1024 * 2000,
+    //   maxSize: 1024 * 20000,
+    //   favicon: "/favicon.ico",
+    //   cachePic: true,
+    //   // apple: {
+    //   //   icon: "/assets/icon/apple-icon-152.png",
+    //   //   statusBarColor: "black",
+    //   // },
+    //   // msTile: {
+    //   //   image: "/assets/icon/ms-icon-144.png",
+    //   //   color: "#ffffff",
+    //   // },
+    //   // manifest: {
+    //   //   icons: [
+    //   //     {
+    //   //       src: "/assets/icon/chrome-mask-512.png",
+    //   //       sizes: "512x512",
+    //   //       purpose: "maskable",
+    //   //       type: "image/png",
+    //   //     },
+    //   //     {
+    //   //       src: "/assets/icon/chrome-mask-192.png",
+    //   //       sizes: "192x192",
+    //   //       purpose: "maskable",
+    //   //       type: "image/png",
+    //   //     },
+    //   //     {
+    //   //       src: "/assets/icon/chrome-512.png",
+    //   //       sizes: "512x512",
+    //   //       type: "image/png",
+    //   //     },
+    //   //     {
+    //   //       src: "/assets/icon/chrome-192.png",
+    //   //       sizes: "192x192",
+    //   //       type: "image/png",
+    //   //     },
+    //   //   ],
+    //   //   shortcuts: [
+    //   //     {
+    //   //       name: "Guide",
+    //   //       short_name: "Guide",
+    //   //       url: "/guide/",
+    //   //       icons: [
+    //   //         {
+    //   //           src: "/assets/icon/guide-maskable.png",
+    //   //           sizes: "192x192",
+    //   //           purpose: "maskable",
+    //   //           type: "image/png",
+    //   //         },
+    //   //         {
+    //   //           src: "/assets/icon/guide-monochrome.png",
+    //   //           sizes: "192x192",
+    //   //           purpose: "monochrome",
+    //   //           type: "image/png",
+    //   //         },
+    //   //       ],
+    //   //     },
+    //   //   ],
+    //   // },
+    // },
   },
 });

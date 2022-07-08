@@ -1,30 +1,27 @@
-import { defineHopeConfig } from "vuepress-theme-hope";
+import { defineUserConfig } from "vuepress";
 import themeConfig from "./themeConfig";
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 
-export default defineHopeConfig({
+export default defineUserConfig({
   base: "/",
   plugins: [
-    [
-      // npm i @gerhobbelt/markdown-it-replace-link
-      '@vuepress/docsearch',
-      {
-        appId: 'ZN9ZT0G3SP',
-        apiKey: '0c443a348d38a9f6de9ac2d2d7672024',
-        indexName: 'BlogSearch',
-        // 显示最近的搜索结果
-        disableUserPersonalization: false,
-        locales: {
-          '/': {
-            placeholder: 'Search',
-            translations: {
-              button: {
-                buttonText: '请输入要搜索的内容',
-              },
+    docsearchPlugin({
+      appId: 'ZN9ZT0G3SP',
+      apiKey: '0c443a348d38a9f6de9ac2d2d7672024',
+      indexName: 'BlogSearch',
+      // 显示最近的搜索结果
+      disableUserPersonalization: false,
+      locales: {
+        '/': {
+          placeholder: 'Search',
+          translations: {
+            button: {
+              buttonText: '请输入要搜索的内容',
             },
           },
         },
       },
-    ],
+    }),
   ],
 
   title: "Amayakite Blogs",
@@ -57,5 +54,5 @@ export default defineHopeConfig({
     }
   },
 
-  themeConfig,
+  theme: themeConfig,
 });
