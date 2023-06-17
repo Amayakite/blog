@@ -1,8 +1,9 @@
 ---
 icon: circle-info
-cover: /backgroundImage.jpg
+# cover: /backgroundImage.jpg
 ---
 
-# 介绍页
+# 个人简介
 
-将你的个人介绍和档案放置在此处。
+
+暂时还没有想好写什么~
