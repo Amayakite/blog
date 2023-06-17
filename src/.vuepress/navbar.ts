@@ -4,7 +4,7 @@ export default navbar([
   // "/home",
   { text: "Java学习笔记", link: "/JavaLang/", icon: "java" },
   { text: "Go学习笔记", link: "/GoLang/", icon: "golang" },
-  { text: "Golang常用包", link: "/GoLang/Base/11-Golang常用包.md", icon: "golang" },
+  { text: "前端学习笔记", link: "/Web/", icon: "web" },
   {
     text: "实用链接",
     icon: "note",
@@ -27,6 +27,7 @@ export default navbar([
           { text: "Golang仓库", icon: 'list', link: "https://pkg.go.dev/" },
           // { text: "GoLang中文文档", icon: 'group', link: "https://studygolang.com/pkgdoc" },
           { text: "GoLang学习文档", icon: 'group', link: "https://www.topgoer.com/" },
+          {text: "Golang常用包", link: "/GoLang/Base/11-Golang常用包.md", icon: "golang" },
         ]
       }
     ],

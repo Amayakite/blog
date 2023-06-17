@@ -67,7 +67,7 @@ export default defineUserConfig({
       "link",
       {
         rel: "stylesheet",
-        href: "//at.alicdn.com/t/c/font_2768690_pysgpe6i2yg.css",
+        href: "//at.alicdn.com/t/c/font_2768690_kly6b4q33kp.css",
       }
     ],
     // 百度统计
