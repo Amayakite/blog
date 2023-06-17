@@ -98,7 +98,7 @@ export default hopeTheme({
       imgLazyload: true,
       imgSize: true,
       include: true,
-      katex: true,
+      katex: false,
       mark: true,
       mermaid: true,
       playground: {

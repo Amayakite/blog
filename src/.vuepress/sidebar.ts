@@ -144,7 +144,19 @@ export default sidebar({
         "04-Netty-RPC.md",
         "05-Dubbo入门.md",
       ]
-
+    }, {
+      text: "8-Android",
+      icon: "andorid",
+      prefix: "Android/",
+      collapsible: true,
+      children: [
+        "01-Gradle.md",
+        "02-Kotlin-基础.md",
+        "03-Kotlin-OOP.md", 
+        "03-1-Kotlin协程.md",
+        "04-初探Android.md",
+        "05-Android-Activity.md",
+      ]
     }
   ],
   "/GoLang/": [
