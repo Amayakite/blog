@@ -2,6 +2,7 @@ import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 // import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
+
 export default defineUserConfig({
   base: "/",
 
@@ -28,7 +29,7 @@ export default defineUserConfig({
     //     },
     //   },
     // }),
-    
+
     searchProPlugin({
       // 索引全部内容
       indexContent: true,
@@ -67,6 +68,13 @@ export default defineUserConfig({
       {
         rel: "stylesheet",
         href: "//at.alicdn.com/t/c/font_2768690_pysgpe6i2yg.css",
+      }
+    ],
+    // 百度统计
+    [
+      "script",
+      {
+        src: "https://hm.baidu.com/hm.js?8b5173a609d63c00dfbb514921e2b3af",
       }
     ]
   ],

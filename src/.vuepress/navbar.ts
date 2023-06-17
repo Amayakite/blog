@@ -9,7 +9,7 @@ export default navbar([
     text: "实用链接",
     icon: "note",
     children: [
-      { text: "VuePressTheme-Hope", icon: "vue", link: "https://vuepress-theme-hope.github.io/v2/zh/" },
+      { text: "VuePressTheme-Hope", icon: "vue", link: "https://theme-hope.vuejs.press/zh/" },
       {
         text: "Java常用网站", icon: 'java',
         children: [
