@@ -256,7 +256,7 @@ public class UserMapperTest {
 
 TMD我知道现在知道，测试的时候 log4j会自动打印消息
 
-![image-20211217001624446](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217001624446.png)
+![image-20211217001624446](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217001624446.png)
 
 不信你可以把log4j.properties删掉试试
 
@@ -511,7 +511,7 @@ TMD我知道现在知道，测试的时候 log4j会自动打印消息
 
 它包含如下非常直观的方法：
 
-![image-20211217121846161](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217121846161.png)
+![image-20211217121846161](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217121846161.png)
 
 ```java
 /**
@@ -691,13 +691,13 @@ public class UserMapperTest {
 
 然后不出意外的出意外了
 
-![image-20211217123932091](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217123932091.png)
+![image-20211217123932091](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217123932091.png)
 
 我们现在大概能猜出来原因---应该是这玩意如果检测到空值会转换成某些最大值赋值给数据库
 
 在[官方文档](https://baomidou.com/pages/223848/#tableid)中，我们可以看到一个@TableId的注解
 
-![image-20211217124716328](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217124716328.png)
+![image-20211217124716328](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217124716328.png)
 
 也就是说，可以通过它来制定主键ID是什么样的
 
@@ -730,9 +730,9 @@ public class User {
 
 结果：完美运行
 
-![image-20211217125223213](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217125223213.png)
+![image-20211217125223213](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217125223213.png)
 
-![image-20211217125239536](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217125239536.png)
+![image-20211217125239536](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217125239536.png)
 
 ### Select
 
@@ -798,7 +798,7 @@ public void save() {
 
 我当前是这样插入的，获取到的结果为：
 
-![image-20211217134750080](/images/SpringFrameWork/12-MyBatis-Plus/image-20211217134750080.png)
+![image-20211217134750080](/images/Java/SpringFrameWork/12-MyBatis-Plus/image-20211217134750080.png)
 
 ### @TableFiled-指定属性对应表的哪个字段
 

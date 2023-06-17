@@ -35,7 +35,7 @@ tag:
 
 创建一个SpringBoot工程
 
-![image-20211224145742822](/images/SpringBoot/05-SpringSecurity/image-20211224145742822.png)
+![image-20211224145742822](/images/Java/SpringBoot/05-SpringSecurity/image-20211224145742822.png)
 
 准备一个Mapping
 
@@ -66,7 +66,7 @@ public class HelloController {
 
 你会发现
 
-![image-20211224150944761](/images/SpringBoot/05-SpringSecurity/image-20211224150944761.png)
+![image-20211224150944761](/images/Java/SpringBoot/05-SpringSecurity/image-20211224150944761.png)
 
 自动跳转到了<http://localhost:8080/login>
 
@@ -97,13 +97,13 @@ public class HelloController {
    1. 根据用户id获取用户的相关信息，如果有权限则允许访问相关资源
    2. 访问目标资源，响应给前端
 
-![image-20211224152333989](/images/SpringBoot/05-SpringSecurity/image-20211224152333989.png)
+![image-20211224152333989](/images/Java/SpringBoot/05-SpringSecurity/image-20211224152333989.png)
 
 ### SpringSecurity的基本原理
 
 实际上就是一个过滤器链，内部包含了提供各种功能的过滤器，入门案例中的过滤器如下所示
 
-![image-20211224153100740](/images/SpringBoot/05-SpringSecurity/image-20211224153100740.png)
+![image-20211224153100740](/images/Java/SpringBoot/05-SpringSecurity/image-20211224153100740.png)
 
 图中只显示了核心过滤器，其他非核心的过滤器并没有展示
 
@@ -113,9 +113,9 @@ public class HelloController {
 
 **FilterSecurityInterceptor**：负责权限校验过滤器
 
-![image-20211224161503101](/images/SpringBoot/05-SpringSecurity/image-20211224161503101.png)
+![image-20211224161503101](/images/Java/SpringBoot/05-SpringSecurity/image-20211224161503101.png)
 
-![image-20211224161937762](/images/SpringBoot/05-SpringSecurity/image-20211224161937762.png)
+![image-20211224161937762](/images/Java/SpringBoot/05-SpringSecurity/image-20211224161937762.png)
 
 Authentication接口：它的实现类表示当前访问的用户，封装了用户相关信息
 
@@ -125,13 +125,13 @@ UserDetailService接口：加载用户特定数据的核心接口，里面定义
 
 UserDetails接口：提供核心用户信息，通过UserDetailService根据用户名获取的处理用户要封装成UserDetail对象返回，让后将这些信息封装到Authentication对象中
 
-![image-20211224162759407](/images/SpringBoot/05-SpringSecurity/image-20211224162759407.png)
+![image-20211224162759407](/images/Java/SpringBoot/05-SpringSecurity/image-20211224162759407.png)
 
-![image-20211224162913216](/images/SpringBoot/05-SpringSecurity/image-20211224162913216.png)
+![image-20211224162913216](/images/Java/SpringBoot/05-SpringSecurity/image-20211224162913216.png)
 
 解决方案——Redis缓存
 
-![image-20211224180639419](/images/SpringBoot/05-SpringSecurity/image-20211224180639419.png)
+![image-20211224180639419](/images/Java/SpringBoot/05-SpringSecurity/image-20211224180639419.png)
 
 ### 依赖准备
 
@@ -789,15 +789,15 @@ public class RedisConfig {
 
 注意 配置完毕后需要手动给userMapper加上@mapper或者在main中加上mapper扫描
 
-![image-20211225172619558](/images/SpringBoot/05-SpringSecurity/image-20211225172619558.png)
+![image-20211225172619558](/images/Java/SpringBoot/05-SpringSecurity/image-20211225172619558.png)
 
 接着按照这些勾上
 
-![image-20211225172630429](/images/SpringBoot/05-SpringSecurity/image-20211225172630429.png)
+![image-20211225172630429](/images/Java/SpringBoot/05-SpringSecurity/image-20211225172630429.png)
 
 你就能得到这些
 
-![image-20211225172659349](/images/SpringBoot/05-SpringSecurity/image-20211225172659349.png)
+![image-20211225172659349](/images/Java/SpringBoot/05-SpringSecurity/image-20211225172659349.png)
 
 ### 测试sql
 
@@ -934,7 +934,7 @@ public class LoginUser implements UserDetails {
 
 但是发现了一个问题
 
-![image-20211225183046928](/images/SpringBoot/05-SpringSecurity/image-20211225183046928.png)
+![image-20211225183046928](/images/Java/SpringBoot/05-SpringSecurity/image-20211225183046928.png)
 
 There is no PasswordEncoder mapped for the id "null"
 
@@ -942,11 +942,11 @@ There is no PasswordEncoder mapped for the id "null"
 
 在sql中的password字段上面加上一个前缀`{noop}` 表示这个密码是一个明文
 
-![image-20211225183130223](/images/SpringBoot/05-SpringSecurity/image-20211225183130223.png)
+![image-20211225183130223](/images/Java/SpringBoot/05-SpringSecurity/image-20211225183130223.png)
 
 接着就可以成功访问了
 
-![image-20211225183200323](/images/SpringBoot/05-SpringSecurity/image-20211225183200323.png)
+![image-20211225183200323](/images/Java/SpringBoot/05-SpringSecurity/image-20211225183200323.png)
 
 ### ✨关于密码的加密存储
 
@@ -1039,17 +1039,17 @@ public void testBCryptPasswordEncoder() {
 
 发现调用它的是这个方法
 
-![image-20211225204445884](/images/SpringBoot/05-SpringSecurity/image-20211225204445884.png)
+![image-20211225204445884](/images/Java/SpringBoot/05-SpringSecurity/image-20211225204445884.png)
 
 additionalAuthenticationChecks
 
 以及一堆链式调用层 这个就之后再研究了 总之 我们现在知道 密码进来了 明文会被拿的去和密文匹配
 
-![image-20211225204656463](/images/SpringBoot/05-SpringSecurity/image-20211225204656463.png)
+![image-20211225204656463](/images/Java/SpringBoot/05-SpringSecurity/image-20211225204656463.png)
 
 密文就是我们之前存储在数据库内的玩意
 
-![image-20211225204620921](/images/SpringBoot/05-SpringSecurity/image-20211225204620921.png)
+![image-20211225204620921](/images/Java/SpringBoot/05-SpringSecurity/image-20211225204620921.png)
 
 ### 自定义基于Hutool的JWT工具类
 
@@ -1304,7 +1304,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 调用它需要传入一个Authentication 这个玩意是一个接口 我们直接看他的实现类
 
-![image-20211226221154954](/images/SpringBoot/05-SpringSecurity/image-20211226221154954.png)
+![image-20211226221154954](/images/Java/SpringBoot/05-SpringSecurity/image-20211226221154954.png)
 
 其中最下面那个家伙非常眼熟 就是一个验证用户和密码的 所以直接用它
 
@@ -1340,7 +1340,7 @@ public class LoginServiceImpl implements LoginService {
 
 可以看到 它最终返回了一个这样的对象
 
-![image-20211226221502630](/images/SpringBoot/05-SpringSecurity/image-20211226221502630.png)
+![image-20211226221502630](/images/Java/SpringBoot/05-SpringSecurity/image-20211226221502630.png)
 
 里面有我们之前在UserDetail中返回的loginUser
 
@@ -1470,7 +1470,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 接下来尝试访问
 
-![image-20211226222558533](/images/SpringBoot/05-SpringSecurity/image-20211226222558533.png)
+![image-20211226222558533](/images/Java/SpringBoot/05-SpringSecurity/image-20211226222558533.png)
 
 可以看到成功了
 
@@ -1513,11 +1513,11 @@ public class LoginServiceImpl implements LoginService {
 
 认证失败 会直接在该行抛出错误 所以我们直接捕获处理即可
 
-![image-20211226223054208](/images/SpringBoot/05-SpringSecurity/image-20211226223054208.png)
+![image-20211226223054208](/images/Java/SpringBoot/05-SpringSecurity/image-20211226223054208.png)
 
 接下来检查一下redis内存储的数据
 
-![image-20211226223129041](/images/SpringBoot/05-SpringSecurity/image-20211226223129041.png)
+![image-20211226223129041](/images/Java/SpringBoot/05-SpringSecurity/image-20211226223129041.png)
 
 emm没问题
 
@@ -1568,7 +1568,7 @@ PS 这个avatar是emm写着写着代码那个GitHub的代码提示插件提示�
 
 为啥要用过滤器呢？
 
-![image-20211226224724154](/images/SpringBoot/05-SpringSecurity/image-20211226224724154.png)
+![image-20211226224724154](/images/Java/SpringBoot/05-SpringSecurity/image-20211226224724154.png)
 
 因为这个SpringSecurity是一个过滤器链！！！
 
@@ -1685,11 +1685,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 测试：先获取token
 
-![image-20211226235712796](/images/SpringBoot/05-SpringSecurity/image-20211226235712796.png)
+![image-20211226235712796](/images/Java/SpringBoot/05-SpringSecurity/image-20211226235712796.png)
 
 再用token访问其他页面
 
-![image-20211226235730181](/images/SpringBoot/05-SpringSecurity/image-20211226235730181.png)
+![image-20211226235730181](/images/Java/SpringBoot/05-SpringSecurity/image-20211226235730181.png)
 
 ### ✨退出登录
 
@@ -1785,13 +1785,13 @@ public class LoginServiceImpl implements LoginService {
 
 测试 携带token第一次访问
 
-![image-20211227001921341](/images/SpringBoot/05-SpringSecurity/image-20211227001921341.png)
+![image-20211227001921341](/images/Java/SpringBoot/05-SpringSecurity/image-20211227001921341.png)
 
 携带token第二次访问
 
-![image-20211227001943800](/images/SpringBoot/05-SpringSecurity/image-20211227001943800.png)
+![image-20211227001943800](/images/Java/SpringBoot/05-SpringSecurity/image-20211227001943800.png)
 
-![image-20211227001950122](/images/SpringBoot/05-SpringSecurity/image-20211227001950122.png)
+![image-20211227001950122](/images/Java/SpringBoot/05-SpringSecurity/image-20211227001950122.png)
 
 ## 关于认证配置configuration方法的说明
 
@@ -1915,7 +1915,7 @@ public C antMatchers(String... antPatterns) {
 
 看了一眼 方法有这些
 
-![image-20211227131019201](/images/SpringBoot/05-SpringSecurity/image-20211227131019201.png)
+![image-20211227131019201](/images/Java/SpringBoot/05-SpringSecurity/image-20211227131019201.png)
 
 这里说下目前常用的
 
@@ -2168,7 +2168,7 @@ public interface GrantedAuthority extends Serializable {
 
 接下来看看它有没有什么实现类
 
-![image-20211227150349442](/images/SpringBoot/05-SpringSecurity/image-20211227150349442.png)
+![image-20211227150349442](/images/Java/SpringBoot/05-SpringSecurity/image-20211227150349442.png)
 
 发现三个 这里不说别的了 直接用中间这个
 
@@ -2330,11 +2330,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
 好了 接下来重启服务器测试一下（注意 要重新获取下token，不然权限信息进不去）
 
-![image-20211227151005808](/images/SpringBoot/05-SpringSecurity/image-20211227151005808.png)
+![image-20211227151005808](/images/Java/SpringBoot/05-SpringSecurity/image-20211227151005808.png)
 
 同时在我们的redis内也能看到对应的权限信息了
 
-![image-20211227151056815](/images/SpringBoot/05-SpringSecurity/image-20211227151056815.png)
+![image-20211227151056815](/images/Java/SpringBoot/05-SpringSecurity/image-20211227151056815.png)
 
 但是这样的话 我们的权限信息相当于写死了 实际生产环境中 应该是动态的来在数据库内获取对应的权限信息
 
@@ -2346,13 +2346,13 @@ RBAC权限模型（Role-Based Access Control）
 
 基于角色的控制权限，这是目前来说最多人用 最简单的数据模型
 
-![image-20211227151413231](/images/SpringBoot/05-SpringSecurity/image-20211227151413231.png)
+![image-20211227151413231](/images/Java/SpringBoot/05-SpringSecurity/image-20211227151413231.png)
 
-![image-20211227151705510](/images/SpringBoot/05-SpringSecurity/image-20211227151705510.png)
+![image-20211227151705510](/images/Java/SpringBoot/05-SpringSecurity/image-20211227151705510.png)
 
 三张表 外加两张中间表
 
-![image-20211227152111453](/images/SpringBoot/05-SpringSecurity/image-20211227152111453.png)
+![image-20211227152111453](/images/Java/SpringBoot/05-SpringSecurity/image-20211227152111453.png)
 
 ### ✨准备工作-创建表
 
@@ -2425,15 +2425,15 @@ create table sys_user_role(
 
 接下来添加一点数据
 
-![image-20211227155800811](/images/SpringBoot/05-SpringSecurity/image-20211227155800811.png)
+![image-20211227155800811](/images/Java/SpringBoot/05-SpringSecurity/image-20211227155800811.png)
 
-![image-20211227155813963](/images/SpringBoot/05-SpringSecurity/image-20211227155813963.png)
+![image-20211227155813963](/images/Java/SpringBoot/05-SpringSecurity/image-20211227155813963.png)
 
-![image-20211227155820741](/images/SpringBoot/05-SpringSecurity/image-20211227155820741.png)
+![image-20211227155820741](/images/Java/SpringBoot/05-SpringSecurity/image-20211227155820741.png)
 
-![image-20211227155859528](/images/SpringBoot/05-SpringSecurity/image-20211227155859528.png)
+![image-20211227155859528](/images/Java/SpringBoot/05-SpringSecurity/image-20211227155859528.png)
 
-![image-20211227155907549](/images/SpringBoot/05-SpringSecurity/image-20211227155907549.png)
+![image-20211227155907549](/images/Java/SpringBoot/05-SpringSecurity/image-20211227155907549.png)
 
 现在我们必须得明确需要查找的内容：**通过userid查找对应的权限关键字的一个列表**
 
@@ -2475,7 +2475,7 @@ WHERE
 @JsonInclude(JsonInclude.Include.NON_NULL)
 ```
 
-![image-20211227161336723](/images/SpringBoot/05-SpringSecurity/image-20211227161336723.png)
+![image-20211227161336723](/images/Java/SpringBoot/05-SpringSecurity/image-20211227161336723.png)
 
 其实接下来的实现就非常简单了
 
@@ -2606,7 +2606,7 @@ public class AdminController {
 
 测试（注意 要获取下新的token）：
 
-![image-20211227163757078](/images/SpringBoot/05-SpringSecurity/image-20211227163757078.png)
+![image-20211227163757078](/images/Java/SpringBoot/05-SpringSecurity/image-20211227163757078.png)
 
 成功
 
@@ -2624,7 +2624,7 @@ public class AdminController {
 
 其实非常简单 我们先定义两个类
 
-![image-20211227171523659](/images/SpringBoot/05-SpringSecurity/image-20211227171523659.png)
+![image-20211227171523659](/images/Java/SpringBoot/05-SpringSecurity/image-20211227171523659.png)
 
 ```java
 @Component
@@ -2722,7 +2722,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 ## 跨域
 
-![image-20211227172302453](/images/SpringBoot/05-SpringSecurity/image-20211227172302453.png)
+![image-20211227172302453](/images/Java/SpringBoot/05-SpringSecurity/image-20211227172302453.png)
 
 ​前后端分离百分之一万都是不同源的 所以肯定存在跨域请求问题
 
@@ -2841,7 +2841,7 @@ public class AdminController {
 
 在ieda中可以很明显的看到这是一个方法
 
-![image-20211227174941675](/images/SpringBoot/05-SpringSecurity/image-20211227174941675.png)
+![image-20211227174941675](/images/Java/SpringBoot/05-SpringSecurity/image-20211227174941675.png)
 
 点进去看到了这样一个方法
 
@@ -2856,11 +2856,11 @@ public final boolean hasAuthority(String authority) {
 
 可以看到 访问指定页面的时候 这里接收的参数就是我们写死的那一个
 
-![image-20211227175146752](/images/SpringBoot/05-SpringSecurity/image-20211227175146752.png)
+![image-20211227175146752](/images/Java/SpringBoot/05-SpringSecurity/image-20211227175146752.png)
 
 步入可以看到
 
-![image-20211227175223794](/images/SpringBoot/05-SpringSecurity/image-20211227175223794.png)
+![image-20211227175223794](/images/Java/SpringBoot/05-SpringSecurity/image-20211227175223794.png)
 
 调用了顶一个方法 给prefix区域传入了null
 
@@ -2891,7 +2891,7 @@ private boolean hasAnyAuthorityName(String prefix, String... roles) {
 }
 ```
 
-![image-20211227175727003](/images/SpringBoot/05-SpringSecurity/image-20211227175727003.png)
+![image-20211227175727003](/images/Java/SpringBoot/05-SpringSecurity/image-20211227175727003.png)
 
 可以看到 第一个`Set<String> roleSet = getAuthoritySet();` 是获取到了我们用户的AuthoritySet集合
 
@@ -3010,7 +3010,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 > CSRF是指跨站请求伪造（Cross-site request forgery），是Web常见的攻击之一
 
-![image-20211227212004659](/images/SpringBoot/05-SpringSecurity/image-20211227212004659.png)
+![image-20211227212004659](/images/Java/SpringBoot/05-SpringSecurity/image-20211227212004659.png)
 
 SpringSecurity去防止CSRF的攻击方式就是通过CSRF_TOKEN
 
@@ -3041,4 +3041,4 @@ SpringSecurity去防止CSRF的攻击方式就是通过CSRF_TOKEN
 
 务必牢记这张图 未来可以通过这张图来进行五花八门的扩展自定义验证
 
-![image-20211227214243138](/images/SpringBoot/05-SpringSecurity/image-20211227214243138.png)
+![image-20211227214243138](/images/Java/SpringBoot/05-SpringSecurity/image-20211227214243138.png)

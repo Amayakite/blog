@@ -77,13 +77,13 @@ public class BaseBuffer {
 
 ## NIO三大核心原理示意图
 
-![image-20220509210044642](/images/Netty/01-NIO/image-20220509210044642.png)
+![image-20220509210044642](/images/Java/Netty/01-NIO/image-20220509210044642.png)
 
 ## 缓冲区Buffer
 
 本质上是一个可以读写的内存块，可以理解成是一个容器对象（含数组），该对象提供了一组方法，可以轻松地使用内存块，缓冲区对象内置了一些机制，能够跟踪和记录缓冲区的状态变化，Channel提供从文件，网络读取数据的渠道，但是读取或写入的数据都必须经过Buffer
 
-![image-20220509210438546](/images/Netty/01-NIO/image-20220509210438546.png)
+![image-20220509210438546](/images/Java/Netty/01-NIO/image-20220509210438546.png)
 
 buffer是一个抽象类，里面有很多属性和方法
 
@@ -113,17 +113,17 @@ public abstract class Buffer {
 
 它是一个定级父类，有如下子类
 
-![image-20220509211342753](/images/Netty/01-NIO/image-20220509211342753.png)
+![image-20220509211342753](/images/Java/Netty/01-NIO/image-20220509211342753.png)
 
 PS：按ctrl+H可以在IEDA中查看层次继承结构
 
-![image-20220509211449697](/images/Netty/01-NIO/image-20220509211449697.png)
+![image-20220509211449697](/images/Java/Netty/01-NIO/image-20220509211449697.png)
 
 这里面最常用的是ByteBuffer
 
 然后就是刚刚的四个属性
 
-![image-20220509211517378](/images/Netty/01-NIO/image-20220509211517378.png)
+![image-20220509211517378](/images/Java/Netty/01-NIO/image-20220509211517378.png)
 
 这样说吧，你初始化设定的值就是Capacity，然后Limit默认就是它，可以手动调整，但是不能大于它
 
@@ -135,11 +135,11 @@ PS：按ctrl+H可以在IEDA中查看层次继承结构
 
 常用方法如下
 
-![image-20220509213350041](/images/Netty/01-NIO/image-20220509213350041.png)
+![image-20220509213350041](/images/Java/Netty/01-NIO/image-20220509213350041.png)
 
 最常用的Buffer和方法如下
 
-![image-20220509213851185](/images/Netty/01-NIO/image-20220509213851185.png)
+![image-20220509213851185](/images/Java/Netty/01-NIO/image-20220509213851185.png)
 
 ## 通道Channel
 
@@ -151,7 +151,7 @@ NIO的通道类似于流，但有些区别如下
 - 通道可以实现异步读写数据
 - 通道可以从缓冲区(buffer)读数据，也可以写数据到缓冲
 
-![image-20220509220754068](/images/Netty/01-NIO/image-20220509220754068.png)
+![image-20220509220754068](/images/Java/Netty/01-NIO/image-20220509220754068.png)
 
 用的比较多的是FileChannel和ServerSocketChann和SocketChannel
 
@@ -163,7 +163,7 @@ SocketChannel类似于java的Socket（客户端）
 
 注意：**虽然FileChannel是Java NIO的一部分，但是FileChannel操作是阻塞的，并且没有非阻塞模式。**
 
-![image-20220509224607239](/images/Netty/01-NIO/image-20220509224607239.png)
+![image-20220509224607239](/images/Java/Netty/01-NIO/image-20220509224607239.png)
 
 例子
 
@@ -287,7 +287,7 @@ public long transferTo(long position, long count,
 
 继承关系如图
 
-![image-20220510221507035](/images/Netty/01-NIO/image-20220510221507035.png)
+![image-20220510221507035](/images/Java/Netty/01-NIO/image-20220510221507035.png)
 
 那个带R的是只读的
 
@@ -327,23 +327,23 @@ public class BaseBuffer {
 
 ## Selector
 
-![image-20220510225558826](/images/Netty/01-NIO/image-20220510225558826.png)
+![image-20220510225558826](/images/Java/Netty/01-NIO/image-20220510225558826.png)
 
-![image-20220511112350463](/images/Netty/01-NIO/image-20220511112350463.png)
+![image-20220511112350463](/images/Java/Netty/01-NIO/image-20220511112350463.png)
 
 一个线程管理一个Selector，一个Selector管理多个Channel，每个Channel分别对应一个Buffer
 
 ### Selector Api一览
 
-![image-20220511112915831](/images/Netty/01-NIO/image-20220511112915831.png)
+![image-20220511112915831](/images/Java/Netty/01-NIO/image-20220511112915831.png)
 
-![image-20220511113619417](/images/Netty/01-NIO/image-20220511113619417.png)
+![image-20220511113619417](/images/Java/Netty/01-NIO/image-20220511113619417.png)
 
-![image-20220511114501959](/images/Netty/01-NIO/image-20220511114501959.png)
+![image-20220511114501959](/images/Java/Netty/01-NIO/image-20220511114501959.png)
 
 可以绑定的事件主要有如下几个
 
-![image-20220511114343968](/images/Netty/01-NIO/image-20220511114343968.png)
+![image-20220511114343968](/images/Java/Netty/01-NIO/image-20220511114343968.png)
 
 ### NIO快速入门
 
@@ -465,7 +465,7 @@ public class NioClient {
 
 首先我有一个文件
 
-![image-20220511135639922](/images/Netty/01-NIO/image-20220511135639922.png)
+![image-20220511135639922](/images/Java/Netty/01-NIO/image-20220511135639922.png)
 
 我先用普通的IO拷贝让其到D盘
 
@@ -517,6 +517,6 @@ public class NioZeroCopy {
 
 ## AIO基本介绍
 
-![image-20220511141444908](/images/Netty/01-NIO/image-20220511141444908.png)
+![image-20220511141444908](/images/Java/Netty/01-NIO/image-20220511141444908.png)
 
 这玩意据说不稳，大部分情况下还是更推荐NIO

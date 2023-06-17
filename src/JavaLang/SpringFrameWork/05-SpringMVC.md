@@ -25,7 +25,7 @@ tag:
 
 其原理大概是这样
 
-![image-20211211124951804](/images/SpringFrameWork/05-SpringMVC/image-20211211124951804.png)
+![image-20211211124951804](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211124951804.png)
 
 看起来有点绕对吧？
 
@@ -90,13 +90,13 @@ public class UserServlet extends HttpServlet{
 
 也就是这样：
 
-![images](/images/SpringFrameWork/05-SpringMVC/70.png)
+![images](/images/Java/SpringFrameWork/05-SpringMVC/70.png)
 
 那这也太痛苦了，所以我们可以创建一个类，其提供的功能就是：**可以调用继承此类中的任意方法**，至于要调用哪个方法，由请求所携带的参数决定，这样我们就不必要写那么多switch、if语句，只需要把终点放在如何实现业务需求上
 
 ### baseServlet代码实现
 
-![images2](/images/SpringFrameWork/05-SpringMVC/70-16391992757253.png)
+![images2](/images/Java/SpringFrameWork/05-SpringMVC/70-16391992757253.png)
 
 要实现一个这玩意，实际上有如下几步：
 
@@ -195,9 +195,9 @@ public class UserServlet extends BaseServlet {
 
 访问：
 
-![image-20211211132941656](/images/SpringFrameWork/05-SpringMVC/image-20211211132941656.png)
+![image-20211211132941656](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211132941656.png)
 
-![image-20211211132956284](/images/SpringFrameWork/05-SpringMVC/image-20211211132956284.png)
+![image-20211211132956284](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211132956284.png)
 
 ### baseServlet的弊端
 
@@ -218,7 +218,7 @@ public class UserServlet extends BaseServlet {
 
 ## SpringMVC的开发步骤
 
-![image-20211211144855797](/images/SpringFrameWork/05-SpringMVC/image-20211211144855797.png)
+![image-20211211144855797](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211144855797.png)
 
 1. 倒入SpringMVC的相关坐标（库）
 2. 配置SpringMVC核心控制器DispathcerServlet
@@ -342,7 +342,7 @@ public class UserController {
 
 最终目录结构是这个样子
 
-![image-20211211153033596](/images/SpringFrameWork/05-SpringMVC/image-20211211153033596.png)
+![image-20211211153033596](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211153033596.png)
 
 接着，我们启动tomcat，访问/quick
 
@@ -350,7 +350,7 @@ public class UserController {
 
 项目结构-工件-选择你的Web项目-在可用元素内找到你这个项目的包，右键-置于Output Root即可
 
-![image-20211211153203976](/images/SpringFrameWork/05-SpringMVC/image-20211211153203976.png)
+![image-20211211153203976](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211153203976.png)
 
 ### 分析Spring-MVC在启动的时候都做了什么
 
@@ -358,17 +358,17 @@ public class UserController {
 
 所以大概流程应该就是这样的
 
-![image-20211211153834179](/images/SpringFrameWork/05-SpringMVC/image-20211211153834179.png)
+![image-20211211153834179](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211153834179.png)
 
 也就是说Spring相当于给我们封装了一个超级强大的baseServlet
 
 它的内部给我们封装了很多共有的行为，我们只需要编写非常少量的代码，就能够非常顺畅的完成我们的业务
 
-![image-20211211154015051](/images/SpringFrameWork/05-SpringMVC/image-20211211154015051.png)
+![image-20211211154015051](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211154015051.png)
 
 ### 📕SpringMVC的执行流程
 
-![image-20211211161238095](/images/SpringFrameWork/05-SpringMVC/image-20211211161238095.png)
+![image-20211211161238095](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211161238095.png)
 
 看起来很复杂对吧？
 
@@ -467,7 +467,7 @@ public class UserController {
 
 接着打开PostMan来测试一下
 
-![image-20211211164313409](/images/SpringFrameWork/05-SpringMVC/image-20211211164313409.png)
+![image-20211211164313409](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211164313409.png)
 
 ​  未找到`/user/success.jsp`，也就是说我们可以通过这样正确的设置嵌套路径，那么目前这个情况是怎么回事呢？
 
@@ -490,7 +490,7 @@ public class UserController {
 
 测试下，成功了
 
-![image-20211211165039863](/images/SpringFrameWork/05-SpringMVC/image-20211211165039863.png)
+![image-20211211165039863](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211165039863.png)
 
 好了，接下来说说它的参数
 
@@ -598,7 +598,7 @@ String[] produces() default {}; //这个是设置响应的context
 
    如果说没有发送指定值的话，会返回400，并告诉客户端需要哪些值....
 
-   ![image-20211211171405697](/images/SpringFrameWork/05-SpringMVC/image-20211211171405697.png)
+   ![image-20211211171405697](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211171405697.png)
 
 5. header和params差不多
 
@@ -669,7 +669,7 @@ public class UserController {
 }
 ```
 
-![image-20211211161238095](/images/SpringFrameWork/05-SpringMVC/image-20211211161238095.png)
+![image-20211211161238095](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211161238095.png)
 
 ​   首先我们回顾下这玩意是怎么运行期的，在我们的处理器处理完毕后，返回的是一个ModelAndView给视图解析器处理
 
@@ -677,11 +677,11 @@ public class UserController {
 
 可以看到，在spring-mvc中有个显眼的properties文件
 
-![image-20211211175208318](/images/SpringFrameWork/05-SpringMVC/image-20211211175208318.png)
+![image-20211211175208318](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211175208318.png)
 
 点进去，可以直接看到它的所有默认解析器
 
-![image-20211211175316491](/images/SpringFrameWork/05-SpringMVC/image-20211211175316491.png)
+![image-20211211175316491](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211175316491.png)
 
 其中跟视图相关的字眼有一个`ViewResolver`
 
@@ -707,7 +707,7 @@ public InternalResourceViewResolver(String prefix, String suffix) {
 
 发现有两个非常眼熟的常量
 
-![image-20211211175652043](/images/SpringFrameWork/05-SpringMVC/image-20211211175652043.png)
+![image-20211211175652043](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211175652043.png)
 
 跟我们自己写的baseServlet中请求转发的值非常相似
 
@@ -727,7 +727,7 @@ public String save() {
 
 然后访问，看看会发生什么
 
-![image-20211211180059669](/images/SpringFrameWork/05-SpringMVC/image-20211211180059669.png)
+![image-20211211180059669](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211180059669.png)
 
 可以看到，页面并没有被重定向，而是被请求转发了
 
@@ -777,7 +777,7 @@ public void setSuffix(@Nullable String suffix) {
 
 接下来我们把success.jsp放到/jsp文件夹中
 
-![image-20211211182848390](/images/SpringFrameWork/05-SpringMVC/image-20211211182848390.png)
+![image-20211211182848390](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211182848390.png)
 
 然后代码改成：
 
@@ -790,13 +790,13 @@ public String save() {
 
 看下能否正常访问
 
-![image-20211211182913639](/images/SpringFrameWork/05-SpringMVC/image-20211211182913639.png)
+![image-20211211182913639](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211182913639.png)
 
 依旧是可以正常访问
 
 浏览器访问发现是请求转发：
 
-![image-20211211184109766](/images/SpringFrameWork/05-SpringMVC/image-20211211184109766.png)
+![image-20211211184109766](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211184109766.png)
 
 我们在spring-mvc中前置加上后缀试试
 
@@ -858,7 +858,7 @@ public String save() {
 
 大概就是这样
 
-![image-20211211222121214](/images/SpringFrameWork/05-SpringMVC/image-20211211222121214.png)
+![image-20211211222121214](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211222121214.png)
 
 如果需要转发或者重定向的话：
 
@@ -970,7 +970,7 @@ public void write1(HttpServletResponse response) throws IOException {
 
 接着测试一下：
 
-![image-20211211232232986](/images/SpringFrameWork/05-SpringMVC/image-20211211232232986.png)
+![image-20211211232232986](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211232232986.png)
 
 但是总感觉这样不太对劲，Spring应该远不止只提供一个Response，
 
@@ -1002,7 +1002,7 @@ public String write2() {
 
 测试：
 
-![image-20211211234514840](/images/SpringFrameWork/05-SpringMVC/image-20211211234514840.png)
+![image-20211211234514840](/images/Java/SpringFrameWork/05-SpringMVC/image-20211211234514840.png)
 
 ### 返回Json给客户端-使用jackson
 
@@ -1062,7 +1062,7 @@ public String write2() throws JsonProcessingException {
 
 我这里就拿postman来测试返回类型是否为json了
 
-![image-20211212003827824](/images/SpringFrameWork/05-SpringMVC/image-20211212003827824.png)
+![image-20211212003827824](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212003827824.png)
 
 ### ✨返回对象或者集合，配置处理器适配器转换成JSon
 
@@ -1106,7 +1106,7 @@ public void setMessageConverters(List<HttpMessageConverter<?>> messageConverters
 
 可以看到，他接受一个list`HttpMessageConverter`类型的参数，所以我们打开下类图，**搜索**下它有没有`Jackson`相关的子类
 
-![image-20211212123422925](/images/SpringFrameWork/05-SpringMVC/image-20211212123422925.png)
+![image-20211212123422925](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212123422925.png)
 
 发现有四个实际的子类，接着我一个一个查看，发现他们四个分别对应了四种数据类型
 
@@ -1177,7 +1177,7 @@ public User write3() {
 
 访问结果：
 
-![image-20211212124336459](/images/SpringFrameWork/05-SpringMVC/image-20211212124336459.png)
+![image-20211212124336459](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212124336459.png)
 
 完美运行
 
@@ -1258,7 +1258,7 @@ public List<User> write6() {
 
 注意，在写入xml的时候下面这玩意可能会出现多个，选择链接带有mvc的
 
-![image-20211212131752889](/images/SpringFrameWork/05-SpringMVC/image-20211212131752889.png)
+![image-20211212131752889](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212131752889.png)
 
 接下来我们测试一下：
 
@@ -1277,7 +1277,7 @@ public List<User> write6() {
 
 访问结果：
 
-![image-20211212131935147](/images/SpringFrameWork/05-SpringMVC/image-20211212131935147.png)
+![image-20211212131935147](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212131935147.png)
 
 ## ✨SpringMVC获取请求数据
 
@@ -1312,7 +1312,7 @@ public class UserParamsController {
 
 接下来尝试一下，看下控制台能不能获取得到
 
-![image-20211212144302145](/images/SpringFrameWork/05-SpringMVC/image-20211212144302145.png)访问后成功获取了！！！
+![image-20211212144302145](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212144302145.png)访问后成功获取了！！！
 
 那如果我们访问的时候不加上password呢？
 
@@ -1362,7 +1362,7 @@ public User test2(User user) {
 
 成功获取了
 
-![image-20211212145322280](/images/SpringFrameWork/05-SpringMVC/image-20211212145322280.png)
+![image-20211212145322280](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212145322280.png)
 
 控制台输出：`username:王老五 age:666`
 
@@ -1378,7 +1378,7 @@ public User test2(User user) {
 
 接下来测试下：
 
-![image-20211212150211730](/images/SpringFrameWork/05-SpringMVC/image-20211212150211730.png)
+![image-20211212150211730](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212150211730.png)
 
 ### 获取数组类型的参数
 
@@ -1410,7 +1410,7 @@ public String[] test3(String[] names) { //这里一定要写和请求中相匹�
 
 运行结果：
 
-![image-20211212151546302](/images/SpringFrameWork/05-SpringMVC/image-20211212151546302.png)
+![image-20211212151546302](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212151546302.png)
 
 ### ✨✨@RequestBody获取请求体（附带跨域的解决）
 
@@ -1505,7 +1505,7 @@ public String test4(@RequestBody(required = false) List<User> aaa) {
 }
 ```
 
-![image-20211212173710257](/images/SpringFrameWork/05-SpringMVC/image-20211212173710257.png)
+![image-20211212173710257](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212173710257.png)
 
 当让，我们也可以指定让用户发送一个user对象
 
@@ -1520,17 +1520,17 @@ public User test5(@RequestBody User user) {
 
 发送：
 
-![image-20211212174138581](/images/SpringFrameWork/05-SpringMVC/image-20211212174138581.png)
+![image-20211212174138581](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212174138581.png)
 
 ### ✨SpringMVC中直接访问静态资源的访问配置
 
 比方说我现在把刚刚写的ajax请求的网页丢到项目内，并且将依赖改成本地依赖：
 
-![image-20211212175703946](/images/SpringFrameWork/05-SpringMVC/image-20211212175703946.png)
+![image-20211212175703946](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212175703946.png)
 
 然后试图访问一下：
 
-![image-20211212175905867](/images/SpringFrameWork/05-SpringMVC/image-20211212175905867.png)
+![image-20211212175905867](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212175905867.png)
 
 发现了404错误
 
@@ -1566,7 +1566,7 @@ public User test5(@RequestBody User user) {
 
 接下来我们尝试访问一下`/js/vue.js`
 
-![image-20211212181433686](/images/SpringFrameWork/05-SpringMVC/image-20211212181433686.png)
+![image-20211212181433686](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212181433686.png)
 
 访问成功，但是那个html是没办法处理的，因为我们无法覆盖掉刚刚已经配置好的缺省，mvc:resouces也不允许我们定义根路径为location
 
@@ -1578,7 +1578,7 @@ public User test5(@RequestBody User user) {
 
 改动后访问：jsp能够正常获取，且js静态资源文件也可以正常获取
 
-![image-20211212182030803](/images/SpringFrameWork/05-SpringMVC/image-20211212182030803.png)
+![image-20211212182030803](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212182030803.png)
 
 那么问题来了，如果我不想把这个文件改成JSP呢？
 
@@ -1594,11 +1594,11 @@ public User test5(@RequestBody User user) {
 
 紧接着将我们在根目录下的params.jsp改成params.html，并且将其相应的资源路径改成相对路径
 
-![image-20211212182646989](/images/SpringFrameWork/05-SpringMVC/image-20211212182646989.png)
+![image-20211212182646989](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212182646989.png)
 
 紧接着测试一下：
 
-![image-20211212182727163](/images/SpringFrameWork/05-SpringMVC/image-20211212182727163.png)
+![image-20211212182727163](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212182727163.png)
 
 成功了hhh
 
@@ -1684,11 +1684,11 @@ public User admin1(String token, @RequestBody User user) {
 
 显而易见的失败了：获取到了user，但是没有获取到token
 
-![image-20211212190419613](/images/SpringFrameWork/05-SpringMVC/image-20211212190419613.png)
+![image-20211212190419613](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212190419613.png)
 
 并且发现请求体也没有获取到
 
-![image-20211212191057250](/images/SpringFrameWork/05-SpringMVC/image-20211212191057250.png)
+![image-20211212191057250](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212191057250.png)
 
 或者说我们现在有另一个需求：如果说是get请求，传递的param不是name而是username，我们是不是得...更改自己的代码成String username，不然就无法获取到该数据
 
@@ -1786,7 +1786,7 @@ public class UserSearchController {
 
 运行结果：
 
-![image-20211212214244032](/images/SpringFrameWork/05-SpringMVC/image-20211212214244032.png)
+![image-20211212214244032](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212214244032.png)
 
 ### ✨自定义类型转换器
 
@@ -1871,13 +1871,13 @@ public Date search3(@PathVariable("name") String name, @PathVariable("age") int 
 
 测试第二种，若第二种通过那么第一种肯定也通过：
 
-![image-20211212221426046](/images/SpringFrameWork/05-SpringMVC/image-20211212221426046.png)
+![image-20211212221426046](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212221426046.png)
 
 完美运行
 
 ### 获取Servlet相关的API(Req,Res,Session等)
 
-![image-20211212221823213](/images/SpringFrameWork/05-SpringMVC/image-20211212221823213.png)
+![image-20211212221823213](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212221823213.png)
 
 ### ✨@RequestHeader获取请求头
 
@@ -1910,7 +1910,7 @@ abcedfg
 PostmanRuntime/7.28.4
 ```
 
-![image-20211212222526347](/images/SpringFrameWork/05-SpringMVC/image-20211212222526347.png)
+![image-20211212222526347](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212222526347.png)
 
 ### ✨@CookieValue 获取cookie
 
@@ -1927,7 +1927,7 @@ PostmanRuntime/7.28.4
 
 这里就拿Servlet默认颁发的为了后续使用session的Cookie来演示：
 
-![image-20211212224813359](/images/SpringFrameWork/05-SpringMVC/image-20211212224813359.png)
+![image-20211212224813359](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212224813359.png)
 
 ```java
 @RequestMapping("/user5")
@@ -1941,13 +1941,13 @@ public String search4(@CookieValue("JSESSIONID") String sessionId) {
 
 测试：
 
-![image-20211212225042899](/images/SpringFrameWork/05-SpringMVC/image-20211212225042899.png)
+![image-20211212225042899](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212225042899.png)
 
 ## 文件上传
 
 首先回顾下文件上传的原理
 
-![image-20211212230443867](/images/SpringFrameWork/05-SpringMVC/image-20211212230443867.png)
+![image-20211212230443867](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212230443867.png)
 
 我们之前是通过Hutool或者Apache之类的插件获取到相应的内容..前提是获取到了OutputStream，而且流程也较为繁琐
 
@@ -2037,11 +2037,11 @@ public String quick(String name, MultipartFile file) throws IOException {
 
 接着测试一下：
 
-![image-20211212232510392](/images/SpringFrameWork/05-SpringMVC/image-20211212232510392.png)
+![image-20211212232510392](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212232510392.png)
 
 看看那个目录：
 
-![image-20211212232538258](/images/SpringFrameWork/05-SpringMVC/image-20211212232538258.png)
+![image-20211212232538258](/images/Java/SpringFrameWork/05-SpringMVC/image-20211212232538258.png)
 
 ### 多文件上传实现
 

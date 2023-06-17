@@ -40,7 +40,7 @@ javac .\_001helloWorld.java
 java _001helloWorld # 注意 这里不能带有后缀或者路径名什么的
 ```
 
-![image-20211025174538882](/images/JavaSE/02-开始使用Java/image-20211025174538882.png)
+![image-20211025174538882](/images/Java/JavaSE/02-开始使用Java/image-20211025174538882.png)
 
 ### 刚刚发生了什么？
 
@@ -96,7 +96,7 @@ java _001helloWorld # 注意 这里不能带有后缀或者路径名什么的
 
    然后回到控制台，执行`javac .\_001helloWorld.java`，就能得到两个文件：`_001helloWorld.class`与`Person.class`,如果想要运行Person只需要`java Person` 即可
 
-   ![image-20211025181532560](/images/JavaSE/02-开始使用Java/image-20211025181532560.png)
+   ![image-20211025181532560](/images/Java/JavaSE/02-开始使用Java/image-20211025181532560.png)
 
 ### 扩展：如何更方便的学习Java
 
@@ -233,7 +233,7 @@ java _002ChangeChar
    #可以通过这行命令在D:\\temp目录下生成注释文件
    ```
 
-   ![image-20211025190340940](/images/JavaSE/02-开始使用Java/image-20211025190340940.png)
+   ![image-20211025190340940](/images/Java/JavaSE/02-开始使用Java/image-20211025190340940.png)
 
    进入该目录，点开index.html即可查看注释中的内容
 

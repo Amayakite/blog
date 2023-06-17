@@ -106,7 +106,7 @@ desc account;
 
 接着创建一下相应的Bean类
 
-![image-20211213003222939](/images/SpringFrameWork/06-JdbcTemplate/image-20211213003222939.png)
+![image-20211213003222939](/images/Java/SpringFrameWork/06-JdbcTemplate/image-20211213003222939.png)
 
 自行准备好字段、getset 无参构造等
 
@@ -274,7 +274,7 @@ public class SpringTest {
 
 我们可以看到，jdbctemplate中有一大堆参数类型，接下来说说都是干嘛用的
 
-![image-20211213134155029](/images/SpringFrameWork/06-JdbcTemplate/image-20211213134155029.png)
+![image-20211213134155029](/images/Java/SpringFrameWork/06-JdbcTemplate/image-20211213134155029.png)
 
 ### RowMapper接口
 
@@ -296,7 +296,7 @@ public interface RowMapper<T> {
 
 右键类名-转到实现
 
-![image-20211213134524960](/images/SpringFrameWork/06-JdbcTemplate/image-20211213134524960.png)
+![image-20211213134524960](/images/Java/SpringFrameWork/06-JdbcTemplate/image-20211213134524960.png)
 
 见名知意，看着第一个就是把结果分装成Bean对象
 
@@ -366,7 +366,7 @@ Account{name='1', money=1.0}
 
 都存在一个重载的方法：
 
-![image-20211213140054463](/images/SpringFrameWork/06-JdbcTemplate/image-20211213140054463.png)
+![image-20211213140054463](/images/Java/SpringFrameWork/06-JdbcTemplate/image-20211213140054463.png)
 
 这个方法可以接收：`String sql,RowMapper rowparre,Object... obj`
 

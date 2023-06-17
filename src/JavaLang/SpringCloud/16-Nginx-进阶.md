@@ -127,7 +127,7 @@ Nginx按照下面的优先级顺序，设置`$host`的值：
 > `$request_filename`
 
 当前请求对应的资源的路径。
-该变量的值是基于root（或alias）指令的值，以及请求的URI计算出来的。比如，当root指令的值是/data/w3，URI是/images/logo.jpg时，该变量等于/data/w3/images/logo.jpg
+该变量的值是基于root（或alias）指令的值，以及请求的URI计算出来的。比如，当root指令的值是/data/w3，URI是/images/Java/logo.jpg时，该变量等于/data/w3/images/Java/logo.jpg
 
 ### 和Response的相关变量
 
@@ -537,19 +537,19 @@ server {
         index index.html;
     }
     
-    # 下面这里额外说明 这里如果请求 http://ip:port/images/abc.jpg
-    # 访问的是 /home/project/images里面的内容 也就是
-    # 			/home/project/images/abc.jpg
-   	# 在举个例子，例如访问的是 ip:port/images/video/1.mp4
-    # 则对应的本地文件为： /home/project/images/video/1.mp4
-    # 在使用这种方式匹配的时候，必须得确保，这个/images必须是在/home/project内的，不然匹配不到
-    location /images {
+    # 下面这里额外说明 这里如果请求 http://ip:port/images/Java/abc.jpg
+    # 访问的是 /home/project/images/Java里面的内容 也就是
+    # 			/home/project/images/Java/abc.jpg
+   	# 在举个例子，例如访问的是 ip:port/images/Java/video/1.mp4
+    # 则对应的本地文件为： /home/project/images/Java/video/1.mp4
+    # 在使用这种方式匹配的时候，必须得确保，这个/images/Java必须是在/home/project内的，不然匹配不到
+    location /images/Java {
         root /home/project;
     }
     
     # 当然 上面这样做的话，我们就必须确保images在project文件夹内
     #那么是否可以给他起个别名呢？
-    # 例如访问 /abc 则为 /home/project/images,则可以通过另一种形式来进行配置
+    # 例如访问 /abc 则为 /home/project/images/Java,则可以通过另一种形式来进行配置
     
     # 当用户访问/static之后，所有的内容都会在/home/project这个路径之后去找
     # 例如访问 /static/1.jpg 则等同于访问 /home/project/1.jpg
@@ -616,7 +616,7 @@ Nginx作为反向代理的时候启用，开启或者关闭后端服务器返回
 
 ### 规则一览
 
-![image-20220120174953645](/images/SpringCloud/16-Nginx-进阶/image-20220120174953645.png)
+![image-20220120174953645](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120174953645.png)
 
 ### 普通匹配
 
@@ -779,7 +779,7 @@ server {
 
 ## Nginx的模块化体系
 
-![image-20220120183653791](/images/SpringCloud/16-Nginx-进阶/image-20220120183653791.png)
+![image-20220120183653791](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120183653791.png)
 
 - nginx core：核心模块，底层的通信协议之类的，并且给其他模块之类的提供了运行时的环境
 - http 核心模块的副本
@@ -920,11 +920,11 @@ server {
 
 嘛，就是根据用户的ip来动态分配服务器，也就是说当用户第一次连接之后，后面每次连接都是到同一个服务器上
 
-![image-20220120204553430](/images/SpringCloud/16-Nginx-进阶/image-20220120204553430-16426827540471.png)
+![image-20220120204553430](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120204553430-16426827540471.png)
 
 算法如下
 
-![image-20220120204737403](/images/SpringCloud/16-Nginx-进阶/image-20220120204737403.png)
+![image-20220120204737403](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120204737403.png)
 
 使用如下
 
@@ -957,7 +957,7 @@ server {
 
 官方文档如此说道
 
-![image-20220120211041639](/images/SpringCloud/16-Nginx-进阶/image-20220120211041639.png)
+![image-20220120211041639](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120211041639.png)
 
 ### 通过访问的URI进行负载均衡
 
@@ -1057,7 +1057,7 @@ server {
 
 这个一般比较少配置。。应该
 
-![image-20220120220118212](/images/SpringCloud/16-Nginx-进阶/image-20220120220118212.png)
+![image-20220120220118212](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120220118212.png)
 
 这个只针对server的静态资源有效
 
@@ -1116,11 +1116,11 @@ http {
 
 ### Keepalived双机主备
 
-![image-20220120224852192](/images/SpringCloud/16-Nginx-进阶/image-20220120224852192.png)
+![image-20220120224852192](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120224852192.png)
 
 大概就是这样
 
-![image-20220120225014639](/images/SpringCloud/16-Nginx-进阶/image-20220120225014639.png)
+![image-20220120225014639](/images/Java/SpringCloud/16-Nginx-进阶/image-20220120225014639.png)
 
 这里安装我使用docker-compose了
 

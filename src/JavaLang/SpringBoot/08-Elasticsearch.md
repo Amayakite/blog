@@ -38,7 +38,7 @@ tag:
 
 ## ElasticSearch概述
 
-![Elasticsearch logo.svg](/images/SpringBoot/08-Elasticsearch/1920px-Elasticsearch_logo.svg.png)
+![Elasticsearch logo.svg](/images/Java/SpringBoot/08-Elasticsearch/1920px-Elasticsearch_logo.svg.png)
 
 The Elastic Static，包括ElasticSearch、Kibana、Beats和Logstash(也称为TLK Stack)
 
@@ -93,7 +93,7 @@ Lucene是Apache软件基金会Jakarta项目组的一个子项目（草 tomcat10�
 
 他们都是围绕着底层的核心库-Lucene构建的---但他们又是不同的，像是所有的东西一样，每个都有其有点和缺点
 
-![image-20211230232211141](/images/SpringBoot/08-Elasticsearch/image-20211230232211141.png)
+![image-20211230232211141](/images/Java/SpringBoot/08-Elasticsearch/image-20211230232211141.png)
 
 那么我们该如何选择呢？
 
@@ -149,7 +149,7 @@ ES的数据用例：
 
 下载后，你能得到一个压缩包，解压可以得到这些文件
 
-![image-20211230234912737](/images/SpringBoot/08-Elasticsearch/image-20211230234912737.png)
+![image-20211230234912737](/images/Java/SpringBoot/08-Elasticsearch/image-20211230234912737.png)
 
 - bin：二进制可执行文件
 - config：配置项
@@ -177,7 +177,7 @@ bound_addresses {127.0.0.1:9300}, {[::1]:9300}
 
 接着我们访问localhost:9200
 
-![image-20211230235657678](/images/SpringBoot/08-Elasticsearch/image-20211230235657678.png)
+![image-20211230235657678](/images/Java/SpringBoot/08-Elasticsearch/image-20211230235657678.png)
 
 看到了这个就说明成功了
 
@@ -189,7 +189,7 @@ ES是面向文档型数据库，一条数据在这里就是一个文档
 
 大概就是
 
-![image-20211231002653452](/images/SpringBoot/08-Elasticsearch/image-20211231002653452.png)
+![image-20211231002653452](/images/Java/SpringBoot/08-Elasticsearch/image-20211231002653452.png)
 
 ES里的index可以看做成一个库，而Types相当于表，Document相当于行
 
@@ -199,11 +199,11 @@ ES里的index可以看做成一个库，而Types相当于表，Document相当于
 
 正排：通过key找value，倒排，通过value找key
 
-![image-20211231003023722](/images/SpringBoot/08-Elasticsearch/image-20211231003023722.png)
+![image-20211231003023722](/images/Java/SpringBoot/08-Elasticsearch/image-20211231003023722.png)
 
 正排索引就是通过id找context，但是倒排不一样 有了一个额外的东西
 
-![image-20211231003232284](/images/SpringBoot/08-Elasticsearch/image-20211231003232284.png)
+![image-20211231003232284](/images/Java/SpringBoot/08-Elasticsearch/image-20211231003232284.png)
 
 # 索引操作
 
@@ -218,7 +218,7 @@ ES里的index可以看做成一个库，而Types相当于表，Document相当于
 
 这里开始用postman来代替我们进行测试
 
-![image-20211231004006598](/images/SpringBoot/08-Elasticsearch/image-20211231004006598.png)
+![image-20211231004006598](/images/Java/SpringBoot/08-Elasticsearch/image-20211231004006598.png)
 
 会返回一个json格式的返回结果
 
@@ -394,7 +394,7 @@ yellow open   shopping         7y1dV5_6Tw2JTVyli7RKrg   1   1          0        
 
 请求成功后，会返回如下内容
 
-![image-20211231122351161](/images/SpringBoot/08-Elasticsearch/image-20211231122351161.png)
+![image-20211231122351161](/images/Java/SpringBoot/08-Elasticsearch/image-20211231122351161.png)
 
 ```json
 {
@@ -441,7 +441,7 @@ yellow open   shopping         7y1dV5_6Tw2JTVyli7RKrg   1   1          0        
 
 此时发送，返回的唯一性ID就是我们指定的ID
 
-![image-20211231122952292](/images/SpringBoot/08-Elasticsearch/image-20211231122952292.png)
+![image-20211231122952292](/images/Java/SpringBoot/08-Elasticsearch/image-20211231122952292.png)
 
 ```json
 {
@@ -466,7 +466,7 @@ yellow open   shopping         7y1dV5_6Tw2JTVyli7RKrg   1   1          0        
 
 `http://localhost:9200/shopping/_create/1002`
 
-![image-20211231123149960](/images/SpringBoot/08-Elasticsearch/image-20211231123149960.png)
+![image-20211231123149960](/images/Java/SpringBoot/08-Elasticsearch/image-20211231123149960.png)
 
 效果都是一样的，都成功添加了数据
 
@@ -478,7 +478,7 @@ yellow open   shopping         7y1dV5_6Tw2JTVyli7RKrg   1   1          0        
 
 GET请求即可
 
-![image-20211231123432021](/images/SpringBoot/08-Elasticsearch/image-20211231123432021.png)
+![image-20211231123432021](/images/Java/SpringBoot/08-Elasticsearch/image-20211231123432021.png)
 
 返回值
 
@@ -614,7 +614,7 @@ GET ：<http://localhost:9200/shopping/_search>
 
 然后就能得到如下内容
 
-![image-20211231124522970](/images/SpringBoot/08-Elasticsearch/image-20211231124522970.png)
+![image-20211231124522970](/images/Java/SpringBoot/08-Elasticsearch/image-20211231124522970.png)
 
 ```json
 {
@@ -680,7 +680,7 @@ GET ：<http://localhost:9200/shopping/_search>
 
 结果如下
 
-![image-20211231125217350](/images/SpringBoot/08-Elasticsearch/image-20211231125217350.png)
+![image-20211231125217350](/images/Java/SpringBoot/08-Elasticsearch/image-20211231125217350.png)
 
 JSON：
 
@@ -820,7 +820,7 @@ GET <http://localhost:9200/shopping/_search>
 
 结果
 
-![image-20211231130714479](/images/SpringBoot/08-Elasticsearch/image-20211231130714479.png)
+![image-20211231130714479](/images/Java/SpringBoot/08-Elasticsearch/image-20211231130714479.png)
 
 ## 查询文档-分页查询
 
@@ -1137,7 +1137,7 @@ body:
 }
 ```
 
-![image-20211231142505742](/images/SpringBoot/08-Elasticsearch/image-20211231142505742.png)
+![image-20211231142505742](/images/Java/SpringBoot/08-Elasticsearch/image-20211231142505742.png)
 
 因为我们用的是match--分词查询-这就有点类似于sql中的正则匹配
 
@@ -1330,7 +1330,7 @@ ES会将文章的内容进行分词 在倒排索引中给我们去进行匹配
 
 但是这样的话原始数据也在查询结果内
 
-![image-20211231144725551](/images/SpringBoot/08-Elasticsearch/image-20211231144725551.png)
+![image-20211231144725551](/images/Java/SpringBoot/08-Elasticsearch/image-20211231144725551.png)
 
 ### 只取统计的字段
 
@@ -1852,7 +1852,7 @@ public static void main(String[] args) throws IOException {
 
 直接get user表
 
-![image-20211231185118642](/images/SpringBoot/08-Elasticsearch/image-20211231185118642.png)
+![image-20211231185118642](/images/Java/SpringBoot/08-Elasticsearch/image-20211231185118642.png)
 
 Get 文档： <http://localhost:9200/user/_search>
 
@@ -2000,7 +2000,7 @@ public static void main(String[] args) throws IOException {
 
 结果测试
 
-![image-20211231202525037](/images/SpringBoot/08-Elasticsearch/image-20211231202525037.png)
+![image-20211231202525037](/images/Java/SpringBoot/08-Elasticsearch/image-20211231202525037.png)
 
 ### 文档操作-批量删除
 
@@ -2731,7 +2731,7 @@ public static void main(String[] args) throws IOException {
 
 如果你之前启动过ES 那先把这两个文件夹内的所有内容都删除（这两个文件夹要留着）
 
-![image-20220101144013286](/images/SpringBoot/08-Elasticsearch/image-20220101144013286.png)
+![image-20220101144013286](/images/Java/SpringBoot/08-Elasticsearch/image-20220101144013286.png)
 
 紧接着 你打开config目录下的elasticsearch.yml 会发现全都是注释 把他们全部删除掉 填入如下内容
 
@@ -2921,7 +2921,7 @@ tar -zxvf elasticsearch.tar.gz
 
 然后你就能看到 和windows一样的文件
 
-![image-20220101155626598](/images/SpringBoot/08-Elasticsearch/image-20220101155626598.png)
+![image-20220101155626598](/images/Java/SpringBoot/08-Elasticsearch/image-20220101155626598.png)
 
 你在这一部可以先按照之前为windows的方式改动配置
 
@@ -3097,15 +3097,15 @@ node-1和node-2
 
 现在我们的集群时一个拥有索引的单节点集群，所有的三个主分片都被分配在node-1
 
-![image-20220101172832461](/images/SpringBoot/08-Elasticsearch/image-20220101172832461.png)
+![image-20220101172832461](/images/Java/SpringBoot/08-Elasticsearch/image-20220101172832461.png)
 
 PS: chrome可以通过安装浏览器插件-`elasticsearch-head`查看当前的集群情况
 
 安装完毕后打开扩展页面输入地址即可访问
 
-![image-20220101173306779](/images/SpringBoot/08-Elasticsearch/image-20220101173306779.png)
+![image-20220101173306779](/images/Java/SpringBoot/08-Elasticsearch/image-20220101173306779.png)
 
-![image-20220101173401682](/images/SpringBoot/08-Elasticsearch/image-20220101173401682.png)
+![image-20220101173401682](/images/Java/SpringBoot/08-Elasticsearch/image-20220101173401682.png)
 
 如果说遇到这个黄色的健康值，其实就是在告诉你 你没有留有兜底操作
 
@@ -3113,7 +3113,7 @@ PS: chrome可以通过安装浏览器插件-`elasticsearch-head`查看当前的�
 
 从节点启后后，只要他和主节点有同样的cluster.name，他就会自动加入到这个集群中，然后会自动将我们的索引备份复制到自己这
 
-![image-20220101173930464](/images/SpringBoot/08-Elasticsearch/image-20220101173930464.png)
+![image-20220101173930464](/images/Java/SpringBoot/08-Elasticsearch/image-20220101173930464.png)
 
 ### 水平扩容
 
@@ -3128,9 +3128,9 @@ PS: chrome可以通过安装浏览器插件-`elasticsearch-head`查看当前的�
 - 有三个节点
   - 均匀分配到三个节点上，将会这样：
 
-![image-20220101174438104](/images/SpringBoot/08-Elasticsearch/image-20220101174438104.png)
+![image-20220101174438104](/images/Java/SpringBoot/08-Elasticsearch/image-20220101174438104.png)
 
-![image-20220101174510432](/images/SpringBoot/08-Elasticsearch/image-20220101174510432.png)
+![image-20220101174510432](/images/Java/SpringBoot/08-Elasticsearch/image-20220101174510432.png)
 
 这样看来 我们理论可以扩容到六个，让所有分片均匀分配在每一个节点上
 
@@ -3158,7 +3158,7 @@ PS: chrome可以通过安装浏览器插件-`elasticsearch-head`查看当前的�
 
 接下来我们如果值开两个node访问 就会发现
 
-![image-20220101175259556](/images/SpringBoot/08-Elasticsearch/image-20220101175259556.png)
+![image-20220101175259556](/images/Java/SpringBoot/08-Elasticsearch/image-20220101175259556.png)
 
 标黄了，说明总共要有九个分片，也就是三个节点才可以完成这个操作
 
@@ -3172,11 +3172,11 @@ PS: chrome可以通过安装浏览器插件-`elasticsearch-head`查看当前的�
 
 注意 这里使用的配置文件yaml是之前在linux系统安装中写的那一套
 
-![image-20220101182737565](/images/SpringBoot/08-Elasticsearch/image-20220101182737565.png)
+![image-20220101182737565](/images/Java/SpringBoot/08-Elasticsearch/image-20220101182737565.png)
 
 但如果此时我们将node-1关了 或者说它宕机了
 
-![image-20220101183040589](/images/SpringBoot/08-Elasticsearch/image-20220101183040589.png)
+![image-20220101183040589](/images/Java/SpringBoot/08-Elasticsearch/image-20220101183040589.png)
 
 连接他是没有任何东西产生
 
@@ -3184,7 +3184,7 @@ PS: chrome可以通过安装浏览器插件-`elasticsearch-head`查看当前的�
 
 可以发现两件事情
 
-![image-20220101183155747](/images/SpringBoot/08-Elasticsearch/image-20220101183155747.png)
+![image-20220101183155747](/images/Java/SpringBoot/08-Elasticsearch/image-20220101183155747.png)
 
 node-2变成了主节点，并且依旧存在副本
 
@@ -3194,25 +3194,25 @@ node-2变成了主节点，并且依旧存在副本
 
 可以发现他边成了从节点
 
-![image-20220101183350793](/images/SpringBoot/08-Elasticsearch/image-20220101183350793.png)
+![image-20220101183350793](/images/Java/SpringBoot/08-Elasticsearch/image-20220101183350793.png)
 
 ### 路由计算和分片控制
 
 插入是这种方式插入的 这也叫做路由计算
 
-![image-20220101201724622](/images/SpringBoot/08-Elasticsearch/image-20220101201724622.png)
+![image-20220101201724622](/images/Java/SpringBoot/08-Elasticsearch/image-20220101201724622.png)
 
 然后因为附分片均匀的分配在这些node上，并且主分片会自动复制内容到负分片 所以无论访问哪个都能查询得到数据
 
 这就是分片控制：用户可以访问任意一个节点获取数据，这个节点称之为协调节点
 
-![image-20220101202100665](/images/SpringBoot/08-Elasticsearch/image-20220101202100665.png)
+![image-20220101202100665](/images/Java/SpringBoot/08-Elasticsearch/image-20220101202100665.png)
 
 然后 这之中 是通过轮循操作来进行负载均衡（例如node-1此时超多用户访问 你再去查询 它将会将你这个请求转发到node-2，让node-2来处理你的请求，这些都是封装好了的）
 
 ### 数据写流程
 
-![image-20220101202645937](/images/SpringBoot/08-Elasticsearch/image-20220101202645937.png)
+![image-20220101202645937](/images/Java/SpringBoot/08-Elasticsearch/image-20220101202645937.png)
 
 客户端收到响应的时候，文档变更已经在主分片和所有副本分片执行完成，变更是安全的
 
@@ -3227,11 +3227,11 @@ node-2变成了主节点，并且依旧存在副本
 
 ### 数据读流程
 
-![image-20220101204729315](/images/SpringBoot/08-Elasticsearch/image-20220101204729315.png)
+![image-20220101204729315](/images/Java/SpringBoot/08-Elasticsearch/image-20220101204729315.png)
 
 ### 更新流程和批量处理流程
 
-![image-20220101204831947](/images/SpringBoot/08-Elasticsearch/image-20220101204831947.png)
+![image-20220101204831947](/images/Java/SpringBoot/08-Elasticsearch/image-20220101204831947.png)
 
 更新一个文档的步骤如下：
 
@@ -3257,7 +3257,7 @@ node-2变成了主节点，并且依旧存在副本
 
    协调节点一旦收到来自每个节点的应答，就会将每个节点的响应数据整理成单个响应，返回给客户端
 
-   ![image-20220101205733691](/images/SpringBoot/08-Elasticsearch/image-20220101205733691.png)
+   ![image-20220101205733691](/images/Java/SpringBoot/08-Elasticsearch/image-20220101205733691.png)
 
    核心流程和单文档修改是完全一致的
 
@@ -3292,18 +3292,18 @@ ES使用的一种称为**倒排索引**的结构，它适用于快速的全文�
 
 例如我们存放一个用户数据
 
-![img](/images/SpringBoot/08-Elasticsearch/874963-20190127173241683-1331385372.png)
+![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127173241683-1331385372.png)
 
 则ES将会帮我们存储为：
 
 - Name字段
-  ![img](/images/SpringBoot/08-Elasticsearch/874963-20190127175423615-230290274.png)
+  ![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127175423615-230290274.png)
 - Age字段
-  ![img](/images/SpringBoot/08-Elasticsearch/874963-20190127175627644-1013476663.png)
+  ![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127175627644-1013476663.png)
 - gender字段
-  ![img](/images/SpringBoot/08-Elasticsearch/874963-20190127175809626-1224287371.png)
+  ![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127175809626-1224287371.png)
 - address字段
-  ![img](/images/SpringBoot/08-Elasticsearch/874963-20190127180053644-1305820142.png)
+  ![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127180053644-1305820142.png)
 
 > Es分别为每个字段都建立了一个倒排索引
 >
@@ -3321,15 +3321,15 @@ ES使用的一种称为**倒排索引**的结构，它适用于快速的全文�
 
 这玩意大概是这样的
 
-![img](/images/SpringBoot/08-Elasticsearch/874963-20190127183530633-1940483075.png)
+![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127183530633-1940483075.png)
 
 在倒排索引中，通过Term索引可以找到Term在Term Dictionary中的位置，进而找到Posting List，有了倒排列表就可以根据ID找到文档了
 
 emm大概流程应该是这样
 
-![img](/images/SpringBoot/08-Elasticsearch/874963-20190127184959667-1135956344.png)
+![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127184959667-1135956344.png)
 
-![img](/images/SpringBoot/08-Elasticsearch/874963-20190127185725607-2022920549.png)
+![img](/images/Java/SpringBoot/08-Elasticsearch/874963-20190127185725607-2022920549.png)
 
 就是分两个地方存储数据，查询的时候两个地方都查，查询结果是两个查询的并集，相当于mysql中的union all
 
@@ -3354,19 +3354,19 @@ Elasticsearch基于Lucene，这个java库引入了按段搜索的概念。
 
 每一段本身都是一个倒排索引，但索引在 Lucene 中除表示所有段的集合外，还增加了提交点的概念—一个**列出了所有已知段的文件**。
 
-![img](/images/SpringBoot/08-Elasticsearch/9ee1adbb2d55e710257e01b812a6d8cf.png)
+![img](/images/Java/SpringBoot/08-Elasticsearch/9ee1adbb2d55e710257e01b812a6d8cf.png)
 
 按段搜索会以如下流程执行：
 
 1. 新文档被收集到内存索引缓存
-   ![img](/images/SpringBoot/08-Elasticsearch/9d499fde966ee9825fa5a424d8357489.png)
+   ![img](/images/Java/SpringBoot/08-Elasticsearch/9d499fde966ee9825fa5a424d8357489.png)
 2. 不时地, 缓存被提交
    - 一个新的段，一个追加的倒排索引，被写入磁盘。
    - 一个新的包含新段名字的提交点被写入磁盘。
    - 磁盘进行同步，所有在文件系统缓存中等待的写入都刷新到磁盘，以确保它们被写入物理文件
 3. 新的段被开启，让它包含的文档可见以被搜索。
 4. 内存缓存被清空，等待接收新的文档。
-   ![img](/images/SpringBoot/08-Elasticsearch/f74828ff58cc4635a97e88706a221e50.png)
+   ![img](/images/Java/SpringBoot/08-Elasticsearch/f74828ff58cc4635a97e88706a221e50.png)
 
 > 当一个查询被触发，所有已知的段按顺序被查询。词项统计会对所有段的结果进行聚合，以保证每个词和每个文档的关联都被准确计算。这种方式可以用相对较低的成本将新文档添加到索引。
 
@@ -3545,7 +3545,7 @@ GET http://localhost:9200/_analyze
 
 下载后解压到ES的plugins文件夹内 重启ES即可使用
 
-![image-20220101222326958](/images/SpringBoot/08-Elasticsearch/image-20220101222326958.png)
+![image-20220101222326958](/images/Java/SpringBoot/08-Elasticsearch/image-20220101222326958.png)
 
 接下里我们的分词器将会多两个选项
 
@@ -3554,7 +3554,7 @@ GET http://localhost:9200/_analyze
 
 效果 这两个都差不多 具体可以自己测试
 
-![image-20220101222642674](/images/SpringBoot/08-Elasticsearch/image-20220101222642674.png)
+![image-20220101222642674](/images/Java/SpringBoot/08-Elasticsearch/image-20220101222642674.png)
 
 #### 自己扩展词汇
 
@@ -3578,9 +3578,9 @@ GET http://localhost:9200/_analyze
 
 同时打开`IKAnalyzer.cfg.xml`文件，将custom.dic配置在其中，然后重启ES服务器
 
-![image-20220101223433557](/images/SpringBoot/08-Elasticsearch/image-20220101223433557.png)
+![image-20220101223433557](/images/Java/SpringBoot/08-Elasticsearch/image-20220101223433557.png)
 
-![image-20220101223558096](/images/SpringBoot/08-Elasticsearch/image-20220101223558096.png)
+![image-20220101223558096](/images/Java/SpringBoot/08-Elasticsearch/image-20220101223558096.png)
 
 接着重启后，我们就可以成为神里绫华的狗了
 
@@ -3592,7 +3592,7 @@ GET http://localhost:9200/_analyze
 }
 ```
 
-![image-20220101223843621](/images/SpringBoot/08-Elasticsearch/image-20220101223843621.png)
+![image-20220101223843621](/images/Java/SpringBoot/08-Elasticsearch/image-20220101223843621.png)
 
 ### 自定义分析器
 
@@ -3733,7 +3733,7 @@ GET http://localhost:9200/my_index/_analyze
 
 如果有一天，管理层决定做一次促销，突然的，我们一秒要卖好几个商品，假设有两个Web程序并行运行，每一个都同时处理所有商品的销售
 
-![image-20220101230107465](/images/SpringBoot/08-Elasticsearch/image-20220101230107465.png)
+![image-20220101230107465](/images/Java/SpringBoot/08-Elasticsearch/image-20220101230107465.png)
 
 Web1对stock_count所做的更该已经丢失，因为web2不知道它的stock_count的拷贝已经过期
 
@@ -3986,7 +3986,7 @@ i18n.locale: "zh-CN"
 
 即可
 
-![image-20220102003021879](/images/SpringBoot/08-Elasticsearch/image-20220102003021879.png)
+![image-20220102003021879](/images/Java/SpringBoot/08-Elasticsearch/image-20220102003021879.png)
 
 选择右边的即可
 
@@ -4014,15 +4014,15 @@ Spring Data可以极大地简化JPA（ElasticSearch…）的写法，可以在�
 
 目前最新是4.3.0 最高支持 ElasticSearch 7.15.x
 
-![image-20220102122714859](/images/SpringBoot/08-Elasticsearch/image-20220102122714859.png)
+![image-20220102122714859](/images/Java/SpringBoot/08-Elasticsearch/image-20220102122714859.png)
 
-![image-20220102122739215](/images/SpringBoot/08-Elasticsearch/image-20220102122739215.png)
+![image-20220102122739215](/images/Java/SpringBoot/08-Elasticsearch/image-20220102122739215.png)
 
 并且不同版本之间有些APi变动有那么亿点点大
 
 ### Spring Boot集成
 
-![image-20220102123221639](/images/SpringBoot/08-Elasticsearch/image-20220102123221639.png)
+![image-20220102123221639](/images/Java/SpringBoot/08-Elasticsearch/image-20220102123221639.png)
 
 ```xml
 <dependency>
@@ -4049,7 +4049,7 @@ Spring Data可以极大地简化JPA（ElasticSearch…）的写法，可以在�
 
 接着我们看下这玩意的自动配置文件
 
-![image-20220102124727964](/images/SpringBoot/08-Elasticsearch/image-20220102124727964.png)
+![image-20220102124727964](/images/Java/SpringBoot/08-Elasticsearch/image-20220102124727964.png)
 
 ```java
 @Configuration(proxyBeanMethods = false)
@@ -4117,7 +4117,7 @@ private String pathPrefix;
 
 原来配置不在data目录下
 
-![image-20220102125416311](/images/SpringBoot/08-Elasticsearch/image-20220102125416311.png)
+![image-20220102125416311](/images/Java/SpringBoot/08-Elasticsearch/image-20220102125416311.png)
 
 ### 索引的基本添加和删除
 
@@ -4200,7 +4200,7 @@ class ApplicationTests {
 
 日志：
 
-![image-20220102160902051](/images/SpringBoot/08-Elasticsearch/image-20220102160902051.png)
+![image-20220102160902051](/images/Java/SpringBoot/08-Elasticsearch/image-20220102160902051.png)
 
 ### 文档的基本操作
 
@@ -4307,7 +4307,7 @@ public void findByPageable() {
 
 我们的文档内现在有十条数据
 
-![image-20220102164058988](/images/SpringBoot/08-Elasticsearch/image-20220102164058988.png)
+![image-20220102164058988](/images/Java/SpringBoot/08-Elasticsearch/image-20220102164058988.png)
 
 这里就用一个简单的term查询了
 
@@ -4369,7 +4369,7 @@ path
 
  爱咋改咋改
 
-![image-20220102173605929](/images/SpringBoot/08-Elasticsearch/image-20220102173605929.png)
+![image-20220102173605929](/images/Java/SpringBoot/08-Elasticsearch/image-20220102173605929.png)
 
 ## 分片策略
 
@@ -4385,35 +4385,35 @@ path
 - 每一个搜索请求都需要命中一个节点，如果没一个分片都处于不同的节点还好，但如果多个分片都需要在同一个节点上竞争使用相同的资源就GG了
 - 用户计算相关度的词项统计信息是基于分片的，如果有序多分片，每一个都只会有很少的数据导致很低的相关度
 
-![image-20220102174345075](/images/SpringBoot/08-Elasticsearch/image-20220102174345075.png)
+![image-20220102174345075](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174345075.png)
 
-![image-20220102174409304](/images/SpringBoot/08-Elasticsearch/image-20220102174409304.png)
+![image-20220102174409304](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174409304.png)
 
-![image-20220102174458115](/images/SpringBoot/08-Elasticsearch/image-20220102174458115.png)
+![image-20220102174458115](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174458115.png)
 
 ## 写入优化
 
-![image-20220102174628693](/images/SpringBoot/08-Elasticsearch/image-20220102174628693.png)
+![image-20220102174628693](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174628693.png)
 
-![image-20220102174747109](/images/SpringBoot/08-Elasticsearch/image-20220102174747109.png)
+![image-20220102174747109](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174747109.png)
 
-![image-20220102174809106](/images/SpringBoot/08-Elasticsearch/image-20220102174809106.png)
+![image-20220102174809106](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174809106.png)
 
-![image-20220102174828216](/images/SpringBoot/08-Elasticsearch/image-20220102174828216.png)
+![image-20220102174828216](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174828216.png)
 
-![image-20220102174853617](/images/SpringBoot/08-Elasticsearch/image-20220102174853617.png)
+![image-20220102174853617](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174853617.png)
 
-![image-20220102174913428](/images/SpringBoot/08-Elasticsearch/image-20220102174913428.png)
+![image-20220102174913428](/images/Java/SpringBoot/08-Elasticsearch/image-20220102174913428.png)
 
 ## 内存设置
 
-![image-20220102175012177](/images/SpringBoot/08-Elasticsearch/image-20220102175012177.png)
+![image-20220102175012177](/images/Java/SpringBoot/08-Elasticsearch/image-20220102175012177.png)
 
-![image-20220102175110536](/images/SpringBoot/08-Elasticsearch/image-20220102175110536.png)
+![image-20220102175110536](/images/Java/SpringBoot/08-Elasticsearch/image-20220102175110536.png)
 
-![image-20220102175127313](/images/SpringBoot/08-Elasticsearch/image-20220102175127313.png)
+![image-20220102175127313](/images/Java/SpringBoot/08-Elasticsearch/image-20220102175127313.png)
 
-![image-20220102175140594](/images/SpringBoot/08-Elasticsearch/image-20220102175140594.png)
+![image-20220102175140594](/images/Java/SpringBoot/08-Elasticsearch/image-20220102175140594.png)
 
 ## 重要配置项
 

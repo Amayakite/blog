@@ -13,13 +13,13 @@ tag:
 
 ​我们先来回顾一下Spring能做什么：这里直接看[官网](https://spring.io/)的了
 
-![image-20211217143002083](/images/SpringBoot/01-Spring_Boot基础/image-20211217143002083.png)
+![image-20211217143002083](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217143002083.png)
 
 可以看到，他能完成非常多的事情，但是这些玩意坑顶不单单是一个Spring FrameWork(Spring context Spring mvc...)能来完成的
 
 我们之前学习的Spring 基础部分 就属性 Spring Framework
 
-![image-20211217143125919](/images/SpringBoot/01-Spring_Boot基础/image-20211217143125919.png)
+![image-20211217143125919](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217143125919.png)
 
 可以看到，距离学完Spring 还有辣么大一截。。。
 
@@ -175,7 +175,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 接着我们来看下目前项目中都有哪些内容
 
-![image-20211217153403927](/images/SpringBoot/01-Spring_Boot基础/image-20211217153403927.png)
+![image-20211217153403927](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217153403927.png)
 
 可以看到，一大堆我们非常熟悉的功能：
 
@@ -226,7 +226,7 @@ public class HelloController {
 
 你就能看到学习Spring以来最神奇的事情
 
-![image-20211217155636396](/images/SpringBoot/01-Spring_Boot基础/image-20211217155636396.png)
+![image-20211217155636396](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217155636396.png)
 
 草，几行代码 直接把整个SpringMVC的配置都一笔带过了
 
@@ -242,7 +242,7 @@ server.port=8888
 
 接着重启服务，你就能在你的8888端口上成功的访问到我们相应的资源
 
-![image-20211217160013819](/images/SpringBoot/01-Spring_Boot基础/image-20211217160013819.png)
+![image-20211217160013819](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217160013819.png)
 
 关于这个配置文件，我们可以在spring的[官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties)内看到相应能配置的东西，非常之多...
 
@@ -276,11 +276,11 @@ server.port=8888
 
 我们添加完毕之后，打开Maven控制，点击package
 
-![image-20211217160748984](/images/SpringBoot/01-Spring_Boot基础/image-20211217160748984.png)
+![image-20211217160748984](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217160748984.png)
 
 接着就能在我们的target文件夹中看到一个jar文件
 
-![image-20211217160841354](/images/SpringBoot/01-Spring_Boot基础/image-20211217160841354.png)
+![image-20211217160841354](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217160841354.png)
 
 接着进入到这个文件夹内（用资源管理器之类的 ）
 
@@ -290,13 +290,13 @@ server.port=8888
  java -jar 刚刚打包的jar文件
 ```
 
-![image-20211217161024867](/images/SpringBoot/01-Spring_Boot基础/image-20211217161024867.png)
+![image-20211217161024867](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217161024867.png)
 
 我曹 一个项目就好了？
 
 浏览器访问：
 
-![image-20211217161049179](/images/SpringBoot/01-Spring_Boot基础/image-20211217161049179.png)
+![image-20211217161049179](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217161049179.png)
 
 并且这玩意打开速率比Tomcat快多了 草真的爽
 
@@ -436,7 +436,7 @@ SpringBoot所有支持的场景都可以在[官方文档](https://docs.spring.io
     ```
 
   - 结果：
-    ![image-20211217165321078](/images/SpringBoot/01-Spring_Boot基础/image-20211217165321078.png)
+    ![image-20211217165321078](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217165321078.png)
 
 - 并且还配置好了characterEncodingFilter 字符编码拦截器 保证我们返回给客户端的中文不会乱码
 
@@ -479,7 +479,7 @@ SpringBoot所有支持的场景都可以在[官方文档](https://docs.spring.io
 
 也就是说我们可以把我们的项目结构改成这样
 
-![image-20211217170444501](/images/SpringBoot/01-Spring_Boot基础/image-20211217170444501.png)
+![image-20211217170444501](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217170444501.png)
 
 接着在MainApplication中把之前的扫包代码`@SpringBootApplication(scanBasePackages = "com.springboot")`
 
@@ -500,7 +500,7 @@ public class MainApplication {
 
 接着启动试试
 
-![image-20211217170749178](/images/SpringBoot/01-Spring_Boot基础/image-20211217170749178.png)
+![image-20211217170749178](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217170749178.png)
 
 依旧能够正常的访问到我们的内容
 
@@ -508,11 +508,11 @@ public class MainApplication {
 
 其实在我们写application.xml的时候，你能发现写port之前有默认提示和默认值
 
-![image-20211217171616232](/images/SpringBoot/01-Spring_Boot基础/image-20211217171616232.png)
+![image-20211217171616232](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217171616232.png)
 
 我们也可以看到 例如文件上传的一些默认值
 
-![image-20211217171657641](/images/SpringBoot/01-Spring_Boot基础/image-20211217171657641.png)
+![image-20211217171657641](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217171657641.png)
 
 每个文件最大是1mb 总计最多上传10mb等
 
@@ -526,7 +526,7 @@ spring.servlet.multipart.max-file-size=5MB
 
 然后左键点击它 就能跳转到对应的类内
 
-![image-20211217171914961](/images/SpringBoot/01-Spring_Boot基础/image-20211217171914961.png)
+![image-20211217171914961](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217171914961.png)
 
 并且由于我们修改了值，左边还贴心的给我们标识了。。
 
@@ -542,7 +542,7 @@ SpringBoot的所有配置功能都在`spring-boot-autoconfigura`这个依赖里�
 
 PS：该依赖在web下的spring-boot-starter（Spring boot核心配置文件包）内
 
-![image-20211217172803061](/images/SpringBoot/01-Spring_Boot基础/image-20211217172803061.png)
+![image-20211217172803061](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217172803061.png)
 
 当然目前你能看有很多包下的类都是发红的，具体原因之后再说
 
@@ -707,7 +707,7 @@ public static void main(String[] args) {
 
 它是一个根注解，有很多派生注解
 
-![image-20211217212137538](/images/SpringBoot/01-Spring_Boot基础/image-20211217212137538.png)
+![image-20211217212137538](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217212137538.png)
 
 除了这些还有个叫@Propfile的
 
@@ -960,7 +960,7 @@ public class HelloController {
 
 结果：（PS：json转换器jackson 它也给我们配置好了）
 
-![image-20211217222725283](/images/SpringBoot/01-Spring_Boot基础/image-20211217222725283.png)
+![image-20211217222725283](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217222725283.png)
 
 ### 配合@EnableConfigurationProperties
 
@@ -1119,15 +1119,15 @@ public void registerBeanDefinitions(AnnotationMetadata metadata, BeanDefinitionR
 
 metadata就是我们正在运行的这个main方法，com.springboot.boot.MainApplication
 
-![image-20211217231817272](/images/SpringBoot/01-Spring_Boot基础/image-20211217231817272-16397542988091.png)
+![image-20211217231817272](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217231817272-16397542988091.png)
 
 然后代码中的new packageImports 获取到我们这个main方法所在包的包名
 
-![image-20211217231944074](/images/SpringBoot/01-Spring_Boot基础/image-20211217231944074.png)
+![image-20211217231944074](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217231944074.png)
 
 接着使用array+String接收
 
-![image-20211217232038410](/images/SpringBoot/01-Spring_Boot基础/image-20211217232038410.png)
+![image-20211217232038410](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217232038410.png)
 
 也就是最终获取到了我们这个包名
 
@@ -1158,7 +1158,7 @@ public Set<Object> determineImports(AnnotationMetadata metadata) {
 
 #### AutoConfigurationImportSelector
 
-![image-20211217233624905](/images/SpringBoot/01-Spring_Boot基础/image-20211217233624905.png)
+![image-20211217233624905](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211217233624905.png)
 
 我只能说 关于这玩意太复杂了
 
@@ -1205,7 +1205,7 @@ public class AopAutoConfiguration {
 
 因为我们并没有安装aop相关的，它这里依赖的是aspectj相关的包
 
-![image-20211218115315943](/images/SpringBoot/01-Spring_Boot基础/image-20211218115315943.png)
+![image-20211218115315943](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218115315943.png)
 
 所以这里将不会匹配，这个AspectJAutoProxyingConfiguration将不会被加载
 
@@ -1216,19 +1216,19 @@ public class AopAutoConfiguration {
 - 查看自动配置了哪些
   - 自己分析，引入场景后在autoconfiguration内查看 例如web就是里面的web
   - 在application.properties中加入`debug=true`，然后看console里打印出来的含有Did not Match的都是不生效的(ctrl+F 搜索Negative matches 那下面的就是)
-    ![image-20211218122100906](/images/SpringBoot/01-Spring_Boot基础/image-20211218122100906.png)
+    ![image-20211218122100906](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218122100906.png)
 - 是否需要修改
   - 参照[配置文档](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties)进行修改配置项
   - 自己按照感觉修改
   - 比方说我现在觉得spring启动的时候的banner图片不好看
-    ![image-20211218122337635](/images/SpringBoot/01-Spring_Boot基础/image-20211218122337635.png)
+    ![image-20211218122337635](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218122337635.png)
   - 我想换成自己的，一搜索image发现了如下匹配项
-    ![image-20211218122410302](/images/SpringBoot/01-Spring_Boot基础/image-20211218122410302.png)
+    ![image-20211218122410302](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218122410302.png)
   - 接着发现支持
-    ![image-20211218122634928](/images/SpringBoot/01-Spring_Boot基础/image-20211218122634928.png)
+    ![image-20211218122634928](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218122634928.png)
   - 修改：你可以到这个网站去生成一个spring boot banner<https://www.bootschool.net/ascii>
   - 当然你甚至可以用txt
-    ![image-20211218123227901](/images/SpringBoot/01-Spring_Boot基础/image-20211218123227901.png)
+    ![image-20211218123227901](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218123227901.png)
 - 当然 你也可以自定义加入或者替换组件，原理看这个[视频](https://www.bilibili.com/video/BV19K4y1L7MT?p=15&spm_id_from=pageDriver)
 
 ### 开发小技巧
@@ -1247,7 +1247,7 @@ public class AopAutoConfiguration {
 
 第二步：安装这个插件
 
-![image-20211218124027221](/images/SpringBoot/01-Spring_Boot基础/image-20211218124027221.png)
+![image-20211218124027221](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218124027221.png)
 
 新版本的IEDA自带 无序安装
 
@@ -1429,13 +1429,13 @@ public class User {
 
 然后正常运行，需要热部署的时候用这个构建即可
 
-![image-20211218130947744](/images/SpringBoot/01-Spring_Boot基础/image-20211218130947744.png)
+![image-20211218130947744](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218130947744.png)
 
 **springboot的devtools本质上是重启项目**
 
 这玩意并不是真正的热更新，官方是这样说的：推荐使用JRebel
 
-![image-20211218131426831](/images/SpringBoot/01-Spring_Boot基础/image-20211218131426831.png)
+![image-20211218131426831](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218131426831.png)
 
 <https://blog.csdn.net/lianghecai52171314/article/details/105637251>
 
@@ -1450,20 +1450,20 @@ public class User {
 - `http://start.spring.io`
 - `https://start.springboot.io` 推荐使用这个 不知道为啥就这个最快最稳定
 
-![image-20211218131951227](/images/SpringBoot/01-Spring_Boot基础/image-20211218131951227.png)
+![image-20211218131951227](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218131951227.png)
 
 然后就可以自由的选择需要哪种类型的开发
 
-![image-20211218134535632](/images/SpringBoot/01-Spring_Boot基础/image-20211218134535632.png)
+![image-20211218134535632](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218134535632.png)
 
 比方说我这里选择了WEB Mybatis 和一个redis
 
-![image-20211218134642400](/images/SpringBoot/01-Spring_Boot基础/image-20211218134642400.png)
+![image-20211218134642400](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218134642400.png)
 
 紧接着你就能得到如下文件
 
-![image-20211218135032347](/images/SpringBoot/01-Spring_Boot基础/image-20211218135032347.png)
+![image-20211218135032347](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218135032347.png)
 
 src目录结构如下
 
-![image-20211218140059920](/images/SpringBoot/01-Spring_Boot基础/image-20211218140059920.png)
+![image-20211218140059920](/images/Java/SpringBoot/01-Spring_Boot基础/image-20211218140059920.png)

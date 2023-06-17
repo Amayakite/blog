@@ -24,7 +24,7 @@ Eureka用了CS的设计架构，Eureka Server作为服务注册功能的服务�
 
 下图中，左边是Eureka右边是Dubbo
 
-![image-20220103194544734](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103194544734.png)
+![image-20220103194544734](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103194544734.png)
 
 Eureka包含两个组件：Eureka Server 和 Eureka Client
 
@@ -111,11 +111,11 @@ spring:
 
 启动：
 
-![image-20220103211210821](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103211210821.png)
+![image-20220103211210821](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103211210821.png)
 
 访问<http://localhost:7001>
 
-![image-20220103211119857](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103211119857.png)
+![image-20220103211119857](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103211119857.png)
 
 
 
@@ -183,19 +183,19 @@ eureka:
 
 ### 启动并测试
 
-![image-20220103212821967](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103212821967.png)
+![image-20220103212821967](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103212821967.png)
 
 我们现在8001 和 7001 都是启动着的
 
 然后去服务那看看
 
-![image-20220103212847551](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103212847551.png)
+![image-20220103212847551](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103212847551.png)
 
 然后在application内 可以看到我们的服务
 
 这个名字**CLOUD-PROVIDER-PAYMENT-8001**就是我们之前在application内配置的
 
-![image-20220103212946772](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103212946772.png)
+![image-20220103212946772](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103212946772.png)
 
 至于**EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.**这个是Eureka的自我保护机制 之后会说明
 
@@ -247,11 +247,11 @@ public class CloudConsumerOrder80Application {
 
 启动成功后可以看到它也被注册进入了
 
-![image-20220103213703370](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103213703370.png)
+![image-20220103213703370](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103213703370.png)
 
 ## Eureka集群
 
-![image-20220103214710700](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103214710700.png)
+![image-20220103214710700](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103214710700.png)
 
 秉持着万物皆可集群的原则。。。。
 
@@ -259,7 +259,7 @@ Eureka也可以做集群
 
 它的集群简单来说就是互相注册下
 
-![image-20220103215131853](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103215131853.png)
+![image-20220103215131853](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103215131853.png)
 
 如果有三个，则：
 
@@ -398,13 +398,13 @@ public class EurekaMain7002Application {
 
 看看7001
 
-![image-20220103220849634](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103220849634.png)
+![image-20220103220849634](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103220849634.png)
 
 他之中有一个链接指向7002
 
 再去看看7002
 
-![image-20220103220915532](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103220915532.png)
+![image-20220103220915532](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103220915532.png)
 
 他之中也有个链接指向7001
 
@@ -487,19 +487,19 @@ eureka:
 
 接着启动
 
-![image-20220103222059740](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103222059740.png)
+![image-20220103222059740](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103222059740.png)
 
 7001成功注册了
 
 接下来看看7002
 
-![image-20220103222132429](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103222132429.png)
+![image-20220103222132429](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103222132429.png)
 
 依旧是成功
 
 ## 支付微服务（8001）集群设置
 
-![image-20220103222342194](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103222342194.png)
+![image-20220103222342194](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103222342194.png)
 
 对，Java也可以集群
 
@@ -509,7 +509,7 @@ Java 程序集群 可不就是启动多个
 
 所以我们全部都重8001复制过来 然后改个名字 改下yanl即可
 
-![image-20220103223546321](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103223546321.png)
+![image-20220103223546321](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103223546321.png)
 
 先尝试简单 弄一下 这样应不对
 
@@ -556,7 +556,7 @@ eureka:
 
 结果是这样的
 
-![image-20220103223638609](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103223638609.png)
+![image-20220103223638609](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103223638609.png)
 
 这就不对了 我们应该是要同一个名字 然后有两个微服务
 
@@ -610,7 +610,7 @@ eureka:
 
 接着启动看看集群
 
-![image-20220103224040514](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103224040514.png)
+![image-20220103224040514](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103224040514.png)
 
 好 变成两个了
 
@@ -751,7 +751,7 @@ for (let i = 0; i < 1000; i++) {
 }
 ```
 
-![image-20220103232603375](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103232603375.png)
+![image-20220103232603375](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103232603375.png)
 
 貌似没问题 但是JS是一个单线程语言 没有锁 所以我们用万能的Java来写一个demo
 
@@ -804,7 +804,7 @@ class CloudConsumerOrder80ApplicationTests {
 
 运行结果：
 
-![image-20220103234126276](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103234126276.png)
+![image-20220103234126276](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103234126276.png)
 
 恩 看起来确实是轮番查询
 
@@ -818,7 +818,7 @@ class CloudConsumerOrder80ApplicationTests {
 
 ### 主机名称和服务名称的修改
 
-![image-20220103235322600](/images/SpringCloud/02-Eureka服务注册与发现/image-20220103235322600.png)
+![image-20220103235322600](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220103235322600.png)
 
 可改可不改
 
@@ -878,7 +878,7 @@ eureka:
 
 另外一个同理 加一个instance-id即可
 
-![image-20220104000029298](/images/SpringCloud/02-Eureka服务注册与发现/image-20220104000029298.png)
+![image-20220104000029298](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220104000029298.png)
 
 效果如上
 
@@ -895,7 +895,7 @@ eureka:
 
 接着通过连接点进去就是真实的IP地址了
 
-![image-20220104000422367](/images/SpringCloud/02-Eureka服务注册与发现/image-20220104000422367.png)
+![image-20220104000422367](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220104000422367.png)
 
 ## 服务发现Discovery
 
@@ -1061,7 +1061,7 @@ public class CloudProvider8001Application {
 
 ## Eureka的保护模式
 
-![image-20220104123204598](/images/SpringCloud/02-Eureka服务注册与发现/image-20220104123204598.png)
+![image-20220104123204598](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220104123204598.png)
 
 一句话概括：某个时刻某一个微服务不可用了，Eureka不会立刻清理，依旧会对该微服务的信息进行保存
 
@@ -1079,7 +1079,7 @@ public class CloudProvider8001Application {
 >
 > 这有一个比例：短时间超过85%的实例没有心跳就进入自我保护机制
 
-![image-20220104130057168](/images/SpringCloud/02-Eureka服务注册与发现/image-20220104130057168.png)
+![image-20220104130057168](/images/Java/SpringCloud/02-Eureka服务注册与发现/image-20220104130057168.png)
 
 ### 禁止自我保护
 

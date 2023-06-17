@@ -17,11 +17,11 @@ Kotlin语法简洁，具备现代高级语言的特性，并且能和Java一流�
 
 甚至**可以编译成二进制源码**
 
-![image-20220505214535520](/images/Android/02-Kotlin-基础/image-20220505214535520.png)
+![image-20220505214535520](/images/Java/Android/02-Kotlin-基础/image-20220505214535520.png)
 
-![image-20220505214612985](/images/Android/02-Kotlin-基础/image-20220505214612985.png)
+![image-20220505214612985](/images/Java/Android/02-Kotlin-基础/image-20220505214612985.png)
 
-![image-20220505214638151](/images/Android/02-Kotlin-基础/image-20220505214638151.png)
+![image-20220505214638151](/images/Java/Android/02-Kotlin-基础/image-20220505214638151.png)
 
 
 
@@ -31,11 +31,11 @@ Kotlin语法简洁，具备现代高级语言的特性，并且能和Java一流�
 
 我们先创建一个Kotlin项目（IEDA 2022.1），这里使用了gradle来管理依赖
 
-![image-20220505215010060](/images/Android/02-Kotlin-基础/image-20220505215010060.png)
+![image-20220505215010060](/images/Java/Android/02-Kotlin-基础/image-20220505215010060.png)
 
 然后发现build.gradle后面多了个kts，并且语法也变了...
 
-![image-20220505215534390](/images/Android/02-Kotlin-基础/image-20220505215534390.png)
+![image-20220505215534390](/images/Java/Android/02-Kotlin-基础/image-20220505215534390.png)
 
 等到他加载完毕后，顺利的吃了我1G的硬盘
 
@@ -52,7 +52,7 @@ dependencies {
 
 接着我们新建一个Kotlin文件
 
-![image-20220505220959295](/images/Android/02-Kotlin-基础/image-20220505220959295.png)
+![image-20220505220959295](/images/Java/Android/02-Kotlin-基础/image-20220505220959295.png)
 
 注意，是文件，不是类
 
@@ -104,11 +104,11 @@ fun main() {
 
 至于内置数据类型，有这些
 
-![image-20220505221735552](/images/Android/02-Kotlin-基础/image-20220505221735552.png)
+![image-20220505221735552](/images/Java/Android/02-Kotlin-基础/image-20220505221735552.png)
 
 ### 如何查看Kotlin的字节码文件
 
-![image-20220505222521997](/images/Android/02-Kotlin-基础/image-20220505222521997.png)
+![image-20220505222521997](/images/Java/Android/02-Kotlin-基础/image-20220505222521997.png)
 
 得到了如下内容
 
@@ -186,7 +186,7 @@ public final class HelloKotlinKt {
 
 或者按两下shift，输入 show kotlin byte即可
 
-![image-20220505222915659](/images/Android/02-Kotlin-基础/image-20220505222915659.png)
+![image-20220505222915659](/images/Java/Android/02-Kotlin-基础/image-20220505222915659.png)
 
 ### 条件语句
 
@@ -590,7 +590,7 @@ fun main() {
 
 例如我刚刚写的年龄的，在idea中最后是这样展现
 
-![image-20220506145843647](/images/Android/02-Kotlin-基础/image-20220506145843647.png)
+![image-20220506145843647](/images/Java/Android/02-Kotlin-基础/image-20220506145843647.png)
 
 ::: tip
 
@@ -717,13 +717,13 @@ fun configCallBack(): (String) -> String {
 
 就类似于这样
 
-![image-20220506154756594](/images/Android/02-Kotlin-基础/image-20220506154756594.png)
+![image-20220506154756594](/images/Java/Android/02-Kotlin-基础/image-20220506154756594.png)
 
 
 
 ## Null的处理
 
-![image-20220506163943325](/images/Android/02-Kotlin-基础/image-20220506163943325.png)
+![image-20220506163943325](/images/Java/Android/02-Kotlin-基础/image-20220506163943325.png)
 
 在Kotlin中，除非另有规定，不然变量不可为空值，这样一来，运行时崩溃从根源上解决
 
@@ -860,7 +860,7 @@ fun MyTest(num: Int?) {
 
 Kotlin标准库提供了一些遍历函数，使用这些内置函数，可以抛出带有自定义信息的异常，这些便利函数叫先决条件函数，可以使用它来定义先决条件，**条件必须满足，目标代码才可以执行**
 
-![image-20220506192545125](/images/Android/02-Kotlin-基础/image-20220506192545125.png)
+![image-20220506192545125](/images/Java/Android/02-Kotlin-基础/image-20220506192545125.png)
 
 例子
 
@@ -1058,7 +1058,7 @@ fun main() {
 
 ```
 
-![image-20220506223530079](/images/Android/02-Kotlin-基础/image-20220506223530079.png)
+![image-20220506223530079](/images/Java/Android/02-Kotlin-基础/image-20220506223530079.png)
 
 它的源码是这样的
 
@@ -1077,7 +1077,7 @@ public inline fun <T> T.apply(block: T.() -> Unit): T {
 
 ### let
 
-![image-20220506223552653](/images/Android/02-Kotlin-基础/image-20220506223552653.png)
+![image-20220506223552653](/images/Java/Android/02-Kotlin-基础/image-20220506223552653.png)
 
 
 
@@ -1248,7 +1248,7 @@ fun main() {
 }
 ```
 
-![image-20220506232001999](/images/Android/02-Kotlin-基础/image-20220506232001999.png)
+![image-20220506232001999](/images/Java/Android/02-Kotlin-基础/image-20220506232001999.png)
 
 ### takeIf
 
@@ -1352,7 +1352,7 @@ true
 
 使用`getOrElse即可`
 
-![image-20220507141555685](/images/Android/02-Kotlin-基础/image-20220507141555685.png)
+![image-20220507141555685](/images/Java/Android/02-Kotlin-基础/image-20220507141555685.png)
 
 首先你直接取出一个不存在的东西的话，会抛出如下异常
 
@@ -1383,7 +1383,7 @@ fun main() {
 
 当然，除了下面这种方法，还可以直接用Java中的`ArrayList`之类的来进行创建
 
-![image-20220507143117842](/images/Android/02-Kotlin-基础/image-20220507143117842.png)
+![image-20220507143117842](/images/Java/Android/02-Kotlin-基础/image-20220507143117842.png)
 
 
 
@@ -1490,7 +1490,7 @@ fun main() {
 
 ### 数组
 
-![image-20220507145041915](/images/Android/02-Kotlin-基础/image-20220507145041915.png)
+![image-20220507145041915](/images/Java/Android/02-Kotlin-基础/image-20220507145041915.png)
 
 例子
 

@@ -20,7 +20,7 @@ tag:
 
 下方图中的25均表示像素
 
-![坐标体系图](/images/JavaSE/15-Java绘图坐标体系/坐标体系图.jpg)
+![坐标体系图](/images/Java/JavaSE/15-Java绘图坐标体系/坐标体系图.jpg)
 
 比方说现在得到了一个坐标(55,10)表示在width55,height10处
 
@@ -34,7 +34,7 @@ tag:
 
 > 先看效果
 
-![image-20211109233232045](/images/JavaSE/15-Java绘图坐标体系/image-20211109233232045.png)
+![image-20211109233232045](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211109233232045.png)
 
 一个窗口,左上角有个圆圈...如果你接触过`C#`,可能顿时就会想到,这是`.Net FrameWork`吗,emm没错,这玩意差不多就是那个,不过用的比较少,现在用Java的一般都是Web开发,桌面端(游戏一般是C#的Unity或者C++的UE)大部分都是交给C#了(谁让Visual Studio地表第一嘞)
 
@@ -123,7 +123,7 @@ class MyPanel extends JPanel {
 8. 设置画笔的字体`setFont(Font font)`
 9. 设置画笔的颜色`setColor(Color c)`
 
-![image-20211110002330279](/images/JavaSE/15-Java绘图坐标体系/image-20211110002330279.png)
+![image-20211110002330279](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110002330279.png)
 
 ```java
 package com.draw;
@@ -202,15 +202,15 @@ class MyPanel extends JPanel {
 
 > 好了,都到这里了,如果说你有过HTML或者.Net FrameWork的基础的话(OpenGl之类的也一样),应该能够轻松的掌握这个画笔,接下来,请尝试用它画出一个坦克
 
-![image-20211110002524422](/images/JavaSE/15-Java绘图坐标体系/image-20211110002524422.png)
+![image-20211110002524422](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110002524422.png)
 
 类似于这样的,也可以根据自己的想法自由发挥,方正是一个坦克就行..
 
-![image-20211110143325580](/images/JavaSE/15-Java绘图坐标体系/image-20211110143325580.png)
+![image-20211110143325580](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110143325580.png)
 
 最终效果图:
 
-![image-20211110152048894](/images/JavaSE/15-Java绘图坐标体系/image-20211110152048894.png)
+![image-20211110152048894](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110152048894.png)
 
 ```java
     /**
@@ -264,7 +264,7 @@ graph LR
 事件源-->|事件|事件监听者[事件监听者]-->事件处理方法
 ```
 
-![iamge](/images/JavaSE/15-Java绘图坐标体系/image-20211110162256576.png)
+![iamge](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110162256576.png)
 
 > 一个让小球可以通过上下左右按键来移动的案例
 
@@ -375,15 +375,15 @@ class Panel extends JPanel implements KeyListener {
    2. 事件监听者(实际上就是一个类),**该类实现了某个监听器接口** 比如前面小球案例中的`Panel`就是一个类,它实现了`KeyListener`接口,它就可以作为一个时间监听者,对接收到的事件进行处理
    3. 事件监听器接口有很多种,不同的事件监听器接口可以监听不同的事件,一个类可以实现多个监听接口
    4. 这些接口在`java.awt.event`包和`javax.swing.event`包中定义,列出常用的事件监听器接口,查看[JDK文档聚集了](https://www.matools.com/file/manual/jdk_api_1.8_google/java/awt/event/package-summary.html)
-      ![image-20211110164251314](/images/JavaSE/15-Java绘图坐标体系/image-20211110164251314.png)
+      ![image-20211110164251314](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110164251314.png)
 
 > 现在让我们通过事件处理机制让坦克可以变得移动起来,并且能实现转变方向的效果吧!(WSAD移动方式)
 
-![image-20211110164457898](/images/JavaSE/15-Java绘图坐标体系/image-20211110164457898.png)
+![image-20211110164457898](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110164457898.png)
 
 先看效果:
 
-![20211110_212346-0-8](/images/JavaSE/15-Java绘图坐标体系/20211110_212346-0-8-16365509526151-16365509578892.gif)
+![20211110_212346-0-8](/images/Java/JavaSE/15-Java绘图坐标体系/20211110_212346-0-8-16365509526151-16365509578892.gif)
 
 代码做了面对对象式编程:
 
@@ -679,7 +679,7 @@ public class TankGame02 extends JFrame {
 
 敌人的tank类继承tank类,后面要添加并发,结果类似于此即可
 
-![image-20211110215259878](/images/JavaSE/15-Java绘图坐标体系/image-20211110215259878.png)
+![image-20211110215259878](/images/Java/JavaSE/15-Java绘图坐标体系/image-20211110215259878.png)
 
 ```java
 package com.tankGame2;

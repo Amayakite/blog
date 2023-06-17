@@ -56,7 +56,7 @@ tag:
 
 紧接着，我们创建一个UserServlet，在web路径下
 
-![image-20211210221807484](/images/SpringFrameWork/04-Spring-Web/image-20211210221807484.png)
+![image-20211210221807484](/images/Java/SpringFrameWork/04-Spring-Web/image-20211210221807484.png)
 
 然后在里面写入如下内容，尝试调用下Spring
 
@@ -155,7 +155,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 测试，无问题
 
-![image-20211210230002404](/images/SpringFrameWork/04-Spring-Web/image-20211210230002404.png)
+![image-20211210230002404](/images/Java/SpringFrameWork/04-Spring-Web/image-20211210230002404.png)
 
 ### 将加载ApplicationConfig变成动态的
 
@@ -195,7 +195,7 @@ public void contextInitialized(ServletContextEvent sce) {
 
 测试，依旧成功：
 
-![image-20211210225951611](/images/SpringFrameWork/04-Spring-Web/image-20211210225951611.png)
+![image-20211210225951611](/images/Java/SpringFrameWork/04-Spring-Web/image-20211210225951611.png)
 
 ### Spring集成Web环境-自己使用Utils进行封装
 
@@ -318,9 +318,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 如果你是tomcat10用户，到了最后使用WebApplicationContext大概率是会遇到这个问题：
 
-![image-20211210235812891](/images/SpringFrameWork/04-Spring-Web/image-20211210235812891.png)
+![image-20211210235812891](/images/Java/SpringFrameWork/04-Spring-Web/image-20211210235812891.png)
 
-![image-20211210235856888](/images/SpringFrameWork/04-Spring-Web/image-20211210235856888-16391519384631.png)
+![image-20211210235856888](/images/Java/SpringFrameWork/04-Spring-Web/image-20211210235856888-16391519384631.png)
 
 类型不匹配嘛，但是很可惜，直到现在为止，Spring依旧是没有解决这个问题，可能是考虑到兼容性问题吧2021年12月11日00:00:01
 
@@ -332,7 +332,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 在[这里下载](https://tomcat.apache.org/download-90.cgi)
 
-![image-20211211001143685](/images/SpringFrameWork/04-Spring-Web/image-20211211001143685.png)
+![image-20211211001143685](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211001143685.png)
 
 然后解压到自己喜欢的目录
 
@@ -345,11 +345,11 @@ set JAVA_HOME=C:\Program Files\Eclipse Foundation\jdk-8.0.302.8-hotspot
 set JRE_HOME=C:\Program Files\Eclipse Foundation\jdk-8.0.302.8-hotspot\jre
 ```
 
-![image-20211211000739085](/images/SpringFrameWork/04-Spring-Web/image-20211211000739085.png)
+![image-20211211000739085](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211000739085.png)
 
 启动测试（看见他启动了自己手动进下<http://localhost:8080>）：
 
-![image-20211211001358066](/images/SpringFrameWork/04-Spring-Web/image-20211211001358066.png)
+![image-20211211001358066](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211001358066.png)
 
 ### 安装tomcat-9对应的Maven依赖
 
@@ -398,11 +398,11 @@ public class HelloWorld extends HttpServlet {
 
 打开项目，一条红，说明包的前缀变了
 
-![image-20211211002302922](/images/SpringFrameWork/04-Spring-Web/image-20211211002302922.png)
+![image-20211211002302922](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211002302922.png)
 
 接下来要做的事情就很简单了，一个一个自己导入下
 
-![image-20211211002400603](/images/SpringFrameWork/04-Spring-Web/image-20211211002400603.png)
+![image-20211211002400603](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211002400603.png)
 
 没标红了，说明已经没问题了，我们看下引入的包名：
 
@@ -437,7 +437,7 @@ import javax.servlet.http.HttpServletResponse;
 
 接下来配置下ieda即可
 
-![image-20211211002902507](/images/SpringFrameWork/04-Spring-Web/image-20211211002902507.png)
+![image-20211211002902507](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211002902507.png)
 
 然后启动测试下
 
@@ -445,7 +445,7 @@ import javax.servlet.http.HttpServletResponse;
 
 解决思路来自[该博客](https://www.jianshu.com/p/18d068f47b09)
 
-![image-20211211003337173](/images/SpringFrameWork/04-Spring-Web/image-20211211003337173.png)
+![image-20211211003337173](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211003337173.png)
 
 其实和之前是一样的问题
 
@@ -453,7 +453,7 @@ import javax.servlet.http.HttpServletResponse;
 
 点工件可以发现如下的内容：有三个标红
 
-![image-20211211003425804](/images/SpringFrameWork/04-Spring-Web/image-20211211003425804.png)
+![image-20211211003425804](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211003425804.png)
 
 这是为啥呢？
 
@@ -461,11 +461,11 @@ import javax.servlet.http.HttpServletResponse;
 
 我们只需要
 
-![image-20211211003607654](/images/SpringFrameWork/04-Spring-Web/image-20211211003607654.png)
+![image-20211211003607654](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211003607654.png)
 
 这样既可
 
-![image-20211211003617281](/images/SpringFrameWork/04-Spring-Web/image-20211211003617281.png)
+![image-20211211003617281](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211003617281.png)
 
 但是紧接着我们又遇到了一个问题
 
@@ -517,6 +517,6 @@ res目录下：applicationContext.xml
 
 接着运行：没有BUG了哈哈哈哈
 
-![image-20211211011506765](/images/SpringFrameWork/04-Spring-Web/image-20211211011506765.png)
+![image-20211211011506765](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211011506765.png)
 
-![image-20211211011453111](/images/SpringFrameWork/04-Spring-Web/image-20211211011453111.png)
+![image-20211211011453111](/images/Java/SpringFrameWork/04-Spring-Web/image-20211211011453111.png)

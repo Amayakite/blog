@@ -19,7 +19,7 @@ tag:
 
 一句话概括：Hystrix的阿里版
 
-![image-20220111192750054](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111192750054.png)
+![image-20220111192750054](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111192750054.png)
 
 官方是这样介绍的
 
@@ -59,11 +59,11 @@ java -jar .\sentinel-dashboard-1.8.3.jar
 
 如果启动成功的话，应该显示如下页面
 
-![image-20220111194433238](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111194433238.png)
+![image-20220111194433238](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111194433238.png)
 
 这个时候访问<http://localhost:8080/>即可得到如下页面
 
-![image-20220111194509918](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111194509918.png)
+![image-20220111194509918](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111194509918.png)
 
 默认的用户和密码都是sentinel
 
@@ -82,7 +82,7 @@ java -jar .\sentinel-dashboard-1.8.3.jar --server.port=8181
 
 登陆后，可以得到这个
 
-![image-20220111194649812](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111194649812.png)
+![image-20220111194649812](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111194649812.png)
 
 
 
@@ -205,23 +205,23 @@ public class Sentinel8401Application {
 
 我们启动服务后
 
-![image-20220111202253926](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111202253926.png)
+![image-20220111202253926](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111202253926.png)
 
 没有报错就算成功，然后我们访问下sentinel的控制面板
 
-![image-20220111202312199](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111202312199.png)
+![image-20220111202312199](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111202312199.png)
 
 发现什么也没有
 
 其实这玩意用了懒加载机制，我们只需要访问下我们服务内的接口，这里就有显示了
 
-![image-20220111202344360](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111202344360.png)
+![image-20220111202344360](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111202344360.png)
 
-![image-20220111202400354](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111202400354.png)
+![image-20220111202400354](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111202400354.png)
 
 我们多访问几次A和B，就能看到有内容了
 
-![image-20220111202556671](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111202556671.png)
+![image-20220111202556671](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111202556671.png)
 
 这就是它的实时监控
 
@@ -231,7 +231,7 @@ public class Sentinel8401Application {
 
 就是这张图
 
-![image-20220111202908226](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111203003636.png)
+![image-20220111202908226](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111203003636.png)
 
 
 
@@ -254,7 +254,7 @@ public class Sentinel8401Application {
 
 ### 流控模式-QPS直接失败
 
-![image-20220111203918916](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111203918916.png)
+![image-20220111203918916](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111203918916.png)
 
 我们先来新建一个规则， 单机阀值设定为QPS-1，也就是每秒限制一个访问，其余的默认
 
@@ -262,11 +262,11 @@ public class Sentinel8401Application {
 
 第一次
 
-![image-20220111204039334](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111204039334.png)
+![image-20220111204039334](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111204039334.png)
 
 第二次，抛出了这个东西：Blocked by Sentinel (flow limiting) 被Sentinel阻塞(流量限制)
 
-![image-20220111204050691](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111204050691.png)
+![image-20220111204050691](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111204050691.png)
 
 恩，看起来没问题了，轻轻松松的就做到了限流
 
@@ -286,7 +286,7 @@ public class Sentinel8401Application {
 
 而且我们可以发现，这玩意并没有直接失败之类的东西
 
-![image-20220111204942886](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111204942886.png)
+![image-20220111204942886](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111204942886.png)
 
 简单来说，线程数和QPS可以用一张图概括
 
@@ -296,7 +296,7 @@ QPS就是限制最多进来多少人，一旦每秒超过这个阀值，剩余�
 
 > 就是说同时只允许一个工作线程(配置=1)，如果当前线程还没有执行完，其他线程请求就会限流
 
-![image-20220111205109440](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111205109440.png)
+![image-20220111205109440](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111205109440.png)
 
 
 
@@ -323,7 +323,7 @@ public class FlowLimitController {
 
 就能得到我们想要的效果
 
-![image-20220111205548424](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111205548424.png)
+![image-20220111205548424](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111205548424.png)
 
 
 
@@ -337,7 +337,7 @@ B惹事，A挂了
 
 应用场景：支持接口达到阀值之后，限流下订单的接口，防止连坐效应，好比医生都生病不搞了，前台还使劲卖他的号，有用吗？
 
-![image-20220111210133863](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111210133863.png)
+![image-20220111210133863](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111210133863.png)
 
 
 
@@ -461,7 +461,7 @@ public class FlowLimitController {
 
 如果说没问题的话，你在启动后分别访问完testc和d后是这样的
 
-![image-20220111220251931](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111220251931.png)
+![image-20220111220251931](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111220251931.png)
 
 
 
@@ -469,17 +469,17 @@ public class FlowLimitController {
 
 这里给TestC中的它添加
 
-![image-20220111220353476](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111220353476.png)
+![image-20220111220353476](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111220353476.png)
 
 添加完毕后，当你每秒访问过多次的testC之后，就会出现这样的情况
 
-![image-20220111220422331](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111220422331.png)
+![image-20220111220422331](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111220422331.png)
 
 但是无论这里有没有出现问题，myresource的另外一个调用者：testD是不受影响的
 
 也可以从数据中得到，我这里是两个同时访问了五十多次之后的结果（Chrome可以按住alt选中两个页面同时刷新）
 
-![image-20220111220724345](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111220724345.png)
+![image-20220111220724345](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111220724345.png)
 
 
 
@@ -489,17 +489,17 @@ public class FlowLimitController {
 
 就相当于防止服务瞬间被DDOS给整挂掉了
 
-![image-20220111221130006](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111221130006.png)
+![image-20220111221130006](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111221130006.png)
 
-![image-20220111221139041](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111221139041.png)
+![image-20220111221139041](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111221139041.png)
 
-![image-20220111221949556](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111221949556.png)
+![image-20220111221949556](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111221949556.png)
 
 10/3等于每秒访问量，5秒之后恢复10访问量
 
 冷加载因子是写进了源码里的
 
-![image-20220111222048858](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111222048858.png)
+![image-20220111222048858](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111222048858.png)
 
 应用场景：秒杀系统开启瞬间，会有很多流量上来，有可能把系统整挂了，预热方式就是保护系统，让流量慢慢的进来，慢慢的增长到设定的阀值，防止一开始缓存还没成型，被击穿
 
@@ -509,11 +509,11 @@ public class FlowLimitController {
 
 一句话，都排队等，没轮到的慢慢排，愿意等就等，不愿意等就自己超时重试
 
-![image-20220111222704429](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111222704429.png)
+![image-20220111222704429](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111222704429.png)
 
 
 
-![image-20220111222837017](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111222837017.png)
+![image-20220111222837017](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111222837017.png)
 
 - QPS=1，每个一秒处理一个请求
 - 2,500毫秒
@@ -524,7 +524,7 @@ public class FlowLimitController {
 
 ## 降级（熔断）规则
 
-![image-20220111223347592](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111223347592.png)
+![image-20220111223347592](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111223347592.png)
 
 这玩意和Hystrix的相似度非常高
 
@@ -543,27 +543,27 @@ public class FlowLimitController {
   - 当单位统计时长内的异常数目超过阈值之后会自动进行熔断。经过熔断时长后熔断器会进入探测恢复状态（HALF-OPEN 状态），若接下来的一个请求成功完成（没有错误）则结束熔断，否则会再次被熔断。
   - 超过指定的阀值，就会触发降级，时间窗口结束后，关闭降级
 
-![image-20220111224619923](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111224619923.png)
+![image-20220111224619923](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111224619923.png)
 
 Sentinel 1.8.0 版本对熔断降级特性进行了全新的改进升级 有恢复状态（HALF-OPEN 状态），而不单单只是之前的关和开，中间多出了一个半开
 
 ### 慢调用比例(RT)
 
-![image-20220111231448891](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111231448891.png)
+![image-20220111231448891](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111231448891.png)
 
 例子：
 
-![image-20220111231958689](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111231958689.png)
+![image-20220111231958689](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111231958689.png)
 
 ### 异常比例
 
 总体来说和慢调用比例差不多，唯一的区别就是，满调用比例是我们手动抛，这里是程序抛
 
-![image-20220111232846091](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111232846091.png)
+![image-20220111232846091](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111232846091.png)
 
 ### 异常数
 
-![image-20220111233414286](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111233414286.png)
+![image-20220111233414286](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111233414286.png)
 
 和异常比例差不多，不过将比例换成了次数而已
 
@@ -573,7 +573,7 @@ Sentinel 1.8.0 版本对熔断降级特性进行了全新的改进升级 有恢�
 
 ## 热点规则
 
-![image-20220111234745115](/images/SpringCloud/13-Sentinel熔断与限流/image-20220111234745115.png)
+![image-20220111234745115](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220111234745115.png)
 
 就是这个玩意
 
@@ -651,15 +651,15 @@ public class FlowLimitController {
 
 这里接收两个参数 都是可选的，接下来开始对齐进行热点规则设置
 
-![image-20220112133141502](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112133141502.png)
+![image-20220112133141502](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112133141502.png)
 
 接着访问
 
-![image-20220112133224572](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112133224572.png)
+![image-20220112133224572](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112133224572.png)
 
 一秒内第一次正常
 
-![image-20220112133238261](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112133238261.png)
+![image-20220112133238261](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112133238261.png)
 
 第二次异常
 
@@ -669,7 +669,7 @@ public class FlowLimitController {
 
 注意 下面这样操作的话 参数类型一定要写和我们在Java的方法声明中一样的类型，否则不生效
 
-![image-20220112133751268](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112133751268.png)
+![image-20220112133751268](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112133751268.png)
 
 但要注意的是，如果我们是在程序中出现了异常
 
@@ -685,9 +685,9 @@ public String testHotKey(@RequestParam(value = "p1", required = false) String p1
 
 是无法进行处理的（另外几个也是无法处理，这个处理方式之后会说）
 
-![image-20220112141258458](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112141258458.png)
+![image-20220112141258458](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112141258458.png)
 
-![image-20220112141250165](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112141250165.png)
+![image-20220112141250165](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112141250165.png)
 
 ## 系统规则-自适应限流
 
@@ -697,7 +697,7 @@ public String testHotKey(@RequestParam(value = "p1", required = false) String p1
 
 在这里配置
 
-![image-20220112141943800](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112141943800.png)
+![image-20220112141943800](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112141943800.png)
 
 - **Load 自适应**（仅对 Linux/Unix-like 机器生效）：系统的 load1 作为启发指标，进行自适应系统保护。当系统 load1 超过设定的启发值，且系统当前的并发线程数超过估算的系统容量时才会触发系统保护（BBR 阶段）。系统容量由系统的 `maxQps * minRt` 估算得出。设定参考值一般是 `CPU cores * 2.5`。
 - **CPU usage**（1.5.0+ 版本）：当系统 CPU 使用率超过阈值即触发系统保护（取值范围 0.0-1.0），比较灵敏。
@@ -737,7 +737,7 @@ public class RateLimitController {
 
 设定规则
 
-![image-20220112143231499](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112143231499.png)
+![image-20220112143231499](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112143231499.png)
 
 一秒内
 
@@ -808,15 +808,15 @@ public class RateLimitController {
 
 ````
 
-![image-20220112144252118](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112144252118.png)
+![image-20220112144252118](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112144252118.png)
 
 第一次访问
 
-![image-20220112144303604](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112144303604.png)
+![image-20220112144303604](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112144303604.png)
 
 第二次访问
 
-![image-20220112144312165](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112144312165.png)
+![image-20220112144312165](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112144312165.png)
 
 
 
@@ -890,11 +890,11 @@ public class RateLimitController {
 
 接着我们对自己的**资源**进行下限流
 
-![image-20220112150037005](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112150037005.png)
+![image-20220112150037005](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112150037005.png)
 
 访问过多的时候返回了我们想要的内容
 
-![image-20220112150052275](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112150052275.png)
+![image-20220112150052275](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112150052275.png)
 
 ### @SentinelResource 参数说明
 
@@ -925,7 +925,7 @@ public class RateLimitController {
 
 特别地，若 blockHandler 和 fallback 都进行了配置，则被限流降级而抛出 `BlockException` 时只会进入 `blockHandler` 处理逻辑。若未配置 `blockHandler`、`fallback` 和 `defaultFallback`，则被限流降级时会将 `BlockException` **直接抛出**（若方法本身未定义 throws BlockException 则会被 JVM 包装一层 `UndeclaredThrowableException`）。
 
-![image-20220112152219401](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112152219401.png)
+![image-20220112152219401](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112152219401.png)
 
 ## Sentinel整合LoadBalancer和Feign
 
@@ -1251,21 +1251,21 @@ public class OrderController {
 
 访问效果：
 
-![image-20220112161742038](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112161742038.png)
+![image-20220112161742038](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112161742038.png)
 
 第二次：
 
-![image-20220112161757094](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112161757094.png)
+![image-20220112161757094](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112161757094.png)
 
 负载均衡 Get
 
 经过以上的配置，最终在nacos内的
 
-![image-20220112162206114](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112162206114.png)
+![image-20220112162206114](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112162206114.png)
 
 在sentinel内的
 
-![image-20220112162449708](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112162449708.png)
+![image-20220112162449708](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112162449708.png)
 
 ### ✨服务熔断只配置fallback(服务降级-处理自定义异常)
 
@@ -1345,7 +1345,7 @@ public class OrderController {
 
 效果
 
-![image-20220112170024390](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112170024390.png)
+![image-20220112170024390](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112170024390.png)
 
 
 
@@ -1414,25 +1414,25 @@ public class OrderController {
 
 然后手动的给他上一个buff
 
-![image-20220112171045872](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112171045872.png)
+![image-20220112171045872](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112171045872.png)
 
 然后多次访问正确的
 
-![image-20220112171327548](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112171327548.png)
+![image-20220112171327548](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112171327548.png)
 
 单次访问错误的
 
-![image-20220112171346760](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112171346760.png)
+![image-20220112171346760](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112171346760.png)
 
 多次访问错误的
 
-![image-20220112171356489](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112171356489.png)
+![image-20220112171356489](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112171356489.png)
 
 ### 目前两种配置方式存在的缺陷
 
 只配置fallback的话，sentinel控制台的异常将捕获不到，反之亦然，解决方案也很简单，就是两个都配置
 
-![image-20220112172309539](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112172309539.png)
+![image-20220112172309539](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112172309539.png)
 
 ### ✨Fallback和BlockHandler都配置
 
@@ -1485,7 +1485,7 @@ public class OrderController {
 
 然后加个debuff
 
-![image-20220112172744056](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112172744056.png)
+![image-20220112172744056](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112172744056.png)
 
 直接访问错误的：
 
@@ -1509,7 +1509,7 @@ public class OrderController {
 
 ### 忽略指定的异常
 
-![image-20220112173728910](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112173728910.png)
+![image-20220112173728910](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112173728910.png)
 
 就是不捕获，让其自生自灭某个异常，在工作中应该用的上（人工修Bug的时候）
 
@@ -1636,7 +1636,7 @@ public class Consumer80Application {
 
 当我们服务宕机的时候
 
-![image-20220112180715043](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112180715043.png)
+![image-20220112180715043](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112180715043.png)
 
 返回的值
 
@@ -1650,7 +1650,7 @@ public class Consumer80Application {
 
 ### 熔断框架比较
 
-![image-20220112180954657](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112180954657.png)
+![image-20220112180954657](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112180954657.png)
 
 最后一个国外用的多一些
 
@@ -1791,13 +1791,13 @@ Json：
 ]
 ```
 
-![image-20220112195509106](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112195509106.png)
+![image-20220112195509106](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112195509106.png)
 
 ### 测试
 
 刚启动 我啥都还没整，规则就有了
 
-![image-20220112195417529](/images/SpringCloud/13-Sentinel熔断与限流/image-20220112195417529.png)
+![image-20220112195417529](/images/Java/SpringCloud/13-Sentinel熔断与限流/image-20220112195417529.png)
 
 ## 如何自定义Sentinel-让其自动持久化推送到Nacos
 

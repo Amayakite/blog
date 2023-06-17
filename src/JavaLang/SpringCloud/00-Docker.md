@@ -57,7 +57,7 @@ Docker：打包镜像发布测试，一键运行
 
 ### Docker的基本组成
 
-![image-20220104155005672](/images/SpringCloud/00-Docker/image-20220104155005672.png)
+![image-20220104155005672](/images/Java/SpringCloud/00-Docker/image-20220104155005672.png)
 
 大概就是这样 嘛反正非常简单就是了，直到DockerFile之前Docker的操作就是非常简单的
 
@@ -129,7 +129,7 @@ sudo docker run hello-world
 
 出现这样的即可
 
-![image-20220104160301590](/images/SpringCloud/00-Docker/image-20220104160301590.png)
+![image-20220104160301590](/images/Java/SpringCloud/00-Docker/image-20220104160301590.png)
 
 ### 更换国内源（可选）
 
@@ -207,7 +207,7 @@ daocloud
  docker run hello-world
 ```
 
-![image-20220104163355780](/images/SpringCloud/00-Docker/image-20220104163355780.png)
+![image-20220104163355780](/images/Java/SpringCloud/00-Docker/image-20220104163355780.png)
 
 
 
@@ -488,7 +488,7 @@ docker run -it ubuntu bash
 
 但如果你在进入这个容器后，按下`Ctrl+p+q` ---没错，就是这种组合快捷键，然后再到ps查看
 
-![image-20220104201536544](/images/SpringCloud/00-Docker/image-20220104201536544.png)
+![image-20220104201536544](/images/Java/SpringCloud/00-Docker/image-20220104201536544.png)
 
 你就能看到你的容器了
 
@@ -614,7 +614,7 @@ docker logs --since "2011-11-11" --until 40m 容器
 
 结果
 
-![image-20220104204917613](/images/SpringCloud/00-Docker/image-20220104204917613.png)
+![image-20220104204917613](/images/Java/SpringCloud/00-Docker/image-20220104204917613.png)
 
 ### inspect查看容器的所有原信息
 
@@ -948,7 +948,7 @@ docker cp /home/root/abc.java ubuntu:/home
 
 ## ✨Docker命令一图概括
 
-![image-20220104210746142](/images/SpringCloud/00-Docker/image-20220104210746142.png)
+![image-20220104210746142](/images/Java/SpringCloud/00-Docker/image-20220104210746142.png)
 
 ```bash
 ttach    #当前shell下attach连接指定运行镜像
@@ -1034,7 +1034,7 @@ curl localhost:3344
 </html>
 ```
 
-![image-20220104211904044](/images/SpringCloud/00-Docker/image-20220104211904044.png)
+![image-20220104211904044](/images/Java/SpringCloud/00-Docker/image-20220104211904044.png)
 
 
 
@@ -1052,7 +1052,7 @@ docker run -it --rm -p 8888:8080 tomcat:9.0
 
 接着访问 404 正常
 
-![image-20220104214250828](/images/SpringCloud/00-Docker/image-20220104214250828.png)
+![image-20220104214250828](/images/Java/SpringCloud/00-Docker/image-20220104214250828.png)
 
 说明我们的tomcat下没有配置root
 
@@ -1063,13 +1063,13 @@ docker run -d --name tomcat -p 8888:8080 tomcat:9.0
 docker exec -it tomcat bash
 ```
 
-![image-20220104214744642](/images/SpringCloud/00-Docker/image-20220104214744642.png)
+![image-20220104214744642](/images/Java/SpringCloud/00-Docker/image-20220104214744642.png)
 
 可以看到 有两个webapps文件夹 已知webapps里面没有东西
 
 所以我们看看webapps.dist
 
-![image-20220104214827117](/images/SpringCloud/00-Docker/image-20220104214827117.png)
+![image-20220104214827117](/images/Java/SpringCloud/00-Docker/image-20220104214827117.png)
 
 果真都在这
 
@@ -1082,7 +1082,7 @@ mv webapps.dist/ webapps
 
 接着访问，东西就有了
 
-![image-20220104215004188](/images/SpringCloud/00-Docker/image-20220104215004188.png)
+![image-20220104215004188](/images/Java/SpringCloud/00-Docker/image-20220104215004188.png)
 
 ### ElasticSearch+Kibana图形化面板
 
@@ -1109,7 +1109,7 @@ docker stats
 
 查看服务状态
 
-![image-20220104215807989](/images/SpringCloud/00-Docker/image-20220104215807989.png)
+![image-20220104215807989](/images/Java/SpringCloud/00-Docker/image-20220104215807989.png)
 
 md 两个G太卡了吧这
 
@@ -1147,7 +1147,7 @@ curl localhost:9200
 
 点进去 找到自己的版本
 
-![image-20220104220233176](/images/SpringCloud/00-Docker/image-20220104220233176.png)
+![image-20220104220233176](/images/Java/SpringCloud/00-Docker/image-20220104220233176.png)
 
 emm不对啊 我们用过es  可以通过修改配置文件来解决啊
 
@@ -1171,7 +1171,7 @@ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -
 java xxx.class -Xms64m -Xmx512m discovery.type=single-node
 ```
 
-![image-20220104220735753](/images/SpringCloud/00-Docker/image-20220104220735753.png)
+![image-20220104220735753](/images/Java/SpringCloud/00-Docker/image-20220104220735753.png)
 
 是不是好多了
 
@@ -1218,7 +1218,7 @@ docker run -d --name kibana --net somenetwork -p 5601:5601 kibana:7.16.2
 
 接着等待一会儿，浏览器进入5601就可以了
 
-![image-20220104221743328](/images/SpringCloud/00-Docker/image-20220104221743328.png)
+![image-20220104221743328](/images/Java/SpringCloud/00-Docker/image-20220104221743328.png)
 
 
 
@@ -1264,7 +1264,7 @@ docker run -d -p 9000:9001 --name portainer_agent --restart=always --privileged=
 
 接下来看看最终效果
 
-![image-20220104222935979](/images/SpringCloud/00-Docker/image-20220104222935979.png)
+![image-20220104222935979](/images/Java/SpringCloud/00-Docker/image-20220104222935979.png)
 
 ## Docker镜像说明
 
@@ -1286,29 +1286,29 @@ docker run -d -p 9000:9001 --name portainer_agent --restart=always --privileged=
 
 这是一种分层、轻量级、高性能的文件系统，**它支持对文件系统的修改作为一次提交来一层层叠加**，同时可以将不同目录挂载到同一个虚拟文件系统下，UnionFS是Docker镜像的基础，镜像可以通过分层来继承（没有父镜像），可以制作各种具体的应用镜像
 
-![image-20220104224728009](/images/SpringCloud/00-Docker/image-20220104224728009.png)
+![image-20220104224728009](/images/Java/SpringCloud/00-Docker/image-20220104224728009.png)
 
 特性：一次性同时加载多个文件系统，从外表看起来，只看得到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统包含所有底层的文件目录
 
 比如说我们先有两个 镜像 一个tomcat 一个mysql 都用上了同版本的ubuntu 然后他们其中一个的ubuntu将会公用（也就是有一方不需要启动ubuntu，直接用另外一个的）
 
-![image-20220104224931947](/images/SpringCloud/00-Docker/image-20220104224931947.png)
+![image-20220104224931947](/images/Java/SpringCloud/00-Docker/image-20220104224931947.png)
 
-![image-20220104225352499](/images/SpringCloud/00-Docker/image-20220104225352499.png)
+![image-20220104225352499](/images/Java/SpringCloud/00-Docker/image-20220104225352499.png)
 
-![image-20220104225509194](/images/SpringCloud/00-Docker/image-20220104225509194.png)
+![image-20220104225509194](/images/Java/SpringCloud/00-Docker/image-20220104225509194.png)
 
-![image-20220104225522848](/images/SpringCloud/00-Docker/image-20220104225522848.png)
+![image-20220104225522848](/images/Java/SpringCloud/00-Docker/image-20220104225522848.png)
 
-![image-20220104225620567](/images/SpringCloud/00-Docker/image-20220104225620567.png)
+![image-20220104225620567](/images/Java/SpringCloud/00-Docker/image-20220104225620567.png)
 
-![image-20220104225645879](/images/SpringCloud/00-Docker/image-20220104225645879.png)
+![image-20220104225645879](/images/Java/SpringCloud/00-Docker/image-20220104225645879.png)
 
-![image-20220104230006641](/images/SpringCloud/00-Docker/image-20220104230006641.png)
+![image-20220104230006641](/images/Java/SpringCloud/00-Docker/image-20220104230006641.png)
 
 
 
-![image-20220104230123481](/images/SpringCloud/00-Docker/image-20220104230123481.png)
+![image-20220104230123481](/images/Java/SpringCloud/00-Docker/image-20220104230123481.png)
 
 ## ✨Commit镜像
 
@@ -1335,7 +1335,7 @@ docker commit -a="一个平平淡淡的人" -m="add webapps app" tomcat tomcat02
 
 接下来你就能在`dokcer images`中看到它了
 
-![image-20220104231223999](/images/SpringCloud/00-Docker/image-20220104231223999.png)
+![image-20220104231223999](/images/Java/SpringCloud/00-Docker/image-20220104231223999.png)
 
 以后我们就可以直接使用我们修改过后的镜像了
 
@@ -1437,7 +1437,7 @@ echo "Hello Home">index.html
 
 接着返回本机 可以看到 本地的路径下也多了个文件夹
 
-![image-20220104234146298](/images/SpringCloud/00-Docker/image-20220104234146298.png)
+![image-20220104234146298](/images/Java/SpringCloud/00-Docker/image-20220104234146298.png)
 
 接着我们访问下
 
@@ -1466,7 +1466,7 @@ docker volume ls
 
 通常来说是这样的
 
-![image-20220104235934545](/images/SpringCloud/00-Docker/image-20220104235934545.png)
+![image-20220104235934545](/images/Java/SpringCloud/00-Docker/image-20220104235934545.png)
 
 就相当于是Java的匿名内部类一样
 
@@ -1504,7 +1504,7 @@ docker inspect 卷名，例如：0ad3c188c086845507bb70c08b8f0763f5d6f210b92d052
  docker volume ls
 ```
 
-![image-20220105000827945](/images/SpringCloud/00-Docker/image-20220105000827945.png)
+![image-20220105000827945](/images/Java/SpringCloud/00-Docker/image-20220105000827945.png)
 
 接着看看他的信息
 
@@ -1721,7 +1721,7 @@ docker run -it -name 容器名 --volumes-from 父容器 父容器名 镜像
 
 当然 你可以用portainer来看差数据卷的共享情况，一目了然
 
-![image-20220105131700746](/images/SpringCloud/00-Docker/image-20220105131700746.png)
+![image-20220105131700746](/images/Java/SpringCloud/00-Docker/image-20220105131700746.png)
 
 volumes-from就是捆绑多少个就多少个数据卷共享，即使docker01被停止
 
@@ -1740,7 +1740,7 @@ dockerfile是用来构建docker镜像文件的命令参数脚本
 
 进去后，它有一个链接
 
-![image-20220105140313843](/images/SpringCloud/00-Docker/image-20220105140313843.png)
+![image-20220105140313843](/images/Java/SpringCloud/00-Docker/image-20220105140313843.png)
 
 点击会发现跳转到了github 
 
@@ -1755,11 +1755,11 @@ ADD ubuntu-focal-oci-amd64-root.tar.gz /
 CMD ["bash"]
 ```
 
-![image-20220105141103036](/images/SpringCloud/00-Docker/image-20220105141103036.png)
+![image-20220105141103036](/images/Java/SpringCloud/00-Docker/image-20220105141103036.png)
 
 
 
-![image-20220105140848278](/images/SpringCloud/00-Docker/image-20220105140848278.png)
+![image-20220105140848278](/images/Java/SpringCloud/00-Docker/image-20220105140848278.png)
 
 ### Dockerfile命令一览
 
@@ -1782,7 +1782,7 @@ env			#	构建的时候设置环境变量
 
 
 
-![image-20220105141218399](/images/SpringCloud/00-Docker/image-20220105141218399.png)
+![image-20220105141218399](/images/Java/SpringCloud/00-Docker/image-20220105141218399.png)
 
 - FROM-构建镜像基于哪个镜像
 
@@ -1968,7 +1968,7 @@ DockerFIle和那两个压缩包在同一个文件夹内
 
 我这里最终是如下两个文件
 
-![image-20220119174116464](/images/SpringCloud/00-Docker/image-20220119174116464.png)
+![image-20220119174116464](/images/Java/SpringCloud/00-Docker/image-20220119174116464.png)
 
 接着创建`Dockerfile`，然后编写其中的内容
 
@@ -2018,11 +2018,11 @@ docker build -t mytomcat .
 
 如果不出意外，你的控制台应该打印如下内容
 
-![image-20220119180519935](/images/SpringCloud/00-Docker/image-20220119180519935.png)
+![image-20220119180519935](/images/Java/SpringCloud/00-Docker/image-20220119180519935.png)
 
 接下来你可以通过`docker images`看到你刚刚创建的镜像
 
-![image-20220119180547179](/images/SpringCloud/00-Docker/image-20220119180547179.png)
+![image-20220119180547179](/images/Java/SpringCloud/00-Docker/image-20220119180547179.png)
 
 emm事后我发现事情并没有我想的那么简单
 
@@ -2078,7 +2078,7 @@ CMD $CATALINA_HOME/bin/startup.sh && tail -F $CATALINA_HOME/logs/catalina.out
 
 成功运行
 
-![image-20220119193933882](/images/SpringCloud/00-Docker/image-20220119193933882.png)
+![image-20220119193933882](/images/Java/SpringCloud/00-Docker/image-20220119193933882.png)
 
 然后尝试访问（我这里开的映射是9001）
 
@@ -2088,11 +2088,11 @@ curl localhost:9001
 
 成功获取到结果
 
-![image-20220119194007032](/images/SpringCloud/00-Docker/image-20220119194007032.png)
+![image-20220119194007032](/images/Java/SpringCloud/00-Docker/image-20220119194007032.png)
 
 并且可以看到容器内都有内容了
 
-![image-20220119194245470](/images/SpringCloud/00-Docker/image-20220119194245470.png)
+![image-20220119194245470](/images/Java/SpringCloud/00-Docker/image-20220119194245470.png)
 
 当然你也可以选择挂载卷之类的。。
 
@@ -2139,17 +2139,17 @@ curl localhost:9001
 
    - 结果
 
-   - ![image-20220119200457890](/images/SpringCloud/00-Docker/image-20220119200457890.png)
+   - ![image-20220119200457890](/images/Java/SpringCloud/00-Docker/image-20220119200457890.png)
 
    - 上传是比较慢的….因为人家是国外的服务器
 
    - 上传完毕后，是这样的
 
-   - ![image-20220119200759277](/images/SpringCloud/00-Docker/image-20220119200759277.png)
+   - ![image-20220119200759277](/images/Java/SpringCloud/00-Docker/image-20220119200759277.png)
 
    - 然后你就能在自己的[Docker Hub](https://hub.docker.com/)上看到如下内容了
 
-   - ![image-20220119200847859](/images/SpringCloud/00-Docker/image-20220119200847859.png)
+   - ![image-20220119200847859](/images/Java/SpringCloud/00-Docker/image-20220119200847859.png)
 
 可以看到我们的镜像已经上传了(另外那个貌似是创建docker账号的时候自动创建的)
 
@@ -2206,7 +2206,7 @@ docke load < xxx.tar #生成的镜像信息和打包之前的一样
 
 当你连接上服务器的时候，应该有注意到过这个玩意
 
-![image-20220119212308383](/images/SpringCloud/00-Docker/image-20220119212308383.png)
+![image-20220119212308383](/images/Java/SpringCloud/00-Docker/image-20220119212308383.png)
 
 那么现在我有个问题，例如我有个mysql容器，映射了6000到本地，那么我能不能直接访问它的3306呢
 
@@ -2231,7 +2231,7 @@ ff02::2 ip6-allrouters
 
 有个`172.17.0.4`比较令人在意，那么我尝试下本地ping下
 
-![image-20220119214058287](/images/SpringCloud/00-Docker/image-20220119214058287.png)
+![image-20220119214058287](/images/Java/SpringCloud/00-Docker/image-20220119214058287.png)
 
 看来是可以的，也就是说我在容器外面也可以通过访问这个地址的3306来进行访问
 
@@ -2258,7 +2258,7 @@ ff02::2 ip6-allrouters
 
 得到了html
 
-![image-20220119214548354](/images/SpringCloud/00-Docker/image-20220119214548354.png)
+![image-20220119214548354](/images/Java/SpringCloud/00-Docker/image-20220119214548354.png)
 
 那么容器和容器之间是否可以ping通呢？答案是可以的，你可以自行尝试
 
@@ -2294,7 +2294,7 @@ docker run -d -p 9002:8080 --name tomcat2 mytomcat
 
 然后ping一下 是ping不通的
 
-![image-20220119222108897](/images/SpringCloud/00-Docker/image-20220119222108897.png)
+![image-20220119222108897](/images/Java/SpringCloud/00-Docker/image-20220119222108897.png)
 
 所以Docker给我们提供了一个解决方案，link
 
@@ -2313,7 +2313,7 @@ ping tomcat2
 
 可以发现ping通了
 
-![image-20220119222336320](/images/SpringCloud/00-Docker/image-20220119222336320.png)
+![image-20220119222336320](/images/Java/SpringCloud/00-Docker/image-20220119222336320.png)
 
 但是此时，tomcat2可以ping通tomcat3吗？
 
@@ -2335,7 +2335,7 @@ ping tomcat2
 
 可以发现你的全部网络，例如tomcat2和3
 
-![image-20220119222915944](/images/SpringCloud/00-Docker/image-20220119222915944.png)
+![image-20220119222915944](/images/Java/SpringCloud/00-Docker/image-20220119222915944.png)
 
 那么看着两个的配置不用多说了
 
@@ -2345,7 +2345,7 @@ docker inspect tomcat3
 
 可以看到，在它的`HostConfig`内，有一个配置
 
-![image-20220119223715561](/images/SpringCloud/00-Docker/image-20220119223715561.png)
+![image-20220119223715561](/images/Java/SpringCloud/00-Docker/image-20220119223715561.png)
 
 但是在tomcat2中这个地方是没有东西的
 
@@ -2356,7 +2356,7 @@ docker exec -it tomcat3 bash
 cat /etc/hosts
 ```
 
-![image-20220119223910780](/images/SpringCloud/00-Docker/image-20220119223910780.png)
+![image-20220119223910780](/images/Java/SpringCloud/00-Docker/image-20220119223910780.png)
 
 这里就是直接来了个转发，就像是windows的修改hosts文件那样，所以可以直接ping通
 
@@ -2404,7 +2404,7 @@ docker network create --subnet 233.33.0.0/16 --gateway 233.33.0.1 mynet
 
 然后就可以看到我们刚刚创建的网卡了
 
-![image-20220119232745245](/images/SpringCloud/00-Docker/image-20220119232745245.png)
+![image-20220119232745245](/images/Java/SpringCloud/00-Docker/image-20220119232745245.png)
 
 之后，从`233.33.0.2`一直到`233.33.255.255`中都属于他
 
@@ -2458,7 +2458,7 @@ emm然后我尝试创建一个容器，桥接这个网卡
 
 然后发现了如下异常
 
-![image-20220119234052518](/images/SpringCloud/00-Docker/image-20220119234052518.png)
+![image-20220119234052518](/images/Java/SpringCloud/00-Docker/image-20220119234052518.png)
 
 大意就是网络地址不可用，没事，我们删掉重新创建一个1xx的
 
@@ -2470,7 +2470,7 @@ docker network create --subnet 160.1.0.0/16 --gateway 160.1.0.1 mynet
 docker run -d -p 9001:8080 --net mynet --name tomcat-net1 mytomcat
 ```
 
-![image-20220119234145202](/images/SpringCloud/00-Docker/image-20220119234145202.png)
+![image-20220119234145202](/images/Java/SpringCloud/00-Docker/image-20220119234145202.png)
 
 创建成功，再来创建一个2吧
 
@@ -2484,7 +2484,7 @@ docker run -d -p 9002:8080 --net mynet --name tomcat-net2 mytomcat
 docker exec  -it tomcat-net1 ping tomcat-net2
 ```
 
-![image-20220119234338393](/images/SpringCloud/00-Docker/image-20220119234338393.png)
+![image-20220119234338393](/images/Java/SpringCloud/00-Docker/image-20220119234338393.png)
 
 居然ping通了….
 
@@ -2500,13 +2500,13 @@ docker exec  -it tomcat-net1 ping tomcat-net2
 
 也就是这样
 
-![image-20220119234953131](/images/SpringCloud/00-Docker/image-20220119234953131.png)
+![image-20220119234953131](/images/Java/SpringCloud/00-Docker/image-20220119234953131.png)
 
 这个是想都不用想的，压根不可能的，所以说我们应该换一种想法
 
 让在docekr0上面的容器能连接上mynet
 
-![image-20220119235138175](/images/SpringCloud/00-Docker/image-20220119235138175.png)
+![image-20220119235138175](/images/Java/SpringCloud/00-Docker/image-20220119235138175.png)
 
 在`docker networ`中，有如下几个命令
 
@@ -2573,7 +2573,7 @@ docker network connect mynet tomcat1
 docker exec  -it tomcat1 ping tomcat-net1
 ```
 
-![image-20220119235724607](/images/SpringCloud/00-Docker/image-20220119235724607.png)
+![image-20220119235724607](/images/Java/SpringCloud/00-Docker/image-20220119235724607.png)
 
 居然ping通了
 
@@ -2624,7 +2624,7 @@ docker network disconnect mynet tomcat1
 
 然后再ping，就会发现ping不上了
 
-![image-20220120000044659](/images/SpringCloud/00-Docker/image-20220120000044659.png)
+![image-20220120000044659](/images/Java/SpringCloud/00-Docker/image-20220120000044659.png)
 
 ## Docker Compose
 
@@ -2744,7 +2744,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-![image-20220120114317974](/images/SpringCloud/00-Docker/image-20220120114317974.png)
+![image-20220120114317974](/images/Java/SpringCloud/00-Docker/image-20220120114317974.png)
 
 当然 我们还可以使用Python-pip来进行安装
 
@@ -2862,7 +2862,7 @@ docker-compose up
 
 然后你就能看到如下内容
 
-![image-20220120120148671](/images/SpringCloud/00-Docker/image-20220120120148671.png)
+![image-20220120120148671](/images/Java/SpringCloud/00-Docker/image-20220120120148671.png)
 
 最后一个下载可能会比较慢…
 
@@ -2870,33 +2870,33 @@ docker-compose up
 
 所以说我们改动下脚本
 
-![image-20220120124603233](/images/SpringCloud/00-Docker/image-20220120124603233.png)
+![image-20220120124603233](/images/Java/SpringCloud/00-Docker/image-20220120124603233.png)
 
 这行删掉，重新构建（或者你在那里自己指定代理）
 
 然后你就能得到
 
-![image-20220120124734036](/images/SpringCloud/00-Docker/image-20220120124734036.png)
+![image-20220120124734036](/images/Java/SpringCloud/00-Docker/image-20220120124734036.png)
 
 然后开下5000端口，外网访问下看看
 
-![image-20220120124915265](/images/SpringCloud/00-Docker/image-20220120124915265.png)
+![image-20220120124915265](/images/Java/SpringCloud/00-Docker/image-20220120124915265.png)
 
 成功，然后尝试下退出
 
-![image-20220120125100136](/images/SpringCloud/00-Docker/image-20220120125100136.png)
+![image-20220120125100136](/images/Java/SpringCloud/00-Docker/image-20220120125100136.png)
 
 然后您能得到这两个镜像
 
-![image-20220120125230085](/images/SpringCloud/00-Docker/image-20220120125230085.png)
+![image-20220120125230085](/images/Java/SpringCloud/00-Docker/image-20220120125230085.png)
 
 并且在docker images里面多了一个内容
 
-![image-20220120125354954](/images/SpringCloud/00-Docker/image-20220120125354954.png)
+![image-20220120125354954](/images/Java/SpringCloud/00-Docker/image-20220120125354954.png)
 
 并且，我们看看network
 
-![image-20220120131325324](/images/SpringCloud/00-Docker/image-20220120131325324.png)
+![image-20220120131325324](/images/Java/SpringCloud/00-Docker/image-20220120131325324.png)
 
 可以看到，多出了一个网络，也就是说我们部署的容器都是可以互通的
 

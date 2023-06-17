@@ -664,11 +664,11 @@ metrics.exporterPrometheusPort=9898
 
 最终应该和业务库再一个库内
 
-![image-20220114225612986](/images/SpringCloud/14-1-Seata部署全流程/image-20220114225612986.png)
+![image-20220114225612986](/images/Java/SpringCloud/14-1-Seata部署全流程/image-20220114225612986.png)
 
 如果有多个业务库 需要分别创建
 
-![image-20220114225637546](/images/SpringCloud/14-1-Seata部署全流程/image-20220114225637546.png)
+![image-20220114225637546](/images/Java/SpringCloud/14-1-Seata部署全流程/image-20220114225637546.png)
 
 ```sql
 -- for AT mode you must to init this sql for you business database. the seata server not need it.

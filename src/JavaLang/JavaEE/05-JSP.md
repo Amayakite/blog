@@ -28,7 +28,7 @@ tag:
 
 假设需要动态传递给客户端数据（不用ajax的前提下）
 
-![image-20211206120843372](/images/JavaEE/05-JSP/image-20211206120843372.png)
+![image-20211206120843372](/images/Java/JavaEE/05-JSP/image-20211206120843372.png)
 
 截下来使用JSP来简化这一步操作
 
@@ -62,13 +62,13 @@ tag:
 
 打包后的资源文件夹位置如下所示
 
-![image-20211206123334428](/images/JavaEE/05-JSP/image-20211206123334428.png)我们先进入这个文件夹，然后访问a.jsp，看看会发生什么：
+![image-20211206123334428](/images/Java/JavaEE/05-JSP/image-20211206123334428.png)我们先进入这个文件夹，然后访问a.jsp，看看会发生什么：
 
-![image-20211206123425700](/images/JavaEE/05-JSP/image-20211206123425700.png)可以看到，未访问的时候，该文件夹下的`work\Catalina\localhost\jsp\org\apache\jsp`这个路境内首先只有一个index_jsp.class
+![image-20211206123425700](/images/Java/JavaEE/05-JSP/image-20211206123425700.png)可以看到，未访问的时候，该文件夹下的`work\Catalina\localhost\jsp\org\apache\jsp`这个路境内首先只有一个index_jsp.class
 
 访问后：
 
-![image-20211206123540480](/images/JavaEE/05-JSP/image-20211206123540480.png)
+![image-20211206123540480](/images/Java/JavaEE/05-JSP/image-20211206123540480.png)
 
 然后看看a.jsp的源码：
 
@@ -225,7 +225,7 @@ page中可以写上去的属性
 
 接下来看看源码他们都变成了啥：直接转换成了java代码...
 
-![image-20211206141244413](/images/JavaEE/05-JSP/image-20211206141244413.png)
+![image-20211206141244413](/images/Java/JavaEE/05-JSP/image-20211206141244413.png)
 
 ### 使用声明脚本导入自己的类的时候注意事项
 
@@ -288,7 +288,7 @@ page中可以写上去的属性
 </body>
 ```
 
-![image-20211206140558244](/images/JavaEE/05-JSP/image-20211206140558244.png)
+![image-20211206140558244](/images/Java/JavaEE/05-JSP/image-20211206140558244.png)
 
 看下编译后的源码：哦原来是自动帮我们转换成了`out.print()`
 
@@ -342,11 +342,11 @@ out.write("</body>\r\n");
 
 ```
 
-![image-20211206142755283](/images/JavaEE/05-JSP/image-20211206142755283.png)
+![image-20211206142755283](/images/Java/JavaEE/05-JSP/image-20211206142755283.png)
 
 编译后的Java文件
 
-![image-20211206142845918](/images/JavaEE/05-JSP/image-20211206142845918.png)
+![image-20211206142845918](/images/Java/JavaEE/05-JSP/image-20211206142845918.png)
 
 #### 代码脚本的特点和注意事项
 
@@ -394,7 +394,7 @@ out.write("</body>\r\n");
 
 ​  Tomcat在编译jsp页面成为Servlet源码后，内部会提供九个对象
 
-![image-20211206144442202](/images/JavaEE/05-JSP/image-20211206144442202.png)
+![image-20211206144442202](/images/Java/JavaEE/05-JSP/image-20211206144442202.png)
 
 ### 四大域对象
 
@@ -437,15 +437,15 @@ out.write("</body>\r\n");
 
 你在此时是不是觉得输出内容很正常，先是out，再是res，但结果是：
 
-![image-20211206145400795](/images/JavaEE/05-JSP/image-20211206145400795.png)
+![image-20211206145400795](/images/Java/JavaEE/05-JSP/image-20211206145400795.png)
 
 emm遇事不决先看源码：
 
-![image-20211206145505903](/images/JavaEE/05-JSP/image-20211206145505903.png)
+![image-20211206145505903](/images/Java/JavaEE/05-JSP/image-20211206145505903.png)
 
 源码似乎并没有什么问题，接下来分析下
 
-![image-20211206150030961](/images/JavaEE/05-JSP/image-20211206150030961.png) 说以说，我们可以通过提前调用out.flush的方式来让out中的内容比res中的内容先一步渲染出去
+![image-20211206150030961](/images/Java/JavaEE/05-JSP/image-20211206150030961.png) 说以说，我们可以通过提前调用out.flush的方式来让out中的内容比res中的内容先一步渲染出去
 
 ```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -466,13 +466,13 @@ emm遇事不决先看源码：
 
 结果：
 
-![image-20211206150147744](/images/JavaEE/05-JSP/image-20211206150147744.png)
+![image-20211206150147744](/images/Java/JavaEE/05-JSP/image-20211206150147744.png)
 
 ### out.write和out.print的区别
 
 如果你试图这样：`out.write(12)`，就能发现页面上啥都没显示
 
-![image-20211206150649757](/images/JavaEE/05-JSP/image-20211206150649757.png)
+![image-20211206150649757](/images/Java/JavaEE/05-JSP/image-20211206150649757.png)
 
 但是换成print却又可以
 
@@ -496,7 +496,7 @@ emm遇事不决先看源码：
 
 众所周知，大部分网站中的结构都是这样的：
 
-![image-20211206151722723](/images/JavaEE/05-JSP/image-20211206151722723.png)
+![image-20211206151722723](/images/Java/JavaEE/05-JSP/image-20211206151722723.png)
 
 ​  假设你现在有一个网站，有10w个页面，如果每个页面都这样写重复的内容，那岂不是太难受了，并且修改的时候也要10w个页面的内容都一起改
 
@@ -506,7 +506,7 @@ emm遇事不决先看源码：
 
 就是这样：
 
-![image-20211206152007851](/images/JavaEE/05-JSP/image-20211206152007851.png)
+![image-20211206152007851](/images/Java/JavaEE/05-JSP/image-20211206152007851.png)
 
 语法：
 
@@ -554,11 +554,11 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
 
 结果：
 
-![image-20211206152620654](/images/JavaEE/05-JSP/image-20211206152620654.png)
+![image-20211206152620654](/images/Java/JavaEE/05-JSP/image-20211206152620654.png)
 
 分析下源码：
 
-![image-20211206152719104](/images/JavaEE/05-JSP/image-20211206152719104.png)
+![image-20211206152719104](/images/Java/JavaEE/05-JSP/image-20211206152719104.png)
 
 草，直接把哪个页面的out中的所有内容搬到这里来了......
 
@@ -582,7 +582,7 @@ file属性指定要包含的jsp页面的路径，地址中第一个斜杠表示`
    org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "资源和路径名", out, false);
    ```
 
-   ![image-20211206154103227](/images/JavaEE/05-JSP/image-20211206154103227.png)
+   ![image-20211206154103227](/images/Java/JavaEE/05-JSP/image-20211206154103227.png)
 
 3. 动态包含还可以传递参数：
 
@@ -642,11 +642,11 @@ footer:
 
 效果：
 
-![image-20211206154340122](/images/JavaEE/05-JSP/image-20211206154340122.png)
+![image-20211206154340122](/images/Java/JavaEE/05-JSP/image-20211206154340122.png)
 
 和静态包含不同的是，他会生成被包含的文件的编译文件：
 
-![image-20211206153413808](/images/JavaEE/05-JSP/image-20211206153413808.png)
+![image-20211206153413808](/images/Java/JavaEE/05-JSP/image-20211206153413808.png)
 
 并且在源码中调用了这样一个方法：
 
@@ -757,7 +757,7 @@ public class MyListener implements ServletContextListener {
 
 效果：
 
-![image-20211206162047442](/images/JavaEE/05-JSP/image-20211206162047442.png)
+![image-20211206162047442](/images/Java/JavaEE/05-JSP/image-20211206162047442.png)
 
 ## EL表达式
 
@@ -798,7 +798,7 @@ JS表达式：<%=request.getAttribute("key")%>
 EL表达式：${key}
 ```
 
-![image-20211206164556420](/images/JavaEE/05-JSP/image-20211206164556420.png)
+![image-20211206164556420](/images/Java/JavaEE/05-JSP/image-20211206164556420.png)
 
 ### El表达式搜索区域的顺序
 
@@ -816,7 +816,7 @@ EL表达式：${key}
 <%--输出结果应该是：pageContext--%>
 ```
 
-![image-20211206165002714](/images/JavaEE/05-JSP/image-20211206165002714.png)
+![image-20211206165002714](/images/Java/JavaEE/05-JSP/image-20211206165002714.png)
 
 ### EL表达式输出Bean的普通属性、数组属性、List集合属性、Map集合属性
 
@@ -855,19 +855,19 @@ EL表达式输出map：${map}
 
 结果：
 
-![image-20211206171508674](/images/JavaEE/05-JSP/image-20211206171508674.png)
+![image-20211206171508674](/images/Java/JavaEE/05-JSP/image-20211206171508674.png)
 
 ### EL表达式-运算
 
 #### 关系运算
 
-![image-20211206171750922](/images/JavaEE/05-JSP/image-20211206171750922.png)
+![image-20211206171750922](/images/Java/JavaEE/05-JSP/image-20211206171750922.png)
 
 关系运算是通过方法内的equals来决定的
 
 #### 逻辑运算
 
-![image-20211206171800762](/images/JavaEE/05-JSP/image-20211206171800762.png)
+![image-20211206171800762](/images/Java/JavaEE/05-JSP/image-20211206171800762.png)
 
 还有
 
@@ -885,7 +885,7 @@ EL表达式输出map：${map}
 
 ### EL表达式中的11个内置对象
 
-![image-20211206172946529](/images/JavaEE/05-JSP/image-20211206172946529.png)
+![image-20211206172946529](/images/Java/JavaEE/05-JSP/image-20211206172946529.png)
 
 - `pageScope`：获取pageContext域属性，相当于pageContext.getAttribute("xxx")
 - `requestScope`：获取request域属性，相当于request.getAttribute("xxx")
@@ -1007,7 +1007,7 @@ if语句并不能做多条件判断（没有elseif）
   - 可以通过`varStatus="status"` 来讲statuc设置成为当前对象的状态
   - 这个状态可以在for循环中调用`statuc.方法名`
   - status是一个LoopTagStatus对象：
-    ![image-20211206223248677](/images/JavaEE/05-JSP/image-20211206223248677.png)
+    ![image-20211206223248677](/images/Java/JavaEE/05-JSP/image-20211206223248677.png)
 
 ```html
 <%--遍历1~10
@@ -1114,7 +1114,7 @@ public class upFile extends HttpServlet {
 
 在这之前，先了解下文件上传时浏览器发送了那些数据
 
-![image-20211206230851372](/images/JavaEE/05-JSP/image-20211206230851372.png)
+![image-20211206230851372](/images/Java/JavaEE/05-JSP/image-20211206230851372.png)
 
 我们先获取下用户发送的流，看下有哪些内容：
 
@@ -1128,7 +1128,7 @@ while ((len = inputStream.read(bytes)) != -1) {
 }
 ```
 
-![image-20211206231744235](/images/JavaEE/05-JSP/image-20211206231744235.png)
+![image-20211206231744235](/images/Java/JavaEE/05-JSP/image-20211206231744235.png)
 
 看起来没错，那么该如何获取到这个文件呢？
 
@@ -1213,7 +1213,7 @@ while ((len = inputStream.read(bytes)) != -1) {
 
 运行结果（若多个文件上传，只会上传第一个）：
 
-![image-20211207121352017](/images/JavaEE/05-JSP/image-20211207121352017.png)
+![image-20211207121352017](/images/Java/JavaEE/05-JSP/image-20211207121352017.png)
 
 ### 文件下载（发送给客户端）
 
@@ -1223,7 +1223,7 @@ while ((len = inputStream.read(bytes)) != -1) {
 
 大概流程：
 
-![image-20211207121932296](/images/JavaEE/05-JSP/image-20211207121932296.png)
+![image-20211207121932296](/images/Java/JavaEE/05-JSP/image-20211207121932296.png)
 
 ### 发送其他文件并让客户端直接下载
 
@@ -1466,7 +1466,7 @@ resp.addCookie(cookie);
 
 ### 关于Cookie的Path
 
-![image-20211207153825970](/images/JavaEE/05-JSP/image-20211207153825970.png)
+![image-20211207153825970](/images/Java/JavaEE/05-JSP/image-20211207153825970.png)
 
 ## Session
 
@@ -1546,11 +1546,11 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 如果说设置为负数的话，表示用不超时，全局和局部都是如此
 
-![image-20211207161617663](/images/JavaEE/05-JSP/image-20211207161617663.png)
+![image-20211207161617663](/images/Java/JavaEE/05-JSP/image-20211207161617663.png)
 
 上面那个是全局的，如果想要设置单个会话的话：
 
-![image-20211207161818205](/images/JavaEE/05-JSP/image-20211207161818205.png)
+![image-20211207161818205](/images/Java/JavaEE/05-JSP/image-20211207161818205.png)
 
 ### 让session立刻超时（销毁）
 
@@ -1562,7 +1562,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 一张图概括，相当于浏览器和服务端之间的Session是通过COOKIE联系的
 
-![image-20211207163532641](/images/JavaEE/05-JSP/image-20211207163532641.png)
+![image-20211207163532641](/images/Java/JavaEE/05-JSP/image-20211207163532641.png)
 
 ### Session的实例-验证码
 
@@ -1592,7 +1592,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 要求：web工程下，有一个admin目录，这个admin目录下的所有资源（HTMl页面。jpg图片。JSp文件等）都必须是用户登录之后才允许访问
 
-![image-20211207180618388](/images/JavaEE/05-JSP/image-20211207180618388.png)
+![image-20211207180618388](/images/Java/JavaEE/05-JSP/image-20211207180618388.png)
 
 根据我们之前学习的东西来说，用户登陆之后，相关信息都在COOKIE中有，或者在Session域中存在
 
@@ -1839,11 +1839,11 @@ Filter2 的后置代码执行了
 filter1 后置代码
 ```
 
-![image-20211207214110480](/images/JavaEE/05-JSP/image-20211207214110480.png)
+![image-20211207214110480](/images/Java/JavaEE/05-JSP/image-20211207214110480.png)
 
 使用Thread.currentThread.getName()查看线程
 
-![image-20211207214130720](/images/JavaEE/05-JSP/image-20211207214130720.png)
+![image-20211207214130720](/images/Java/JavaEE/05-JSP/image-20211207214130720.png)
 
 ### Filter的三种拦截匹配模式
 
@@ -1881,7 +1881,7 @@ filter1 后置代码
 
 例如我现在设置一个ErrorPage页面，内容就一个h1标签里面写着Errorpage
 
-![image-20211207215653754](/images/JavaEE/05-JSP/image-20211207215653754.png)
+![image-20211207215653754](/images/Java/JavaEE/05-JSP/image-20211207215653754.png)
 
 然后设置下web.xml
 
@@ -1902,7 +1902,7 @@ filter1 后置代码
 
 试图进入login.jsp：发现是转发了内容，而不是重定向，说明我们可以直接编写一个Error的Servlet，然后获取错误内容并存储到数据库之类的
 
-![image-20211207215731561](/images/JavaEE/05-JSP/image-20211207215731561.png)
+![image-20211207215731561](/images/Java/JavaEE/05-JSP/image-20211207215731561.png)
 
 ## I18N国际化
 
@@ -1924,7 +1924,7 @@ filter1 后置代码
 
 ### 国际化的相关要素
 
-![image-20211207221430453](/images/JavaEE/05-JSP/image-20211207221430453.png)
+![image-20211207221430453](/images/Java/JavaEE/05-JSP/image-20211207221430453.png)
 
 示例：
 
@@ -1974,7 +1974,7 @@ logout=Logout
 
 一定要放在res文件夹中，对应打包后的classes根目录，否则是无法读取到的：当你的文件名和路径都准确无误时，IEDA会给你自动加上一个资源包的tag（实际上就是在res的根目录）
 
-![image-20211207223958124](/images/JavaEE/05-JSP/image-20211207223958124.png)
+![image-20211207223958124](/images/Java/JavaEE/05-JSP/image-20211207223958124.png)
 
 然后编写一个测试类测试：
 
@@ -1993,7 +1993,7 @@ public void test2(){
 
 或者像我一样，设置下properties的文件编码，然后删除原先创建的文件，再新建一个相同的文件，就是UTF-8编码了
 
-![image-20211207224718369](/images/JavaEE/05-JSP/image-20211207224718369.png)
+![image-20211207224718369](/images/Java/JavaEE/05-JSP/image-20211207224718369.png)
 
 ### 在网页中使用I18N
 
@@ -2023,7 +2023,7 @@ public void test2(){
 
 最终结果
 
-![image-20211207225744152](/images/JavaEE/05-JSP/image-20211207225744152.png)
+![image-20211207225744152](/images/Java/JavaEE/05-JSP/image-20211207225744152.png)
 
 ### 如何让用户自己选择语言
 
@@ -2076,7 +2076,7 @@ public void test2(){
 
 打开网页，可以自由切换了
 
-![image-20211207231512239](/images/JavaEE/05-JSP/image-20211207231512239.png)
+![image-20211207231512239](/images/Java/JavaEE/05-JSP/image-20211207231512239.png)
 
 ### 使用JSTL标签实现国际化
 

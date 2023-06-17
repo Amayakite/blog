@@ -15,15 +15,15 @@ tag:
 
 我们实际上使用数据库不单单是一对一，还有可能
 
-![image-20220112224744828](/images/SpringCloud/14-Seata分布式事务/image-20220112224744828.png)
+![image-20220112224744828](/images/Java/SpringCloud/14-Seata分布式事务/image-20220112224744828.png)
 
 一对一，一对多，多对多之间的数据同步性
 
 这就是分布式事务（单机没有这种问题）
 
-![image-20220112224841410](/images/SpringCloud/14-Seata分布式事务/image-20220112224841410.png)
+![image-20220112224841410](/images/Java/SpringCloud/14-Seata分布式事务/image-20220112224841410.png)
 
-![image-20220112224919602](/images/SpringCloud/14-Seata分布式事务/image-20220112224919602.png)
+![image-20220112224919602](/images/Java/SpringCloud/14-Seata分布式事务/image-20220112224919602.png)
 
 为此，就要用到阿里开发的Seata了
 
@@ -47,7 +47,7 @@ tag:
 
 
 
-![img](/images/SpringCloud/14-Seata分布式事务/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png)
+![img](/images/Java/SpringCloud/14-Seata分布式事务/TB1rDpkJAvoK1RjSZPfXXXPKFXa-794-478.png)
 
 执行步骤：
 
@@ -77,7 +77,7 @@ tag:
 
 已经有半年多没有更新了hhh
 
-![image-20220112235620331](/images/SpringCloud/14-Seata分布式事务/image-20220112235620331.png)
+![image-20220112235620331](/images/Java/SpringCloud/14-Seata分布式事务/image-20220112235620331.png)
 
 下载好后怎么用？
 
@@ -86,11 +86,11 @@ tag:
 
 两个注解就完了
 
-![image-20220113000401578](/images/SpringCloud/14-Seata分布式事务/image-20220113000401578.png)
+![image-20220113000401578](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113000401578.png)
 
 下载解压后，我们能得到这些文件
 
-![image-20220113000552374](/images/SpringCloud/14-Seata分布式事务/image-20220113000552374.png)
+![image-20220113000552374](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113000552374.png)
 
 
 
@@ -598,7 +598,7 @@ INSERT INTO `distributed_lock` (lock_key, lock_value, expire) VALUES ('TxTimeout
 
 然后我们在nacos中新建一个命名空间
 
-![image-20220113133626909](/images/SpringCloud/14-Seata分布式事务/image-20220113133626909.png)
+![image-20220113133626909](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113133626909.png)
 
 这里唯一id填写我们刚刚生成的，或者你也可以让他自己生成，回头我们再写入到那啥里面
 
@@ -610,7 +610,7 @@ INSERT INTO `distributed_lock` (lock_key, lock_value, expire) VALUES ('TxTimeout
 
 注意 这个config.txt要下载下来
 
-![image-20220113134813184](/images/SpringCloud/14-Seata分布式事务/image-20220113134813184.png)
+![image-20220113134813184](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113134813184.png)
 
 > 后续补充：**千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本千万不要用自己版本分支的脚本**
 >
@@ -745,13 +745,13 @@ Py脚本同理
 
 接着，你就可以在你的nacos内看到如下配置
 
-![image-20220113141356702](/images/SpringCloud/14-Seata分布式事务/image-20220113141356702.png)
+![image-20220113141356702](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113141356702.png)
 
 ### 启动Seata
 
 我们接着到bin目录中启动服务端
 
-![image-20220113133058737](/images/SpringCloud/14-Seata分布式事务/image-20220113133058737.png)
+![image-20220113133058737](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113133058737.png)
 
 支持的参数  这些会覆盖掉我们配置的内容
 
@@ -784,13 +784,13 @@ Py脚本同理
 
 如果说你始终不成功的话
 
-![image-20220113165743916](/images/SpringCloud/14-Seata分布式事务/image-20220113165743916.png)
+![image-20220113165743916](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113165743916.png)
 
 把这里面的sql版本换成你自己的即可
 
 然后你就能在nacos的服务列表内看到它了
 
-![image-20220113142831087](/images/SpringCloud/14-Seata分布式事务/image-20220113142831087.png)
+![image-20220113142831087](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113142831087.png)
 
 ### 使用本地文件和使用Nacos内容的区别
 
@@ -806,9 +806,9 @@ config.type是我们从哪里读取配置文件（从哪里读conig.conf）
 
 这里就懒得说了，随便找个数据库
 
-![image-20220113171026035](/images/SpringCloud/14-Seata分布式事务/image-20220113171026035.png)
+![image-20220113171026035](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113171026035.png)
 
-![image-20220113171938191](/images/SpringCloud/14-Seata分布式事务/image-20220113171938191.png)
+![image-20220113171938191](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113171938191.png)
 
 ```sql
 CREATE DATABASE seata_order;
@@ -845,7 +845,7 @@ INSERT INTO t_account(id, user_id, total, used, residue) VALUES(1,1,1000,0,1000)
 
 我们最终建立好的库为
 
-![image-20220113172101572](/images/SpringCloud/14-Seata分布式事务/image-20220113172101572.png)
+![image-20220113172101572](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113172101572.png)
 
 
 
@@ -898,7 +898,7 @@ CREATE TABLE IF NOT EXISTS `undo_log`
 
 最终结构
 
-![image-20220113172656263](/images/SpringCloud/14-Seata分布式事务/image-20220113172656263.png)
+![image-20220113172656263](/images/Java/SpringCloud/14-Seata分布式事务/image-20220113172656263.png)
 
 ### 业务需求梳理
 
@@ -1064,7 +1064,7 @@ public class TAccount implements Serializable {
 
 三个模块同理
 
-![image-20220114183253532](/images/SpringCloud/14-Seata分布式事务/image-20220114183253532.png)
+![image-20220114183253532](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114183253532.png)
 
 最终我们想要的是： 创建订单-》调用库存扣减库存-》调用账户服务扣减账户余额-》修改订单状态
 
@@ -1438,7 +1438,7 @@ public class DataSourceProxyConfig {
 
 最终应该是
 
-![image-20220114193507737](/images/SpringCloud/14-Seata分布式事务/image-20220114193507737.png)
+![image-20220114193507737](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114193507737.png)
 
 2001调用2002，2002 调用结束后，2001再调用2003
 
@@ -1565,7 +1565,7 @@ public class OrderServiceImpl implements OrderService {
 
 它的整体三组件，可以用一张图概括
 
-![image-20220114195801910](/images/SpringCloud/14-Seata分布式事务/image-20220114195801910.png)
+![image-20220114195801910](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114195801910.png)
 
 它的执行流程为：
 
@@ -1583,37 +1583,37 @@ public class OrderServiceImpl implements OrderService {
 
 这几个模式没啥好说的，反正用AT即可
 
-![image-20220114200431812](/images/SpringCloud/14-Seata分布式事务/image-20220114200431812.png)
+![image-20220114200431812](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114200431812.png)
 
 当然，阿里云主推的GTS比AT强非常多
 
-![image-20220114200812457](/images/SpringCloud/14-Seata分布式事务/image-20220114200812457.png)
+![image-20220114200812457](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114200812457.png)
 
 这句话代表着啥呢？
 
 就是我们每一个操作，都会记录在
 
-![image-20220114200719502](/images/SpringCloud/14-Seata分布式事务/image-20220114200719502.png)
+![image-20220114200719502](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114200719502.png)
 
 这个表中，然后统一的，在这些表中提现
 
-![image-20220114200742919](/images/SpringCloud/14-Seata分布式事务/image-20220114200742919.png)
+![image-20220114200742919](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114200742919.png)
 
 它总共分为三个阶段
 
-![image-20220114200854020](/images/SpringCloud/14-Seata分布式事务/image-20220114200854020.png)
+![image-20220114200854020](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114200854020.png)
 
 这就相当于Spring的AOP：前置通知和后置通知
 
-![image-20220114201148826](/images/SpringCloud/14-Seata分布式事务/image-20220114201148826.png)
+![image-20220114201148826](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114201148826.png)
 
 
 
 然后是三阶段
 
-![image-20220114201348572](/images/SpringCloud/14-Seata分布式事务/image-20220114201348572.png)
+![image-20220114201348572](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114201348572.png)
 
-![image-20220114201355998](/images/SpringCloud/14-Seata分布式事务/image-20220114201355998.png)
+![image-20220114201355998](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114201355998.png)
 
 可能你会说 啥都没有看到
 
@@ -1621,11 +1621,11 @@ DEBUG一下就看得到了hhh
 
 先打个断点
 
-![image-20220114201716474](/images/SpringCloud/14-Seata分布式事务/image-20220114201716474.png)
+![image-20220114201716474](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114201716474.png)
 
 然后你就能在你的seata库内看到内容
 
-![image-20220114201731704](/images/SpringCloud/14-Seata分布式事务/image-20220114201731704.png)
+![image-20220114201731704](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114201731704.png)
 
 出现了三个ID
 
@@ -1637,21 +1637,21 @@ DEBUG一下就看得到了hhh
 
 并且你还可以在这后面看到他们所有的详细内容
 
-![image-20220114202011787](/images/SpringCloud/14-Seata分布式事务/image-20220114202011787.png)
+![image-20220114202011787](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114202011787.png)
 
 接下来我们看看其他表的情况
 
-![image-20220114202053947](/images/SpringCloud/14-Seata分布式事务/image-20220114202053947.png)
+![image-20220114202053947](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114202053947.png)
 
 首先看订单表 他这个undo_log就多出了一些内容
 
 首先第二个和第三个 和之前的一样 分支id和全局事务id，我们主要看后面的
 
-![image-20220114202214494](/images/SpringCloud/14-Seata分布式事务/image-20220114202214494.png)
+![image-20220114202214494](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114202214494.png)
 
 rollback_info 这又是个啥玩意?
 
-![image-20220114202308873](/images/SpringCloud/14-Seata分布式事务/image-20220114202308873.png)
+![image-20220114202308873](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114202308873.png)
 
 把他提取出来后 可以看到两个 一个beforeImage 一个afterImage
 
@@ -1659,11 +1659,11 @@ rollback_info 这又是个啥玩意?
 
 接着我们回过头来看看原理
 
-![image-20220114202448744](/images/SpringCloud/14-Seata分布式事务/image-20220114202448744.png)
+![image-20220114202448744](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114202448744.png)
 
 就相当于是这样的
 
-![image-20220114202606699](/images/SpringCloud/14-Seata分布式事务/image-20220114202606699.png)
+![image-20220114202606699](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114202606699.png)
 
 我们在执行业务之前 都先哪一个小本本记录下当前的状态 执行完毕后同理
 
@@ -1681,33 +1681,33 @@ rollback_info 这又是个啥玩意?
 >
 > 如果说不一样 那就…需要转人工处理
 >
-> ![image-20220114203246779](/images/SpringCloud/14-Seata分布式事务/image-20220114203246779.png)
+> ![image-20220114203246779](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114203246779.png)
 
 我们的前置数据和后置数据都在镜像内存储的明明白白的
 
-![image-20220114203435775](/images/SpringCloud/14-Seata分布式事务/image-20220114203435775.png)
+![image-20220114203435775](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114203435775.png)
 
 然后我们再来看看这张表
 
-![image-20220114203540728](/images/SpringCloud/14-Seata分布式事务/image-20220114203540728.png)
+![image-20220114203540728](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114203540728.png)
 
 这里的内容就是一个xid 非常明显，就是我们的@GlobalTransaction发起的
 
 然后还有一个lock表
 
-![image-20220114203617419](/images/SpringCloud/14-Seata分布式事务/image-20220114203617419.png)
+![image-20220114203617419](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114203617419.png)
 
 能非常直观的看到，这里把我们的三张表全给锁了
 
 接着你取消debug之后，全部内容都没了，也印证了官方文档的那句话
 
-![image-20220114203827692](/images/SpringCloud/14-Seata分布式事务/image-20220114203827692.png)
+![image-20220114203827692](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114203827692.png)
 
 所以最终的流程为
 
-![image-20220114203955251](/images/SpringCloud/14-Seata分布式事务/image-20220114203955251.png)
+![image-20220114203955251](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114203955251.png)
 
-![image-20220114204036254](/images/SpringCloud/14-Seata分布式事务/image-20220114204036254.png)
+![image-20220114204036254](/images/Java/SpringCloud/14-Seata分布式事务/image-20220114204036254.png)
 
 代理数据源：就是我们自己配置的@bean之类的
 

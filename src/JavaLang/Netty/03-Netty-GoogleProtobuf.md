@@ -22,7 +22,7 @@ tag:
   - decoder解码器，负责把字节码数据转换成业务数据
   - encoder编码器，负责把业务数据转换成字节码数据
 
-![image-20220517225915934](/images/Netty/03-Netty-GoogleProtobuf/image-20220517225915934.png)
+![image-20220517225915934](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220517225915934.png)
 
 - Netty自身提供了一些codec（解码器），例如：
   - StringEncoder，对字符串编码，StringDecoder解码
@@ -49,9 +49,9 @@ tag:
 
 它实际上是一个新的文件类型，同时类型和不用的语言有不同的对应（并不需要去记，有自动转换工具）
 
-![image-20220517231048311](/images/Netty/03-Netty-GoogleProtobuf/image-20220517231048311.png)
+![image-20220517231048311](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220517231048311.png)
 
-![image-20220517231157320](/images/Netty/03-Netty-GoogleProtobuf/image-20220517231157320.png)
+![image-20220517231157320](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220517231157320.png)
 
 ## Protobuf-快速入门
 
@@ -100,7 +100,7 @@ message Student {
 
 嘛反正下载对应系统的版本即可，这里放一个我的[下载链接](https://gh2.yanqishui.work/https://github.com/protocolbuffers/protobuf/releases/download/v21.0-rc1/protoc-21.0-rc-1-win64.zip)
 
-![image-20220517233144250](/images/Netty/03-Netty-GoogleProtobuf/image-20220517233144250.png)
+![image-20220517233144250](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220517233144250.png)
 
 然后把bin中的内容丢到path即可（如果你用过golang的话建议是丢在gopath/bin中，方便管理些..）
 
@@ -114,7 +114,7 @@ protoc --java_out=. .\Student.proto
 
 然后你就可以得到一个Java文件，并且它的文件头还写了一些话
 
-![image-20220517234742730](/images/Netty/03-Netty-GoogleProtobuf/image-20220517234742730.png)
+![image-20220517234742730](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220517234742730.png)
 
 > **由协议缓冲区编译器生成。不要编辑!来源:Student.proto**
 >
@@ -425,11 +425,11 @@ protoc --java_out=你项目的java目录，例如/home/aaa/ccc/src/main/java .\S
 
 然后就得到了一个三千行的文件
 
-![image-20220518214443747](/images/Netty/03-Netty-GoogleProtobuf/image-20220518214443747.png)
+![image-20220518214443747](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220518214443747.png)
 
 然后结构如下
 
-![image-20220518214542916](/images/Netty/03-Netty-GoogleProtobuf/image-20220518214542916.png)
+![image-20220518214542916](/images/Java/Netty/03-Netty-GoogleProtobuf/image-20220518214542916.png)
 
 接着是客户端发送，只需要知道DataType是一个枚举类即可
 

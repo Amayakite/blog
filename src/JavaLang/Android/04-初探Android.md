@@ -24,69 +24,69 @@ tag:
 
 首先新建一个项目，创建的过程中选择**Empty Activity**
 
-![image-20220509122858858](/images/Android/04-初探Android/image-20220509122858858.png)
+![image-20220509122858858](/images/Java/Android/04-初探Android/image-20220509122858858.png)
 
 然后填入如下内容（PS：实际开发大项目的过程中都是兼容最老的版本hhhh不过一般都是7.0多一些）
 
-![image-20220509123140115](/images/Android/04-初探Android/image-20220509123140115.png)
+![image-20220509123140115](/images/Java/Android/04-初探Android/image-20220509123140115.png)
 
 创建完毕后，等待gradle加载完毕，首先能看到有个main类
 
-![image-20220509123736298](/images/Android/04-初探Android/image-20220509123736298.png)
+![image-20220509123736298](/images/Java/Android/04-初探Android/image-20220509123736298.png)
 
 点击左边那个xml
 
-![image-20220509123800742](/images/Android/04-初探Android/image-20220509123800742.png)
+![image-20220509123800742](/images/Java/Android/04-初探Android/image-20220509123800742.png)
 
 能看到一个Hello World居中显示
 
 然后我们需要下载下adv（就类似于模拟器之类的）
 
-![image-20220509123918115](/images/Android/04-初探Android/image-20220509123918115.png)
+![image-20220509123918115](/images/Java/Android/04-初探Android/image-20220509123918115.png)
 
 然后点击create
 
-![image-20220509123935442](/images/Android/04-初探Android/image-20220509123935442.png)
+![image-20220509123935442](/images/Java/Android/04-初探Android/image-20220509123935442.png)
 
 然后选择默认（这里只是选择下外观而已）的并next
 
-![image-20220509124053671](/images/Android/04-初探Android/image-20220509124053671.png)
+![image-20220509124053671](/images/Java/Android/04-初探Android/image-20220509124053671.png)
 
 然后选择Android的版本，这里选择API是30的，也就是Android11，并点击download
 
-![image-20220509124221944](/images/Android/04-初探Android/image-20220509124221944.png)
+![image-20220509124221944](/images/Java/Android/04-初探Android/image-20220509124221944.png)
 
 下载需要一定的时间，可能速度会比较慢...
 
 下载好后点击下一步，会显示要创建的ADV的信息，同时如果你是IEDA的话，右下角会出现一个要安装的按钮，点进去安装即可，里面的内存随你电脑的内存来酌情设置（貌似不装也可以，直接点右下角完成也行）
 
-![image-20220509125618433](/images/Android/04-初探Android/image-20220509125618433.png)
+![image-20220509125618433](/images/Java/Android/04-初探Android/image-20220509125618433.png)
 
 完毕后，点击启动即可
 
-![image-20220509125822975](/images/Android/04-初探Android/image-20220509125822975.png)
+![image-20220509125822975](/images/Java/Android/04-初探Android/image-20220509125822975.png)
 
 然后你就可以看到Hello World了
 
-![image-20220509130008530](/images/Android/04-初探Android/image-20220509130008530.png)
+![image-20220509130008530](/images/Java/Android/04-初探Android/image-20220509130008530.png)
 
 这是一个正宗的原生系统，如果说你不想用它的话，也可以选择模拟器或者手机
 
 如果要连接手机的话，首先手机通过USB连接电脑，然后打开USB调试模式（要先开启开发者模式），然后就能在IED中看到多了一个设备，也就是你的设备，这时就可以直接run在上面了
 
-![image-20220509130517917](/images/Android/04-初探Android/image-20220509130517917.png)
+![image-20220509130517917](/images/Java/Android/04-初探Android/image-20220509130517917.png)
 
 运行效果
 
-![image-20220509130658246](/images/Android/04-初探Android/image-20220509130658246.png)
+![image-20220509130658246](/images/Java/Android/04-初探Android/image-20220509130658246.png)
 
 然后如果你使用的是内置模拟器的话，还可以通过这种方式来内嵌使用
 
-![image-20220509131043760](/images/Android/04-初探Android/image-20220509131043760.png)
+![image-20220509131043760](/images/Java/Android/04-初探Android/image-20220509131043760.png)
 
 当然你也可以使用模拟器之类的来run，不过模拟器的话需要先把之前在下载Android系统中的`platform-tools`这个路径下的adb.exe替换掉模拟器自带的adb.exe
 
-![image-20220509133228784](/images/Android/04-初探Android/image-20220509133228784.png)
+![image-20220509133228784](/images/Java/Android/04-初探Android/image-20220509133228784.png)
 
 ## Android中的日志相关
 
@@ -115,23 +115,23 @@ public class MainActivity extends AppCompatActivity {
 
 在Android中，日志分为5个等级
 
-![image-20220509131548632](/images/Android/04-初探Android/image-20220509131548632.png)
+![image-20220509131548632](/images/Java/Android/04-初探Android/image-20220509131548632.png)
 
 然后就可以看到了
 
-![image-20220509131851339](/images/Android/04-初探Android/image-20220509131851339.png)
+![image-20220509131851339](/images/Java/Android/04-初探Android/image-20220509131851339.png)
 
 不过这贼多的日志看着头疼，可以通过配置过滤器来查看我们的日志
 
-![image-20220509131935217](/images/Android/04-初探Android/image-20220509131935217.png)
+![image-20220509131935217](/images/Java/Android/04-初探Android/image-20220509131935217.png)
 
 这样配置即可
 
-![image-20220509132000606](/images/Android/04-初探Android/image-20220509132000606.png)
+![image-20220509132000606](/images/Java/Android/04-初探Android/image-20220509132000606.png)
 
 当然你也可以命名下之类的，这里就不说明了，设置完后，效果为
 
-![image-20220509132044842](/images/Android/04-初探Android/image-20220509132044842.png)
+![image-20220509132044842](/images/Java/Android/04-初探Android/image-20220509132044842.png)
 
 ## Android的开发语言
 
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
 Android的官方编译语言包括Java和Kotlin
 
-![image-20220509133529414](/images/Android/04-初探Android/image-20220509133529414.png)
+![image-20220509133529414](/images/Java/Android/04-初探Android/image-20220509133529414.png)
 
 混合开发就是emm类似于开发HTML一样的语法，给你解析成Android，比起原生的好处是可以一套代码几个平台（例如Flutter、ReactNatie和Vue的UniApp等），常见的就是一套代码支持Web，桌面，Android，IOS，但缺点是性能和体验度没有原生的好
 
@@ -149,27 +149,27 @@ Android的官方编译语言包括Java和Kotlin
 
 首先我们将视图切换成Android
 
-![image-20220509134936845](/images/Android/04-初探Android/image-20220509134936845.png)
+![image-20220509134936845](/images/Java/Android/04-初探Android/image-20220509134936845.png)
 
 然后可以看到有如下几个文件夹
 
-![image-20220509135000483](/images/Android/04-初探Android/image-20220509135000483.png)
+![image-20220509135000483](/images/Java/Android/04-初探Android/image-20220509135000483.png)
 
-![image-20220509134912482](/images/Android/04-初探Android/image-20220509134912482.png)
+![image-20220509134912482](/images/Java/Android/04-初探Android/image-20220509134912482.png)
 
 首先看这个文件
 
-![image-20220509135055619](/images/Android/04-初探Android/image-20220509135055619.png)
+![image-20220509135055619](/images/Java/Android/04-初探Android/image-20220509135055619.png)
 
 这里面只有一个xml文件，这个xml文件是APP的运行配置文件，其余的和springboot相同，那两个generated不管他
 
 在java文件夹中，有三个包，除了第一个，其余两个都是单元测试的
 
-![image-20220509135229518](/images/Android/04-初探Android/image-20220509135229518.png)
+![image-20220509135229518](/images/Java/Android/04-初探Android/image-20220509135229518.png)
 
 然后在res文件夹中，有额外的四个文件夹
 
-![image-20220509135244139](/images/Android/04-初探Android/image-20220509135244139.png)
+![image-20220509135244139](/images/Java/Android/04-初探Android/image-20220509135244139.png)
 
 - Drawable：存放图形描述文件和图片文件
 - Layout：存放APP页面的布局文件
@@ -178,17 +178,17 @@ Android的官方编译语言包括Java和Kotlin
 
 然后是gradle scripts文件夹
 
-![image-20220509135826693](/images/Android/04-初探Android/image-20220509135826693.png)
+![image-20220509135826693](/images/Java/Android/04-初探Android/image-20220509135826693.png)
 
 PS：如果要给项目加依赖的话，加到那个Module的build.gradle内
 
-![image-20220509140232659](/images/Android/04-初探Android/image-20220509140232659.png)
+![image-20220509140232659](/images/Java/Android/04-初探Android/image-20220509140232659.png)
 
 ## build.gradle配置文件
 
 通常来说在Android中一个Module就是一个APP
 
-![image-20220509141037269](/images/Android/04-初探Android/image-20220509141037269.png)
+![image-20220509141037269](/images/Java/Android/04-初探Android/image-20220509141037269.png)
 
 先看Project的
 
@@ -390,17 +390,17 @@ public class MainActivity extends AppCompatActivity {
 
 运行后，你就可以看到自己的后续重设的内容了
 
-![image-20220509152053493](/images/Android/04-初探Android/image-20220509152053493.png)
+![image-20220509152053493](/images/Java/Android/04-初探Android/image-20220509152053493.png)
 
 ## Activity的创建和跳转
 
 我们在res/layout下新建一个`mypage.xml`
 
-![image-20220509152729006](/images/Android/04-初探Android/image-20220509152729006.png)
+![image-20220509152729006](/images/Java/Android/04-初探Android/image-20220509152729006.png)
 
 里面更名啥的然后完成即可
 
-![image-20220509152808942](/images/Android/04-初探Android/image-20220509152808942.png)
+![image-20220509152808942](/images/Java/Android/04-初探Android/image-20220509152808942.png)
 
 然后先到values下的strings.xml中添加如下内容
 
@@ -566,15 +566,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-![image-20220509154859141](/images/Android/04-初探Android/image-20220509154859141.png)
+![image-20220509154859141](/images/Java/Android/04-初探Android/image-20220509154859141.png)
 
-![image-20220509154913184](/images/Android/04-初探Android/image-20220509154913184.png)
+![image-20220509154913184](/images/Java/Android/04-初探Android/image-20220509154913184.png)
 
 ## 补充-更方便的创建Activity的方法
 
 刚刚那样创建Activity太麻烦，要手动创建贼多文件，所以一般情况下可以通过这种方式来创建Activity
 
-![image-20220509155111752](/images/Android/04-初探Android/image-20220509155111752.png)
+![image-20220509155111752](/images/Java/Android/04-初探Android/image-20220509155111752.png)
 
 它将会自动给你创建xml，类，和在声明文件中声明（当然不一定要在layout那点，在java那点也可）
 
@@ -582,7 +582,7 @@ public class MainActivity extends AppCompatActivity {
 
 首先我们新建一个Android Module
 
-![image-20220509160214688](/images/Android/04-初探Android/image-20220509160214688.png)
+![image-20220509160214688](/images/Java/Android/04-初探Android/image-20220509160214688.png)
 
 ## 文本控件
 
@@ -677,7 +677,7 @@ DIP
 
 320x480分辨率，3.6寸的手机，dpi为160,1dpi=1px
 
-![image-20220509185512465](/images/Android/04-初探Android/image-20220509185512465.png)
+![image-20220509185512465](/images/Java/Android/04-初探Android/image-20220509185512465.png)
 
 也可以这样理解：在不同分辨率的手机上，通过dp来设置的尺寸比例是一致的
 
@@ -730,7 +730,7 @@ public void setTextSize(float size) {
 
 首先打开values中的colors.xml文件
 
-![image-20220603210354861](/images/Android/04-初探Android/image-20220603210354861.png)
+![image-20220603210354861](/images/Java/Android/04-初探Android/image-20220603210354861.png)
 
 然后额外输入如下内容
 
@@ -849,7 +849,7 @@ View的高度可以通过属性android:layout_height来进行控制
 - wrap_context:表示和自身内容自适应
 - 传入**以dp为单位**的具体尺寸（也可以传入其他的，不过通常只建议用dp）
 
-![image-20220603212012938](/images/Android/04-初探Android/image-20220603212012938.png)
+![image-20220603212012938](/images/Java/Android/04-初探Android/image-20220603212012938.png)
 
 当然，我们可以在Java中获取其的布局参数（包含宽高），并且动态修改其值
 
@@ -968,7 +968,7 @@ public class MainActivity extends AppCompatActivity {
 
 效果如下
 
-![image-20220603215830849](/images/Android/04-初探Android/image-20220603215830849.png)
+![image-20220603215830849](/images/Java/Android/04-初探Android/image-20220603215830849.png)
 
 接着Java获取，Java的设置这里就不说明了，把除号换成乘号就能把dp转换为px
 
@@ -1088,7 +1088,7 @@ public class MainActivity extends AppCompatActivity {
 
 效果
 
-![image-20220603221326552](/images/Android/04-初探Android/image-20220603221326552.png)
+![image-20220603221326552](/images/Java/Android/04-初探Android/image-20220603221326552.png)
 
 这玩意一般都不会在java中设置（貌似也设置不明白）
 
@@ -1133,17 +1133,17 @@ public class MainActivity extends AppCompatActivity {
 
 因为用的比较多，这里就不演示了
 
-![image-20220603223058766](/images/Android/04-初探Android/image-20220603223058766.png)
+![image-20220603223058766](/images/Java/Android/04-初探Android/image-20220603223058766.png)
 
 ### 相对布局-RelativeLayout 
 
 据说这个在实际开发中用的比较多
 
-![image-20220603223920625](/images/Android/04-初探Android/image-20220603223920625.png)
+![image-20220603223920625](/images/Java/Android/04-初探Android/image-20220603223920625.png)
 
 然后其属性有如下这么多
 
-![image-20220603224015993](/images/Android/04-初探Android/image-20220603224015993.png)
+![image-20220603224015993](/images/Java/Android/04-初探Android/image-20220603224015993.png)
 
 先上代码
 
@@ -1205,13 +1205,13 @@ public class MainActivity extends AppCompatActivity {
 
 效果
 
-![image-20220603230158203](/images/Android/04-初探Android/image-20220603230158203.png)
+![image-20220603230158203](/images/Java/Android/04-初探Android/image-20220603230158203.png)
 
 ### 网格布局-GridLayout
 
 和html中的grid差不多（虽然我从来没在html中用过grid布局…）
 
-![image-20220603230425167](/images/Android/04-初探Android/image-20220603230425167.png)
+![image-20220603230425167](/images/Java/Android/04-初探Android/image-20220603230425167.png)
 
 
 
@@ -1219,7 +1219,7 @@ public class MainActivity extends AppCompatActivity {
 
 这个在实际的开发中非常常用，比如说做无限滚动的效果（bilibili 手机端的视频页面，动态页面等）
 
-![image-20220604121610713](/images/Android/04-初探Android/image-20220604121610713.png)
+![image-20220604121610713](/images/Java/Android/04-初探Android/image-20220604121610713.png)
 
 先看代码
 
@@ -1263,7 +1263,7 @@ public class MainActivity extends AppCompatActivity {
 
 效果
 
-![image-20220604123124525](/images/Android/04-初探Android/image-20220604123124525.png)
+![image-20220604123124525](/images/Java/Android/04-初探Android/image-20220604123124525.png)
 
 可以看到，有一个边边上的东西是可以滚动的
 
@@ -1309,7 +1309,7 @@ public class MainActivity extends AppCompatActivity {
 
 效果
 
-![image-20220604123524855](/images/Android/04-初探Android/image-20220604123524855.png)
+![image-20220604123524855](/images/Java/Android/04-初探Android/image-20220604123524855.png)
 
 ## 按钮触控
 
@@ -1523,7 +1523,7 @@ class ButtonStyleActivity : AppCompatActivity() {
 
 要切换状态的话，只需要控制enabled属性即可，属性为true的时候，表示允许点击，为false的时候表示不允许点击
 
-![image-20220604150558497](/images/Android/04-初探Android/image-20220604150558497.png)
+![image-20220604150558497](/images/Java/Android/04-初探Android/image-20220604150558497.png)
 
 或者代码控制isEnabled属性即可
 
@@ -1563,7 +1563,7 @@ class ButtonStyleActivity : AppCompatActivity() {
 
 首先把图片丢进来
 
-![image-20220604151440069](/images/Android/04-初探Android/image-20220604151440069.png)
+![image-20220604151440069](/images/Java/Android/04-初探Android/image-20220604151440069.png)
 
 然后记得给图片重命名，重命名方式为下划线命名，最好不要包含数值，例如重命名成`my_image.jpg`之类的
 
@@ -1591,17 +1591,17 @@ class ButtonStyleActivity : AppCompatActivity() {
 
 效果
 
-![image-20220604151843452](/images/Android/04-初探Android/image-20220604151843452.png)
+![image-20220604151843452](/images/Java/Android/04-初探Android/image-20220604151843452.png)
 
 ### 图像视图的缩放类型
 
 图片默认是居中显示的，若要改变图片的显示方式，则可以通过`scaleType`属性设置，取值如下
 
-![image-20220604152055809](/images/Android/04-初探Android/image-20220604152055809.png)
+![image-20220604152055809](/images/Java/Android/04-初探Android/image-20220604152055809.png)
 
 例如
 
-![image-20220604152129557](/images/Android/04-初探Android/image-20220604152129557.png)
+![image-20220604152129557](/images/Java/Android/04-初探Android/image-20220604152129557.png)
 
 或者代码修改
 
@@ -1639,11 +1639,11 @@ class ImageViewActivity : AppCompatActivity() {
 
 默认背景
 
-![image-20220604154220781](/images/Android/04-初探Android/image-20220604154220781.png)
+![image-20220604154220781](/images/Java/Android/04-初探Android/image-20220604154220781.png)
 
 使用自定义背景
 
-![image-20220604154212409](/images/Android/04-初探Android/image-20220604154212409.png)
+![image-20220604154212409](/images/Java/Android/04-初探Android/image-20220604154212409.png)
 
 ::: tip
 
@@ -1679,7 +1679,7 @@ class ImageViewActivity : AppCompatActivity() {
 
 ### 同时展示文本和图像
 
-![image-20220604154416771](/images/Android/04-初探Android/image-20220604154416771.png)
+![image-20220604154416771](/images/Java/Android/04-初探Android/image-20220604154416771.png)
 
 首先我们使用Button来进行设置下
 
@@ -1709,11 +1709,11 @@ class ImageViewActivity : AppCompatActivity() {
 
 效果
 
-![image-20220604154917066](/images/Android/04-初探Android/image-20220604154917066.png)
+![image-20220604154917066](/images/Java/Android/04-初探Android/image-20220604154917066.png)
 
 可以发现按钮背景是紫色的，同时我们还无法通过background来修改颜色
 
-![image-20220604154949519](/images/Android/04-初探Android/image-20220604154949519.png)
+![image-20220604154949519](/images/Java/Android/04-初探Android/image-20220604154949519.png)
 
 这是因为项目整体主题的缘故，接下来说说如何解决这个问题
 
@@ -1721,7 +1721,7 @@ class ImageViewActivity : AppCompatActivity() {
 
 首先进入到这个文件内
 
-![image-20220604155525124](/images/Android/04-初探Android/image-20220604155525124.png)
+![image-20220604155525124](/images/Java/Android/04-初探Android/image-20220604155525124.png)
 
 原先是这样的
 
@@ -1771,7 +1771,7 @@ class ImageViewActivity : AppCompatActivity() {
 
 回到按钮，发现背景色被正确的更改了
 
-![image-20220604155702523](/images/Android/04-初探Android/image-20220604155702523.png)
+![image-20220604155702523](/images/Java/Android/04-初探Android/image-20220604155702523.png)
 
 当然，如何自定义描边这个之后会说明
 

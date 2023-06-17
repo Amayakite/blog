@@ -29,7 +29,7 @@ tag:
 
 PS：一张图让你明白Spring是干嘛用的：
 
-![img](/images/SpringFrameWork/01-Spring/40f82edda3cc7cd97dc293bf3501213fb90e9145.jpg)
+![img](/images/Java/SpringFrameWork/01-Spring/40f82edda3cc7cd97dc293bf3501213fb90e9145.jpg)
 
 ### Spring的优势
 
@@ -100,7 +100,7 @@ A[USerDao userDao = new UserDaoImpl]-->|UserDaoImpl|B[save方法<br>update方法
 
 Spring把这一步解耦成了如下内容：
 
-![image-20211209155620653](/images/SpringFrameWork/01-Spring/image-20211209155620653.png)
+![image-20211209155620653](/images/Java/SpringFrameWork/01-Spring/image-20211209155620653.png)
 
 1. 导入Spring开发包的基本实现坐标
 2. 编写Dao接口和实现类
@@ -129,7 +129,7 @@ Spring把这一步解耦成了如下内容：
 
 接着，我们建立如下dao文件
 
-![image-20211209160749233](/images/SpringFrameWork/01-Spring/image-20211209160749233.png)
+![image-20211209160749233](/images/Java/SpringFrameWork/01-Spring/image-20211209160749233.png)
 
 UserDao接口只有一个方法
 
@@ -152,7 +152,7 @@ public class UserDaoImpl implements UserDao {
 
 接着，我们在res文件夹中创建一个SPring的配置文件
 
-![image-20211209161009456](/images/SpringFrameWork/01-Spring/image-20211209161009456.png)
+![image-20211209161009456](/images/Java/SpringFrameWork/01-Spring/image-20211209161009456.png)
 
 文件名没有硬性规定，但是一般在开发中都会习惯性地设置为applicationContext
 
@@ -649,7 +649,7 @@ com.MySpring.dao.impl.UserDaoImpl@1bd4fdd
 
 首先我们需要有一个Services包，这个包内有相关接口和实现类，比如UserServices
 
-![image-20211209204903649](/images/SpringFrameWork/01-Spring/image-20211209204903649.png)
+![image-20211209204903649](/images/Java/SpringFrameWork/01-Spring/image-20211209204903649.png)
 
 编写一下接口：这里做最简单的模拟
 
@@ -705,7 +705,7 @@ UserDaoImpl.save()被调用了
 
 ​  仔细捋一捋，目前UserService实例和UserDao实例都保存在Spring容器中，当前的做法是在容器外部分别获得UserDao实例和Userservice实例，然后在程序中进行结合
 
-![image-20211209205819276](/images/SpringFrameWork/01-Spring/image-20211209205819276.png)
+![image-20211209205819276](/images/Java/SpringFrameWork/01-Spring/image-20211209205819276.png)
 
 ​  **那么我们是否可以换一个思路，因为UserService和UserDao都在Spring容器中，而最终程序直接使用的是UserService，所以我们是否可以将UserDao设置在UserService内部？**
 
@@ -730,7 +730,7 @@ class A{
 // 那么如何通过Spring来进行依赖注入呢
 ```
 
-![image-20211209210404022](/images/SpringFrameWork/01-Spring/image-20211209210404022.png)
+![image-20211209210404022](/images/Java/SpringFrameWork/01-Spring/image-20211209210404022.png)
 
 ### 依赖注入的概念
 
@@ -1151,7 +1151,7 @@ ApplicationContext context = new ClassPathXmlApplicationContext("applicationCont
 
 接下来看看类图，看看Application的上下都有哪些类和接口
 
-![image-20211209234155136](/images/SpringFrameWork/01-Spring/image-20211209234155136.png)
+![image-20211209234155136](/images/Java/SpringFrameWork/01-Spring/image-20211209234155136.png)
 
 首先看左下那两个，其中一个就是我们正在使用的`ClassPathXmlApplicationContext`
 

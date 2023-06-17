@@ -18,11 +18,11 @@ tag:
 
 发现跟操作数据库有关的 全都有一个data
 
-![image-20211221150913345](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221150913345.png)
+![image-20211221150913345](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221150913345.png)
 
 接下来我们要用jdbc 于是看看有哪些jdbc相关的
 
-![image-20211221151209917](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151209917.png)
+![image-20211221151209917](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151209917.png)
 
 看到了个名字最短的 应该就是他了
 
@@ -37,7 +37,7 @@ tag:
 
 然后可以看到如下内容
 
-![image-20211221151310736](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151310736.png)
+![image-20211221151310736](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151310736.png)
 
 貌似少了点什么？
 
@@ -58,11 +58,11 @@ tag:
 
 因为spring官方已经对它做了一个版本仲裁（最新的版本）
 
-![image-20211221151826037](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151826037.png)
+![image-20211221151826037](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151826037.png)
 
 如果你还在用5.x  那么可以自定仲裁 版本号为了规范写在这里即可
 
-![image-20211221151640601](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151640601.png)
+![image-20211221151640601](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221151640601.png)
 
 ### 分析自动配置
 
@@ -78,23 +78,23 @@ tag:
 
 当我们没有配置任何连接池相关的bean的时候 就会使用它默认的
 
-![image-20211221152823431](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221152823431.png)
+![image-20211221152823431](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221152823431.png)
 
 而且还能看到一个DataSourceTransactionManagerAutoConfiguration 看着就是是事务管理器的配置
 
-![image-20211221153017125](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221153017125.png)
+![image-20211221153017125](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221153017125.png)
 
 还有一个jdbcTemplate
 
-![image-20211221153229580](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221153229580.png)
+![image-20211221153229580](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221153229580.png)
 
 额外说下 还有个分布式事务的相关控制 XADataSourceAutoConfiguration这个我们目前暂时用不到 之后学spring cloud的时候应该用得上
 
-![image-20211221153348274](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221153348274.png)
+![image-20211221153348274](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221153348274.png)
 
 接着我们看看DataSource的Properteis
 
-![image-20211221154104327](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221154104327.png)
+![image-20211221154104327](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221154104327.png)
 
 可以看到很多熟悉的东西 也就是说我们可以直接按照上面的来配置数据源了
 
@@ -142,7 +142,7 @@ class ApplicationTests {
 
 测试结果：
 
-![image-20211221160137403](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221160137403.png)
+![image-20211221160137403](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221160137403.png)
 
 接着 我们发现它这里貌似有一个数据源相关的东西
 
@@ -252,7 +252,7 @@ public class MyDataSourceConfig {
 
 程序启动后，我们访问下
 
-![image-20211221204925951](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221204925951.png)
+![image-20211221204925951](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221204925951.png)
 
 ### 通过state方式来使用druid
 
@@ -273,13 +273,13 @@ public class MyDataSourceConfig {
 
 接下来我们看看这玩意有什么东西
 
-![image-20211221205315712](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221205315712.png)
+![image-20211221205315712](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221205315712.png)
 
 首先是druid 然后是slf4j 然后是 autoconfig
 
 我们就直奔autoconfig
 
-![image-20211221205429053](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221205429053.png)
+![image-20211221205429053](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221205429053.png)
 
 我们首先可以看到它有如下注解
 
@@ -306,23 +306,23 @@ public class MyDataSourceConfig {
 
 第一个是监控SpringBean的（AOP），配置项是`spring.datasource.druid.aop-patterns`
 
-![image-20211221210024410](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210024410.png)
+![image-20211221210024410](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210024410.png)
 
 第二个是监控页的配置相关 默认开启了(havingValue)
 
 `spring.datasource.druid.stat-view-servlet.enabled`
 
-![image-20211221210211177](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210211177.png)
+![image-20211221210211177](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210211177.png)
 
 第三个是配置了监控页 默认开启
 
-![image-20211221210338604](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210338604.png)
+![image-20211221210338604](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210338604.png)
 
 第四个给容器中添加了蛮多的组件
 
 这些的作用是开启防火墙之类的功能
 
-![image-20211221210417054](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210417054.png)
+![image-20211221210417054](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221210417054.png)
 
 ### 配置druid
 
@@ -384,7 +384,7 @@ public class MyDataSourceConfig {
 
 接下来尝试访问下项目路径内的druid
 
-![image-20211221213429121](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221213429121.png)
+![image-20211221213429121](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221213429121.png)
 
 看起来没问题了
 
@@ -468,7 +468,7 @@ spring:
 
 当然 我还是选择在maven仓库内的
 
-![image-20211221223203128](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221223203128.png)
+![image-20211221223203128](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221223203128.png)
 
 可以看到最终引入了springbootstate和jdbc 以及自动配置文件之类的
 
@@ -481,7 +481,7 @@ spring:
 
 接下来我们老样子 先看看mybatis的autoconfig
 
-![image-20211221223606137](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221223606137.png)
+![image-20211221223606137](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221223606137.png)
 
 首先这玩意的判断是
 
@@ -561,7 +561,7 @@ public class MybatisProperties {
 
 在autoconfig中发现了
 
-![image-20211221224057991](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211221224057991.png)
+![image-20211221224057991](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211221224057991.png)
 
 @ConditionalOnMissingBean是在容器内找datasource并放进去 其他东西都是在配置文件中取的
 
@@ -594,7 +594,7 @@ public class MybatisProperties {
 
 我们先创建如下配置文件
 
-![image-20211222002928765](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222002928765.png)
+![image-20211222002928765](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222002928765.png)
 
 一个mybatis-config
 
@@ -639,7 +639,7 @@ mybatis:
 
 三层架构
 
-![image-20211222003213478](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222003213478.png)
+![image-20211222003213478](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222003213478.png)
 
 这里我查的是admin表 对应字段
 
@@ -701,7 +701,7 @@ public class DataSourceController {
 
 ```
 
-![image-20211222003302412](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222003302412-16401043826611.png)
+![image-20211222003302412](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222003302412-16401043826611.png)
 
 成功
 
@@ -791,7 +791,7 @@ MybatisPlus是一个Mybatis的增强工具，在Mybatis的基础上只做增强�
 
 接着我们可以发现它引入了如下的依赖
 
-![image-20211222122423789](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222122423789.png)
+![image-20211222122423789](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222122423789.png)
 
 引入了mybatis jdbc以及额外的autoconfiguration
 
@@ -799,7 +799,7 @@ MybatisPlus是一个Mybatis的增强工具，在Mybatis的基础上只做增强�
 
 可以在autoconfiguration中看到如下内容
 
-![image-20211222122531840](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222122531840.png)
+![image-20211222122531840](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222122531840.png)
 
 ```properties
 # Auto Configure
@@ -830,7 +830,7 @@ public class MybatisPlusAutoConfiguration implements InitializingBean {}
 
 首先是一个
 
-![image-20211222123148327](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222123148327.png)
+![image-20211222123148327](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222123148327.png)
 
 设置好了Mybatis的SqlSessionFactory
 
@@ -864,7 +864,7 @@ if (this.properties.getConfigurationProperties() != null) {
 
 首先就能看到配置了一个mapper的位置-mapperLocations
 
-![image-20211222123917205](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222123917205.png)
+![image-20211222123917205](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222123917205.png)
 
 `classpath*:/mapper/**/*.xml`
 
@@ -909,7 +909,7 @@ public static class MapperScannerRegistrarNotFoundConfiguration implements Initi
 
 接下来看看这个AutoConfiguredMapperScannerRegistrar
 
-![image-20211222124513280](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222124513280.png)
+![image-20211222124513280](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222124513280.png)
 
 可以发现 是和@mapper注解有关的，也就是说，我们无需额外的配置mapper注解的少报位置 它将会自动给我们进行扫描@mapper标注的接口
 
@@ -948,7 +948,7 @@ public class Admin {
 
 对应的数据源
 
-![image-20211222125419223](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222125419223.png)
+![image-20211222125419223](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222125419223.png)
 
 接着我们编写一个mapper接口AdminMapper
 
@@ -964,7 +964,7 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
 （注意 如果说要对数据库进行优化 则不太建议使用这里面的一些东西 还是建议手写）
 
-![image-20211222125657921](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222125657921.png)
+![image-20211222125657921](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222125657921.png)
 
 也就是我们现在无需对自己的AdminMapper再进行额外的任何操作 就可以拥有CRUD的功能
 
@@ -1014,7 +1014,7 @@ public class Admin {
 
 运行：
 
-![image-20211222130736751](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222130736751.png)
+![image-20211222130736751](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222130736751.png)
 
 ### 规范的使用Mybatis-plus
 
@@ -1055,7 +1055,7 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
 `IService<T>`
 
-![image-20211222152228461](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222152228461.png)
+![image-20211222152228461](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222152228461.png)
 
 这个接口里面定义了超多的方法和返回值，和baseMapper几乎一一对应 需要传入一个泛型
 
@@ -1071,7 +1071,7 @@ public interface AdminService extends IService<Admin> {
 
 我们总不可能在IMPL中一个一个的去实现这么多方法吧
 
-![image-20211222152412179](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222152412179.png)
+![image-20211222152412179](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222152412179.png)
 
 所以mybatis也做了一个超级强大的类
 
@@ -1113,7 +1113,7 @@ class ApplicationTests {
 
 ```
 
-![image-20211222153704752](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222153704752.png)
+![image-20211222153704752](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222153704752.png)
 
 ### Mybatis-Plus的分页功能的使用
 
@@ -1209,7 +1209,7 @@ class ApplicationTests {
 
 运行结果：
 
-![image-20211222172853573](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222172853573.png)
+![image-20211222172853573](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222172853573.png)
 
 ### 扩展-IEDA的MybatisX插件的使用
 
@@ -1217,21 +1217,21 @@ class ApplicationTests {
 
 比方说我们现在有一张表
 
-![image-20211222132241034](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132241034.png)
+![image-20211222132241034](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132241034.png)
 
 右键
 
-![image-20211222132256102](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132256102.png)
+![image-20211222132256102](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132256102.png)
 
 接着几个设置大概这样 其他的都可以不动
 
-![image-20211222132633012](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132633012.png)
+![image-20211222132633012](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132633012.png)
 
-![image-20211222132850756](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132850756.png)
+![image-20211222132850756](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132850756.png)
 
 接着你就能在你的项目中额外得到这些东西
 
-![image-20211222132956925](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132956925.png)
+![image-20211222132956925](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222132956925.png)
 
 Domain
 
@@ -1334,7 +1334,7 @@ serviceImpl
 
 ### 扩展-Junit5的额外注解
 
-![image-20211222174450513](/images/SpringBoot/03-Spring_Boot整合数据访问/image-20211222174450513.png)
+![image-20211222174450513](/images/Java/SpringBoot/03-Spring_Boot整合数据访问/image-20211222174450513.png)
 
 注意 在所有springboot的相关项目中 要使用spring容器内的内容 都需要：
 

@@ -37,7 +37,7 @@ tag:
 
 并且它还不仅能转换json，还可通过其他方式来完成对其他类型的转换
 
-![image-20220611212331382](/images/SpringBoot/10-Jackson/image-20220611212331382.png)
+![image-20220611212331382](/images/Java/SpringBoot/10-Jackson/image-20220611212331382.png)
 
 ## Jackson的安装
 
@@ -70,7 +70,7 @@ implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
 
 可以看到导入后，实际包含了core和注解的依赖
 
-![image-20220611212734500](/images/SpringBoot/10-Jackson/image-20220611212734500.png)
+![image-20220611212734500](/images/Java/SpringBoot/10-Jackson/image-20220611212734500.png)
 
 ## 将Java对象转换成Json字符串
 
@@ -127,13 +127,13 @@ public class JsonTest {
 }
 ```
 
-![image-20220611213608366](/images/SpringBoot/10-Jackson/image-20220611213608366.png)
+![image-20220611213608366](/images/Java/SpringBoot/10-Jackson/image-20220611213608366.png)
 
 是我们**实体类中并没有任何的get**和set方法，所以说给全部属性手动加上即可（基本所有来检测是否有get方法，通过getXXX来获取所有的相关字段，fastjson和gson之类的也是如此）
 
 加上后，又出现了一个异常
 
-![image-20220611214047277](/images/SpringBoot/10-Jackson/image-20220611214047277.png)
+![image-20220611214047277](/images/Java/SpringBoot/10-Jackson/image-20220611214047277.png)
 
 ```text
  com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.LocalDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: com.project.jsontest.User["createTime"])
@@ -155,7 +155,7 @@ public class JsonTest {
 
 接下来看看这个jsr310的依赖关系
 
-![image-20220611214435426](/images/SpringBoot/10-Jackson/image-20220611214435426.png)
+![image-20220611214435426](/images/Java/SpringBoot/10-Jackson/image-20220611214435426.png)
 
 实际上它包含了之前的三者，所以说通常情况下直接引入它就可以替代databind了，所以现在可以直接把`databind`删除掉
 
@@ -409,11 +409,11 @@ public class JsonTest {
 
 效果
 
-![image-20220611223636750](/images/SpringBoot/10-Jackson/image-20220611223636750.png)
+![image-20220611223636750](/images/Java/SpringBoot/10-Jackson/image-20220611223636750.png)
 
 嘛反正这个Typereference用途大概如下
 
-![image-20220611224750641](/images/SpringBoot/10-Jackson/image-20220611224750641.png)
+![image-20220611224750641](/images/Java/SpringBoot/10-Jackson/image-20220611224750641.png)
 
 ## @JsonProperty设定别名
 

@@ -25,7 +25,7 @@ tag:
 >
 > Nacos就是注册中心+配置中心的组合，Nacos等价于Consul+Config+Bus
 >
-> ![image-20220110142942130](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110142942130-16417961842531.png)
+> ![image-20220110142942130](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110142942130-16417961842531.png)
 >
 > 官网<https://nacos.io/zh-cn/index.html>
 
@@ -39,7 +39,7 @@ tag:
 
 下载解压后可以得到这些
 
-![image-20220110144423601](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110144423601.png)
+![image-20220110144423601](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110144423601.png)
 
 启动很简单，进入到bin
 
@@ -51,19 +51,19 @@ standalone代表着单机模式运行，非集群模式
 
 看到这样就表示成功了
 
-![image-20220110144828637](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110144828637.png)
+![image-20220110144828637](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110144828637.png)
 
 接着访问<http://localhost:8848/nacos>
 
 就能看到如下内容
 
-![image-20220110144954427](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110144954427.png)
+![image-20220110144954427](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110144954427.png)
 
 **默认的账号密码都是`nacos`，直接登陆即可**
 
 登陆后可以看到如下页面
 
-![image-20220110145113196](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110145113196.png)
+![image-20220110145113196](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110145113196.png)
 
 我React亮了，说明这玩意是一个React前端Project，应该是用了阿里自家的Ant Design For React框架
 
@@ -307,11 +307,11 @@ public class PaymentController {
 
 可以看到，服务成功注册
 
-![image-20220110164428972](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110164428972.png)
+![image-20220110164428972](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110164428972.png)
 
 接下来访问下
 
-![image-20220110164535145](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110164535145.png)
+![image-20220110164535145](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110164535145.png)
 
 ### 服务提供者9002的快速构建
 
@@ -323,35 +323,35 @@ public class PaymentController {
 
 在服务这里（如果你的9001启动不是在服务而是在运行那里的话）
 
-![image-20220110165319308](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110165319308.png)
+![image-20220110165319308](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110165319308.png)
 
 点进去，搜spring 找到 spring boot 添加即可
 
-![image-20220110165346610](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110165346610.png)
+![image-20220110165346610](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110165346610.png)
 
 然后右键它
 
-![image-20220110165411157](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110165411157.png)
+![image-20220110165411157](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110165411157.png)
 
 然后这样配置
 
-![image-20220110170010504](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110170010504.png)
+![image-20220110170010504](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110170010504.png)
 
 接着你就能得到两个微服务 注意 **这不能在生产环境中使用！！！**
 
 当然 你也可以选择也可以用`-Dspring.profiles.active=`，也就是配置`spring.profiles.active`的方式来动态切换，下面会说
 
-![image-20220110170028078](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110170028078.png)
+![image-20220110170028078](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110170028078.png)
 
 在Nacos中也能看到
 
-![image-20220110170102206](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110170102206.png)
+![image-20220110170102206](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110170102206.png)
 
 接下来换一种方式吧，使用profile 更方便的我们自定义内容
 
 我们先创建两个application
 
-![image-20220110171451266](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171451266.png)
+![image-20220110171451266](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171451266.png)
 
 9001和9002
 
@@ -394,11 +394,11 @@ management:
 
 接着运行 然后依旧是复制一份 改下vm配置
 
-![image-20220110171710633](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171710633.png)
+![image-20220110171710633](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171710633.png)
 
 然后就可以了
 
-![image-20220110171719292](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171719292.png)
+![image-20220110171719292](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171719292.png)
 
 你就能得到两个
 
@@ -406,7 +406,7 @@ management:
 
 nacos内正常显示
 
-![image-20220110171819338](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171819338.png)
+![image-20220110171819338](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110171819338.png)
 
 ### 服务消费者80
 
@@ -506,9 +506,9 @@ public class OrderController {
 
 接着访问即可
 
-![image-20220110182348674](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110182348674.png)
+![image-20220110182348674](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110182348674.png)
 
-![image-20220110182355351](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110182355351.png)
+![image-20220110182355351](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110182355351.png)
 
 ### 负载均衡遇到的坑
 
@@ -518,7 +518,7 @@ md这个坑 困扰了我十多分钟
 
 首先我们的得知道问题在哪里，先看看nacos的依赖
 
-![image-20220110182528922](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110182528922.png)
+![image-20220110182528922](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110182528922.png)
 
 新版本spring-cloud-alibaba-dependencies（version 2021.1）内是没有ribbon和loadbalancer，因此无法实现负载均衡
 
@@ -588,7 +588,7 @@ md这个坑 困扰了我十多分钟
 | Zookeeper | Java | CP    | 支持         | 客户端                  | 已集成           |
 | Nacos     | Java | AP/CP | 支持         | HTTP/DNS/UDP，有Web界面 | 已集成           |
 
-![image-20220110204438870](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110204438870.png)
+![image-20220110204438870](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110204438870.png)
 
 如何选择是AP还是CP？
 
@@ -654,7 +654,7 @@ curl -X PUT '$NACOS_SERVER:8848/nacos/v1/ns/operator/switches?entry=serverMode&v
 
 我们要准备两个配置文件
 
-![image-20220110210905360](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110210905360.png)
+![image-20220110210905360](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110210905360.png)
 
 这也是他们设计的时候考虑到的事情，目的就是为了让Config和Nacos之间的迁移变得更加简单
 
@@ -763,23 +763,23 @@ ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config
 
 接下来，我们进入那nacos的网页，进行设置
 
-![image-20220110213603115](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110213603115.png)
+![image-20220110213603115](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110213603115.png)
 
 然后新增，填入我们刚刚推断出来的内容，并选择格式
 
-![image-20220110214104213](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214104213.png)
+![image-20220110214104213](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214104213.png)
 
 
 
 接着可以得到这个 注意 这里的那啥ID的名字结尾**必须**是`yaml`，不能是`yml`（因为我们之前在file-extension内定义的是yaml，所以必须是这个，**如果说你之前定义的是yml，则这里必须为yml**）
 
-![image-20220110214518643](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214518643.png)
+![image-20220110214518643](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214518643.png)
 
 
 
 然后启动项目，尝试run一下
 
-![image-20220110214121163](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214121163.png)
+![image-20220110214121163](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214121163.png)
 
 看起来没有问题了，接下来尝试下更新后能不能访问到最新的
 
@@ -788,13 +788,13 @@ config:
     info: "Hello 这里是Dev的配置文件啊啊啊啊"
 ```
 
-![image-20220110214236341](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214236341.png)
+![image-20220110214236341](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214236341.png)
 
 我曹 不用重启，同步更新
 
 总结：
 
-![image-20220110214449502](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214449502.png)
+![image-20220110214449502](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110214449502.png)
 
 ### 如果无法正常的获取到配置中心的内容
 
@@ -862,7 +862,7 @@ public class ConfigClientController {
 
 我们之前在配置文件的时候，有一个东西并没有说
 
-![image-20220110221116379](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110221116379.png)
+![image-20220110221116379](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110221116379.png)
 
 这个GROUP
 
@@ -870,7 +870,7 @@ public class ConfigClientController {
 
 在这之前，我们首先要了解下命名空间
 
-![image-20220110221240152](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110221240152.png)
+![image-20220110221240152](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110221240152.png)
 
 在Nacos中，有三大块，分别是Namespace+Group+DATAID，其中DATAID我们之前已经用过了，Group刚刚也提到了，Namespace嘛，这个如果你接触过C# 或者C++之类的，应该对齐不陌生
 
@@ -884,7 +884,7 @@ Group和DataID是拿来逻辑上区分两个目标对象的
 
 他们三者的关系如下
 
-![image-20220110221551421](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110221551421.png)
+![image-20220110221551421](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110221551421.png)
 
 默认的情况下：
 
@@ -924,7 +924,7 @@ config:
     info: "这里是test的配置nacos-config-client-test.yaml"
 ```
 
-![image-20220110222837191](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110222837191.png)
+![image-20220110222837191](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110222837191.png)
 
 接下来使用，我们只需要去修本地项目中对应的application内的值即可
 
@@ -939,7 +939,7 @@ spring:
 
 我选择IDEA中的附加vm
 
-![image-20220110223037564](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110223037564.png)
+![image-20220110223037564](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110223037564.png)
 
 在vm选项中输入如下内容
 
@@ -949,7 +949,7 @@ spring:
 
 也就是这样
 
-![image-20220110223152016](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110223152016.png)
+![image-20220110223152016](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110223152016.png)
 
 接着启动并访问，就能得到
 
@@ -978,7 +978,7 @@ Response code: 200; Time: 97ms; Content length: 39 bytes
 
 其实非常简单，我们只需要在新建配置的时候手动输入即可
 
-![image-20220110224301586](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224301586.png)
+![image-20220110224301586](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224301586.png)
 
 ```yaml
 config:
@@ -989,15 +989,15 @@ config:
 
 创建完毕后，多了一个Group
 
-![image-20220110224316269](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224316269.png)
+![image-20220110224316269](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224316269.png)
 
 我们再来一个
 
-![image-20220110224512764](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224512764-16418259138501.png)
+![image-20220110224512764](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224512764-16418259138501.png)
 
 最终得到了两个不同的组
 
-![image-20220110224539709](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224539709.png)
+![image-20220110224539709](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224539709.png)
 
 他们现在我们有两个dataid一样的，但是group不一样的配置文件
 
@@ -1040,7 +1040,7 @@ spring:
 
 接下来启动测试
 
-![image-20220110224913873](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224913873.png)
+![image-20220110224913873](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110224913873.png)
 
 dev的获取到了，接下来修改下vm选项然后重启试试
 
@@ -1048,13 +1048,13 @@ dev的获取到了，接下来修改下vm选项然后重启试试
 -Dspring.cloud.nacos.config.group=TEST_GROUP
 ```
 
-![image-20220110225015785](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225015785.png)
+![image-20220110225015785](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225015785.png)
 
 成功获取
 
 总结：
 
-![image-20220110225042704](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225042704.png)
+![image-20220110225042704](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225042704.png)
 
 ### Namespace方案
 
@@ -1063,19 +1063,19 @@ dev的获取到了，接下来修改下vm选项然后重启试试
 
 我们新建命名空间非常简单，只需要
 
-![image-20220110225801344](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225801344.png)
+![image-20220110225801344](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225801344.png)
 
 第一个ID通常让其自动生成即可，接着如法炮制一个test
 
-![image-20220110225844405](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225844405.png)
+![image-20220110225844405](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225844405.png)
 
 接着回到配置管理
 
-![image-20220110225859430](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225859430.png)
+![image-20220110225859430](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225859430.png)
 
 可以看得到多出了我们刚刚创建的
 
-![image-20220110225913120](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225913120.png)
+![image-20220110225913120](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110225913120.png)
 
 点进去啥也没有我们现在开始给dev和test添加配置吧
 
@@ -1088,7 +1088,7 @@ config:
     info: "这里是test命名空间的nacos-config-client-info.yaml"
 ```
 
-![image-20220110230053271](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110230053271.png)
+![image-20220110230053271](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110230053271.png)
 
 我现在的命名空间是这样的
 
@@ -1130,7 +1130,7 @@ spring:
 
 测试
 
-![image-20220110230619129](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110230619129.png)
+![image-20220110230619129](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110230619129.png)
 
 切换成Test:
 
@@ -1140,7 +1140,7 @@ spring:
 
 测试：
 
-![image-20220110230736784](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110230736784.png)
+![image-20220110230736784](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110230736784.png)
 
 注意 一般情况下 都是三者一块使用，而不是像我这些案例一样配合着使用
 
@@ -1165,7 +1165,7 @@ pring.cloud.nacos.config.namespace=test
 
 首先是一张图和三句话
 
-![deployDnsVipMode.jpg](/images/SpringCloud/12-Nacos服务注册和配置中心/deployDnsVipMode-16418282349783.jpg)
+![deployDnsVipMode.jpg](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/deployDnsVipMode-16418282349783.jpg)
 
 `http://ip1:port/openAPI` 直连ip模式，机器挂则需要修改ip才可以使用。
 
@@ -1181,13 +1181,13 @@ pring.cloud.nacos.config.namespace=test
 
 所以我们最终的样子应该是
 
-![image-20220110232922725](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110232922725.png)
+![image-20220110232922725](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110232922725.png)
 
 到了这里 你可能会有疑问 那之前nacos用的是啥来存储数据
 
 我们看看nacos的文件
 
-![image-20220110233202948](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110233202948.png)
+![image-20220110233202948](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110233202948.png)
 
 conf里有好几个sql文件…啊这说明它有一个内嵌式的数据库derby（非常小巧，有点像是sqllite）
 
@@ -1219,7 +1219,7 @@ conf里有好几个sql文件…啊这说明它有一个内嵌式的数据库derb
 
 首先，我们打开nacos的conf文件夹
 
-![image-20220110234759443](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110234759443.png)
+![image-20220110234759443](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110234759443.png)
 
 把这个sql文件执行
 
@@ -1233,7 +1233,7 @@ use nacos_config;
 source 路径xxxx文件.sql;
 ```
 
-![image-20220110235523555](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110235523555.png)
+![image-20220110235523555](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110235523555.png)
 
 最终的表结构应该是：
 
@@ -1261,7 +1261,7 @@ show tables;
 
 接着，我们打开conf下的这个配置文件
 
-![image-20220110235817256](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220110235817256-16418302993504.png)
+![image-20220110235817256](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220110235817256-16418302993504.png)
 
 按照文档的要求，配置如下内容
 
@@ -1299,11 +1299,11 @@ db.password.0=123456
 
 之前我们配置过的信息如下
 
-![image-20220111000418726](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111000418726.png)
+![image-20220111000418726](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111000418726.png)
 
 重启后
 
-![image-20220111000718543](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111000718543.png)
+![image-20220111000718543](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111000718543.png)
 
 全都没了，说明我们配置数据库成功了
 
@@ -1316,7 +1316,7 @@ db.password.0=123456
 
 接着我们随便新建一个Data项，名为`aaa.yaml`，再去看看数据库
 
-![image-20220111001121547](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111001121547.png)
+![image-20220111001121547](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111001121547.png)
 
 内容就是content
 
@@ -1452,7 +1452,7 @@ cd nacos/bin
 cp startup.sh startup.sh.bk
 ```
 
-![image-20220111140117497](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111140117497.png)
+![image-20220111140117497](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111140117497.png)
 
 在修改之前，我们首先要把sql之类的配置好
 
@@ -1465,7 +1465,7 @@ create database nacos_config;
 
 注意，这里有一个天坑：如果你的mysql是通过docker部署的，则一定要写容器在docker内的ip
 
-![image-20220111155538577](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111155538577.png)
+![image-20220111155538577](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111155538577.png)
 
 不然百分百报错，md这个错找了我半个小时
 
@@ -1480,7 +1480,7 @@ db.password.0=123456
 
 然后我们要在confi的这个文件内配置集群
 
-![image-20220111142148661](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111142148661.png)
+![image-20220111142148661](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111142148661.png)
 
 先复制下
 
@@ -1699,7 +1699,7 @@ nacos is starting，you can check the /home/root/javatest/nacos/logs/start.out
 
 启动完毕后 输入` ps aux`
 
-![image-20220111151648492](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111151648492.png)
+![image-20220111151648492](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111151648492.png)
 
 。。。。md反正我这里第一个启动成功，二三个全部失败，算了，单击还是Docker吧
 
@@ -1760,7 +1760,7 @@ docker run -d --network example_nacos_net -p 8435:80 --name nginx_nacos nginx
 
 然后修改这个文件
 
-![image-20220111164417136](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111164417136.png)
+![image-20220111164417136](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111164417136.png)
 
 配置如下内容即可
 
@@ -1830,7 +1830,7 @@ management:
 
 效果：
 
-![image-20220111191959811](/images/SpringCloud/12-Nacos服务注册和配置中心/image-20220111191959811.png)
+![image-20220111191959811](/images/Java/SpringCloud/12-Nacos服务注册和配置中心/image-20220111191959811.png)
 
 
 

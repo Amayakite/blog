@@ -12,11 +12,11 @@ tag:
 
 > 是啥？
 
-![image-20220107002216095](/images/SpringCloud/06-OpenFeign服务调用/image-20220107002216095.png)
+![image-20220107002216095](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107002216095.png)
 
 是一个声明式的Web客户端服务端，让web服务客户端变得非常容易，我们只需要创建一个接口并在接口上添加注解即可
 
-![image-20220107002433314](/images/SpringCloud/06-OpenFeign服务调用/image-20220107002433314.png)
+![image-20220107002433314](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107002433314.png)
 
 
 
@@ -187,7 +187,7 @@ public class OrderController {
 
 使用它的好处是：我们不用手动写RestTemplate了
 
-![image-20220107140006892](/images/SpringCloud/06-OpenFeign服务调用/image-20220107140006892.png)
+![image-20220107140006892](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107140006892.png)
 
 
 
@@ -204,7 +204,7 @@ public String test() throws InterruptedException {
 
 接着我们启动并测试，确实三秒多返回了结果（PS：552ms是因为第一次请求，所以要较长时间，之后就是20ms左右）
 
-![image-20220107140639004](/images/SpringCloud/06-OpenFeign服务调用/image-20220107140639004.png)
+![image-20220107140639004](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107140639004.png)
 
 如果是旧版本 默认是1s 也就是1s之后没有结果 抛出异常，新版本则是60s
 
@@ -246,7 +246,7 @@ feign:
 
 ## OpenFeign的日志打印
 
-![image-20220107151236540](/images/SpringCloud/06-OpenFeign服务调用/image-20220107151236540.png)
+![image-20220107151236540](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107151236540.png)
 
 有四个级别
 
@@ -288,11 +288,11 @@ logging.level.com.Project.cloud: debug
 
 结果：
 
-![image-20220107153359361](/images/SpringCloud/06-OpenFeign服务调用/image-20220107153359361.png)
+![image-20220107153359361](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107153359361.png)
 
 非常的详细
 
-![image-20220107153506807](/images/SpringCloud/06-OpenFeign服务调用/image-20220107153506807.png)
+![image-20220107153506807](/images/Java/SpringCloud/06-OpenFeign服务调用/image-20220107153506807.png)
 
 
 

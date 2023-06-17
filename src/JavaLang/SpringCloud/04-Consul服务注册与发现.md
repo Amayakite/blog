@@ -34,7 +34,7 @@ PS：主要是有一个可视化的WEB界面
 
 得益于golang，下载解压后就是一个可执行文件
 
-![image-20220106163759287](/images/SpringCloud/04-Consul服务注册与发现/image-20220106163759287.png)
+![image-20220106163759287](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106163759287.png)
 
 启动的话
 
@@ -46,7 +46,7 @@ PS：主要是有一个可视化的WEB界面
 
 然后你就可以访问<http://localhost:8500>进入到控制面板
 
-![image-20220106164236868](/images/SpringCloud/04-Consul服务注册与发现/image-20220106164236868.png)
+![image-20220106164236868](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106164236868.png)
 
 ## 通过SpringCloud使用
 
@@ -147,19 +147,19 @@ public class PaymentController {
 
 首先启动
 
-![image-20220106165713089](/images/SpringCloud/04-Consul服务注册与发现/image-20220106165713089.png)
+![image-20220106165713089](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106165713089.png)
 
 然后访问网页 可以看到多了一个服务
 
-![image-20220106165727754](/images/SpringCloud/04-Consul服务注册与发现/image-20220106165727754.png)
+![image-20220106165727754](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106165727754.png)
 
 点进去还有详细信息
 
-![image-20220106165754657](/images/SpringCloud/04-Consul服务注册与发现/image-20220106165754657.png)
+![image-20220106165754657](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106165754657.png)
 
 我们运行http请求也是正常的成功了
 
-![image-20220106165856781](/images/SpringCloud/04-Consul服务注册与发现/image-20220106165856781.png)
+![image-20220106165856781](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106165856781.png)
 
 ### 客户端80的依赖准备
 
@@ -283,17 +283,17 @@ public class ConsumerController {
 
 两个都运行之后
 
-![image-20220106171431110](/images/SpringCloud/04-Consul服务注册与发现/image-20220106171431110.png)
+![image-20220106171431110](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106171431110.png)
 
 网页
 
-![image-20220106171444287](/images/SpringCloud/04-Consul服务注册与发现/image-20220106171444287.png)
+![image-20220106171444287](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106171444287.png)
 
 
 
 get 80
 
-![image-20220106171457396](/images/SpringCloud/04-Consul服务注册与发现/image-20220106171457396.png)
+![image-20220106171457396](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106171457396.png)
 
 ### 如果用docker之类的配置出现问题
 
@@ -343,7 +343,7 @@ spring:
 | Consul    | Go   | CP  | 支持         | HTTP/DNS，有web界面 | 已集成           |
 | Zookeeper | Java | CP  | 支持         | 客户端              | 已集成           |
 
-![image-20220106172705021](/images/SpringCloud/04-Consul服务注册与发现/image-20220106172705021.png)
+![image-20220106172705021](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106172705021.png)
 
 CAP是啥？
 
@@ -367,11 +367,11 @@ CAP 这玩意**最多能同时较好的满足两个**，理论的核心是：一
 
 结论：**重要数据cp，次要数据ap**
 
-![image-20220106173752497](/images/SpringCloud/04-Consul服务注册与发现/image-20220106173752497.png)
+![image-20220106173752497](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106173752497.png)
 
-![image-20220106173655145](/images/SpringCloud/04-Consul服务注册与发现/image-20220106173655145.png)
+![image-20220106173655145](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106173655145.png)
 
-![image-20220106173856537](/images/SpringCloud/04-Consul服务注册与发现/image-20220106173856537.png)
+![image-20220106173856537](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106173856537.png)
 
-![image-20220106173815094](/images/SpringCloud/04-Consul服务注册与发现/image-20220106173815094.png)
+![image-20220106173815094](/images/Java/SpringCloud/04-Consul服务注册与发现/image-20220106173815094.png)
 

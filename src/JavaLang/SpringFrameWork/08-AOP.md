@@ -236,7 +236,7 @@ public class MyGoShop {
 
 大概就是这样，左边的目标方法和中间的日志控制功能增强方法，通过配置文件进行动态代理调用，最终运行
 
-![image-20211213233258121](/images/SpringFrameWork/08-AOP/image-20211213233258121.png)
+![image-20211213233258121](/images/Java/SpringFrameWork/08-AOP/image-20211213233258121.png)
 
 ### AOP的底层实现
 
@@ -250,7 +250,7 @@ public class MyGoShop {
 
 所以说，Spring这两种方式的动态代理都可以使用
 
-![image-20211213234618553](/images/SpringFrameWork/08-AOP/image-20211213234618553.png)
+![image-20211213234618553](/images/Java/SpringFrameWork/08-AOP/image-20211213234618553.png)
 
 ### 简单实现动态代理增强(JDK)
 
@@ -335,7 +335,7 @@ Target的Say方法被调用了
 
 因为Spring从古至今都以来这玩意，之前有一段时间需要我们手动的去添加这个包的依赖，后面Spring觉得这样不好，于是就内置了一个cglib
 
-![image-20211214114239332](/images/SpringFrameWork/08-AOP/image-20211214114239332.png)
+![image-20211214114239332](/images/Java/SpringFrameWork/08-AOP/image-20211214114239332.png)
 
 接下来用cglib来演示一下---它不需要依赖接口，注意，下面这玩意不需要自个完全记住，但是等到工作个一两年了、需要自己手动造轮子了，就得好好的了解下它
 
@@ -446,7 +446,7 @@ class com.aop.jdk.Target$$EnhancerByCGLIB$$b05937e8
 
 可能你会问，Spring的内部不是有一个aop了吗？为什么还要导入？
 
-![image-20211214122952636](/images/SpringFrameWork/08-AOP/image-20211214122952636.png)
+![image-20211214122952636](/images/Java/SpringFrameWork/08-AOP/image-20211214122952636.png)
 
 但实际上是，这玩意用的是AspectJ，这东西采用编译织入和类装载器织入
 
@@ -829,7 +829,7 @@ public void say() {
 
 运行结果：
 
-![image-20211214155638842](/images/SpringFrameWork/08-AOP/image-20211214155638842.png)
+![image-20211214155638842](/images/Java/SpringFrameWork/08-AOP/image-20211214155638842.png)
 
 ### ✨切点表达式的抽取
 

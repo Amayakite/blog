@@ -19,7 +19,7 @@ tag:
 
 所以这时候 Spring Cloud Stream来了，它可以让我们不再关注具体MQ的细节，我们只需要用一种适配绑定的方式自动的给我们在各种的MQ内切换，就类似于JDbc的理念，我们只需要一个Spring Jdbc并配合上相关的数据库配置，即可使用，无须在意底层细节
 
-![image-20220109140330177](/images/SpringCloud/10-Stream和Sleuth/image-20220109140330177.png)
+![image-20220109140330177](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109140330177.png)
 
 它的作用就是屏蔽底层消息中间件的差异，降低切换成本，统一消息的编程模型
 
@@ -27,19 +27,19 @@ tag:
 
 它就是靠这个绑定器对象来屏蔽了底层的消息模型
 
-![image-20220109140643747](/images/SpringCloud/10-Stream和Sleuth/image-20220109140643747.png)
+![image-20220109140643747](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109140643747.png)
 
-![image-20220109140745998](/images/SpringCloud/10-Stream和Sleuth/image-20220109140745998.png)
+![image-20220109140745998](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109140745998.png)
 
 
 
 截止至今，已经支持如下
 
-![image-20220109141303911](/images/SpringCloud/10-Stream和Sleuth/image-20220109141303911.png)
+![image-20220109141303911](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109141303911.png)
 
 ### 为什么用Cloud Stream
 
-![image-20220109141813218](/images/SpringCloud/10-Stream和Sleuth/image-20220109141813218.png)
+![image-20220109141813218](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109141813218.png)
 
 这些中间件的差异性导致我们实际项目开发给我们造成了一定的困扰，如果用了两个消息队列的其中一种，后面的业务需求，我们想往另一种消息队列进行迁移，这时候无疑就是一个灾难性的，一大堆东西都需要推倒重新做，因为他跟我们的系统耦合了，这时候Spring Cloud Stream给我们提供了一种解耦合的方式
 
@@ -54,15 +54,15 @@ PS：Kafka是Java大数据用的（一般用来推送广告）
 
 下面图右边写反了，右边的坐上是消费者，右上是生产者
 
-![image-20220109142534796](/images/SpringCloud/10-Stream和Sleuth/image-20220109142534796.png)
+![image-20220109142534796](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109142534796.png)
 
 然后这玩意遵循了消费者订阅模式，统一使用Topic主题进行广播
 
-![image-20220109142713155](/images/SpringCloud/10-Stream和Sleuth/image-20220109142713155.png)
+![image-20220109142713155](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109142713155.png)
 
 它的流程为
 
-![image-20220109143441630](/images/SpringCloud/10-Stream和Sleuth/image-20220109143441630.png)
+![image-20220109143441630](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109143441630.png)
 
 这三个东西简单来说就是：
 
@@ -72,7 +72,7 @@ PS：Kafka是Java大数据用的（一般用来推送广告）
 
 ### 编码和常见注解
 
-![image-20220109143837115](/images/SpringCloud/10-Stream和Sleuth/image-20220109143837115.png)
+![image-20220109143837115](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109143837115.png)
 
 ## 简单使用
 
@@ -229,13 +229,13 @@ public class IMessageProviderImpl implements IMessageProvider {
 
 接着，我们启动并尝试发送一条消息
 
-![image-20220109224245363](/images/SpringCloud/10-Stream和Sleuth/image-20220109224245363.png)
+![image-20220109224245363](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224245363.png)
 
 显示发送成功，RabbitMQ内也有峰值和对应的队列
 
-![image-20220109224316143](/images/SpringCloud/10-Stream和Sleuth/image-20220109224316143.png)
+![image-20220109224316143](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224316143.png)
 
-![image-20220109224322502](/images/SpringCloud/10-Stream和Sleuth/image-20220109224322502.png)
+![image-20220109224322502](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224322502.png)
 
 这个队列就是我们在配置文件中配置的队列
 
@@ -360,57 +360,57 @@ public class ReceiveMessageListenerController {
 
 接着 先启动8801/8802看看
 
-![image-20220109224746502](/images/SpringCloud/10-Stream和Sleuth/image-20220109224746502.png)
+![image-20220109224746502](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224746502.png)
 
 发送消息成功，看看消费者
 
-![image-20220109224800118](/images/SpringCloud/10-Stream和Sleuth/image-20220109224800118.png)
+![image-20220109224800118](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224800118.png)
 
 也成功接收到了消息
 
 再看看RabbitMQ
 
-![image-20220109224817273](/images/SpringCloud/10-Stream和Sleuth/image-20220109224817273.png)
+![image-20220109224817273](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224817273.png)
 
 有一个自动生成的队列了
 
 并且和交换机自动绑定上
 
-![image-20220109224955560](/images/SpringCloud/10-Stream和Sleuth/image-20220109224955560.png)
+![image-20220109224955560](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109224955560.png)
 
 接下来再开一个8803试试
 
 发送
 
-![image-20220109225220313](/images/SpringCloud/10-Stream和Sleuth/image-20220109225220313.png)
+![image-20220109225220313](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109225220313.png)
 
 接收
 
-![image-20220109225229257](/images/SpringCloud/10-Stream和Sleuth/image-20220109225229257.png)
+![image-20220109225229257](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109225229257.png)
 
-![image-20220109225235701](/images/SpringCloud/10-Stream和Sleuth/image-20220109225235701.png)
+![image-20220109225235701](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109225235701.png)
 
 貌似没问题
 
 但其实是有问题的，我们上面就是重复消费
 
-![image-20220109225621484](/images/SpringCloud/10-Stream和Sleuth/image-20220109225621484.png)
+![image-20220109225621484](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109225621484.png)
 
 队列变成了两个，并且都是临时队列，消息不能持久化
 
 ### 防止重复消费和持久化
 
-![image-20220109230045602](/images/SpringCloud/10-Stream和Sleuth/image-20220109230045602.png)
+![image-20220109230045602](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109230045602.png)
 
 结论：不同的组是可以重复消费的，同一个组内会产生竞争关系，只有其中一个可以消费
 
 这个我们之前在RabbitMQ的学习中也知道，解决方法无疑就**我们把所有的队列的名称都设置为同一样的**，这样可以防止重复消费
 
-![image-20220109230354495](/images/SpringCloud/10-Stream和Sleuth/image-20220109230354495.png)
+![image-20220109230354495](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109230354495.png)
 
 我们首先看看队列名
 
-![image-20220109230434710](/images/SpringCloud/10-Stream和Sleuth/image-20220109230434710.png)
+![image-20220109230434710](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109230434710.png)
 
 首先要确定的是我们的队列名，**实际开发过程中百分之八十是通过队列名来区分不同的事务的**
 
@@ -463,39 +463,39 @@ spring:
 
 可以看到这样解决了持久化的问题
 
-![image-20220109233316343](/images/SpringCloud/10-Stream和Sleuth/image-20220109233316343.png)
+![image-20220109233316343](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109233316343.png)
 
 变成了D
 
 当然**这样并不能解决重复消费的问题**，因为我们的发送者依旧是绑定了他们两个，只不过我们区分了他们的名字而已
 
-![image-20220109230849427](/images/SpringCloud/10-Stream和Sleuth/image-20220109230849427.png)
+![image-20220109230849427](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109230849427.png)
 
 所以说**我们只需要将他们两个的group属性改成一样**的`group: MyGroupConsumer`
 
 就可以解决问题了
 
-![image-20220109231958614](/images/SpringCloud/10-Stream和Sleuth/image-20220109231958614.png)
+![image-20220109231958614](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109231958614.png)
 
 接下来发送
 
-![image-20220109232052994](/images/SpringCloud/10-Stream和Sleuth/image-20220109232052994.png)
+![image-20220109232052994](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109232052994.png)
 
 看看接收情况
 
 8002没有
 
-![image-20220109232105966](/images/SpringCloud/10-Stream和Sleuth/image-20220109232105966.png)
+![image-20220109232105966](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109232105966.png)
 
 8003有
 
-![image-20220109232114255](/images/SpringCloud/10-Stream和Sleuth/image-20220109232114255.png)
+![image-20220109232114255](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109232114255.png)
 
 再次尝试发送几次之后，发现是轮循的，这个你可以自己测试
 
 并且我们的队列是持久化的
 
-![image-20220109232315977](/images/SpringCloud/10-Stream和Sleuth/image-20220109232315977.png)
+![image-20220109232315977](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109232315977.png)
 
 要修改服务端或者消费端的相关属性，例如是否持久化或服务端指定队列发送等，可以参照[官方文档](https://docs.spring.io/spring-cloud-stream-binder-rabbit/docs/3.2.1/reference/html/spring-cloud-stream-binder-rabbit.html#_configuration_options)或者说去看看这个类BindingProperties
 
@@ -507,7 +507,7 @@ spring:
 
 > 在微服务框架中，一个由客户端发起的请求在后端系统中会经过多个不同的服务节点调用来协同产生最后的请求结果，每一个前端请求都会行程一个复杂的分布式服务调用链路，链路中的任何一环出现高延迟或错误都会引起整个请求最后的失败
 
-![image-20220109233627796](/images/SpringCloud/10-Stream和Sleuth/image-20220109233627796.png)
+![image-20220109233627796](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109233627796.png)
 
 是不是看起来很简单的一个链路，但如果多了呢？
 
@@ -523,15 +523,15 @@ graph LR
 
 或者说
 
-![image-20220109234105854](/images/SpringCloud/10-Stream和Sleuth/image-20220109234105854.png)
+![image-20220109234105854](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109234105854.png)
 
 所以Spring cloud也考虑到了这个问题
 
-![image-20220109234153250](/images/SpringCloud/10-Stream和Sleuth/image-20220109234153250.png)
+![image-20220109234153250](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109234153250.png)
 
 官方文档：<https://docs.spring.io/spring-cloud-sleuth/docs/current/reference/html/>
 
-![image-20220109234245937](/images/SpringCloud/10-Stream和Sleuth/image-20220109234245937.png)
+![image-20220109234245937](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109234245937.png)
 
 ### 安装Zipkin
 
@@ -568,23 +568,23 @@ java -jar ./zipkin-server/target/zipkin-server-*exec.jar
 
 这里我是windows 所以 下载最新的jar包 我目前是2.23.9
 
-![image-20220109235502207](/images/SpringCloud/10-Stream和Sleuth/image-20220109235502207.png)
+![image-20220109235502207](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109235502207.png)
 
 下载会比较慢，建议使用IDM开8+的线程或者挂梯子下载
 
 看到有图标 只要有图标显示就算成功（PS：Windows Terminal优化可以看[这篇文章](https://blog.csdn.net/weixin_43232955/article/details/114751545)，要安装下PowerShellCore，然后安装下Oh-My-Posh即可 非常简单）
 
-![image-20220109235724812](/images/SpringCloud/10-Stream和Sleuth/image-20220109235724812.png)
+![image-20220109235724812](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220109235724812.png)
 
 接下来我们访问<http://localhost:9411>
 
 即可看到如下内容
 
-![image-20220110000020503](/images/SpringCloud/10-Stream和Sleuth/image-20220110000020503.png)
+![image-20220110000020503](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110000020503.png)
 
 它的链路是
 
-![image-20220110000118979](/images/SpringCloud/10-Stream和Sleuth/image-20220110000118979.png)
+![image-20220110000118979](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110000118979.png)
 
 一句话解释，就是一个请求，在每个地方所用时间，没了，，就这么简单
 
@@ -837,31 +837,31 @@ public class MyController {
 
 然后发送下请求
 
-![image-20220110010849986](/images/SpringCloud/10-Stream和Sleuth/image-20220110010849986.png)
+![image-20220110010849986](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110010849986.png)
 
 接着返回网页，点击
 
-![image-20220110010905803](/images/SpringCloud/10-Stream和Sleuth/image-20220110010905803.png)
+![image-20220110010905803](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110010905803.png)
 
 就能看到如上内容，点击show
 
-![image-20220110010928603](/images/SpringCloud/10-Stream和Sleuth/image-20220110010928603.png)
+![image-20220110010928603](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110010928603.png)
 
 就可以看到对应的信息
 
 然后你点显示全部 还能看到更详细的
 
-![image-20220110011010344](/images/SpringCloud/10-Stream和Sleuth/image-20220110011010344.png)
+![image-20220110011010344](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110011010344.png)
 
 当然 你还可以指定其他的相关信息
 
-![image-20220110011113813](/images/SpringCloud/10-Stream和Sleuth/image-20220110011113813.png)
+![image-20220110011113813](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110011113813.png)
 
 例如这样
 
-![image-20220110011133863](/images/SpringCloud/10-Stream和Sleuth/image-20220110011133863.png)
+![image-20220110011133863](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110011133863.png)
 
-![image-20220110011150515](/images/SpringCloud/10-Stream和Sleuth/image-20220110011150515.png)
+![image-20220110011150515](/images/Java/SpringCloud/10-Stream和Sleuth/image-20220110011150515.png)
 
 当然 这些之后应该都用不上了
 

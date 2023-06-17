@@ -18,7 +18,7 @@ tag:
 
 要用这个玩意，我们得先去学下Zookeeper
 
-![image-20220104135247204](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104135247204.png)
+![image-20220104135247204](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104135247204.png)
 
 好！又一个中间件
 
@@ -30,15 +30,15 @@ Zookeeper从设计模式角度来理解：是一个基于观察者模式设计�
 
 一旦这些数据的状态发生变化，Zookeeper就将负责通知已经在Zookeeper上注册的哪些观察者作出相应的反应
 
-![image-20220104135849226](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104135849226.png)
+![image-20220104135849226](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104135849226.png)
 
 ### Zookeeper的特点
 
-![image-20220104135935543](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104135935543.png)
+![image-20220104135935543](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104135935543.png)
 
 1. Zookeeper是一个领导者（Leader），多个跟随者（Follower）组成的集群
 2. 集群之中只要有**半数以上**的节点存活，Zookeeper集群就能正常服务，所以Zookeeper适合安装**奇数**台服务器
-   ![image-20220104140125703](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104140125703.png)
+   ![image-20220104140125703](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104140125703.png)
 3. 全局数据一致：每个server保存一份相同的数据副本，Client无论连接到哪个Server，数据都是一致的
 4. 更新请求执行顺序：来自同一个Client的更新请求按其发送顺序依次执行
 5. 数据更新原子性：一次数据更新要么成功，要么失败
@@ -48,7 +48,7 @@ Zookeeper从设计模式角度来理解：是一个基于观察者模式设计�
 
 它的数据结构和**Unix文件系统很类似**，整体上可以看做是一棵树，每个节点成称作一个ZNode，每一个ZNode默认能够存储**1MB**的数据，每个ZNode都可以通过其路径唯一标识
 
-![image-20220104140651563](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104140651563.png)
+![image-20220104140651563](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104140651563.png)
 
 ### 应用场景
 
@@ -56,23 +56,23 @@ Zookeeper从设计模式角度来理解：是一个基于观察者模式设计�
 
 - 统一命名服务，就类似于Nginx
 
-![image-20220104140957112](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104140957112.png)
+![image-20220104140957112](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104140957112.png)
 
 - 统一配置管理
 
-![image-20220104141127106](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141127106.png)
+![image-20220104141127106](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141127106.png)
 
 - 统一集群管理
 
-![image-20220104141254358](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141254358.png)
+![image-20220104141254358](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141254358.png)
 
 - 服务器的动态上下线
 
-![image-20220104141347479](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141347479.png)
+![image-20220104141347479](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141347479.png)
 
 - 软负载均衡
 
-![image-20220104141451985](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141451985.png)
+![image-20220104141451985](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220104141451985.png)
 
 ## Zookeeper的下载和安装
 
@@ -355,13 +355,13 @@ docker pull zookeeper:3.5.9
 
 这里说下`ZOO_MY_ID`:如果是常规部署的话 这玩意应该在指定的`data`目录下创建一个`zkData`文件，这个文件里面包含着对应的服务编号，填个数字即可
 
-![image-20220105172000909](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105172000909.png)
+![image-20220105172000909](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105172000909.png)
 
 然后ZOO_SERVERS等同于这个
 
-![image-20220105172204690](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105172204690.png)
+![image-20220105172204690](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105172204690.png)
 
-![image-20220105172455341](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105172455341.png)
+![image-20220105172455341](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105172455341.png)
 
 
 
@@ -431,9 +431,9 @@ Mode: follower ====> 选举的结果 follower 跟随者
 - 当leader还没有被选举出来的时候，都会依次给自己进行投票直到有半数以上的人通过，权重的话是按照我们之前在myid设定的id为准，id越大，权重越大，将会选举出第一个老大
 - 当老大选举完成之后，后来的都自动变为小弟
 
-![image-20220105173504806](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105173504806.png)
+![image-20220105173504806](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105173504806.png)
 
-![image-20220105173841671](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105173841671.png)
+![image-20220105173841671](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105173841671.png)
 
 ### 非第一次启动
 
@@ -441,7 +441,7 @@ Mode: follower ====> 选举的结果 follower 跟随者
 
 - 挂掉的时候，任期数量最大的优先，如果一致，则变更为处理用户请求最多服务端优先，如果说相同的话，则在进行服务器的myid判断，最大的胜出
 
-![image-20220105174336750](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105174336750.png)
+![image-20220105174336750](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105174336750.png)
 
 ## 客户端命令行操作
 
@@ -455,7 +455,7 @@ Mode: follower ====> 选举的结果 follower 跟随者
 
 
 
-![image-20220105175039734](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105175039734.png)
+![image-20220105175039734](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105175039734.png)
 
 首先 来看下znode节点数据信息
 
@@ -479,11 +479,11 @@ dataLength = 0
 numChildren = 1
 ```
 
-![image-20220105175532838](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105175532838.png)
+![image-20220105175532838](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105175532838.png)
 
 
 
-![image-20220105175919012](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105175919012.png)
+![image-20220105175919012](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105175919012.png)
 
 ### 节点的基本操作和节点类型
 
@@ -546,7 +546,7 @@ set /mydoc/shuguo "胡桃"
 
 
 
-![image-20220105180142406](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105180142406.png)
+![image-20220105180142406](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105180142406.png)
 
 ### 监听器
 
@@ -564,7 +564,7 @@ get -w /mydoc
 set /mydoc "杨贵妃"
 ```
 
-![image-20220105182319121](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105182319121.png)
+![image-20220105182319121](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105182319121.png)
 
 如果想要监听节点node值的变化
 
@@ -580,11 +580,11 @@ ls -w /mydoc
 create /mydoc/abc "aaa"
 ```
 
-![image-20220105182628957](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105182628957.png)
+![image-20220105182628957](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105182628957.png)
 
 
 
-![image-20220105181725562](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105181725562.png)
+![image-20220105181725562](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105181725562.png)
 
 ### 节点的删除以及查看
 
@@ -681,7 +681,7 @@ public class zkClient {
 
 执行结果：
 
-![image-20220105205311046](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105205311046.png)
+![image-20220105205311046](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105205311046.png)
 
 成功存储
 
@@ -711,11 +711,11 @@ public static void main(String[] args) throws IOException, InterruptedException,
 
 然后创建一个
 
-![image-20220105210326254](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105210326254.png)
+![image-20220105210326254](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105210326254.png)
 
 结果：
 
-![image-20220105210333567](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105210333567.png)
+![image-20220105210333567](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105210333567.png)
 
 ### 判断节点是否存在
 
@@ -728,7 +728,7 @@ System.out.println(exists == null ? "不存在" : "存在");
 
 ### 写入原理
 
-![image-20220105211008352](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105211008352.png)
+![image-20220105211008352](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105211008352.png)
 
 非常简单，或者说和那啥elasticsearch差不多
 
@@ -741,7 +741,7 @@ System.out.println(exists == null ? "不存在" : "存在");
 
 ## 服务动态上下线
 
-![image-20220105211450928](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105211450928.png)
+![image-20220105211450928](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105211450928.png)
 
 也就是监听业务功能上下线
 
@@ -817,7 +817,7 @@ try {
 
 比如说进程1在使用某项资源的时候，会先去获得锁，进程1获得锁后会对该资源保持独占，这样其他进程就无法访问该资源，进程1用完之后就会释放锁，让其他进程来获取锁，那么通过这个锁机制，我们就完成了分布式系统中多个进程能够有序的访问该临界资源，我们把这个分布式环境下的锁叫分布式锁
 
-![image-20220105221305440](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220105221305440.png)
+![image-20220105221305440](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220105221305440.png)
 
 实现用到了juc的锁。。这个之后再了解了，反正 它的await就相当于等待锁释放
 
@@ -1041,7 +1041,7 @@ public class CuratorLockTest {
 
 运行结果：
 
-![image-20220106135112076](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106135112076.png)
+![image-20220106135112076](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106135112076.png)
 
 ## Zookeeper应用到我们当前的分布式项目内
 
@@ -1154,7 +1154,7 @@ public class PaymentController {
 
 启动的时候会出现一个id
 
-![image-20220106151516438](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106151516438.png)
+![image-20220106151516438](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106151516438.png)
 
 记住它
 
@@ -1166,7 +1166,7 @@ public class PaymentController {
 
 然后看下节点列表，可以发现三个节点
 
-![image-20220106151611757](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106151611757.png)
+![image-20220106151611757](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106151611757.png)
 
 services下的节点，就是我们这个服务的服务名
 
@@ -1230,7 +1230,7 @@ get -s /services/cloud-provider-payment/ea8d6c0d-21c8-4fe6-a1c8-509d33b77ac6
 
 注意 每个版本的这啥依赖都可能不一样 默认会自带一个Zookeeper的依赖
 
-![image-20220106142132003](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106142132003.png)
+![image-20220106142132003](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106142132003.png)
 
 这里是3.6.0 发现和我们的版本不符合（我的是…3.7.0，不过没有中断的异常就是了）
 
@@ -1266,7 +1266,7 @@ get -s /services/cloud-provider-payment/ea8d6c0d-21c8-4fe6-a1c8-509d33b77ac6
 
 如果说抛出这样的异常
 
-![image-20220106144121169](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106144121169.png)
+![image-20220106144121169](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106144121169.png)
 
 修改下host即可
 
@@ -1294,13 +1294,13 @@ Zookeeper的节点分为四种
 
 所以我们把服务停了再去看看
 
-![image-20220106153010252](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106153010252.png)
+![image-20220106153010252](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106153010252.png)
 
 好，是**临时的普通节点**
 
 并且全都是临时节点
 
-![image-20220106153129196](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106153129196.png)
+![image-20220106153129196](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106153129196.png)
 
 **zookeeper是高端女猎人 ATM没钱了立马就踢了**
 
@@ -1434,13 +1434,13 @@ public class OrderZkController {
 
 ### 启动并测试
 
-![image-20220106155808653](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106155808653.png)
+![image-20220106155808653](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106155808653.png)
 
 两个服务都启动
 
 get 80 zk
 
-![image-20220106155820991](/images/SpringCloud/03-Zookeeper服务注册与发现/image-20220106155820991.png)
+![image-20220106155820991](/images/Java/SpringCloud/03-Zookeeper服务注册与发现/image-20220106155820991.png)
 
 ## Zookeeper的结束语
 

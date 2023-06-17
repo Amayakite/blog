@@ -31,7 +31,7 @@ create table account(
 
 接着，我们创建一个Maven-Web工程（用不用模板都可 反正最后都要加web）
 
-![image-20211216172448044](/images/SpringFrameWork/11-SSM框架的整合/image-20211216172448044.png)
+![image-20211216172448044](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216172448044.png)
 
 接着导入SSM依赖
 
@@ -738,9 +738,9 @@ public class AccountController {
 
 ### 测试
 
-![image-20211216222604121](/images/SpringFrameWork/11-SSM框架的整合/image-20211216222604121.png)
+![image-20211216222604121](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216222604121.png)
 
-![image-20211216222626255](/images/SpringFrameWork/11-SSM框架的整合/image-20211216222626255.png)
+![image-20211216222626255](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216222626255.png)
 
 ## ✨Spring整合MyBatis
 
@@ -786,7 +786,7 @@ public class AccountServiceImpl implements AccountService {
 
 我们在每次执行事务的时候都会访问Mybatis文件、创建Mybatis对象，所以这样效率就会非常慢
 
-![image-20211216222912642](/images/SpringFrameWork/11-SSM框架的整合/image-20211216222912642.png)
+![image-20211216222912642](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216222912642.png)
 
 并且我们还没有用上Druid连接池和Spring的tx事务管理...
 
@@ -887,7 +887,7 @@ public class AccountServiceImpl implements AccountService {
 
 最后激动人心的时刻来了，测试：
 
-![image-20211216225518745](/images/SpringFrameWork/11-SSM框架的整合/image-20211216225518745.png)
+![image-20211216225518745](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216225518745.png)
 
 ## SSM 结束语
 
@@ -909,7 +909,7 @@ public class AccountServiceImpl implements AccountService {
 
 一个完整的ssm项目结构如下：
 
-![image-20211216225814220](/images/SpringFrameWork/11-SSM框架的整合/image-20211216225814220.png)
+![image-20211216225814220](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216225814220.png)
 
 ## 项目的依赖
 
@@ -1350,7 +1350,7 @@ Service用于存放操纵数据和相应逻辑处理的类
 
 第二层impl存放相应的实现方法
 
-![image-20211216230538430](/images/SpringFrameWork/11-SSM框架的整合/image-20211216230538430.png)
+![image-20211216230538430](/images/Java/SpringFrameWork/11-SSM框架的整合/image-20211216230538430.png)
 
 接口：
 

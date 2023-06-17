@@ -36,7 +36,7 @@ PS：Netty也是一个蛮牛逼的东西，以后要去了解下，好像老韩�
 - 熔断
 - 日志监控
 
-![image-20220108125324893](/images/SpringCloud/08-GateWay服务网关/image-20220108125324893.png)
+![image-20220108125324893](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108125324893.png)
 
 网关是所有微服务的入口
 
@@ -51,9 +51,9 @@ Spring Cloud Gateway具有以下特性
 7. 请求限流功能
 8. 支持路径重写
 
-![image-20220108125859245](/images/SpringCloud/08-GateWay服务网关/image-20220108125859245.png)
+![image-20220108125859245](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108125859245.png)
 
-![image-20220108130508461](/images/SpringCloud/08-GateWay服务网关/image-20220108130508461.png)
+![image-20220108130508461](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108130508461.png)
 
 ## Gateway的三大核心概念
 
@@ -61,7 +61,7 @@ Spring Cloud Gateway具有以下特性
 
 构建网关的基本模块，它由ID，目标URL，一系列的断言和过滤器组成，如果断言为true，则表示匹配该路由
 
-![image-20220108130822519](/images/SpringCloud/08-GateWay服务网关/image-20220108130822519.png)
+![image-20220108130822519](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108130822519.png)
 
 ### 断言Predicate
 
@@ -73,9 +73,9 @@ Spring Cloud Gateway具有以下特性
 
 指的是Spring框架中的GatewayFilter的实例，使用过滤器，可在请求路由前后对请求进行修改
 
-![image-20220108134245168](/images/SpringCloud/08-GateWay服务网关/image-20220108134245168.png)
+![image-20220108134245168](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108134245168.png)
 
-![image-20220108134429435](/images/SpringCloud/08-GateWay服务网关/image-20220108134429435.png)
+![image-20220108134429435](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108134429435.png)
 
 就有点像是SpringSecurity那样
 
@@ -224,39 +224,39 @@ spring:
 
 如果你之前没有移除web和actuator这连个依赖，Gateway在启动的时候将会报错
 
-![image-20220108140811736](/images/SpringCloud/08-GateWay服务网关/image-20220108140811736.png)
+![image-20220108140811736](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108140811736.png)
 
 我这里用的是consul，所以外部启动，然后依次启动两个服务即可
 
 接着你可以看到9527这里标了一把×，这个不用管，是因为它更不提供服务导致的，它只有服务转发
 
-![image-20220108141422980](/images/SpringCloud/08-GateWay服务网关/image-20220108141422980.png)
+![image-20220108141422980](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108141422980.png)
 
 接着我们get 8001 <http://localhost:8001/payment/hystrix/ok/1>
 
-![image-20220108141456256](/images/SpringCloud/08-GateWay服务网关/image-20220108141456256.png)
+![image-20220108141456256](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108141456256.png)
 
 没问题
 
 那么换成9527呢？ <http://localhost:9527/payment/hystrix/ok/1>
 
-![image-20220108141515201](/images/SpringCloud/08-GateWay服务网关/image-20220108141515201.png)
+![image-20220108141515201](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108141515201.png)
 
 依旧没问题
 
 并且无论是error
 
-![image-20220108141615360](/images/SpringCloud/08-GateWay服务网关/image-20220108141615360.png)
+![image-20220108141615360](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108141615360.png)
 
 或者是timeout
 
-![image-20220108141629093](/images/SpringCloud/08-GateWay服务网关/image-20220108141629093.png)
+![image-20220108141629093](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108141629093.png)
 
 都可以直接通过9527进行访问
 
 ### 关于YAML的说明
 
-![image-20220108141751711](/images/SpringCloud/08-GateWay服务网关/image-20220108141751711.png)
+![image-20220108141751711](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108141751711.png)
 
 接下来尝试一下给8001添加一个路由
 
@@ -299,9 +299,9 @@ public class TestController {
 
 然后重启这两位，访问下9527
 
-![image-20220108142221668](/images/SpringCloud/08-GateWay服务网关/image-20220108142221668.png)
+![image-20220108142221668](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108142221668.png)
 
-![image-20220108151632842](/images/SpringCloud/08-GateWay服务网关/image-20220108151632842.png)
+![image-20220108151632842](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108151632842.png)
 
 依旧是成功的
 
@@ -342,11 +342,11 @@ public class GateWayConfig {
 
 访问`/guonei`
 
-![image-20220108144047808](/images/SpringCloud/08-GateWay服务网关/image-20220108144047808.png)
+![image-20220108144047808](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108144047808.png)
 
 访问`/anime`
 
-![image-20220108144136434](/images/SpringCloud/08-GateWay服务网关/image-20220108144136434.png)
+![image-20220108144136434](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108144136434.png)
 
 这个是由于啊b的重定向导致的..
 
@@ -356,7 +356,7 @@ gateway人称小nginx也就是这么来的
 
 我们想要的效果应该是这样的
 
-![image-20220108145543353](/images/SpringCloud/08-GateWay服务网关/image-20220108145543353.png)
+![image-20220108145543353](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108145543353.png)
 
 客户端 网关 注册中心 服务端 应该是这样的
 
@@ -383,7 +383,7 @@ spring:
 
 ```
 
-![image-20220108150830914](/images/SpringCloud/08-GateWay服务网关/image-20220108150830914.png)
+![image-20220108150830914](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108150830914.png)
 
 然后开始配置，只需要两步即可
 
@@ -446,9 +446,9 @@ spring:
 
 接着重启，然后尝试访问
 
-![image-20220108151653127](/images/SpringCloud/08-GateWay服务网关/image-20220108151653127.png)
+![image-20220108151653127](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108151653127.png)
 
-![image-20220108151658449](/images/SpringCloud/08-GateWay服务网关/image-20220108151658449.png)
+![image-20220108151658449](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108151658449.png)
 
 可以发现，这里是采用了轮循来进行负载均衡
 
@@ -456,7 +456,7 @@ spring:
 
 在[官方文档](https://docs.spring.io/spring-cloud-gateway/docs/3.0.5-SNAPSHOT/reference/html/#gateway-request-predicates-factories)中，我们可以看到很多对应的配置
 
-![image-20220108152655804](/images/SpringCloud/08-GateWay服务网关/image-20220108152655804.png)
+![image-20220108152655804](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108152655804.png)
 
 光看名字的话 emm前后前后然后cookie还有path之类的校验？
 
@@ -481,7 +481,7 @@ spring:
 
 接下来根据文档得知所有断言`Predicate`的父类是`RoutePredicateFactory<C>`这个类，类图如下，拥有这些实现类
 
-![image-20220108153024021](/images/SpringCloud/08-GateWay服务网关/image-20220108153024021.png)
+![image-20220108153024021](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108153024021.png)
 
 接下来简单说下使用
 
@@ -489,7 +489,7 @@ spring:
 
 我们有这些可以开箱即用
 
-![image-20220108153228339](/images/SpringCloud/08-GateWay服务网关/image-20220108153228339.png)
+![image-20220108153228339](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108153228339.png)
 
 ### 时间断言
 
@@ -617,7 +617,7 @@ Cookie Route Predicate需要接受两个参数
 
 接下来我们重启，并打开cmd（Powershell没有curl）或者shell进行测试
 
-![image-20220108160241641](/images/SpringCloud/08-GateWay服务网关/image-20220108160241641.png)
+![image-20220108160241641](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108160241641.png)
 
 可以看到 当我们没有带cookie的时候 访问失败 返回404
 
@@ -643,11 +643,11 @@ Cookie Route Predicate需要接受两个参数
 
 测试结果
 
-![image-20220108161018403](/images/SpringCloud/08-GateWay服务网关/image-20220108161018403.png)
+![image-20220108161018403](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108161018403.png)
 
 传入错误的值：
 
-![image-20220108161035796](/images/SpringCloud/08-GateWay服务网关/image-20220108161035796.png)
+![image-20220108161035796](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108161035796.png)
 
 ### 请求头断言
 
@@ -774,13 +774,13 @@ Weight接收两个参数
 
 ## Filter过滤器
 
-![image-20220108163539594](/images/SpringCloud/08-GateWay服务网关/image-20220108163539594.png)
+![image-20220108163539594](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108163539594.png)
 
 这就像是Spring Security的过滤器那样 可以用于修改Http请求和返回的HTTP响应，路由过滤器只能只能指定路由进行使用
 
 Spring Cloud Gateway内置了多种路由过滤器，他们都由GatewayFilterFactory工厂类来产生
 
-![image-20220108163832946](/images/SpringCloud/08-GateWay服务网关/image-20220108163832946.png)
+![image-20220108163832946](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108163832946.png)
 
 ### 生命周期和种类以及内置的过滤器
 
@@ -856,21 +856,21 @@ public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
 服务端日志为：
 
-![image-20220108170828570](/images/SpringCloud/08-GateWay服务网关/image-20220108170828570.png)
+![image-20220108170828570](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108170828570.png)
 
 客户端响应为：
 
-![image-20220108170742279](/images/SpringCloud/08-GateWay服务网关/image-20220108170742279.png)
+![image-20220108170742279](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108170742279.png)
 
 
 
 带上我们指定的参数：
 
-![image-20220108170856987](/images/SpringCloud/08-GateWay服务网关/image-20220108170856987.png)
+![image-20220108170856987](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108170856987.png)
 
 客户端成功获取
 
-![image-20220108170906434](/images/SpringCloud/08-GateWay服务网关/image-20220108170906434.png)
+![image-20220108170906434](/images/Java/SpringCloud/08-GateWay服务网关/image-20220108170906434.png)
 
 服务端成功打印
 

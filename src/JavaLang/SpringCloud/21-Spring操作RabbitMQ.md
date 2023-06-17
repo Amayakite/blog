@@ -157,7 +157,7 @@ public class RabbitConfig {
 
 切换成功后发送消息会在header后看得到类名
 
-![image-20220205184528032](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205184528032.png)
+![image-20220205184528032](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205184528032.png)
 
 ## 接收消息
 
@@ -311,13 +311,13 @@ public class TestController {
 
 emm性能下降250倍时官方说的，是真的.
 
-![image-20220205195053992](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205195053992.png)
+![image-20220205195053992](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205195053992.png)
 
 ## 可靠投递
 
 开一个设置即可
 
-![image-20220205195732361](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205195732361.png)
+![image-20220205195732361](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205195732361.png)
 
 当然 SpringBoot2.2之后这玩意已经被废弃了，无法配置，需要这样来进行配置：
 
@@ -379,7 +379,7 @@ public class RabbitConfig {
 
 ## 可靠抵达
 
-![image-20220205201946676](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205201946676.png)
+![image-20220205201946676](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205201946676.png)
 
 Spring2.5+这样配置
 
@@ -495,7 +495,7 @@ public class RabbitConfig {
 
 ## 可靠接收-手动确认
 
-![image-20220205210226231](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205210226231.png)
+![image-20220205210226231](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205210226231.png)
 
 配置：
 
@@ -515,7 +515,7 @@ spring:
 
 开启后，如果有队列正在监听对应的消息，并且没有签收，消息是处于Unacked状态
 
-![image-20220205210531384](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205210531384.png)
+![image-20220205210531384](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205210531384.png)
 
 如果没有东西在监听，则会处于ready状态
 
@@ -544,33 +544,33 @@ public void reviveMessage1(OrderReturnReasonEntity context, Message message, Cha
 
 当然 也可以拒绝
 
-![image-20220205211904110](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220205211904110.png)
+![image-20220205211904110](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220205211904110.png)
 
 ## 延时队列
 
-![image-20220206150949655](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206150949655.png)
+![image-20220206150949655](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206150949655.png)
 
 就是想定时的去做什么事情，例如订单的删除之类的，自己整又不太精确，所以就可以这样
 
 首先回顾下RabbitMQ的TTL 存活时间
 
-![image-20220206151113888](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206151113888.png)
+![image-20220206151113888](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206151113888.png)
 
 以及死信队列
 
-![image-20220206151604776](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206151604776.png)
+![image-20220206151604776](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206151604776.png)
 
 所以说，我们可以让消费者读取死信队列来完成这一套操作
 
-![image-20220206151929790](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206151929790.png)
+![image-20220206151929790](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206151929790.png)
 
 例如：
 
-![image-20220206152351536](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206152351536.png)
+![image-20220206152351536](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206152351536.png)
 
 也就是：
 
-![image-20220206153004294](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206153004294.png)
+![image-20220206153004294](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206153004294.png)
 
 ## 通过注解方式来完成延时队列
 
@@ -660,5 +660,5 @@ public class MyRabbitVoConfig {
 
 创建好了之后，随便发送一条消息，等待一分钟后的队列情况如下
 
-![image-20220206160845719](/images/SpringCloud/21-Spring操作RabbitMQ/image-20220206160845719.png)
+![image-20220206160845719](/images/Java/SpringCloud/21-Spring操作RabbitMQ/image-20220206160845719.png)
 

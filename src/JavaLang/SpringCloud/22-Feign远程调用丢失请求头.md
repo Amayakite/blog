@@ -10,7 +10,7 @@ tag:
 
 ## 概述
 
-![image-20220205222122234](/images/SpringCloud/22-Feign远程调用丢失请求头/image-20220205222122234.png)
+![image-20220205222122234](/images/Java/SpringCloud/22-Feign远程调用丢失请求头/image-20220205222122234.png)
 
 ## 解决
 
@@ -58,7 +58,7 @@ public class FeignConfig {
 
 ## 异步调用丢失（开新线程调用）
 
-![image-20220205225154600](/images/SpringCloud/22-Feign远程调用丢失请求头/image-20220205225154600.png)
+![image-20220205225154600](/images/Java/SpringCloud/22-Feign远程调用丢失请求头/image-20220205225154600.png)
 
 实际工作中，一般都是异步调用
 

@@ -33,7 +33,7 @@ public class Exception01 {
 
 上方代码结果：
 
-![image-20211103143937071](/images/JavaSE/11-Exception/image-20211103143937071.png)
+![image-20211103143937071](/images/Java/JavaSE/11-Exception/image-20211103143937071.png)
 
 截下来使用try-catch来解决这个问题：
 
@@ -64,7 +64,7 @@ public class Exception01 {
 
 运行结果：
 
-![image-20211103145516146](/images/JavaSE/11-Exception/image-20211103145516146.png)
+![image-20211103145516146](/images/Java/JavaSE/11-Exception/image-20211103145516146.png)
 
 可以看到，烦人的异常消失了，接下来仔细了解下它
 
@@ -121,9 +121,9 @@ CB-->...
 
 ```
 
-![image-20211103160838379](/images/JavaSE/11-Exception/image-20211103160838379.png)
+![image-20211103160838379](/images/Java/JavaSE/11-Exception/image-20211103160838379.png)
 
-![image-20211103161052235](/images/JavaSE/11-Exception/image-20211103161052235.png)
+![image-20211103161052235](/images/Java/JavaSE/11-Exception/image-20211103161052235.png)
 
 (使用IEDA自带工具绘制出的一部分异常体系图，展现了他们的继承关系（虚线表示实现了接口，实现表示继承了类）)
 
@@ -133,7 +133,7 @@ CB-->...
 
 该异常的继承关系图:
 
-![image-20211103162250515](/images/JavaSE/11-Exception/image-20211103162250515.png)
+![image-20211103162250515](/images/Java/JavaSE/11-Exception/image-20211103162250515.png)
 
 > 下方异常中没有表明出处的都是直接继承于RuntimeException
 
@@ -182,7 +182,7 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 
 该异常的继承关系图：
 
-![image-20211103162939406](/images/JavaSE/11-Exception/image-20211103162939406.png)
+![image-20211103162939406](/images/Java/JavaSE/11-Exception/image-20211103162939406.png)
 
 用非法索引访问数组时抛出异常，如果索引值为负或者大于小于数组大小（arr.length-1），则该索引为非法索引：
 
@@ -232,7 +232,7 @@ Exception in thread "main" java.lang.ClassCastException: com.exception_.B cannot
 
 继承关系图：
 
-![image-20211103164117438](/images/JavaSE/11-Exception/image-20211103164117438.png)
+![image-20211103164117438](/images/Java/JavaSE/11-Exception/image-20211103164117438.png)
 
 当应用程序试图将字符串转换成以重数组类型，但该字符串不能转换为适当格式时，抛出该异常(使用该异常可以确保最终输入的是数字)
 
@@ -382,7 +382,7 @@ public class Trhows01 {
    }
    ```
 
-   ![image-20211103174900422](/images/JavaSE/11-Exception/image-20211103174900422.png)
+   ![image-20211103174900422](/images/Java/JavaSE/11-Exception/image-20211103174900422.png)
 
 4. 在throws中，如果由方法try-catch，就相当于异常处理，就可以不必throws(二选一)
 

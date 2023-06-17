@@ -134,7 +134,7 @@ public class MyInterceptor implements HandlerInterceptor {
 
 但是发现他有三个default的方法
 
-![image-20211213175241236](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213175241236.png)
+![image-20211213175241236](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213175241236.png)
 
 我们现在把三个都重写一下： 他们三对应了三个区域
 
@@ -259,7 +259,7 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 
 如果我们这里返回false 则我们访问的路径：将什么都不会返回
 
-![image-20211213180515878](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213180515878.png)
+![image-20211213180515878](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213180515878.png)
 
 ### postHandle 对ModelAndView的进一步处理
 
@@ -313,7 +313,7 @@ public void postHandle(HttpServletRequest request, HttpServletResponse response,
 
 接着访问，得到了我们设置的
 
-![image-20211213181154753](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213181154753.png)
+![image-20211213181154753](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213181154753.png)
 
 ### afterCompletion 对异常的处理
 
@@ -371,11 +371,11 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
 
 接着访问那个有异常的页面：
 
-![image-20211213181808716](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213181808716.png)
+![image-20211213181808716](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213181808716.png)
 
 ## 拦截器的总结以及不拦截某个地址
 
-![image-20211213182233515](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213182233515.png)
+![image-20211213182233515](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213182233515.png)
 
 使用：
 
@@ -430,7 +430,7 @@ public class MyInterceptor implements HandlerInterceptor {
 
 我们现在有着如下项目结构：
 
-![image-20211213184231469](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213184231469.png)
+![image-20211213184231469](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213184231469.png)
 
 接下来我们在DemoServiceImpl中人为的增加一些异常：
 
@@ -502,7 +502,7 @@ public String show1() {
 
 系统的Dao、Service、Controller出现都通过throws Exception向上抛出，最后由SpringMVC前端控制交给**异常处理器**进行异常处理，如下图：
 
-![image-20211213202431112](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213202431112.png)
+![image-20211213202431112](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213202431112.png)
 
 ## 异常处理的两种方式
 
@@ -512,7 +512,7 @@ public String show1() {
 
 我们先手动创建两个文件吧
 
-![image-20211213205343528](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213205343528.png)
+![image-20211213205343528](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213205343528.png)
 
 下面那个error里面写一个通用的异常处理
 
@@ -562,9 +562,9 @@ public String show2() {
 
 访问：
 
-![image-20211213210004430](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213210004430.png)
+![image-20211213210004430](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213210004430.png)
 
-![image-20211213210014009](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213210014009.png)
+![image-20211213210014009](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213210014009.png)
 
 看来东西没错
 
@@ -660,8 +660,8 @@ public void error6() throws MyException {
 
 访问：
 
-![image-20211213213015952](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213213015952.png)
+![image-20211213213015952](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213213015952.png)
 
 ## 异常处理的总结
 
-![image-20211213213334067](/images/SpringFrameWork/07-SpringMVC拦截器/image-20211213213334067.png)
+![image-20211213213334067](/images/Java/SpringFrameWork/07-SpringMVC拦截器/image-20211213213334067.png)

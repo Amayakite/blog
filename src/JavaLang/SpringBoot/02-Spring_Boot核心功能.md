@@ -158,7 +158,7 @@ public class HelloController {
 
 访问：获取到如下内容
 
-![image-20211218152759601](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218152759601.png)
+![image-20211218152759601](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218152759601.png)
 
 ```json
 {
@@ -252,7 +252,7 @@ username: '张三\n今年18'
 
 接着你编写xml的时候就能看到智能提示了
 
-![image-20211218155524231](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218155524231.png)
+![image-20211218155524231](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218155524231.png)
 
 如果我们文件中是才用驼峰命名法 则这里可以才用中横线命名 最终spring会自动帮我们进行转换
 
@@ -288,7 +288,7 @@ SpringBoot对SpringMVC做了非常多的配置，**大多数场景下我们都�
 
 #### 创建项目
 
-![image-20211218161453497](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218161453497.png)
+![image-20211218161453497](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218161453497.png)
 
 勾上这些 都是我们要用的
 
@@ -314,7 +314,7 @@ SpringBoot对SpringMVC做了非常多的配置，**大多数场景下我们都�
 spring.mvc.static-path-pattern=/Mypublic/**
 ```
 
-![image-20211218165149046](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218165149046.png)
+![image-20211218165149046](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218165149046.png)
 
 至于访问级别，依旧是跟SPringMVC中一样，如果说我们加了一个和他相同路径的Controller
 
@@ -330,7 +330,7 @@ public class HelloController {
 }
 ```
 
-![image-20211218165529215](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218165529215.png)
+![image-20211218165529215](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218165529215.png)
 
 那么依旧是这个Controller优先显示
 
@@ -398,11 +398,11 @@ PS：不建议这种方式 建议往下翻 看最后一种笨方法 这个玩意
 
 我们在`templates`目录下新建一个index.html
 
-![image-20211218174232690](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218174232690.png)
+![image-20211218174232690](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218174232690.png)
 
 访问
 
-![image-20211218175951773](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218175951773.png)
+![image-20211218175951773](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218175951773.png)
 
 但是这样的话，static之类里面定义的index.html就失效了，也就是说我们访问`/Mypublic`并不会跳转到相应目录下的`index.html` 好像本来就是这样的？我也不太清楚是怎么一回事 以后遇到了再说
 
@@ -424,7 +424,7 @@ SpringBoot启动的时候默认加载xxxAutoConfiguration类(自动配置)
 
 主要是这个类
 
-![image-20211218194410609](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218194410609.png)
+![image-20211218194410609](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218194410609.png)
 
 SpringMVC功能的自动配置大多数集中在这个WebMvcAutoConfiguration这个类内
 
@@ -542,7 +542,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 我们打一个debug，然后运行程序 看看他会运行什么
 
-![image-20211218200551745](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218200551745.png)
+![image-20211218200551745](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218200551745.png)
 
 首先就看到这玩意是false 但这是一个反向判断(True变false) 所以我们进下这个isAddMappings看看里面都是啥
 
@@ -573,7 +573,7 @@ addResourceHandler(registry, this.mvcProperties.getStaticPathPattern(), (registr
 
 我们到配置文件看看是否有对应的项目
 
-![image-20211218201813936](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218201813936.png)
+![image-20211218201813936](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218201813936.png)
 
 有这个玩意，接下来我们把他改成false
 
@@ -881,7 +881,7 @@ AJax 是直接走的PUT的请求，而不是POST+_method 所以并不会走这�
 
 这个注解就是封装了@Requestmapping...
 
-![image-20211218215448830](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218215448830.png)
+![image-20211218215448830](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218215448830.png)
 
 ```java
 
@@ -1031,7 +1031,7 @@ public User login(@RequestBody User user) {
 
 正常来说我们传入的参数不符合的话 就会抛出405 并且抛出我们的代码
 
-![image-20211218231915629](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218231915629.png)
+![image-20211218231915629](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218231915629.png)
 
 所以说这个时候就要用到@Validated来进行验证了
 
@@ -1071,15 +1071,15 @@ public class User {
 
 当让不止这一种验证类型，还有：
 
-![img](/images/SpringBoot/02-Spring_Boot核心功能/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyMzUyNzc3,size_16,color_FFFFFF,t_70.png)
+![img](/images/Java/SpringBoot/02-Spring_Boot核心功能/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyMzUyNzc3,size_16,color_FFFFFF,t_70.png)
 
 这样做还是会有异常 的 但是异常的信息我们就都知道了 之后会说明怎么在spring boot中定制化异常处理
 
-![image-20211218233619837](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218233619837.png)
+![image-20211218233619837](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218233619837.png)
 
 尝试下正确的值：
 
-![image-20211218234351542](/images/SpringBoot/02-Spring_Boot核心功能/image-20211218234351542.png)
+![image-20211218234351542](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211218234351542.png)
 
 ### @RequestAttribute 获取请求域中的信息
 
@@ -1173,7 +1173,7 @@ public Map<String, Object> success(HttpServletRequest req) {
 
 结果：
 
-![image-20211219132659882](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219132659882.png)
+![image-20211219132659882](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219132659882.png)
 
 ### ✨自定义接收参数类型转换器
 
@@ -1285,11 +1285,11 @@ public User user(){
 
 接着测试
 
-![image-20211219220148275](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219220148275.png)
+![image-20211219220148275](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219220148275.png)
 
 xml返回成功
 
-![image-20211219220204011](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219220204011.png)
+![image-20211219220204011](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219220204011.png)
 
 json也返回成功！根据客户端要求的数据不同自动匹配
 
@@ -1299,7 +1299,7 @@ json也返回成功！根据客户端要求的数据不同自动匹配
 
 我们之前配置了可以让访问返回xml的方法，但是那样太痛苦了，因为浏览器的请求头内，xml的优先级高于json 这样就会导致我们浏览器每次请求到的数据都是xml
 
-![image-20211219221958671](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219221958671.png)
+![image-20211219221958671](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219221958671.png)
 
 所以说我们可以通过开启参数匹配的方式来决定优先返回哪些内容
 
@@ -1317,7 +1317,7 @@ format=需要接收的类型字段
 
 即可
 
-![image-20211219222246417](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219222246417.png)
+![image-20211219222246417](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219222246417.png)
 
 ## ✨自定义返回值处理器
 
@@ -1352,7 +1352,7 @@ format=需要接收的类型字段
 
 根据以往的坑位，和官方文档的说明，在WebMvcConfigurer下，我们可以看到一个非常眼熟的东西
 
-![image-20211219224340957](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219224340957.png)
+![image-20211219224340957](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219224340957.png)
 
 （PS：官方特地说明了 要自定义一些相关的SPringMVC有关的内容 都到这个类里面找）
 
@@ -1481,7 +1481,7 @@ public class WebConfig {
 
 访问即可
 
-![image-20211219231117070](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219231117070.png)
+![image-20211219231117070](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219231117070.png)
 
 ### ✨返回值处理器额外补充-配置内容协商
 
@@ -1543,7 +1543,7 @@ public class WebConfig {
 
 接着访问 就能获取到我们自定义类型的数据
 
-![image-20211219233642650](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219233642650.png)
+![image-20211219233642650](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219233642650.png)
 
 ## 视图解析与模板引擎（服务端渲染）
 
@@ -1561,9 +1561,9 @@ spring有很多第三方的服务端渲染 但是用的比较多的是`thymeleaf
 
 语法就这些
 
-![image-20211219235343409](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219235343409.png)
+![image-20211219235343409](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219235343409.png)
 
-![image-20211219235935155](/images/SpringBoot/02-Spring_Boot核心功能/image-20211219235935155.png)
+![image-20211219235935155](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211219235935155.png)
 
 当然 还有判断之类的
 
@@ -1632,7 +1632,7 @@ public class ViewTestController {
 
 访问
 
-![image-20211220120951898](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220120951898.png)
+![image-20211220120951898](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220120951898.png)
 
 ### 设置全局访问前缀
 
@@ -1661,15 +1661,15 @@ public class ViewTestController {
 
 并且正常是直接这样访问
 
-![image-20211220121036039](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220121036039.png)
+![image-20211220121036039](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220121036039.png)
 
 但是我加上了之后
 
-![image-20211220121047134](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220121047134.png)
+![image-20211220121047134](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220121047134.png)
 
 只能通过我们指定的前缀进行访问 这就有点像Tomcat那味道了
 
-![image-20211220121058329](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220121058329.png)
+![image-20211220121058329](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220121058329.png)
 
 并且如果是动态链接的话 也会自动生成前缀
 
@@ -1690,13 +1690,13 @@ public class ViewTestController {
 </html>
 ```
 
-![image-20211220121547276](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220121547276.png)
+![image-20211220121547276](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220121547276.png)
 
 ### Web实验-实现admin后台管理系统
 
 先创建一个project
 
-![image-20211220122312891](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220122312891.png)
+![image-20211220122312891](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220122312891.png)
 
 接下来是html页面
 
@@ -1708,13 +1708,13 @@ public class ViewTestController {
 
 然后你就得到了这些
 
-![image-20211220122508011](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220122508011.png)
+![image-20211220122508011](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220122508011.png)
 
 根据开发规范 静态资源 统一放到静态资源路径下
 
 其余的放到templates路径下
 
-![image-20211220122624280](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220122624280.png)
+![image-20211220122624280](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220122624280.png)
 
 接着配置一个简单的登录页
 
@@ -1740,7 +1740,7 @@ public class indexContoller {
 
 因为html中的js之类的静态文件夹默认是在当前路径下的  而且我们没有修改静态资源的解析路径 所以目前来说所有的js 、css、font等静态资源都是可以正常访问的
 
-![image-20211220123607758](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220123607758.png)
+![image-20211220123607758](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220123607758.png)
 
 接着，我们把index.html重命名为main.html
 
@@ -1774,17 +1774,17 @@ public String login(String username, String password) {
 
 当让 别忘了给这两个玩意加name（原本是没有name的）
 
-![image-20211220131816329](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220131816329.png)
+![image-20211220131816329](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220131816329.png)
 
 成功跳转了
 
-![image-20211220124335304](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220124335304.png)
+![image-20211220124335304](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220124335304.png)
 
 但是这样又有一个问题 我们刷新页面就相当于表单重复提交
 
 所以说得这样  因为tyhmeleaf 本身是无法直接访问到template下的main页面
 
-![image-20211220124756543](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220124756543.png)
+![image-20211220124756543](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220124756543.png)
 
 所以我们可以通过加一个mapping来重定向到相应的页面
 
@@ -1815,7 +1815,7 @@ public String mainPage() {
 
 `@GetMapping("/main.html")` 就不会导致我们post表单的重复提交
 
-![image-20211220124900736](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220124900736.png)
+![image-20211220124900736](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220124900736.png)
 
 但是现在又延伸出一个问题 我们这个main页面必须登陆成功才能访问 我们这样设置之后 直接访问main.html即可
 
@@ -1850,7 +1850,7 @@ public String login(User user, HttpSession session, Model model) {
 
 接着如果输入账户密码的话 就会一直卡在login页面
 
-![image-20211220130858186](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220130858186.png)
+![image-20211220130858186](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220130858186.png)
 
 接下来就是main页面的处理 我们不可能给后续所有页面都加上获取session 并判断
 
@@ -1872,7 +1872,7 @@ public String mainPage(HttpSession session, Model model) {
 
 接下来尝试不登录 直接访问
 
-![image-20211220131415959](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220131415959.png)
+![image-20211220131415959](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220131415959.png)
 
 会直接跳转回主页
 
@@ -1895,11 +1895,11 @@ public String mainPage(HttpSession session, Model model) {
 
 接着直接访问下登录页并且不输入账号密码试试
 
-![image-20211220132147975](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220132147975.png)
+![image-20211220132147975](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220132147975.png)
 
 然后尝试直接访问main.html
 
-![image-20211220132440033](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220132440033.png)
+![image-20211220132440033](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220132440033.png)
 
 接下来又有一个问题 我想把main页面内右上角的别的名字去掉
 
@@ -1926,17 +1926,17 @@ public String mainPage(HttpSession session, Model model) {
 
 即可
 
-![image-20211220143228870](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220143228870.png)
+![image-20211220143228870](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220143228870.png)
 
 接下来 我们就实现data tables页面的跳转吧
 
 先把这几个移动到table文件夹下
 
-![image-20211220143728543](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220143728543.png)
+![image-20211220143728543](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220143728543.png)
 
 当然为了让整体文件看起来不那么乱 我就先把其他的页面删掉了 有需要再加进来
 
-![image-20211220144023370](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220144023370.png)
+![image-20211220144023370](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220144023370.png)
 
 好了 但是接下来我们看到了这几个页面的侧边栏顶部栏的代码都是大同小异的 接下来我们抽取出来得到一个单独的文件
 
@@ -1944,7 +1944,7 @@ public String mainPage(HttpSession session, Model model) {
 
 这里就省略 过程了 5个文件  替换的话我们用正则表达式来替换
 
-![image-20211220151201425](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220151201425.png)
+![image-20211220151201425](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220151201425.png)
 
 然后公共资源我们就统一放在common文件夹下 大概总体长这样 公共的一些资源我们动态的加上 修饰符 这里我是全部用正则来操作的 现在基本所有ide 都支持正则替换 小括号内的内容 用$1 $2 之类的来表示
 
@@ -1975,11 +1975,11 @@ public String mainPage(HttpSession session, Model model) {
 
     <!--logo and iconic logo start-->
     <div class="logo">
-        <a href="main.html"><img th:src="@{/images/logo.png}" alt=""></a>
+        <a href="main.html"><img th:src="@{/images/Java/logo.png}" alt=""></a>
     </div>
 
     <div class="logo-icon text-center">
-        <a href="main.html"><img th:src="@{/images/logo_icon.png}" alt=""></a>
+        <a href="main.html"><img th:src="@{/images/Java/logo_icon.png}" alt=""></a>
     </div>
     <!--logo and iconic logo end-->
 
@@ -1988,7 +1988,7 @@ public String mainPage(HttpSession session, Model model) {
         <!-- visible to small devices only -->
         <div class="visible-xs hidden-sm hidden-md hidden-lg">
             <div class="media logged-user">
-                <img alt="" th:src="@{/images/photos/user-avatar.png}" class="media-object">
+                <img alt="" th:src="@{/images/Java/photos/user-avatar.png}" class="media-object">
                 <div class="media-body">
                     <h4><a href="#">[[${session.loginUser.username}]]</a></h4>
                     <span>"Hello There..."</span>
@@ -2223,7 +2223,7 @@ public String mainPage(HttpSession session, Model model) {
                     <ul class="dropdown-list normal-list">
                         <li class="new">
                             <a href="">
-                                <span class="thumb"><img th:src="@{/images/photos/user1.png}" alt=""/></span>
+                                <span class="thumb"><img th:src="@{/images/Java/photos/user1.png}" alt=""/></span>
                                 <span class="desc">
                                           <span class="name">[[${session.loginUser.username}]] <span
                                                   class="badge badge-success">new</span></span>
@@ -2233,7 +2233,7 @@ public String mainPage(HttpSession session, Model model) {
                         </li>
                         <li>
                             <a href="">
-                                <span class="thumb"><img th:src="@{/images/photos/user2.png}" alt=""/></span>
+                                <span class="thumb"><img th:src="@{/images/Java/photos/user2.png}" alt=""/></span>
                                 <span class="desc">
                                           <span class="name">Jonathan Smith</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -2242,7 +2242,7 @@ public String mainPage(HttpSession session, Model model) {
                         </li>
                         <li>
                             <a href="">
-                                <span class="thumb"><img th:src="@{/images/photos/user3.png}" alt=""/></span>
+                                <span class="thumb"><img th:src="@{/images/Java/photos/user3.png}" alt=""/></span>
                                 <span class="desc">
                                           <span class="name">Jane Doe</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -2251,7 +2251,7 @@ public String mainPage(HttpSession session, Model model) {
                         </li>
                         <li>
                             <a href="">
-                                <span class="thumb"><img th:src="@{/images/photos/user4.png}" alt=""/></span>
+                                <span class="thumb"><img th:src="@{/images/Java/photos/user4.png}" alt=""/></span>
                                 <span class="desc">
                                           <span class="name">Mark Henry</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -2260,7 +2260,7 @@ public String mainPage(HttpSession session, Model model) {
                         </li>
                         <li>
                             <a href="">
-                                <span class="thumb"><img th:src="@{/images/photos/user5.png}" alt=""/></span>
+                                <span class="thumb"><img th:src="@{/images/Java/photos/user5.png}" alt=""/></span>
                                 <span class="desc">
                                           <span class="name">Jim Doe</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -2313,7 +2313,7 @@ public String mainPage(HttpSession session, Model model) {
             </li>
             <li>
                 <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <img th:src="@{/images/photos/user-avatar.png}" alt=""/>
+                    <img th:src="@{/images/Java/photos/user-avatar.png}" alt=""/>
                     [[${session.loginUser.username}]]
                     <span class="caret"></span>
                 </a>
@@ -2372,7 +2372,7 @@ public String mainPage(HttpSession session, Model model) {
 
 根据官网的描述<https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#template-layout>
 
-![image-20211220151622608](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220151622608.png)
+![image-20211220151622608](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220151622608.png)
 
 可以得到 设置模板引擎为
 
@@ -2477,13 +2477,13 @@ public String mainPage(HttpSession session, Model model) {
 
 接下来我们如法炮制 在公共页面中加上相应的标签
 
-![image-20211220155052991](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220155052991.png)
+![image-20211220155052991](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220155052991.png)
 
 其他的就省略了先 太多代码了  md 不前后端分离这代码就没法看了
 
 接着使用 这里就放张图把 **头部引入用include  其他的一律用replace即可**
 
-![image-20211220155134074](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220155134074.png)
+![image-20211220155134074](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220155134074.png)
 
 剩下的内容和文件同上操作即可
 
@@ -2510,7 +2510,7 @@ public String mainPage(HttpSession session, Model model) {
 
 state可以获取一些相关的信息
 
-![image-20211220162153988](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220162153988.png)
+![image-20211220162153988](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220162153988.png)
 
 实际使用：
 
@@ -2540,7 +2540,7 @@ Arrays.asList可以将动态参数 转换成一个ArrayList
 
 效果
 
-![image-20211220162306373](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220162306373.png)
+![image-20211220162306373](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220162306373.png)
 
 ## ✨拦截器
 
@@ -2605,18 +2605,18 @@ public class Webconfig implements WebMvcConfigurer {
             .excludePathPatterns("/", 
                             "/login",
                                  // 下面这里就都是静态资源了 如果你的项目中额外配置了spring.mvc.static-path-pattern的话 可以直接配置那里指定的前缀下的所有路径
-                                 "/css/**","/js/**","/fonts/**","/images/**");
+                                 "/css/**","/js/**","/fonts/**","/images/Java/**");
 
     }
 }
 
 ```
 
-![image-20211220203337063](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220203337063.png)
+![image-20211220203337063](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220203337063.png)
 
 拦截器的原理可以看这个[视频](https://www.bilibili.com/video/BV19K4y1L7MT?p=49&spm_id_from=pageDriver)
 
-![image-20211220205945527](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220205945527.png)
+![image-20211220205945527](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220205945527.png)
 
 ## ✨过滤器
 
@@ -2717,7 +2717,7 @@ public class FormTestController {
 
 访问结果：
 
-![image-20211220220030528](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220220030528.png)
+![image-20211220220030528](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220220030528.png)
 
 ```md
 上传的信息:email=Amayakite@qq.com,name=Aykte,头像文件大小:2803579,photos数量3
@@ -2764,7 +2764,7 @@ public String upload(
 
 最终结果：
 
-![image-20211220221612943](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220221612943.png)
+![image-20211220221612943](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220221612943.png)
 
 当然 这里文件名还可以用 别的 例如  username+datetime+uuid的加密值
 
@@ -2782,11 +2782,11 @@ public String upload(
 
 我们可以发现 当试图访问不存在的页面时，会有404 出现
 
-![image-20211220225601033](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220225601033.png)
+![image-20211220225601033](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220225601033.png)
 
 并且 如果是 用Postman或者ajax之类的访问 会发现它返回json值 说明底层有自的来协商返回值
 
-![image-20211220225701089](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220225701089.png)
+![image-20211220225701089](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220225701089.png)
 
 json格式为：
 
@@ -2805,7 +2805,7 @@ json格式为：
 这种方式只能覆盖掉网页端的错误信息展示方式 无法覆盖掉json
 
 - 首先在templates文件夹（static也可）放一个error文件夹 里面存放相应的error页面，然后把相应的页面丢进去 文件命名必须是4xx 或者 5xx 不能是 404 400等  
-  ![image-20211220230749313](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220230749313.png)
+  ![image-20211220230749313](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220230749313.png)
 
 - 因为我们这个页面需要过一遍模板引擎thymeleaf，所以要在html文件头中加上模板引擎声明空间
 
@@ -2815,15 +2815,15 @@ json格式为：
 
 然后修改好我们的html页面 适配下thymeleaf引擎之类的
 
-![image-20211220231812178](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220231812178.png)
+![image-20211220231812178](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220231812178.png)
 
 接着重启服务器 访问 不存在的页面
 
-![image-20211220231826761](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220231826761.png)
+![image-20211220231826761](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220231826761.png)
 
 也可以通过这种方式来讲消息展示给客户端
 
-![image-20211221123532970](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221123532970.png)
+![image-20211221123532970](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221123532970.png)
 
 消息的类型根据异常的不同来决定 404 和 400（参数不对） 和 405 和 500 和 503 的错误信息都不太一样 具体的可以自己试一下 然后用postman来请求  就知道哪些错误 分别会出现哪些参数了
 
@@ -2885,7 +2885,7 @@ public class BasicErrorController extends AbstractErrorController {...}
 server.error.path=/指定你的error路径
 ```
 
-![image-20211220233514835](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220233514835.png)
+![image-20211220233514835](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220233514835.png)
 
 而且可以看到它这里有两个mapping 第一个是响应html页面的 第二个是响应json数据的
 
@@ -2909,17 +2909,17 @@ public ModelAndView errorHtml(HttpServletRequest request, HttpServletResponse re
 
 可以看到有一个类的在初始化的时候创建了一个VIew对象，并且创建了一个Bean
 
-![image-20211220235058027](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220235058027.png)
+![image-20211220235058027](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220235058027.png)
 
 接着我们跳转到这个类 就可以发现
 
 它代码中有着一个非常熟悉的玩意
 
-![image-20211220235136241](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220235136241.png)
+![image-20211220235136241](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220235136241.png)
 
 接着我们看下它的兄弟类
 
-![image-20211220235502550](/images/SpringBoot/02-Spring_Boot核心功能/image-20211220235502550.png)
+![image-20211220235502550](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211220235502550.png)
 
 ```java
 static {
@@ -2940,13 +2940,13 @@ static {
 
 ### ✨自定义异常处理-@ControllerAdvice处理全局异常
 
-![image-20211221125655710](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221125655710.png)
+![image-20211221125655710](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221125655710.png)
 
 使用方式
 
 先创建一个exception文件夹 里面创建一个GlobalExceptionHandler.java
 
-![image-20211221125743184](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221125743184.png)
+![image-20211221125743184](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221125743184.png)
 
 然后这里面这样写
 
@@ -2991,13 +2991,13 @@ public String testError() {
 
 访问
 
-![image-20211221125951088](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221125951088.png)
+![image-20211221125951088](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221125951088.png)
 
 当然 这种处理返回的始终是一个Model And View ..
 
 ### ✨自定义异常处理-@ResponseStatus 处理自定义异常
 
-![image-20211221132338978](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221132338978.png)
+![image-20211221132338978](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221132338978.png)
 
 我们先自定义一个异常
 
@@ -3036,7 +3036,7 @@ public List<User> testError2() {
 
 结果：
 
-![image-20211221131446781](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221131446781.png)
+![image-20211221131446781](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221131446781.png)
 
 用postman访问的话
 
@@ -3085,7 +3085,7 @@ return users;
 }
 ```
 
-![image-20211221131951107](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221131951107.png)
+![image-20211221131951107](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221131951107.png)
 
 ### ✨✨自定义全局异常处理器
 
@@ -3126,7 +3126,7 @@ public class CustomerHandlerExceptionResolver implements HandlerExceptionResolve
 
 在这之后访问有异常的页面，例如原本是503的异常
 
-![image-20211221142151392](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221142151392.png)
+![image-20211221142151392](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221142151392.png)
 
 访问一个需要参数的mapping
 
@@ -3145,7 +3145,7 @@ public String upload(
 
 并且不附带任何参数 返回的也是我们希望的异常
 
-![image-20211221142631787](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221142631787.png)
+![image-20211221142631787](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221142631787.png)
 
 ### 使用原生Servlet组件
 
@@ -3169,6 +3169,6 @@ public String upload(
 
 看这个视频<https://www.bilibili.com/video/BV19K4y1L7MT?p=59>
 
-![image-20211221150340498](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221150340498.png)
+![image-20211221150340498](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221150340498.png)
 
-![image-20211221150436564](/images/SpringBoot/02-Spring_Boot核心功能/image-20211221150436564.png)
+![image-20211221150436564](/images/Java/SpringBoot/02-Spring_Boot核心功能/image-20211221150436564.png)

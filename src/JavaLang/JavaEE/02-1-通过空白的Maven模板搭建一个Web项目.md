@@ -26,7 +26,7 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 如果没打开的话应该也是能找到这个配置，反正在这里面能够找到Maven的路径，然后进行修改即可：
 
-![image-20211202161214531](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161214531.png)
+![image-20211202161214531](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161214531.png)
 
 理论上来说，新版的IDEA，会在你读取Maven的主路径的时候，自动读取`本地仓库`地址
 
@@ -34,7 +34,7 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 就按照往常的来，新建一个空白的maven项目，然后填写下相关的信息
 
-![image-20211202161437222](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161437222.png)
+![image-20211202161437222](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202161437222.png)
 
 这个工作坐标之类的随意填写，或者就按照默认的来即可，不影响
 
@@ -46,15 +46,15 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 然后在这个`WEB-INF`文件夹内新建一个`index.jsp`
 
-![image-20211202162008344](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202162008344.png)
+![image-20211202162008344](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202162008344.png)
 
 当你放置完这些文件的时候，右下角百分之一千会出现一个：配置web框架
 
-![image-20211202162231845](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202162231845.png)
+![image-20211202162231845](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202162231845.png)
 
 如果说没有的话，按下`ctrl+alt+shift+s`或者点击`文件-项目结构`调出项目配置，在里面这样配置
 
-![image-20211202162747976](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202162747976.png)
+![image-20211202162747976](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202162747976.png)
 
 还有那个**创建工作** 一定要点一下（右下角的）
 
@@ -90,17 +90,17 @@ Maven就一个包管理工具 Maven就一个包管理工具 Maven就一个包管
 
 然后你就能得到一个这样的文件：
 
-![image-20211202163103074](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163103074.png)
+![image-20211202163103074](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163103074.png)
 
 接下来打开tomcat，看下里面的examples中的案例-我们该怎样在Java中来渲染网页
 
 启动完tomcat后，我们进入到examples目录下，选择第一个
 
-![image-20211202163705993](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163705993.png)
+![image-20211202163705993](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163705993.png)
 
 然后可以看到各种案例模板，每个案例左边是预览，右边是代码，我们直接点右边（在网页上渲染一个Hello World）
 
-![image-20211202163733098](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163733098.png)
+![image-20211202163733098](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163733098.png)
 
 得到了如下代码：
 
@@ -130,13 +130,13 @@ public class HelloWorld extends HttpServlet {
 
 然后我们在IEDA中先输入这个`HttpServlet`，看看当前有没有这个包
 
-![image-20211202163907316](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163907316.png)
+![image-20211202163907316](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163907316.png)
 
 发现没有，这个时候有个添加Maven依赖项
 
 点进去，发现啥都没有
 
-![image-20211202163937171](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163937171.png)
+![image-20211202163937171](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202163937171.png)
 
 如果有的话，就直接从这里面选就行了，但是这里没有
 
@@ -154,11 +154,11 @@ import jakarta.servlet.http.*;
 
 在[Maven仓库](https://mvnrepository.com/)中搜索，得到了如下结果
 
-![image-20211202164457153](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164457153.png)
+![image-20211202164457153](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164457153.png)
 
 接下来进去找到对应版本的包：
 
-![image-20211202164615204](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164615204.png)
+![image-20211202164615204](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164615204.png)
 
 得到了如下安装代码：
 
@@ -203,15 +203,15 @@ import jakarta.servlet.http.*;
 
 然后点击这个加载变更
 
-![image-20211202164738547](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164738547.png)
+![image-20211202164738547](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164738547.png)
 
 过了几秒后，能看到Maven的依赖库中多了个玩意出来
 
-![image-20211202164820053](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164820053.png)
+![image-20211202164820053](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164820053.png)
 
 回到代码，尝试写入
 
-![image-20211202164841675](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164841675.png)
+![image-20211202164841675](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202164841675.png)
 
 直接就有个导入类了，看来是没错的
 
@@ -351,31 +351,31 @@ router ={
 
 在左上角或者右上角找到这个添加配置
 
-![image-20211202170123541](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170123541.png)
+![image-20211202170123541](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170123541.png)
 
 然后Tomcat的路径之类的这里就不说明了，在部署这里选择刚刚创建的工作
 
-![image-20211202170701479](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170701479.png)
+![image-20211202170701479](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170701479.png)
 
 如果说你点击这个加号没有显示工作的话
 
-![image-20211202170737182](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170737182.png)
+![image-20211202170737182](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170737182.png)
 
 那就先回到这一步`打开项目结构`：`ctrl+alt+shift+s`
 
 检查右下角这个是不是像这样提示，如果是的话，点击创建工作，然后返回tomcat继续配置即可
 
-![image-20211202170831500](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170831500.png)
+![image-20211202170831500](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202170831500.png)
 
 然后我们再把上下文该个好记的
 
-![image-20211202171146353](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171146353.png)
+![image-20211202171146353](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171146353.png)
 
 然后运行tomcat：
 
 你就能得到一个啥都没有的页面：
 
-![image-20211202171207069](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171207069.png)
+![image-20211202171207069](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171207069.png)
 
 为啥呢？
 
@@ -385,7 +385,7 @@ router ={
 
 我们接下来进入`/hello`试试
 
-![image-20211202171218874](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171218874.png)
+![image-20211202171218874](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171218874.png)
 
 是不是有一丢丢小激动
 
@@ -395,19 +395,19 @@ TMD，这玩意坑倒是不多，讲课的SB多。
 
 比方说，我在Java程序中添加了一些其他的话：
 
-![image-20211202171334898](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171334898.png)
+![image-20211202171334898](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171334898.png)
 
 这个时候刷新页面是不管用的，点一下这里
 
-![image-20211202171416767](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171416767.png)
+![image-20211202171416767](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171416767.png)
 
 选择这个
 
-![image-20211202171505255](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171505255.png)
+![image-20211202171505255](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171505255.png)
 
 然后刷新网页，你就能看到更新后的内容了
 
-![image-20211202171519474](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171519474.png)
+![image-20211202171519474](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171519474.png)
 
 当然如果没有动java文件，只需要点那个**更新类和资源即**可
 
@@ -445,11 +445,11 @@ TMD，这玩意坑倒是不多，讲课的SB多。
 
 点击更新类和资源
 
-![image-20211202171956804](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171956804.png)
+![image-20211202171956804](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202171956804.png)
 
 进入这个页面
 
-![image-20211202172009924](/images/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202172009924.png)
+![image-20211202172009924](/images/Java/JavaEE/02-1-通过空白的Maven模板搭建一个Web项目/image-20211202172009924.png)
 
 好了，项目配置完毕，接下来去学些更令人舒畅的玩意吧
 

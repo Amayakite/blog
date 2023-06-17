@@ -42,7 +42,7 @@ tag:
 - getExclusiveOwnerThread()：获取锁的线程
 - hasContended()：检查是否已经竞争过锁
 
-![使用](/images/JavaThread/7-JUC/1642492926139.png)
+![使用](/images/Java/JavaThread/7-JUC/1642492926139.png)
 
 ### 利用AbstractQueuedSynchronizer自定义锁
 
@@ -406,11 +406,11 @@ public class TestReadWriteLock {
 1. 读锁不支持条件变量
 2. 重入时升级**不支持**：即持有读锁的情况下去获取写锁，会导致写锁永久等待
 
-![image](/images/JavaThread/7-JUC/1642502550191.png)
+![image](/images/Java/JavaThread/7-JUC/1642502550191.png)
 
 - 重入时降级**支持**：即持有写锁的情况下去获取读锁
 
-![image](/images/JavaThread/7-JUC/1642502620467.png)
+![image](/images/Java/JavaThread/7-JUC/1642502620467.png)
 
 ### 缓存的应用-数据库的查询缓存
 
@@ -455,7 +455,7 @@ public class TestReadWriteLock {
 
 准备的数据表结构大概是这个样子
 
-![table](/images/JavaThread/7-JUC/1642510213790.png)
+![table](/images/Java/JavaThread/7-JUC/1642510213790.png)
 
 然后因为要修改的东西都比较简单，我就用了mybatis的插件来完成domian和service之类的生成
 
@@ -545,11 +545,11 @@ public class CacheQueryService {
 
 如果是先清除缓存的话：
 
-![先清缓存](/images/JavaThread/7-JUC/1642510428615.png)
+![先清缓存](/images/Java/JavaThread/7-JUC/1642510428615.png)
 
 如果是先更新数据库的话
 
-![更新数据库](/images/JavaThread/7-JUC/1642510552545.png)
+![更新数据库](/images/Java/JavaThread/7-JUC/1642510552545.png)
 
 总结
 
@@ -844,7 +844,7 @@ public class TestSemaphore {
 
 这里开了十个线程同时运行，结果也如果我们所料，全部都正常的运行完毕了
 
-![结果](/images/JavaThread/7-JUC/1642515922149.png)
+![结果](/images/Java/JavaThread/7-JUC/1642515922149.png)
 
 接下来我们使用Semaphore对线程的每秒个数进行限制
 
@@ -887,7 +887,7 @@ public class TestSemaphore {
 
 运行结果
 
-![结果](/images/JavaThread/7-JUC/1642516092468.png)
+![结果](/images/Java/JavaThread/7-JUC/1642516092468.png)
 
 ## CountdownLatch-倒计时锁
 
@@ -1030,7 +1030,7 @@ public class TestController {
 
 接着运行，可以看到结果：
 
-![结果](/images/JavaThread/7-JUC/1642519473451.png)
+![结果](/images/Java/JavaThread/7-JUC/1642519473451.png)
 
 花费了海量时间，所以我们可以选择通过使用CountdownLatch和线程池配合着来解决这个问题
 
@@ -1073,13 +1073,13 @@ public class TestController {
 
 最终五个只花费了他们之间的最长时间-五秒，极大程度提高了我们的速率 并且如果你想要返回值的话，因为submit是可以返回一个Future或者用一个ArrayList存储结果之类的，交给主线程处理
 
-![结果](/images/JavaThread/7-JUC/1642520108643.png)
+![结果](/images/Java/JavaThread/7-JUC/1642520108643.png)
 
 ## CyclicBarrier-循环栅栏-可以重用的CountdownLatch
 
 latch问题如图，也就是说我们有些情况下想要循环的使用计数器，但是实际上每次循环之类的都要创建一个CountdownLatch太痛苦了，且不好管控（一般情况下都不是循环，而是其他的业务场景）
 
-![问题](/images/JavaThread/7-JUC/1642520684450.png)
+![问题](/images/Java/JavaThread/7-JUC/1642520684450.png)
 
 所以这玩意就可以来解决上述问题：【循环栅栏】，用来进行线程协作，等待线程满足某个技术
 
@@ -1172,7 +1172,7 @@ public class TestCyclicBarrier {
 
 ## 线程安全集合类
 
-![汇众](/images/JavaThread/7-JUC/1642522202534.png)
+![汇众](/images/Java/JavaThread/7-JUC/1642522202534.png)
 
 大致分为如上三个种类
 
@@ -1187,7 +1187,7 @@ public class TestCyclicBarrier {
     - `Collections.synchroizedNavigableSet`
     - 也就是把一个不安全的集合，封装成一个集合
     - 但是并没有进行过多的更该，也只是简简单单的用synchronized封装了下...
-    - ![代码](/images/JavaThread/7-JUC/1642522532982.png)
+    - ![代码](/images/Java/JavaThread/7-JUC/1642522532982.png)
 - JUC提供的`java.util.concurrent.*`
     - 这里面也有非常多的类
     - 类名中带有`Blocking`的类
@@ -1248,7 +1248,7 @@ public class TestConcurrent {
 
 执行完上面的代码，可以得到如下26个文件
 
-![file](/images/JavaThread/7-JUC/1642524456120.png)
+![file](/images/Java/JavaThread/7-JUC/1642524456120.png)
 
 接下来，我们使用map来统计下单词的出现次数，开26个线程，如果不出意外的话应该是每个单词200个
 
@@ -1303,11 +1303,11 @@ public class TestConcurrent {
 
 显而易见的出现问题了
 
-![err](/images/JavaThread/7-JUC/1642525168387.png)
+![err](/images/Java/JavaThread/7-JUC/1642525168387.png)
 
 但是当我使用这个新鲜玩意的时候，依然出现了问题
 
-![error](/images/JavaThread/7-JUC/1642526557042.png)
+![error](/images/Java/JavaThread/7-JUC/1642526557042.png)
 
 
 所以说这玩意归根结底是：里面的每个方法是线程安全的，但是何在一块就不是线程安全的了，我们这里是用了两个方法put 和 get put
@@ -1365,7 +1365,7 @@ public class TestConcurrent {
 
 再次运行看看：
 
-![完美解决](/images/JavaThread/7-JUC/1642526913512.png)
+![完美解决](/images/Java/JavaThread/7-JUC/1642526913512.png)
 
 ## Concurrent的方法一览
 
@@ -1380,4 +1380,4 @@ public class TestConcurrent {
 
 ## CurrentLinkedQueue
 
-![image](/images/JavaThread/7-JUC/1642527058934.png)
+![image](/images/Java/JavaThread/7-JUC/1642527058934.png)

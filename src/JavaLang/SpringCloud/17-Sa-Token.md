@@ -229,7 +229,7 @@ public SaResult testAuth() {
 
 可以看到，这个StpUtil是直接调用了我们刚刚的`StpInterfaceImpl`类，所以直接打印出来了该类中的内容
 
-![image-20220121154717209](/images/SpringCloud/17-Sa-Token/image-20220121154717209.png)
+![image-20220121154717209](/images/Java/SpringCloud/17-Sa-Token/image-20220121154717209.png)
 
 前端中返回的内容
 
@@ -810,7 +810,7 @@ SaSessionCustomUtil.deleteSessionById("goods-10001");
 
 **假设三个客户端登录同一账号，且配置了不共享token，那么此时的Session模型是：**
 
-![session-model](/images/SpringCloud/17-Sa-Token/session-model3.png)
+![session-model](/images/Java/SpringCloud/17-Sa-Token/session-model3.png)
 
 简而言之：
 
@@ -1081,7 +1081,7 @@ spring:
 
 然后正常登陆，你就能在你的Redis内看到如下内容
 
-![image-20220121171641113](/images/SpringCloud/17-Sa-Token/image-20220121171641113.png)
+![image-20220121171641113](/images/Java/SpringCloud/17-Sa-Token/image-20220121171641113.png)
 
 注意：
 
@@ -1134,7 +1134,7 @@ spring:
 
 然后我们在前端访问只需要额外加一个请求头，名字为tokenName，value为tokenValue即可
 
-![image-20220121172519180](/images/SpringCloud/17-Sa-Token/image-20220121172519180.png)
+![image-20220121172519180](/images/Java/SpringCloud/17-Sa-Token/image-20220121172519180.png)
 
 然后普通的解决方式这里就不说了，这里说下UniAPP的发送方式
 
@@ -1275,7 +1275,7 @@ sa-token:
 
 如图所示，一般网站的登录界面都会有一个 **`[记住我]`** 按钮，当你勾选它后，即使你关闭浏览器再次打开网站，也依然会处于登录状态，无须重复验证密码
 
-![../static/login-view.png](/images/SpringCloud/17-Sa-Token/login-view.png)
+![../static/login-view.png](/images/Java/SpringCloud/17-Sa-Token/login-view.png)
 
 那么在Sa-Token中，如何做到 [ 记住我 ] 功能呢？
 
@@ -1516,11 +1516,11 @@ public SaResult test3() {
 
 然后我们访问这个接口时，浏览器会强制弹出一个表单：
 
-![sa-basic.png](/images/SpringCloud/17-Sa-Token/sa-basic.png)
+![sa-basic.png](/images/Java/SpringCloud/17-Sa-Token/sa-basic.png)
 
 当我们输入账号密码后 `（sa / 123456）`，才可以继续访问数据：
 
-![sa-basic-ok.png](/images/SpringCloud/17-Sa-Token/sa-basic-ok.png)
+![sa-basic-ok.png](/images/Java/SpringCloud/17-Sa-Token/sa-basic-ok.png)
 
 > 其他启用方式
 

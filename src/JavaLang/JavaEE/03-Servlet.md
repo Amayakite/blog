@@ -25,7 +25,7 @@ tag:
 
 ### 开始学习前的准备工作
 
-![image-20211202192644896](/images/JavaEE/03-Servlet/image-20211202192644896.png)
+![image-20211202192644896](/images/Java/JavaEE/03-Servlet/image-20211202192644896.png)
 
 这里起我们学习就在这个Project内了，有了maven的管理，写程序来还是挺简单的
 
@@ -59,15 +59,15 @@ tag:
 
 从这里开始，我们将模块化编程-每个章节都是一个模块，减少Project的创建数量
 
-![image-20211202193140078](/images/JavaEE/03-Servlet/image-20211202193140078.png)
+![image-20211202193140078](/images/Java/JavaEE/03-Servlet/image-20211202193140078.png)
 
 然后新建一个Maven JavaWeb APP模块，名字随意，Maven版本按照自己的来
 
-![image-20211202193505154](/images/JavaEE/03-Servlet/image-20211202193505154.png)
+![image-20211202193505154](/images/Java/JavaEE/03-Servlet/image-20211202193505154.png)
 
 然后得到了这些东西
 
-![image-20211202193610872](/images/JavaEE/03-Servlet/image-20211202193610872.png)
+![image-20211202193610872](/images/Java/JavaEE/03-Servlet/image-20211202193610872.png)
 
 ### 扩展-Maven父子工程的理解
 
@@ -76,13 +76,13 @@ tag:
 - 父模块（工程）的Jar包（依赖）子模块可以随意使用
 - 子模块的Jar包父模块无法调用
 
-![image-20211202193657420](/images/JavaEE/03-Servlet/image-20211202193657420.png)
+![image-20211202193657420](/images/Java/JavaEE/03-Servlet/image-20211202193657420.png)
 
 好了，言归正传，继续我们的操作
 
 继续新建几个软件包java和res：遵循约定大于配置
 
-![image-20211202194512307](/images/JavaEE/03-Servlet/image-20211202194512307.png)
+![image-20211202194512307](/images/Java/JavaEE/03-Servlet/image-20211202194512307.png)
 
 然后修改`WEB-INF`中的`web.xml`
 
@@ -92,7 +92,7 @@ tag:
 
 不出意外的出意外了
 
-![image-20211202195331544](/images/JavaEE/03-Servlet/image-20211202195331544.png)
+![image-20211202195331544](/images/Java/JavaEE/03-Servlet/image-20211202195331544.png)
 
 这就是之前挖的坑，接下来用回适合我们tomcat版本的Servlet和jsp吧
 
@@ -119,13 +119,13 @@ tag:
 
 然后再更新下MyApps.java中的依赖，重启下服务，完美解决
 
-![image-20211202195743249](/images/JavaEE/03-Servlet/image-20211202195743249.png)
+![image-20211202195743249](/images/Java/JavaEE/03-Servlet/image-20211202195743249.png)
 
 好了，准备工作结束，接下来分析以下我们使用的`HttpServlet`的结构
 
 ## HttpServlet源码分析
 
-![image-20211202211103009](/images/JavaEE/03-Servlet/image-20211202211103009.png)
+![image-20211202211103009](/images/Java/JavaEE/03-Servlet/image-20211202211103009.png)
 
 首先看类图，这个类是直接继承GenericServlet类
 
@@ -497,7 +497,7 @@ public class MyApp extends HttpServlet {
 
 ```
 
-![image-20211202222857926](/images/JavaEE/03-Servlet/image-20211202222857926.png)
+![image-20211202222857926](/images/Java/JavaEE/03-Servlet/image-20211202222857926.png)
 
 完美！
 
@@ -558,7 +558,7 @@ MyApps.get("/hello",(req,res)=>{
 
 就目前按照我找到的资料来说，访问经历了四个步骤
 
-![image-20211202232840370](/images/JavaEE/03-Servlet/image-20211202232840370.png)
+![image-20211202232840370](/images/Java/JavaEE/03-Servlet/image-20211202232840370.png)
 
 - 浏览器：
   - 第一步：浏览器输入访问路径后，携带了请求行，头，体
@@ -607,11 +607,11 @@ public void init() throws ServletException {
 
 最终他们的执行顺序（动态绑定机制）
 
-![image-20211202234232512](/images/JavaEE/03-Servlet/image-20211202234232512.png)
+![image-20211202234232512](/images/Java/JavaEE/03-Servlet/image-20211202234232512.png)
 
 这里的流程大概就是
 
-![image-20211202234647857](/images/JavaEE/03-Servlet/image-20211202234647857.png)
+![image-20211202234647857](/images/Java/JavaEE/03-Servlet/image-20211202234647857.png)
 
 ​  紧接着，我们就该很清晰的知道服务器下一步该调用哪个代码了：
 
@@ -696,11 +696,11 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 
 这里的流程画一张图就是：
 
-![image-20211202235846846](/images/JavaEE/03-Servlet/image-20211202235846846.png)
+![image-20211202235846846](/images/Java/JavaEE/03-Servlet/image-20211202235846846.png)
 
 紧接着，处理响应，返回给浏览器：
 
-![image-20211202235908042](/images/JavaEE/03-Servlet/image-20211202235908042.png)
+![image-20211202235908042](/images/Java/JavaEE/03-Servlet/image-20211202235908042.png)
 
 可以看到，这之中大部分的工作都是tomcat在帮我们做
 
@@ -758,7 +758,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 
 然后我们访问`/hello1`、`/hello2`都可以访问到我们设定的内容
 
-![image-20211203002325098](/images/JavaEE/03-Servlet/image-20211203002325098.png)
+![image-20211203002325098](/images/Java/JavaEE/03-Servlet/image-20211203002325098.png)
 
 ### 单个Servlet绑定某个字段下的所有路径
 
@@ -776,7 +776,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 
 这样你访问`/adminer`下的所有内容，都是在访问同一个Servlet
 
-![image-20211203002315118](/images/JavaEE/03-Servlet/image-20211203002315118.png)
+![image-20211203002315118](/images/Java/JavaEE/03-Servlet/image-20211203002315118.png)
 
 ### 覆盖所有页面
 
@@ -821,7 +821,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 </servlet-mapping>
 ```
 
-![image-20211203002251355](/images/JavaEE/03-Servlet/image-20211203002251355.png)
+![image-20211203002251355](/images/Java/JavaEE/03-Servlet/image-20211203002251355.png)
 
 ### Mapping的优先级问题
 
@@ -852,15 +852,15 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 
 那么，当我访问`/adminer/uuu`的时候获取到的页面时
 
-![image-20211203002953422](/images/JavaEE/03-Servlet/image-20211203002953422.png)
+![image-20211203002953422](/images/Java/JavaEE/03-Servlet/image-20211203002953422.png)
 
 访问该路径下的通常页面是：
 
-![image-20211203003010310](/images/JavaEE/03-Servlet/image-20211203003010310.png)
+![image-20211203003010310](/images/Java/JavaEE/03-Servlet/image-20211203003010310.png)
 
 访问其他没有指定的路径是：Tomcat的默认处理
 
-![image-20211203003024542](/images/JavaEE/03-Servlet/image-20211203003024542.png)
+![image-20211203003024542](/images/Java/JavaEE/03-Servlet/image-20211203003024542.png)
 
 ## Servlet的生命周期
 
@@ -872,7 +872,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)throws S
 
    其中的init()方法应只调用一次，Servlet创建后，在其运行阶段，便可通过service方法来处理来自客户端的请求，通过，当服务器关闭（tomcat停止运行）或者应用被移除容器（tomcat下webapps目录中的文件被移除）时，调用destory()方法来终止Servlet。应其生命周期如下图所示：
 
-![资源分配图](/images/JavaEE/03-Servlet/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70.jpeg)
+![资源分配图](/images/Java/JavaEE/03-Servlet/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjY2ODU3,size_16,color_FFFFFF,t_70.jpeg)
 
 ## 正式开始Servlet
 
@@ -905,7 +905,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 所以它也被称为：全局应用程序共享对象
 
-![ServletContent](/images/JavaEE/03-Servlet/ServletContent.jpg)
+![ServletContent](/images/Java/JavaEE/03-Servlet/ServletContent.jpg)
 
 他的用途：
 
@@ -1049,7 +1049,7 @@ public class MyApp1 extends HttpServlet {
 
 最终效果：
 
-![image-20211203214823062](/images/JavaEE/03-Servlet/image-20211203214823062.png)
+![image-20211203214823062](/images/Java/JavaEE/03-Servlet/image-20211203214823062.png)
 
 ### 读写共享参数
 
@@ -1092,15 +1092,15 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 此时，如果我们直接访问/test2 可以看到是null（未赋值）:
 
-![image-20211203131349218](/images/JavaEE/03-Servlet/image-20211203131349218.png)
+![image-20211203131349218](/images/Java/JavaEE/03-Servlet/image-20211203131349218.png)
 
 访问下test1
 
-![image-20211203131536087](/images/JavaEE/03-Servlet/image-20211203131536087.png)
+![image-20211203131536087](/images/Java/JavaEE/03-Servlet/image-20211203131536087.png)
 
 在访问下test2：
 
-![image-20211203131553703](/images/JavaEE/03-Servlet/image-20211203131553703.png)
+![image-20211203131553703](/images/Java/JavaEE/03-Servlet/image-20211203131553703.png)
 
 成功读取到了该对象！
 
@@ -1161,13 +1161,13 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 访问test3：成功获取到我们想要的对象
 
-![image-20211203150156627](/images/JavaEE/03-Servlet/image-20211203150156627.png)
+![image-20211203150156627](/images/Java/JavaEE/03-Servlet/image-20211203150156627.png)
 
 ### 使用ServletContext完成请求转发（不是重定向）
 
 这玩意实际工作中用的比较少，一般都是用重定向，重定向后面再说，这里先放一下原理图
 
-![请求转发和重定向](/images/JavaEE/03-Servlet/请求转发和重定向.jpg)
+![请求转发和重定向](/images/Java/JavaEE/03-Servlet/请求转发和重定向.jpg)
 
 我们新建两个Java文件：testForward1和testForward2
 
@@ -1203,7 +1203,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 然后我们启动服务、访问forward2，重新定向到了forward1页面的内容，但是链接不变
 
-![image-20211203152524708](/images/JavaEE/03-Servlet/image-20211203152524708.png)
+![image-20211203152524708](/images/Java/JavaEE/03-Servlet/image-20211203152524708.png)
 
 ### 使用ServletContext搜索当前工程目录下面的资源文件(XML/Properties)
 
@@ -1211,7 +1211,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 还记得我们在老早之前创建的那个resources文件夹吗，资源文件就是放在那里的，我们先新建一个`db.properties`到该文件夹下：
 
-![image-20211203155322875](/images/JavaEE/03-Servlet/image-20211203155322875.png)
+![image-20211203155322875](/images/Java/JavaEE/03-Servlet/image-20211203155322875.png)
 
 然后填写一些内容：(在这一步你可以先装个mysql-java，名称：mysql-connector-java)
 
@@ -1228,7 +1228,7 @@ url=jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf8
 
 这个classess路径也被称之为**classpath（类路径）**
 
-![image-20211203155802117](/images/JavaEE/03-Servlet/image-20211203155802117.png)
+![image-20211203155802117](/images/Java/JavaEE/03-Servlet/image-20211203155802117.png)
 
 #### 可能会遇到的导出问题
 
@@ -1290,7 +1290,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 }
 ```
 
-![image-20211203162311727](/images/JavaEE/03-Servlet/image-20211203162311727.png)
+![image-20211203162311727](/images/Java/JavaEE/03-Servlet/image-20211203162311727.png)
 
 看起来没问题，接下来再尝试修改一下，看看是否能生效
 
@@ -1327,7 +1327,7 @@ public class HelloServlet extends HttpServlet {
 
 访问这个页面，草有内容！
 
-![image-20211203175447989](/images/JavaEE/03-Servlet/image-20211203175447989.png)
+![image-20211203175447989](/images/Java/JavaEE/03-Servlet/image-20211203175447989.png)
 
 接下来详细讲下这个注解是干什么的吧：
 
@@ -1459,7 +1459,7 @@ public class testparrten1 extends HttpServlet {
 
 当我们访问到`mybuild`时，显示的内容
 
-![image-20211203202601697](/images/JavaEE/03-Servlet/image-20211203202601697.png)
+![image-20211203202601697](/images/Java/JavaEE/03-Servlet/image-20211203202601697.png)
 
 好了，下一个问题，到我们访问一个不存在的页面时，返回的404是怎么来的
 
@@ -1469,7 +1469,7 @@ public class testparrten1 extends HttpServlet {
 
 当我们访问一个我们未定义的页面
 
-![image-20211203202937866](/images/JavaEE/03-Servlet/image-20211203202937866.png)
+![image-20211203202937866](/images/Java/JavaEE/03-Servlet/image-20211203202937866.png)
 
 这里会抛出一个404，提示没有该文件，这个玩意是怎么来的？我们又该怎么样去自定义？
 
@@ -1479,7 +1479,7 @@ public class testparrten1 extends HttpServlet {
 
 文件内容随意：
 
-![image-20211203203311535](/images/JavaEE/03-Servlet/image-20211203203311535.png)
+![image-20211203203311535](/images/Java/JavaEE/03-Servlet/image-20211203203311535.png)
 
 ```html
 <!DOCTYPE html>
@@ -1513,13 +1513,13 @@ public class testparrten1 extends HttpServlet {
 
 接下来，我们访问mybuild
 
-![image-20211203203541935](/images/JavaEE/03-Servlet/image-20211203203541935.png)
+![image-20211203203541935](/images/Java/JavaEE/03-Servlet/image-20211203203541935.png)
 
 跳出了一个这个
 
 那访问mybuild.html呢？
 
-![image-20211203203608836](/images/JavaEE/03-Servlet/image-20211203203608836.png)
+![image-20211203203608836](/images/Java/JavaEE/03-Servlet/image-20211203203608836.png)
 
 其实我们这个时候的想法应该是，服务器遵循文件的意愿，在用户输入`/mybuild`时访问`mybuild.html`，因为没多少人愿意花心情去整一个Java文件写多美观的页面，更多时候我们的Java文件应该是作为一个数据接口使用的
 
@@ -1553,7 +1553,7 @@ public class testparrten1 extends HttpServlet {
 
 ​  访问`mybuild.html`的情况（会调用SelfDefaultServlet），但是，如果我们在浏览器中输入`http://localhost:8080/项目名称/index.jsp`（index.jsp是创建的第一个jsp页面）呢？会是什么样一个结果？也是调用缺省的Servlet么？真是的运行结果如下：
 
-![image-20211203204139560](/images/JavaEE/03-Servlet/image-20211203204139560.png)
+![image-20211203204139560](/images/Java/JavaEE/03-Servlet/image-20211203204139560.png)
 
 ​  这是什么原因？
 

@@ -53,7 +53,7 @@ Spring的注解分为两种，但是实际上都可以用
 
 我们先创建如下文件：
 
-![image-20211210155656323](/images/SpringFrameWork/03-Spring注解开发/image-20211210155656323.png)
+![image-20211210155656323](/images/Java/SpringFrameWork/03-Spring注解开发/image-20211210155656323.png)
 
 UserDao里面就一个save方法，IMPL实现了，打印了一句话
 
@@ -464,7 +464,7 @@ public class UserDaoImpl implements UserDao {
 
 测试一下：
 
-![image-20211210172350241](/images/SpringFrameWork/03-Spring注解开发/image-20211210172350241.png)
+![image-20211210172350241](/images/Java/SpringFrameWork/03-Spring注解开发/image-20211210172350241.png)
 
 ## Spring新注解
 

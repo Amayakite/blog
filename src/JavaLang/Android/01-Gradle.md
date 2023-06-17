@@ -37,7 +37,7 @@ tag:
 
 然后选择你能看到的最新的附带源码的包下载即可（Binary-only二进制，complete带有文档，选择下载即可，一般都是二进制即可（））
 
-![image-20220505143500414](/images/Android/01-Gradle/image-20220505143500414.png)
+![image-20220505143500414](/images/Java/Android/01-Gradle/image-20220505143500414.png)
 
 
 
@@ -91,7 +91,7 @@ Hello World
 
 同时当前目录下生成了一个文件夹
 
-![image-20220505154733905](/images/Android/01-Gradle/image-20220505154733905.png)
+![image-20220505154733905](/images/Java/Android/01-Gradle/image-20220505154733905.png)
 
 这...是否有点像Python...
 
@@ -199,17 +199,17 @@ BUILD SUCCESSFUL in 3m 9s
 
 完了会得到这一堆东西
 
-![image-20220505162149169](/images/Android/01-Gradle/image-20220505162149169.png)
+![image-20220505162149169](/images/Java/Android/01-Gradle/image-20220505162149169.png)
 
 接着看看SpringBoot的结构
 
 首先去[Spring Initializr](https://start.spring.io/)，选择好对应的内容（LomBok、Web）然后选择Gradle构建，然后下载zip包
 
-![image-20220505160721709](/images/Android/01-Gradle/image-20220505160721709.png)
+![image-20220505160721709](/images/Java/Android/01-Gradle/image-20220505160721709.png)
 
 得到了如下文件
 
-![image-20220505163829544](/images/Android/01-Gradle/image-20220505163829544.png)
+![image-20220505163829544](/images/Java/Android/01-Gradle/image-20220505163829544.png)
 
 
 
@@ -336,7 +336,7 @@ zipStorePath=wrapper/dists
 
 ::: warning 不推荐
 
-![image-20220505170931310](/images/Android/01-Gradle/image-20220505170931310.png)
+![image-20220505170931310](/images/Java/Android/01-Gradle/image-20220505170931310.png)
 
 例如改到其他盘下
 
@@ -438,7 +438,7 @@ allprojects {
 
 更新依赖时效果：
 
-![image-20220506132417604](/images/Android/01-Gradle/image-20220506132417604.png)
+![image-20220506132417604](/images/Java/Android/01-Gradle/image-20220506132417604.png)
 
 ## Groovy语法
 
@@ -513,7 +513,7 @@ func main(){
 
 在groovy中，获取闭包中的值通过it即可，这种语法比较常见
 
-![image-20220505181804228](/images/Android/01-Gradle/image-20220505181804228.png)
+![image-20220505181804228](/images/Java/Android/01-Gradle/image-20220505181804228.png)
 
 ### 使用JavaBean
 

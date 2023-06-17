@@ -21,7 +21,7 @@ tag:
 
 它支持如下的东西
 
-![image-20220511142347578](/images/Netty/02-Netty入门/image-20220511142347578.png)
+![image-20220511142347578](/images/Java/Netty/02-Netty入门/image-20220511142347578.png)
 
 PS：记住那个Google Protobuf 这个之后会用到
 
@@ -29,7 +29,7 @@ PS：记住那个Google Protobuf 这个之后会用到
 
 还有一个近期比较多人start的某神游戏私服服务端的源码：[Grasscutters](https://github.com/Grasscutters/Grasscutter)，可以看到代码中也是有一堆Netty的身影
 
-![image-20220511142730678](/images/Netty/02-Netty入门/image-20220511142730678.png)
+![image-20220511142730678](/images/Java/Netty/02-Netty入门/image-20220511142730678.png)
 
 PS：目前Netty有3/4/5三个版本，5这个版本出现了重大BUG已经被官方废弃了，不建议用，通常情况下还是建议用4.x的版本
 
@@ -37,7 +37,7 @@ PS：目前Netty有3/4/5三个版本，5这个版本出现了重大BUG已经被�
 
 首先我们回顾下之前的模型
 
-![image-20220511143541385](/images/Netty/02-Netty入门/image-20220511143541385.png)
+![image-20220511143541385](/images/Java/Netty/02-Netty入门/image-20220511143541385.png)
 
 注意，这里并不是阻塞浪费资源，而是阻塞造成的CPU上下文切换占用资源
 
@@ -45,45 +45,45 @@ PS：目前Netty有3/4/5三个版本，5这个版本出现了重大BUG已经被�
 >
 > Reactor的几种叫法：反应器模式、分发者模式、通知者模式
 
-![image-20220511144115274](/images/Netty/02-Netty入门/image-20220511144115274.png)
+![image-20220511144115274](/images/Java/Netty/02-Netty入门/image-20220511144115274.png)
 
 Reactor更像是一个NIO加线程池的样子，或者说就是这样设计的
 
-![image-20220511144716957](/images/Netty/02-Netty入门/image-20220511144716957.png)
+![image-20220511144716957](/images/Java/Netty/02-Netty入门/image-20220511144716957.png)
 
 所以基于Reactor出现了Reactor单线程，也就是之前的NIO使用时候的模式-一个线程处理多个请求
 
-![image-20220511145808995](/images/Netty/02-Netty入门/image-20220511145808995.png)
+![image-20220511145808995](/images/Java/Netty/02-Netty入门/image-20220511145808995.png)
 
 缺点也很明显，就是一个线程处理很多事情，如果说用户较多就直接GG了
 
-![image-20220511150358489](/images/Netty/02-Netty入门/image-20220511150358489.png)
+![image-20220511150358489](/images/Java/Netty/02-Netty入门/image-20220511150358489.png)
 
 Redis的存储就是用到的Reactor概念来实现的
 
 再来看看单Reactor多线程
 
-![image-20220511160642103](/images/Netty/02-Netty入门/image-20220511160642103.png)
+![image-20220511160642103](/images/Java/Netty/02-Netty入门/image-20220511160642103.png)
 
 相当于是把实际的业务丢去别的线程去处理，然后主线程继续轮循并接收下对应线程的Callback然后发送给客户端，优缺点如下
 
-![image-20220511161042540](/images/Netty/02-Netty入门/image-20220511161042540.png)
+![image-20220511161042540](/images/Java/Netty/02-Netty入门/image-20220511161042540.png)
 
 接下来再来看看主从Reactor多线程，实际上就是在单Reactor多线程内做了进一步的细分
 
-![image-20220511162608769](/images/Netty/02-Netty入门/image-20220511162608769.png)
+![image-20220511162608769](/images/Java/Netty/02-Netty入门/image-20220511162608769.png)
 
 这个Java中的主从Reactor是谁提出来的呢？
 
 是一位叫Doug  Lea的人，纽约大学的教师，java.uti.corurrent包就是出自它的手
 
-![image-20220511162919373](/images/Netty/02-Netty入门/image-20220511162919373.png)
+![image-20220511162919373](/images/Java/Netty/02-Netty入门/image-20220511162919373.png)
 
 ## Netty模型说明
 
 Netty模型主要基于主从Reactor模型，并做了进一步的改进，其中主从Reactor线程模型有多个Reactor
 
-![image-20220511165457969](/images/Netty/02-Netty入门/image-20220511165457969.png)
+![image-20220511165457969](/images/Java/Netty/02-Netty入门/image-20220511165457969.png)
 
 ## Netty快速入门案例-TCP服务
 
@@ -341,13 +341,13 @@ public class TCPClientHandler extends ChannelInboundHandlerAdapter {
 
 执行效果
 
-![image-20220511183843290](/images/Netty/02-Netty入门/image-20220511183843290.png)
+![image-20220511183843290](/images/Java/Netty/02-Netty入门/image-20220511183843290.png)
 
 ## TaskQueue自定义任务
 
 假设我们现在有一个东西需要耗费的时间比较长（比如要查数据库之类的），就可以提交到Worker Group的TaskQueue中去执行
 
-![image-20220511190149296](/images/Netty/02-Netty入门/image-20220511190149296.png)
+![image-20220511190149296](/images/Java/Netty/02-Netty入门/image-20220511190149296.png)
 
 ### 自定义普通任务
 
@@ -453,7 +453,7 @@ public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 
 效果：
 
-![image-20220511192753651](/images/Netty/02-Netty入门/image-20220511192753651.png)
+![image-20220511192753651](/images/Java/Netty/02-Netty入门/image-20220511192753651.png)
 
 ### 非当前Reactor线程调用Channel方法
 
@@ -461,7 +461,7 @@ public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 
 其实就在这段代码里
 
-![image-20220511193623907](/images/Netty/02-Netty入门/image-20220511193623907.png)
+![image-20220511193623907](/images/Java/Netty/02-Netty入门/image-20220511193623907.png)
 
 我们这里的ch是一个SocketChannel对象，所以可以在这一步的时候或者某一步验证成功的时候，将它加入到一个线程安全的Map或者存到Redis内，然后要用了就直接取出来调用writer之类的方法即可
 
@@ -469,7 +469,7 @@ public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 
 如图
 
-![image-20220511194739026](/images/Netty/02-Netty入门/image-20220511194739026.png)
+![image-20220511194739026](/images/Java/Netty/02-Netty入门/image-20220511194739026.png)
 
 例子：之前的绑定端口是异步操作，当绑定操作处理完，将会调用相应的监听器处理逻辑
 
@@ -1515,4 +1515,4 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<MessageProtoco
 
 运行结果
 
-![image-20220521181103663](/images/Netty/02-Netty入门/image-20220521181103663.png)
+![image-20220521181103663](/images/Java/Netty/02-Netty入门/image-20220521181103663.png)

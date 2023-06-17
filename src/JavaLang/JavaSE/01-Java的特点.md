@@ -14,9 +14,9 @@ tag:
    - Java的强类型机制/异常处理/垃圾的自动收集等是Java程序强壮性的重要保障
 3. Java语言是跨平台的（利用了底层的JVM虚拟机机制） 简单来说 就是一个编译好的`.class`文件能在多个操作系统上运行
 
-![image-20211029232904556](/images/JavaSE/01-Java的特点/image-20211029232904556.png)
+![image-20211029232904556](/images/Java/JavaSE/01-Java的特点/image-20211029232904556.png)
 
-![image-20211025170833865](/images/JavaSE/01-Java的特点/image-20211025170833865.png)
+![image-20211025170833865](/images/Java/JavaSE/01-Java的特点/image-20211025170833865.png)
 
 1. Java语言是解释性的
 

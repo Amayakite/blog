@@ -216,11 +216,11 @@ suspend fun main(args: Array<String>) {
 
 例如某天你想去按个摩，点了98号技师，但是他正在忙，你要等待他忙完，这就是阻塞
 
-![image-20220612115419560](/images/Android/03-1-Kotlin协程/image-20220612115419560.png)
+![image-20220612115419560](/images/Java/Android/03-1-Kotlin协程/image-20220612115419560.png)
 
 如果你某天想去按个摩，点了98号技师，但是它正在忙，你此时又有别的事情要做，就让前台给你记下你预约了98号，让98号之后来服务你，在这过程中你做你自己的事情，这就是挂起
 
-![image-20220612115842357](/images/Android/03-1-Kotlin协程/image-20220612115842357.png)
+![image-20220612115842357](/images/Java/Android/03-1-Kotlin协程/image-20220612115842357.png)
 
 在Kotlin中，使用suspend关键字修饰的函数叫做挂起函数，**挂起函数只能在协程体内或者其他挂起函数内调用**
 
@@ -284,15 +284,15 @@ fun main(args: Array<String>) {
 
 所有的协程必须在**调度器中运行**，即使在主线程上也是如此
 
-![image-20220612124402104](/images/Android/03-1-Kotlin协程/image-20220612124402104.png)
+![image-20220612124402104](/images/Java/Android/03-1-Kotlin协程/image-20220612124402104.png)
 
 注意，Main只能在Android中使用，通常在开发web server例如SpringBoot的时候都是用Dispatchers.Default，当然如果你没有指定的话，默认也就是Dispatchers.Default
 
 ## 结构化并发
 
-![image-20220612164411894](/images/Android/03-1-Kotlin协程/image-20220612164411894.png)
+![image-20220612164411894](/images/Java/Android/03-1-Kotlin协程/image-20220612164411894.png)
 
-![image-20220612164425988](/images/Android/03-1-Kotlin协程/image-20220612164425988.png)
+![image-20220612164425988](/images/Java/Android/03-1-Kotlin协程/image-20220612164425988.png)
 
 
 

@@ -23,19 +23,19 @@ tag:
 
 Nosql可以在百亿数据集达到毫秒级查询
 
-![image-20211222180739538](/images/SpringBoot/04-Redis/image-20211222180739538.png)
+![image-20211222180739538](/images/Java/SpringBoot/04-Redis/image-20211222180739538.png)
 
 还可以减少sql压力之类的，例如查询到的结果存放到nosql中 以后别人要数据 如果nosql中有，直接在那里面拿
 
-![image-20211222180955536](/images/SpringBoot/04-Redis/image-20211222180955536.png)
+![image-20211222180955536](/images/Java/SpringBoot/04-Redis/image-20211222180955536.png)
 
-![image-20211222181014333](/images/SpringBoot/04-Redis/image-20211222181014333.png)
+![image-20211222181014333](/images/Java/SpringBoot/04-Redis/image-20211222181014333.png)
 
-![image-20211222181039767](/images/SpringBoot/04-Redis/image-20211222181039767.png)
+![image-20211222181039767](/images/Java/SpringBoot/04-Redis/image-20211222181039767.png)
 
-![image-20211222181103747](/images/SpringBoot/04-Redis/image-20211222181103747.png)
+![image-20211222181103747](/images/Java/SpringBoot/04-Redis/image-20211222181103747.png)
 
-![image-20211222181125028](/images/SpringBoot/04-Redis/image-20211222181125028.png)
+![image-20211222181125028](/images/Java/SpringBoot/04-Redis/image-20211222181125028.png)
 
 顺带一提：Redis现在支持事务了
 
@@ -94,7 +94,7 @@ auth  刚刚设置的密码，按下回车后显示OK即可
 
 Redis的底层是单线程+多路IO复用 就有点像是JavaScript的async await 异步操作那样
 
-![image-20211222185303744](/images/SpringBoot/04-Redis/image-20211222185303744.png)
+![image-20211222185303744](/images/Java/SpringBoot/04-Redis/image-20211222185303744.png)
 
 ## Redis的基本使用
 
@@ -161,7 +161,7 @@ redis中的key对应string类型的value
 
 ​String的数据结构为简单的动态字符串(Simple Dynamic String ，SDS)是可以修改的字符串，内部结构实现上类似于Java的ArrayList，才用预分配冗余空间的方式来减少内存的频繁分配
 
-![image-20211222212302018](/images/SpringBoot/04-Redis/image-20211222212302018.png)
+![image-20211222212302018](/images/Java/SpringBoot/04-Redis/image-20211222212302018.png)
 
 如上图所示，内部为当前实际分配的空间capacity，一般要高于实际字符串长度len
 
@@ -177,7 +177,7 @@ Redis的列表是简单的字符串列表，按照插入顺序排序
 
 它的底层实际上是一个**双向链表**，对两端的操作性能很高，通过索引下标操作中间的节点性能会比较差
 
-![image-20211222212647326](/images/SpringBoot/04-Redis/image-20211222212647326.png)
+![image-20211222212647326](/images/Java/SpringBoot/04-Redis/image-20211222212647326.png)
 
 ### ✨列表的常用操作
 
@@ -205,11 +205,11 @@ Redis的列表是简单的字符串列表，按照插入顺序排序
 
 举个例子：
 
-![image-20211222214305623](/images/SpringBoot/04-Redis/image-20211222214305623.png)
+![image-20211222214305623](/images/Java/SpringBoot/04-Redis/image-20211222214305623.png)
 
 创建一个从左往右的列表，从左往右的读取 能发现第一个读取到的是最后插入的值
 
-![image-20211222214454125](/images/SpringBoot/04-Redis/image-20211222214454125.png)
+![image-20211222214454125](/images/Java/SpringBoot/04-Redis/image-20211222214454125.png)
 
 但如果从右往左插入的表，那么得到的顺序将会按照我们插入的顺序来走
 
@@ -244,17 +244,17 @@ Redis Hash是一个String类型的`field`和`value`映射表
 
 Hash特别适合用于存储对象，类似于Java的`Map<String,Object>`
 
-![image-20211222224058143](/images/SpringBoot/04-Redis/image-20211222224058143.png)
+![image-20211222224058143](/images/Java/SpringBoot/04-Redis/image-20211222224058143.png)
 
 用户ID为查找的key，存储的value包含性别、年龄、生日等信息，如果用普通的key-value来保存的话：
 
-![image-20211222224449309](/images/SpringBoot/04-Redis/image-20211222224449309.png)
+![image-20211222224449309](/images/Java/SpringBoot/04-Redis/image-20211222224449309.png)
 
 可以非常直观的感受到这样不太行 当然我们也可以尝试使用Java的序列化存储，但是那样的话可视性、读取反射生成跟第一种的区别其实不大
 
 所以就可以用到Hash 结构如下
 
-![image-20211222224707303](/images/SpringBoot/04-Redis/image-20211222224707303.png)
+![image-20211222224707303](/images/Java/SpringBoot/04-Redis/image-20211222224707303.png)
 
 ### ✨Hash的常用命令
 
@@ -327,7 +327,7 @@ Hash特别适合用于存储对象，类似于Java的`Map<String,Object>`
 
 ​Redis客户端可以订阅任意数量的频道
 
-![image-20211223121745764](/images/SpringBoot/04-Redis/image-20211223121745764.png)
+![image-20211223121745764](/images/Java/SpringBoot/04-Redis/image-20211223121745764.png)
 
 ### 用Redis实现一个简单的消息订阅
 
@@ -342,7 +342,7 @@ SUBSCRIBE MessageChannel_01
 # SUBSCRIBE 订阅一个频道 MessageChannel_01是频道名称 注意 订阅后除非自己手动退出 不然这个连接就始终在接收这个频道的数据
 ```
 
-![image-20211223122512138](/images/SpringBoot/04-Redis/image-20211223122512138.png)
+![image-20211223122512138](/images/Java/SpringBoot/04-Redis/image-20211223122512138.png)
 
 Console2 发送者
 
@@ -355,7 +355,7 @@ publish MessageChannel_01 Hello
 
 接着在console1内可以发现接收到了Hello
 
-![image-20211223122638825](/images/SpringBoot/04-Redis/image-20211223122638825.png)
+![image-20211223122638825](/images/Java/SpringBoot/04-Redis/image-20211223122638825.png)
 
 注意：发布的消息没有持久化，如果在订阅的客户端收不到Hello，只能收到订阅后发布的消息
 
@@ -375,7 +375,7 @@ publish MessageChannel_01 Hello
 
 设置键的offset个位的值（从0算起），假设现在有20个用户，userid=1，6,11,15,19的用户对网站进行了访问，那么当前BitMaps的初始化结果是
 
-![image-20211223123601860](/images/SpringBoot/04-Redis/image-20211223123601860.png)
+![image-20211223123601860](/images/Java/SpringBoot/04-Redis/image-20211223123601860.png)
 
 注意：很多用户的id以指定一个数值（例如10000开头）直接将用户的bitmaps的偏移量对应一定会造成浪费，通常的做法是每次`setbit`操作时将用户id减去这个指定的数字
 
@@ -396,15 +396,15 @@ publish MessageChannel_01 Hello
 
 假设网站有1e个用户，每天独立访问5kw，如果每天用集合类型和bitmaps分别存储活跃用户可以得到表
 
-![image-20211223130858482](/images/SpringBoot/04-Redis/image-20211223130858482.png)
+![image-20211223130858482](/images/Java/SpringBoot/04-Redis/image-20211223130858482.png)
 
 很明显，这种情况下使用BitMaps能节省很多的空间，尤其是随着时间推移节省内存还是比较可观的
 
-![image-20211223130940379](/images/SpringBoot/04-Redis/image-20211223130940379.png)
+![image-20211223130940379](/images/Java/SpringBoot/04-Redis/image-20211223130940379.png)
 
 但BitMaps并不是万金油，假如网站每天的独立访问用户量很少，例如只有10万（大量的僵尸用户），那么两者的对比如下所示，很显然这个时候用bitmaps就不太合适了，因为基本上大部分位都是0
 
-![image-20211223131115293](/images/SpringBoot/04-Redis/image-20211223131115293.png)
+![image-20211223131115293](/images/Java/SpringBoot/04-Redis/image-20211223131115293.png)
 
 ### HyperLoglog
 
@@ -708,13 +708,13 @@ public class PhoneCode {
 
 看到了两个
 
-![image-20211223170648151](/images/SpringBoot/04-Redis/image-20211223170648151.png)
+![image-20211223170648151](/images/Java/SpringBoot/04-Redis/image-20211223170648151.png)
 
 用上面那个吧 听说下面的是做集群用的
 
 当然我选择模板生成
 
-![image-20211223171156327](/images/SpringBoot/04-Redis/image-20211223171156327.png)
+![image-20211223171156327](/images/Java/SpringBoot/04-Redis/image-20211223171156327.png)
 
 ### 添加依赖
 
@@ -729,7 +729,7 @@ public class PhoneCode {
 
 可以看到导入了蛮多依赖
 
-![image-20211223173323095](/images/SpringBoot/04-Redis/image-20211223173323095.png)
+![image-20211223173323095](/images/Java/SpringBoot/04-Redis/image-20211223173323095.png)
 
 额外说下 这玩意是基于lettuce的netty来进行操作的
 
@@ -743,7 +743,7 @@ redis 的包名为：spring-boot-starter-data-redis
 
 可以看到显眼的autoConfiguration
 
-![image-20211223173848353](/images/SpringBoot/04-Redis/image-20211223173848353.png)
+![image-20211223173848353](/images/Java/SpringBoot/04-Redis/image-20211223173848353.png)
 
 接下来可以在这之中看到
 
@@ -762,7 +762,7 @@ redis 的包名为：spring-boot-starter-data-redis
 
 点进去看一下
 
-![image-20211223174140887](/images/SpringBoot/04-Redis/image-20211223174140887.png)
+![image-20211223174140887](/images/Java/SpringBoot/04-Redis/image-20211223174140887.png)
 
 这里看着就像是一个连接工厂的玩意 说明以后我们连接redis都是从这里获取连接
 
@@ -770,7 +770,7 @@ redis 的包名为：spring-boot-starter-data-redis
 
 接着看下另一个JedisConnectionConfiguration
 
-![image-20211223174257801](/images/SpringBoot/04-Redis/image-20211223174257801.png)
+![image-20211223174257801](/images/Java/SpringBoot/04-Redis/image-20211223174257801.png)
 
 一目了然 这不就是Jedis吗 也就是说只要我们的`spring.redis.client-type`为jedis的时候，底层默认的链接工厂为jedis
 
@@ -810,7 +810,7 @@ public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConne
 
 我们可以在RedisProperties内看到非常多的配置
 
-![image-20211223180656571](/images/SpringBoot/04-Redis/image-20211223180656571.png)
+![image-20211223180656571](/images/Java/SpringBoot/04-Redis/image-20211223180656571.png)
 
 前缀都是spring.redis
 
@@ -919,7 +919,7 @@ Redis事务主要作用就是**串联多个命令**防止别的命令插队
 - Exec就像是Mysql的提交事务
 - Discard就像是Mysql的回滚事务，取消事务的提交
 
-![image-20211223203804732](/images/SpringBoot/04-Redis/image-20211223203804732.png)
+![image-20211223203804732](/images/Java/SpringBoot/04-Redis/image-20211223203804732.png)
 
 总之使用和Mysql差不多 不过目前来说只是没有那几个分类的区别：什么读未提交之类的
 
@@ -940,7 +940,7 @@ Redis没有回滚这一个概念，只有提交和不提交的概念
 - 一个请求想给金额减5k
 - 一个金额想给金额减1k
 
-![image-20211223205332078](/images/SpringBoot/04-Redis/image-20211223205332078.png)
+![image-20211223205332078](/images/Java/SpringBoot/04-Redis/image-20211223205332078.png)
 
 ### 悲观锁
 
@@ -948,7 +948,7 @@ Redis没有回滚这一个概念，只有提交和不提交的概念
 
 ​传统的关系型数据库里面就用到了很多这种机制，比如行锁，表锁等，都是在做操作之前先**上锁**
 
-![image-20211223205700387](/images/SpringBoot/04-Redis/image-20211223205700387.png)
+![image-20211223205700387](/images/Java/SpringBoot/04-Redis/image-20211223205700387.png)
 
 缺点是效率比较低 如果说同时执行的玩意较多 那么所有查询都要等待前面的结束
 
@@ -958,7 +958,7 @@ Redis没有回滚这一个概念，只有提交和不提交的概念
 
 ​乐观锁用于多读的数据类型，这样可以提高吞吐量，Redis就是利用这种check-and-set实现事务的
 
-![image-20211223210026383](/images/SpringBoot/04-Redis/image-20211223210026383.png)
+![image-20211223210026383](/images/Java/SpringBoot/04-Redis/image-20211223210026383.png)
 
 比较现实的例子就是春运的火车抢票
 
@@ -1148,9 +1148,9 @@ public class QucikController {
 
 测试了下，效果可以
 
-![image-20211224001053673](/images/SpringBoot/04-Redis/image-20211224001053673.png)
+![image-20211224001053673](/images/Java/SpringBoot/04-Redis/image-20211224001053673.png)
 
-![image-20211224001100549](/images/SpringBoot/04-Redis/image-20211224001100549.png)
+![image-20211224001100549](/images/Java/SpringBoot/04-Redis/image-20211224001100549.png)
 
 但是这样真的能解决高并发问题吗？
 
@@ -1190,13 +1190,13 @@ if __name__ == '__main__':
         t.start()
 ```
 
-![image-20211224000756690](/images/SpringBoot/04-Redis/image-20211224000756690.png)
+![image-20211224000756690](/images/Java/SpringBoot/04-Redis/image-20211224000756690.png)
 
 接着发现了超卖现象
 
 同时票数也成为了负数
 
-![image-20211224000827544](/images/SpringBoot/04-Redis/image-20211224000827544.png)
+![image-20211224000827544](/images/Java/SpringBoot/04-Redis/image-20211224000827544.png)
 
 这可不太行..
 
@@ -1235,7 +1235,7 @@ for(let i=0;i<10000;i++){
 
 ```
 
-![image-20211224003705848](/images/SpringBoot/04-Redis/image-20211224003705848.png)
+![image-20211224003705848](/images/Java/SpringBoot/04-Redis/image-20211224003705848.png)
 
 1w次连接，2k次异常
 
@@ -1409,9 +1409,9 @@ aof优点：每一次修改都同步，文件的完整性会更加好；每秒�
 
 ### 持久化的补充说明
 
-![image-20211224194823610](/images/SpringBoot/04-Redis/image-20211224194823610.png)
+![image-20211224194823610](/images/Java/SpringBoot/04-Redis/image-20211224194823610.png)
 
-![image-20211224195019133](/images/SpringBoot/04-Redis/image-20211224195019133.png)
+![image-20211224195019133](/images/Java/SpringBoot/04-Redis/image-20211224195019133.png)
 
 ## Redis主从复制
 
@@ -1427,7 +1427,7 @@ aof优点：每一次修改都同步，文件的完整性会更加好；每秒�
 
 ​**数据的复制时是单向的，只能从主节点复制到从节点**
 
-![image-20211224200220578](/images/SpringBoot/04-Redis/image-20211224200220578.png)
+![image-20211224200220578](/images/Java/SpringBoot/04-Redis/image-20211224200220578.png)
 
 主从复制的作用主要包括：
 
@@ -1487,7 +1487,7 @@ docker network create redis --subnet 172.38.0.0/16
 docker network ls
 ```
 
-![image-20211224225758243](/images/SpringBoot/04-Redis/image-20211224225758243.png)
+![image-20211224225758243](/images/Java/SpringBoot/04-Redis/image-20211224225758243.png)
 
 看到了redis表示成功
 
@@ -1520,7 +1520,7 @@ done
 
 接着运行 然后cd进去查看
 
-![image-20211224230003789](/images/SpringBoot/04-Redis/image-20211224230003789.png)
+![image-20211224230003789](/images/Java/SpringBoot/04-Redis/image-20211224230003789.png)
 
 看到有redis.conf表示成功
 
@@ -1587,7 +1587,7 @@ repl_backlog_histlen:1512
 
 此时你的data目录应该是如下的样子
 
-![image-20211224231121355](/images/SpringBoot/04-Redis/image-20211224231121355.png)
+![image-20211224231121355](/images/Java/SpringBoot/04-Redis/image-20211224231121355.png)
 
 此时你的主机中进行任何操作 从机都能同步的收集到信息
 
@@ -1682,13 +1682,13 @@ slaveof no one
 
 ​哨兵模式是一种特殊的模式，首先Redis提供了哨兵的命令，哨兵是一个**独立的进程**，会独立运行，其原理是哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例
 
-​ ![image-20211225122151292](/images/SpringBoot/04-Redis/image-20211225122151292.png)
+​ ![image-20211225122151292](/images/Java/SpringBoot/04-Redis/image-20211225122151292.png)
 
 可能你会想到一个问题---这个哨兵死了咋办
 
 哨兵是可以配置多个滴~
 
-![image-20211225122339629](/images/SpringBoot/04-Redis/image-20211225122339629.png)
+![image-20211225122339629](/images/Java/SpringBoot/04-Redis/image-20211225122339629.png)
 
 **实际场景中，哨兵一定是多个的**
 
@@ -1782,7 +1782,7 @@ redis-server sentinel.conf --sentinel
 
 ## 集群
 
-![image-20211225132812624](/images/SpringBoot/04-Redis/image-20211225132812624.png)
+![image-20211225132812624](/images/Java/SpringBoot/04-Redis/image-20211225132812624.png)
 
 集群最少需要三主三从（六台服务器）..
 

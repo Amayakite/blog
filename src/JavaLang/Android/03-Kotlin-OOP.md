@@ -16,7 +16,7 @@ Kotlin的Object相对于Java来说多了更多特性，这里就不从Java开始
 
 实际上就是一个对象中的属性值，在Kotlin中有更舒服的用法（大概）
 
-![image-20220507161319454](/images/Android/03-Kotlin-OOP/image-20220507161319454.png)
+![image-20220507161319454](/images/Java/Android/03-Kotlin-OOP/image-20220507161319454.png)
 
 ### 基本使用
 
@@ -293,7 +293,7 @@ public final class Player {
 
 一张图带过
 
-![image-20220507175512202](/images/Android/03-Kotlin-OOP/image-20220507175512202.png)
+![image-20220507175512202](/images/Java/Android/03-Kotlin-OOP/image-20220507175512202.png)
 
 
 
@@ -714,7 +714,7 @@ fun main() {
 
 在反编译文件中，可以看到
 
-![image-20220507215525442](/images/Android/03-Kotlin-OOP/image-20220507215525442.png)
+![image-20220507215525442](/images/Java/Android/03-Kotlin-OOP/image-20220507215525442.png)
 
 它重写了equals和hashcode还有tostring以及有一个额外的copy方法
 
@@ -778,7 +778,7 @@ fun main() {
 
 其他的同理，常见的如下
 
-![image-20220507224655047](/images/Android/03-Kotlin-OOP/image-20220507224655047.png)
+![image-20220507224655047](/images/Java/Android/03-Kotlin-OOP/image-20220507224655047.png)
 
 ### 枚举类
 
@@ -887,29 +887,29 @@ Learning
 有资格，您的驾照号码是123456789
 ```
 
-![image-20220508152810691](/images/Android/03-Kotlin-OOP/image-20220508152810691.png)
+![image-20220508152810691](/images/Java/Android/03-Kotlin-OOP/image-20220508152810691.png)
 
 ## 接口
 
-![image-20220508152904862](/images/Android/03-Kotlin-OOP/image-20220508152904862.png)
+![image-20220508152904862](/images/Java/Android/03-Kotlin-OOP/image-20220508152904862.png)
 
 在Kotlin中，接口的属性是可以被继承的
 
 并且可以提供默认的实现
 
-![image-20220508152959747](/images/Android/03-Kotlin-OOP/image-20220508152959747.png)
+![image-20220508152959747](/images/Java/Android/03-Kotlin-OOP/image-20220508152959747.png)
 
 ## 抽象类
 
 和Java基本一致，用的不多没啥好多说的
 
-![image-20220508153050954](/images/Android/03-Kotlin-OOP/image-20220508153050954.png)
+![image-20220508153050954](/images/Java/Android/03-Kotlin-OOP/image-20220508153050954.png)
 
 ## 泛型
 
 和Java也差不多
 
-![image-20220508153138509](/images/Android/03-Kotlin-OOP/image-20220508153138509.png)
+![image-20220508153138509](/images/Java/Android/03-Kotlin-OOP/image-20220508153138509.png)
 
 ### 泛型类型约束
 
@@ -979,11 +979,11 @@ fun main() {
 
 额外说明
 
-![image-20220508160254108](/images/Android/03-Kotlin-OOP/image-20220508160254108.png)
+![image-20220508160254108](/images/Java/Android/03-Kotlin-OOP/image-20220508160254108.png)
 
 ### reified-让泛型可以加入判断
 
-![image-20220508160347079](/images/Android/03-Kotlin-OOP/image-20220508160347079.png)
+![image-20220508160347079](/images/Java/Android/03-Kotlin-OOP/image-20220508160347079.png)
 
 ```kotlin
 open class Human(open val age: Int)
@@ -1041,7 +1041,7 @@ fun main() {
 
 ## 扩展函数
 
-![image-20220508164602517](/images/Android/03-Kotlin-OOP/image-20220508164602517.png)
+![image-20220508164602517](/images/Java/Android/03-Kotlin-OOP/image-20220508164602517.png)
 
 在Java中，要给一个类定义扩展函数，无非就是匿名内部类（实例化）和额外的方法使用
 
@@ -1082,7 +1082,7 @@ public  fun <T, R> T.let(block: (T) -> R): R {
 
 ## 扩展属性
 
-![image-20220508172611028](/images/Android/03-Kotlin-OOP/image-20220508172611028.png)
+![image-20220508172611028](/images/Java/Android/03-Kotlin-OOP/image-20220508172611028.png)
 
 ```kotlin
 val String.NumVowels
@@ -1097,7 +1097,7 @@ fun main() {
 
 ### 可空类型扩展和infix
 
-![image-20220508172823607](/images/Android/03-Kotlin-OOP/image-20220508172823607.png)
+![image-20220508172823607](/images/Java/Android/03-Kotlin-OOP/image-20220508172823607.png)
 
 ```kotlin
 infix fun String?.printWithDefault(default: String) = println(this ?: default)
@@ -1126,13 +1126,13 @@ fun main() {
 
 ## 在不同的文件之间调用扩展和重命名扩展
 
-![image-20220508173420097](/images/Android/03-Kotlin-OOP/image-20220508173420097.png)
+![image-20220508173420097](/images/Java/Android/03-Kotlin-OOP/image-20220508173420097.png)
 
 重命名就加个as即可
 
-![image-20220508173446595](/images/Android/03-Kotlin-OOP/image-20220508173446595.png)
+![image-20220508173446595](/images/Java/Android/03-Kotlin-OOP/image-20220508173446595.png)
 
-![image-20220508173537833](/images/Android/03-Kotlin-OOP/image-20220508173537833.png)
+![image-20220508173537833](/images/Java/Android/03-Kotlin-OOP/image-20220508173537833.png)
 
 
 
@@ -1172,21 +1172,21 @@ public final class MyApplication {
 
 ### @JvmField
 
-![image-20220508174430506](/images/Android/03-Kotlin-OOP/image-20220508174430506.png)
+![image-20220508174430506](/images/Java/Android/03-Kotlin-OOP/image-20220508174430506.png)
 
 没太大用途的注解，相当于是把某一个属性public了
 
 ### @JvmOverload
 
-![image-20220508174543654](/images/Android/03-Kotlin-OOP/image-20220508174543654.png)
+![image-20220508174543654](/images/Java/Android/03-Kotlin-OOP/image-20220508174543654.png)
 
 ### @JvmStatic
 
-![image-20220508174603069](/images/Android/03-Kotlin-OOP/image-20220508174603069.png)
+![image-20220508174603069](/images/Java/Android/03-Kotlin-OOP/image-20220508174603069.png)
 
 
 
 ### @Throws
 
-![image-20220508174645345](/images/Android/03-Kotlin-OOP/image-20220508174645345.png)
+![image-20220508174645345](/images/Java/Android/03-Kotlin-OOP/image-20220508174645345.png)
 

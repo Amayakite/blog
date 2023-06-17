@@ -12,7 +12,7 @@ tag:
 
 ​  数据库嘛，懂得都懂，在我学习Java之前，已经接触过Mysql了，并使用Nodejs、Koa、Vue3、ElementUI搭建了一个个人博客，使用的数据库就是Mysql，当然在学习Java之前Mysql为我存取了超多的图片：
 
-![image-20211119220054247](/images/JavaSE/21-MySql/image-20211119220054247.png)
+![image-20211119220054247](/images/Java/JavaSE/21-MySql/image-20211119220054247.png)
 
 ​  这大概是爬取了三天的结果，共在数据库内简历了八千多条索引，也就是说我以后能够随意调用这些数据hhhh~
 
@@ -40,7 +40,7 @@ tag:
 
 Windows下的安装教程可以直接去看[老韩的视频](https://www.bilibili.com/video/BV1fh411y7R8?p=732&t=1.5)，讲的比较细，根据他的操作下来走一遍就可以使用了，Mysql的[下载地址](https://dev.mysql.com/downloads/mysql/)，根据他的视频下来操作一遍即可
 
-![image-20211119224623277](/images/JavaSE/21-MySql/image-20211119224623277.png)
+![image-20211119224623277](/images/Java/JavaSE/21-MySql/image-20211119224623277.png)
 
 小TIps：在配置`my.ini`的过程中，字符集`default-character-set`可以选择设置为`utf8mb4`
 
@@ -292,7 +292,7 @@ docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
 
 这里注意一下，最好不要加-d参数。-d表示后台执行，就不能看到初始化数据库过程，这个过程可能有一会儿，没经过初始化数据库不能启动服务的。
 
-![img](/images/JavaSE/21-MySql/1704051-20200703164942350-177162620.png)
+![img](/images/Java/JavaSE/21-MySql/1704051-20200703164942350-177162620.png)
 
 出现这条记录就说明安装成功，可以把这个控制台关掉，重新开一个
 
@@ -331,7 +331,7 @@ service mysql restart
 
 设置字符集的方式：和Linux中一致：个人建议使用图形化方式操作
 
-![image-20211119233159061](/images/JavaSE/21-MySql/image-20211119233159061.png)
+![image-20211119233159061](/images/Java/JavaSE/21-MySql/image-20211119233159061.png)
 
 ```ini
 [client]
@@ -411,11 +411,11 @@ select * from users;
 
 ### Mysql的结构
 
-![image-20211120135003148](/images/JavaSE/21-MySql/image-20211120135003148.png)
+![image-20211120135003148](/images/Java/JavaSE/21-MySql/image-20211120135003148.png)
 
-![image-20211120135054472](/images/JavaSE/21-MySql/image-20211120135054472.png)
+![image-20211120135054472](/images/Java/JavaSE/21-MySql/image-20211120135054472.png)
 
-![image-20211120135239889](/images/JavaSE/21-MySql/image-20211120135239889.png)
+![image-20211120135239889](/images/Java/JavaSE/21-MySql/image-20211120135239889.png)
 
 ## SQL语句分类
 
@@ -575,23 +575,23 @@ drop table if exists emp;
 
 一般情况下不会用到二进制类型，文件一般都是直接存到一般，数据库中建个索引路径
 
-![MySql数据类型](/images/JavaSE/21-MySql/MySql数据类型.svg)
+![MySql数据类型](/images/Java/JavaSE/21-MySql/MySql数据类型.svg)
 
-![image-20211120185628320](/images/JavaSE/21-MySql/image-20211120185628320.png)
+![image-20211120185628320](/images/Java/JavaSE/21-MySql/image-20211120185628320.png)
 
-![image-20211120185641114](/images/JavaSE/21-MySql/image-20211120185641114.png)
+![image-20211120185641114](/images/Java/JavaSE/21-MySql/image-20211120185641114.png)
 
-![image-20211120192745001](/images/JavaSE/21-MySql/image-20211120192745001.png)
+![image-20211120192745001](/images/Java/JavaSE/21-MySql/image-20211120192745001.png)
 
-![image-20211120192825877](/images/JavaSE/21-MySql/image-20211120192825877.png)
+![image-20211120192825877](/images/Java/JavaSE/21-MySql/image-20211120192825877.png)
 
 Char和Varchar的长度（比如varchar(255)）表示的是255个字符，而并非是255个字节
 
 反正用的时候只要知道，定义多长，就能放多少个字即可
 
-![image-20211120205829953](/images/JavaSE/21-MySql/image-20211120205829953.png)
+![image-20211120205829953](/images/Java/JavaSE/21-MySql/image-20211120205829953.png)
 
-![image-20211120205914839](/images/JavaSE/21-MySql/image-20211120205914839.png)
+![image-20211120205914839](/images/Java/JavaSE/21-MySql/image-20211120205914839.png)
 
 #### Decimal类型额外说明
 
@@ -614,11 +614,11 @@ CREATE TABLE db3(
 
 ```
 
-![image-20211120190547035](/images/JavaSE/21-MySql/image-20211120190547035.png)
+![image-20211120190547035](/images/Java/JavaSE/21-MySql/image-20211120190547035.png)
 
-![image-20211120185843253](/images/JavaSE/21-MySql/image-20211120185726028.png)
+![image-20211120185843253](/images/Java/JavaSE/21-MySql/image-20211120185726028.png)
 
-![image-20211120185843253.png](/images/JavaSE/21-MySql/image-20211120185843253.png)
+![image-20211120185843253.png](/images/Java/JavaSE/21-MySql/image-20211120185843253.png)
 
 #### 时间相关类型额外说明default值和on update值
 
@@ -1338,11 +1338,11 @@ select avg(sal) as sal_avg,deptno from emp group by deptno having sal_avg<2000 ;
 
 ```
 
-![image-20211121154510850](/images/JavaSE/21-MySql/image-20211121154510850.png)
+![image-20211121154510850](/images/Java/JavaSE/21-MySql/image-20211121154510850.png)
 
 ## 字符串函数
 
-![image-20211121154625191](/images/JavaSE/21-MySql/image-20211121154625191.png)
+![image-20211121154625191](/images/Java/JavaSE/21-MySql/image-20211121154625191.png)
 
 ```sql
 #返回字串字符集
@@ -1487,7 +1487,7 @@ select concat(ucase(left(ename,1)),lcase(substring(ename,2))) "员工姓名" fro
 
 ## 数学相关函数
 
-![image-20211121163030748](/images/JavaSE/21-MySql/image-20211121163030748.png)
+![image-20211121163030748](/images/Java/JavaSE/21-MySql/image-20211121163030748.png)
 
 ```sql
 # 比较简单的这里不写了，写一些看起来难理解的
@@ -1553,15 +1553,15 @@ select rand(232332323);
 
 ## 时间日期相关函数
 
-![image-20211121165926182](/images/JavaSE/21-MySql/image-20211121165926182.png)
+![image-20211121165926182](/images/Java/JavaSE/21-MySql/image-20211121165926182.png)
 
-![image-20211121172736581](/images/JavaSE/21-MySql/image-20211121172736581.png)
+![image-20211121172736581](/images/Java/JavaSE/21-MySql/image-20211121172736581.png)
 
-![image-20211121172709333](/images/JavaSE/21-MySql/image-20211121172709333.png)
+![image-20211121172709333](/images/Java/JavaSE/21-MySql/image-20211121172709333.png)
 
-![image-20211121173857683](/images/JavaSE/21-MySql/image-20211121173857683.png)
+![image-20211121173857683](/images/Java/JavaSE/21-MySql/image-20211121173857683.png)
 
-![image-20211121173952348](/images/JavaSE/21-MySql/image-20211121173952348.png)
+![image-20211121173952348](/images/Java/JavaSE/21-MySql/image-20211121173952348.png)
 
 ```sql
 create table mes(id int,content varchar(30),send_time DATETIME);
@@ -1632,7 +1632,7 @@ select  datediff(date_add('2011-8-7',interval 80 year),now());
 
 ## 加密函数和系统函数
 
-![image-20211121174113576](/images/JavaSE/21-MySql/image-20211121174113576.png)
+![image-20211121174113576](/images/Java/JavaSE/21-MySql/image-20211121174113576.png)
 
 补充：[mysql加密数据的几种方法](https://blog.csdn.net/rocky1996/article/details/75283826)、[mysql8更该的用户信息加密方式](https://www.cnblogs.com/gjc592/p/9681093.html)
 
@@ -1690,7 +1690,7 @@ ifnull类似于if
 
 case类似于 套娃版三元表达式
 
-![image-20211121205018177](/images/JavaSE/21-MySql/image-20211121205018177.png)
+![image-20211121205018177](/images/Java/JavaSE/21-MySql/image-20211121205018177.png)
 
 ```sql
 # if语句的基本使用：
@@ -2011,7 +2011,7 @@ select avg(sal) as sal_avg,deptno from emp
 
 实际上开发过程中多表用的多一些（指七八个表一块查..）
 
-![image-20211121223552978](/images/JavaSE/21-MySql/image-20211121223552978.png)
+![image-20211121223552978](/images/Java/JavaSE/21-MySql/image-20211121223552978.png)
 
 接下来过程中要用到的三张表
 
@@ -2060,9 +2060,9 @@ mysql> select * from emp;
 13 rows in set (0.00 sec)
 ```
 
-![image-20211121223951951](/images/JavaSE/21-MySql/image-20211121223951951.png)
+![image-20211121223951951](/images/Java/JavaSE/21-MySql/image-20211121223951951.png)
 
-![image-20211121224339699](/images/JavaSE/21-MySql/image-20211121224339699.png)
+![image-20211121224339699](/images/Java/JavaSE/21-MySql/image-20211121224339699.png)
 
 这样多表查询默认处理返回的结果，称为笛卡尔集
 
@@ -2070,7 +2070,7 @@ mysql> select * from emp;
 
 解决这个多表的关键就是要写出正确的过滤条件 where
 
-![image-20211121230457415](/images/JavaSE/21-MySql/image-20211121230457415.png)
+![image-20211121230457415](/images/Java/JavaSE/21-MySql/image-20211121230457415.png)
 
 ```sql
 
@@ -2495,13 +2495,13 @@ drop table my_emp;
 
 ## 合并查询-UNION、UNION ALL
 
-![image-20211122154537661](/images/JavaSE/21-MySql/image-20211122154537661.png)
+![image-20211122154537661](/images/Java/JavaSE/21-MySql/image-20211122154537661.png)
 
-![image-20211122154637130](/images/JavaSE/21-MySql/image-20211122154637130.png)
+![image-20211122154637130](/images/Java/JavaSE/21-MySql/image-20211122154637130.png)
 
 ## 多表查询-外连接
 
-![image-20211122154827000](/images/JavaSE/21-MySql/image-20211122154827000.png)
+![image-20211122154827000](/images/Java/JavaSE/21-MySql/image-20211122154827000.png)
 
 ```sql
 # 这里使用mgr  上级名称来演示
@@ -2611,7 +2611,7 @@ Mysql中外连接分为两种
 
 这个 。。。只能说是一张表都得用它
 
-![image-20211122163807238](/images/JavaSE/21-MySql/image-20211122163807238.png)
+![image-20211122163807238](/images/Java/JavaSE/21-MySql/image-20211122163807238.png)
 
 ```sql
 # 前面添加主键
@@ -2679,11 +2679,11 @@ create table 表名(
 
 **一个从表中，外键可以有多个，任何表都可以是从表**
 
-![image-20211122170615206](/images/JavaSE/21-MySql/image-20211122170615206.png)
+![image-20211122170615206](/images/Java/JavaSE/21-MySql/image-20211122170615206.png)
 
-![image-20211122164902068](/images/JavaSE/21-MySql/image-20211122164902068.png)
+![image-20211122164902068](/images/Java/JavaSE/21-MySql/image-20211122164902068.png)
 
-![image-20211122164935895](/images/JavaSE/21-MySql/image-20211122164935895.png)
+![image-20211122164935895](/images/Java/JavaSE/21-MySql/image-20211122164935895.png)
 
 ```sql
 create table class_tab(
@@ -2734,11 +2734,11 @@ insert into student_tab values(3,"王老五",3);
 
  图形化界面可以轻松地选择外键
 
-![image-20211122170505505](/images/JavaSE/21-MySql/image-20211122170505505.png)
+![image-20211122170505505](/images/Java/JavaSE/21-MySql/image-20211122170505505.png)
 
 ## Check约束 -要求字段满足指定条件（枚举约定）
 
-![image-20211122171017894](/images/JavaSE/21-MySql/image-20211122171017894.png)
+![image-20211122171017894](/images/Java/JavaSE/21-MySql/image-20211122171017894.png)
 
 在Mysql8.0中，已经可以支持验证了，插入不合法的值，将插入失效
 
@@ -2776,7 +2776,7 @@ insert into my_test_nx values(3,'王老五','man',22333);
 
 也得名：主键自增
 
-![image-20211122173148429](/images/JavaSE/21-MySql/image-20211122173148429.png)
+![image-20211122173148429](/images/Java/JavaSE/21-MySql/image-20211122173148429.png)
 
 ```sql
 #自增长
@@ -2831,7 +2831,7 @@ insert into test_auto(name) values('jiny'),('makr'),('ddd');
 
 # Mysql索引
 
-![image-20211122173232565](/images/JavaSE/21-MySql/image-20211122173232565.png)
+![image-20211122173232565](/images/Java/JavaSE/21-MySql/image-20211122173232565.png)
 
 先按照[这个教程](https://blog.csdn.net/qq_40530040/article/details/107623254)创建一个海量表
 
@@ -2983,7 +2983,7 @@ select * from emp where empno=123456;
 
 接下来使用索引优化下表
 
-![image-20211122204414063](/images/JavaSE/21-MySql/image-20211122204414063.png)
+![image-20211122204414063](/images/Java/JavaSE/21-MySql/image-20211122204414063.png)
 
 优化前，这个表是72mb，查询一次大概要1s的时间
 
@@ -3002,7 +3002,7 @@ CREATE INDEX empno_index ON emp(empno);
 # 我这里创建索引花了3s
 ```
 
-![image-20211122204942231](/images/JavaSE/21-MySql/image-20211122204942231.png)
+![image-20211122204942231](/images/Java/JavaSE/21-MySql/image-20211122204942231.png)
 
 创建完毕后，文件大了10mb
 
@@ -3055,9 +3055,9 @@ select * from emp where ename='SxKgBm';
 
 下图到查询到1后不确定后面还没有没有id=1的，所以要全表扫描
 
-![image-20211122211047180](/images/JavaSE/21-MySql/image-20211122211047180.png)
+![image-20211122211047180](/images/Java/JavaSE/21-MySql/image-20211122211047180.png)
 
-![image-20211122212123404](/images/JavaSE/21-MySql/image-20211122212123404.png)
+![image-20211122212123404](/images/Java/JavaSE/21-MySql/image-20211122212123404.png)
 
 索引快的原因
 
@@ -3074,7 +3074,7 @@ select * from emp where ename='SxKgBm';
 
   - 增删改一个数据后，要重新的去维护这个索引
 
-  ![image-20211122212421742](/images/JavaSE/21-MySql/image-20211122212421742.png)
+  ![image-20211122212421742](/images/Java/JavaSE/21-MySql/image-20211122212421742.png)
 
 当然，在实际项目中，实际上90%左右的业务都是在进行查询，只有10%左右的业务在进行增删改
 
@@ -3169,11 +3169,11 @@ alter table ts2 add primary key (id);
 
 添加完索引后查看：唯一索引和普通索引的：
 
-![image-20211122220117209](/images/JavaSE/21-MySql/image-20211122220117209.png)
+![image-20211122220117209](/images/Java/JavaSE/21-MySql/image-20211122220117209.png)
 
 主键索引的：
 
-![image-20211122220509463](/images/JavaSE/21-MySql/image-20211122220509463.png)
+![image-20211122220509463](/images/Java/JavaSE/21-MySql/image-20211122220509463.png)
 
 ```sql
 # 删除普通索引
@@ -3216,13 +3216,13 @@ alter table ts2 drop primary key;
 
 当执行事务操作时(DML语句)，MYSQL会在表上加锁，防止其他用户修改表的数据，这对用户来讲是非常重要的
 
-![image-20211122222616278](/images/JavaSE/21-MySql/image-20211122222616278.png)
+![image-20211122222616278](/images/Java/JavaSE/21-MySql/image-20211122222616278.png)
 
 使用MySQL的事务，第一步**必须得确保**Mysql当前是是innodb引擎，查看方式
 
 `show engines`
 
-![image-20211122225446144](/images/JavaSE/21-MySql/image-20211122225446144.png)
+![image-20211122225446144](/images/Java/JavaSE/21-MySql/image-20211122225446144.png)
 
 看到innoDB这里的support是default即可；如果不是就要百度自行开启
 
@@ -3235,9 +3235,9 @@ alter table ts2 drop primary key;
 - `rollback` 回退全部事物
 - `commit` 提交事务，所有的操作生效，不能回退
 
-![image-20211122224421237](/images/JavaSE/21-MySql/image-20211122224421237.png)
+![image-20211122224421237](/images/Java/JavaSE/21-MySql/image-20211122224421237.png)
 
-![image-20211122223136404](/images/JavaSE/21-MySql/image-20211122223136404.png)
+![image-20211122223136404](/images/Java/JavaSE/21-MySql/image-20211122223136404.png)
 
 回滚可以让事务能吃后悔药
 
@@ -3307,7 +3307,7 @@ rollback to a;
 
 ## 事务的细节
 
-![image-20211122224643847](/images/JavaSE/21-MySql/image-20211122224643847.png)
+![image-20211122224643847](/images/Java/JavaSE/21-MySql/image-20211122224643847.png)
 
 数据库的存储引擎一定要是innodb！
 
@@ -3322,9 +3322,9 @@ rollback to a;
    - 幻读
      同一查询在同一事务中多次进行，由于其他提交事务所做的插入操作，每次返回不同的结果，此时发生幻读
 
-![image-20211122230850135](/images/JavaSE/21-MySql/image-20211122230850135.png)
+![image-20211122230850135](/images/Java/JavaSE/21-MySql/image-20211122230850135.png)
 
-![image-20211122231201037](/images/JavaSE/21-MySql/image-20211122231201037.png)
+![image-20211122231201037](/images/Java/JavaSE/21-MySql/image-20211122231201037.png)
 
 查看当前Mysql的隔离级别：
 
@@ -3715,7 +3715,7 @@ commit;
 
 ### 事务的ACID特性
 
-![image-20211123004055233](/images/JavaSE/21-MySql/image-20211123004055233.png)
+![image-20211123004055233](/images/Java/JavaSE/21-MySql/image-20211123004055233.png)
 
 # Mysql表类型和存储引擎
 
@@ -3732,19 +3732,19 @@ commit;
      - MYISAM
 
 - 查看所有引擎：`show engines;`
-  ![image-20211123121320164](/images/JavaSE/21-MySql/image-20211123121320164.png)
+  ![image-20211123121320164](/images/Java/JavaSE/21-MySql/image-20211123121320164.png)
 
 ## 引擎的选择
 
 一般情况会选择的
 
-![image-20211123121826094](/images/JavaSE/21-MySql/image-20211123121826094.png)
+![image-20211123121826094](/images/Java/JavaSE/21-MySql/image-20211123121826094.png)
 
-![image-20211123122055639](/images/JavaSE/21-MySql/image-20211123122055639.png)
+![image-20211123122055639](/images/Java/JavaSE/21-MySql/image-20211123122055639.png)
 
-![image-20211123122248185](/images/JavaSE/21-MySql/image-20211123122248185.png)
+![image-20211123122248185](/images/Java/JavaSE/21-MySql/image-20211123122248185.png)
 
-![image-20211123132241153](/images/JavaSE/21-MySql/image-20211123132241153.png)
+![image-20211123132241153](/images/Java/JavaSE/21-MySql/image-20211123132241153.png)
 
 ## 引擎使用
 
@@ -3782,7 +3782,7 @@ alter table emp engine = myisam;
 # 视图(View)
 
 - 先看一个需求：emp表的列(字段)信息很多，有些信息是个人重要信息，比如sal、comm、mgr、hiredate
-  ![image-20211123132622996](/images/JavaSE/21-MySql/image-20211123132622996.png)
+  ![image-20211123132622996](/images/Java/JavaSE/21-MySql/image-20211123132622996.png)
 - 如果我们希望**某个用户只能查询**emp表的 empno、 ename、job和deptno信息
 - 这个时候有很多方案，但是最好用的大概就是视图了
 
@@ -3790,7 +3790,7 @@ alter table emp engine = myisam;
 
 1. 视图是一个虚拟表。其内容由查询定义。和真实的表一样，视图包含列(字段)，**其数据来源对应真实的表**(基表)
 2. 视图和基表的关系示意图
-   ![image-20211123133743001](/images/JavaSE/21-MySql/image-20211123133743001.png)
+   ![image-20211123133743001](/images/Java/JavaSE/21-MySql/image-20211123133743001.png)
 
 ## 视图的基本使用
 
@@ -3837,9 +3837,9 @@ drop view emp_view01;
 
 ## 视图的使用细节
 
-![image-20211123135455381](/images/JavaSE/21-MySql/image-20211123135455381.png)
+![image-20211123135455381](/images/Java/JavaSE/21-MySql/image-20211123135455381.png)
 
-![image-20211123140408719](/images/JavaSE/21-MySql/image-20211123140408719.png)
+![image-20211123140408719](/images/Java/JavaSE/21-MySql/image-20211123140408719.png)
 
 ```sql
 # 视图1号
@@ -3896,7 +3896,7 @@ select * from emp where empno = 100007;
 
 mysql中的用户，都存储在系统数据库mysql中的user表中
 
-![image-20211123140910846](/images/JavaSE/21-MySql/image-20211123140910846.png)
+![image-20211123140910846](/images/Java/JavaSE/21-MySql/image-20211123140910846.png)
 
 其中user表的重要字段说明：
 
@@ -3907,7 +3907,7 @@ mysql中的用户，都存储在系统数据库mysql中的user表中
    - Mysql8后，可以通过caching_sha2_password加密密码
      - 当然，默认还是(mysql_native_password)加密密码
    - 密码字段左边会显示密码的加密方式
-     ![image-20211123143351050](/images/JavaSE/21-MySql/image-20211123143351050.png)
+     ![image-20211123143351050](/images/Java/JavaSE/21-MySql/image-20211123143351050.png)
 
 ## 创建、删除用户
 
@@ -3997,11 +3997,11 @@ show databases;
 +--------------------+
 ```
 
-![image-20211123144656109](/images/JavaSE/21-MySql/image-20211123144656109.png)
+![image-20211123144656109](/images/Java/JavaSE/21-MySql/image-20211123144656109.png)
 
 Mysql的权限大概有这些：
 
-![image-20211123145819580](/images/JavaSE/21-MySql/image-20211123145819580.png)
+![image-20211123145819580](/images/Java/JavaSE/21-MySql/image-20211123145819580.png)
 
 ### 给用户授权、回收权限
 
@@ -4044,7 +4044,7 @@ grant all privileges  on ....
 
 撤销授权后如果没有生效的话：刷新权限`flush privileges;`
 
-![image-20211123152210307](/images/JavaSE/21-MySql/image-20211123152210307.png)
+![image-20211123152210307](/images/Java/JavaSE/21-MySql/image-20211123152210307.png)
 
 ```sql
 # mysql8.0.1 ROOT USER

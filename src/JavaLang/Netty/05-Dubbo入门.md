@@ -25,7 +25,7 @@ tag:
 
 这里先创建两个简简单单的SpringBoot项目，分别是consumer和provider
 
-![image-20220522153343401](/images/Netty/05-Dubbo入门/image-20220522153343401.png)
+![image-20220522153343401](/images/Java/Netty/05-Dubbo入门/image-20220522153343401.png)
 
 然后provider是8080，另外一个是8081，provider的controller和service如下，application正常的写
 
@@ -199,7 +199,7 @@ PS：Dubbo的RPC是方法互调
 
 首先把接口抽离出到common模块中
 
-![image-20220522162003908](/images/Netty/05-Dubbo入门/image-20220522162003908.png)
+![image-20220522162003908](/images/Java/Netty/05-Dubbo入门/image-20220522162003908.png)
 
 接着在provider实现类
 
@@ -238,7 +238,7 @@ public class OrderService {
 
 当然，因为已经用不到Provider的Controller了，所以可以直接删掉
 
-![image-20220522162513134](/images/Netty/05-Dubbo入门/image-20220522162513134.png)
+![image-20220522162513134](/images/Java/Netty/05-Dubbo入门/image-20220522162513134.png)
 
 当然，还需要分别在provider和consumer中分别加上注解
 
@@ -266,13 +266,13 @@ public class ConsumerApplication {
 
 Consume在启动的时候有可能会抛出这个异常
 
-![image-20220522165235981](/images/Netty/05-Dubbo入门/image-20220522165235981.png)
+![image-20220522165235981](/images/Java/Netty/05-Dubbo入门/image-20220522165235981.png)
 
 不用管，不影响使用...貌似是JDK版本太高引起的（JDK 17）
 
 接着访问
 
-![image-20220522165327369](/images/Netty/05-Dubbo入门/image-20220522165327369.png)
+![image-20220522165327369](/images/Java/Netty/05-Dubbo入门/image-20220522165327369.png)
 
 恩，远程调用完成！
 
@@ -347,7 +347,7 @@ dubbo:
 
 然后东西也是正常调用
 
-![image-20220522173802103](/images/Netty/05-Dubbo入门/image-20220522173802103.png)
+![image-20220522173802103](/images/Java/Netty/05-Dubbo入门/image-20220522173802103.png)
 
 ### Triple协议的几种调用方法
 
@@ -535,15 +535,15 @@ public class OrderService {
 
 然后调用的时候
 
-![image-20220524140947079](/images/Netty/05-Dubbo入门/image-20220524140947079.png)
+![image-20220524140947079](/images/Java/Netty/05-Dubbo入门/image-20220524140947079.png)
 
-![image-20220524141021184](/images/Netty/05-Dubbo入门/image-20220524141021184.png)
+![image-20220524141021184](/images/Java/Netty/05-Dubbo入门/image-20220524141021184.png)
 
 我们本身没有任何返回值，但是内容是收到了...可能这玩意是异步的？
 
 然后尝试在return 前加一个sleep 1s
 
-![image-20220524141143182](/images/Netty/05-Dubbo入门/image-20220524141143182.png)
+![image-20220524141143182](/images/Java/Netty/05-Dubbo入门/image-20220524141143182.png)
 
 这个时候能正常接收到内容了，不过这等待有点蛋疼，感觉更适合做异步操作之类的东西
 
@@ -675,11 +675,11 @@ public class UserServiceImpl implements UserService {
 
 服务端结果
 
-![image-20220524142654583](/images/Netty/05-Dubbo入门/image-20220524142654583.png)
+![image-20220524142654583](/images/Java/Netty/05-Dubbo入门/image-20220524142654583.png)
 
 客户端结果
 
-![image-20220524142703912](/images/Netty/05-Dubbo入门/image-20220524142703912.png)
+![image-20220524142703912](/images/Java/Netty/05-Dubbo入门/image-20220524142703912.png)
 
 ## 跨语言通讯-和Golang通讯
 
@@ -687,7 +687,7 @@ public class UserServiceImpl implements UserService {
 
 这里ieda转了go插件，所以直接在ieda里面创建模块
 
-![image-20220524143319226](/images/Netty/05-Dubbo入门/image-20220524143319226.png)
+![image-20220524143319226](/images/Java/Netty/05-Dubbo入门/image-20220524143319226.png)
 
 PS：后面试了下，貌似有点问题，我直接新建文件夹然后go mod init了
 
@@ -697,7 +697,7 @@ PS：后面试了下，貌似有点问题，我直接新建文件夹然后go mod
 
 我们在src/main下面新建proto文件夹，注意 这里是和java平级的
 
-![image-20220524212736948](/images/Netty/05-Dubbo入门/image-20220524212736948.png)
+![image-20220524212736948](/images/Java/Netty/05-Dubbo入门/image-20220524212736948.png)
 
 然后写入如下内容
 
@@ -832,11 +832,11 @@ message User{
 
 接着点击这即可自动转换proto文件
 
-![image-20220524213149112](/images/Netty/05-Dubbo入门/image-20220524213149112.png)
+![image-20220524213149112](/images/Java/Netty/05-Dubbo入门/image-20220524213149112.png)
 
 效果
 
-![image-20220524213157156](/images/Netty/05-Dubbo入门/image-20220524213157156.png)
+![image-20220524213157156](/images/Java/Netty/05-Dubbo入门/image-20220524213157156.png)
 
 生成了7个文件
 
@@ -872,7 +872,7 @@ public class UserServiceImpl implements UserService {
 
 首先，我们把proto文件复制到go模块中的proto文件夹内，并且再新建个api文件夹方便之后存储生成的文件
 
-![image-20220524214250276](/images/Netty/05-Dubbo入门/image-20220524214250276.png)
+![image-20220524214250276](/images/Java/Netty/05-Dubbo入门/image-20220524214250276.png)
 
 然后我假设你还没有在电脑上下载protoc，就去[Releases · protocolbuffers/protobuf (github.com)](https://github.com/protocolbuffers/protobuf/releases/)下载一个latest版本的（绿色的windows二进制）
 
@@ -897,7 +897,7 @@ protoc -I. userservice.proto --go_out=../api --go-triple_out=../api
 
 当然 这个时候可以看得到有很多爆红的
 
-![image-20220524215530485](/images/Netty/05-Dubbo入门/image-20220524215530485.png)
+![image-20220524215530485](/images/Java/Netty/05-Dubbo入门/image-20220524215530485.png)
 
 直接在这个go-consumer下的任意路径shell输入
 
@@ -907,7 +907,7 @@ go mod tidy
 
 然后等待拉包即可
 
-![image-20220524215638445](/images/Netty/05-Dubbo入门/image-20220524215638445.png)
+![image-20220524215638445](/images/Java/Netty/05-Dubbo入门/image-20220524215638445.png)
 
 可以看到，需要非常多的包...
 
@@ -964,7 +964,7 @@ go run . -DUBBO_GO_CONFIG_PATH=conf/dubbogo.yml
 
 按道理来说这一步应该就成功了，但是我这抛异常，也不知道啥情况（主要还是build的异常，算了，之后有空学学go的rpx应该就知道这是啥情况了）
 
-![image-20220524224556075](/images/Netty/05-Dubbo入门/image-20220524224556075.png)
+![image-20220524224556075](/images/Java/Netty/05-Dubbo入门/image-20220524224556075.png)
 
 ## 底层TODO
 

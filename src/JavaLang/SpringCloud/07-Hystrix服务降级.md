@@ -14,7 +14,7 @@ tag:
 
 复杂的分布式体系结构中的应用由数十个依赖关系，每个依赖关系在某些时候不可避免的失败
 
-![image-20220107154127516](/images/SpringCloud/07-Hystrix服务降级/image-20220107154127516.png)
+![image-20220107154127516](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107154127516.png)
 
 服务雪崩警告
 
@@ -30,7 +30,7 @@ emm说人话吧
 
 Hysterix就是来解决这个问题的，它是一个用于分布式系统的延迟和容错的开源库，在分布式系统里，很多依赖会不可避免的调用失败，比如超时、异常等，它能够保证在一个依赖出问题的情况下，不导致整体服务失败，避免级联故障，以提高分布式系统的弹性
 
-![image-20220107154732421](/images/SpringCloud/07-Hystrix服务降级/image-20220107154732421.png)
+![image-20220107154732421](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107154732421.png)
 
 遗憾的是，它目前已经停更了（在2017年就无了）
 
@@ -38,7 +38,7 @@ wiki<https://github.com/Netflix/Hystrix/wiki>
 
 停更：
 
-![image-20220107155057161](/images/SpringCloud/07-Hystrix服务降级/image-20220107155057161.png)
+![image-20220107155057161](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107155057161.png)
 
 虽然说他这里面说了替代品resilience4j，但是国内嘛。。Java还是得阿里巴巴牛逼
 
@@ -262,13 +262,13 @@ public class ProviderController {
 
 这里可以用postman来测试
 
-![image-20220107171925536](/images/SpringCloud/07-Hystrix服务降级/image-20220107171925536.png)
+![image-20220107171925536](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107171925536.png)
 
 或者使用Apache的jmeter<https://jmeter.apache.org/>
 
 非常简单
 
-![image-20220107172147001](/images/SpringCloud/07-Hystrix服务降级/image-20220107172147001.png)
+![image-20220107172147001](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172147001.png)
 
 下载，解压后得到一个文件夹，进入到bin运行
 
@@ -276,31 +276,31 @@ public class ProviderController {
 java -jar .\ApacheJMeter.jar
 ```
 
-![image-20220107172227468](/images/SpringCloud/07-Hystrix服务降级/image-20220107172227468.png)
+![image-20220107172227468](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172227468.png)
 
 结果：
 
-![image-20220107172242770](/images/SpringCloud/07-Hystrix服务降级/image-20220107172242770.png)
+![image-20220107172242770](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172242770.png)
 
 使用的话：
 
-![image-20220107172803879](/images/SpringCloud/07-Hystrix服务降级/image-20220107172803879.png)
+![image-20220107172803879](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172803879.png)
 
 这一步如果你电脑很勇的话建议第三个或者第一个值设置为原来的10倍或者100倍
 
-![image-20220107172847131](/images/SpringCloud/07-Hystrix服务降级/image-20220107172847131.png)
+![image-20220107172847131](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172847131.png)
 
 然后
 
-![image-20220107172902293](/images/SpringCloud/07-Hystrix服务降级/image-20220107172902293.png)
+![image-20220107172902293](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172902293.png)
 
 接着
 
-![image-20220107172930204](/images/SpringCloud/07-Hystrix服务降级/image-20220107172930204.png)
+![image-20220107172930204](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107172930204.png)
 
 接着 你点进运行即可
 
-![image-20220107173625286](/images/SpringCloud/07-Hystrix服务降级/image-20220107173625286.png)
+![image-20220107173625286](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107173625286.png)
 
 右上角表示还没有结束的线程数量
 
@@ -308,7 +308,7 @@ java -jar .\ApacheJMeter.jar
 
 能感觉到明显的不止3秒钟，如果说刚刚你第一个值设置的比较多的话 应该就是10来秒 甚至拒绝响应..
 
-![image-20220107173834926](/images/SpringCloud/07-Hystrix服务降级/image-20220107173834926.png)
+![image-20220107173834926](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107173834926.png)
 
 第一个参数是线程数 第二个参数是每个运行的间隔时间，第三个参数是每个线程要轮循执行多少次
 
@@ -452,7 +452,7 @@ public class FeignHystrixController {
 
 启动后访问正常
 
-![image-20220107180805463](/images/SpringCloud/07-Hystrix服务降级/image-20220107180805463.png)
+![image-20220107180805463](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107180805463.png)
 
 ### 二者一起测试
 
@@ -464,21 +464,21 @@ Jemeter开1w个线程
 
 开1w个
 
-![image-20220107182752216](/images/SpringCloud/07-Hystrix服务降级/image-20220107182752216.png)
+![image-20220107182752216](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107182752216.png)
 
 完美超时
 
-![image-20220107182824410](/images/SpringCloud/07-Hystrix服务降级/image-20220107182824410.png)
+![image-20220107182824410](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107182824410.png)
 
 并且你会发现你访问ok也不成功
 
-![image-20220107183113983](/images/SpringCloud/07-Hystrix服务降级/image-20220107183113983.png)
+![image-20220107183113983](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107183113983.png)
 
 ### 解决问题
 
 我们现在要解决的是
 
-![image-20220107183459964](/images/SpringCloud/07-Hystrix服务降级/image-20220107183459964.png)
+![image-20220107183459964](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107183459964.png)
 
 
 
@@ -539,15 +539,15 @@ public class ProviderConsul8001Application {
 接下来我们启动并访问
 
 8001:
-![image-20220107195743528](/images/SpringCloud/07-Hystrix服务降级/image-20220107195743528.png)
+![image-20220107195743528](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107195743528.png)
 
 80:
 
-![image-20220107195755158](/images/SpringCloud/07-Hystrix服务降级/image-20220107195755158.png)
+![image-20220107195755158](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107195755158.png)
 
 并且可以看到我们的线程被打断了
 
-![image-20220107195907040](/images/SpringCloud/07-Hystrix服务降级/image-20220107195907040.png)
+![image-20220107195907040](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107195907040.png)
 
 然后你是否还有注意到一点，返回值是：
 
@@ -573,7 +573,7 @@ public String paymentInfoErrorHandler(Integer id) {
 
 测试：
 
-![image-20220107200618261](/images/SpringCloud/07-Hystrix服务降级/image-20220107200618261.png)
+![image-20220107200618261](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107200618261.png)
 
 依旧能够返回我们预先设置的值
 
@@ -622,7 +622,7 @@ public String PaymentInfoTimeoutHandler(Integer id) {
 
 发现是可以进行处理的
 
-![image-20220107203215813](/images/SpringCloud/07-Hystrix服务降级/image-20220107203215813.png)
+![image-20220107203215813](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107203215813.png)
 
 也就是说，我们之后，无论是消费者还是服务提供者，都可以通过这种方式来做服务降级
 
@@ -632,7 +632,7 @@ public String PaymentInfoTimeoutHandler(Integer id) {
 
 我们先把之前服务端的相应的东西都删掉（除了那个异常的）
 
-![image-20220107212038356](/images/SpringCloud/07-Hystrix服务降级/image-20220107212038356.png)
+![image-20220107212038356](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107212038356.png)
 
 
 
@@ -690,19 +690,19 @@ public class FeignHystrixController {
 
 接着正常测试没问题
 
-![image-20220107212717005](/images/SpringCloud/07-Hystrix服务降级/image-20220107212717005.png)
+![image-20220107212717005](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107212717005.png)
 
 接着开5k个线程并发（PS：别忘了重启微服务）
 
-![image-20220107212747672](/images/SpringCloud/07-Hystrix服务降级/image-20220107212747672.png)
+![image-20220107212747672](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107212747672.png)
 
 结果：
 
-![image-20220107212753289](/images/SpringCloud/07-Hystrix服务降级/image-20220107212753289.png)
+![image-20220107212753289](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107212753289.png)
 
 ### 全局服务降级
 
-![image-20220107213535425](/images/SpringCloud/07-Hystrix服务降级/image-20220107213535425.png)
+![image-20220107213535425](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107213535425.png)
 
 我们只需要把这个注解往80的controller上面一粘贴就行
 
@@ -751,11 +751,11 @@ public class FeignHystrixController {
 
 ```
 
-![image-20220107214515555](/images/SpringCloud/07-Hystrix服务降级/image-20220107214515555.png)
+![image-20220107214515555](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107214515555.png)
 
 然后开并发，并单独开一个请求
 
-![image-20220107214506708](/images/SpringCloud/07-Hystrix服务降级/image-20220107214506708.png)
+![image-20220107214506708](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107214506708.png)
 
 ### 使用更优雅的通配进行服务降级
 
@@ -775,7 +775,7 @@ public class FeignHystrixController {
 
 还记得之前我们配置过的service吗
 
-![image-20220107214836543](/images/SpringCloud/07-Hystrix服务降级/image-20220107214836543.png)
+![image-20220107214836543](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107214836543.png)
 
 是不是可以对这个接口的微服务进行统一的处理，而不是在controller内处理呢？
 
@@ -918,25 +918,25 @@ public interface PaymentService {
 
 当我们两个服务都完好无损时
 
-![image-20220107232320047](/images/SpringCloud/07-Hystrix服务降级/image-20220107232320047.png)
+![image-20220107232320047](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107232320047.png)
 
 请求结果正常
 
-![image-20220107232330963](/images/SpringCloud/07-Hystrix服务降级/image-20220107232330963.png)
+![image-20220107232330963](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107232330963.png)
 
 当我们的8001挂掉时
 
-![image-20220107232344486](/images/SpringCloud/07-Hystrix服务降级/image-20220107232344486.png)
+![image-20220107232344486](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107232344486.png)
 
 返回了我们的fallback工厂内的东西
 
-![image-20220107232359906](/images/SpringCloud/07-Hystrix服务降级/image-20220107232359906.png)
+![image-20220107232359906](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107232359906.png)
 
 ## 服务熔断
 
 ### 基本概念（重要）
 
-![image-20220107232855289](/images/SpringCloud/07-Hystrix服务降级/image-20220107232855289.png)
+![image-20220107232855289](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107232855289.png)
 
 1. 调用失败会触发降级，而降级会调用fallback方法
 2. 但无论如何降级的流程一定会先调用正常方法再调用fallback方法
@@ -969,7 +969,7 @@ public String idErrorHandler(@PathVariable("id") Integer id) {
 
 这个时候我们传入一个异常的数值
 
-![image-20220107234143634](/images/SpringCloud/07-Hystrix服务降级/image-20220107234143634.png)
+![image-20220107234143634](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107234143634.png)
 
 是正常的
 
@@ -1001,7 +1001,7 @@ public String idErrorHandler(@PathVariable("id") Integer id) {
 
 官网上的说明
 
-![image-20220107235303403](/images/SpringCloud/07-Hystrix服务降级/image-20220107235303403.png)
+![image-20220107235303403](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107235303403.png)
 
 
 
@@ -1011,7 +1011,7 @@ public String idErrorHandler(@PathVariable("id") Integer id) {
 
 可以看到这个类内有非常多的配置项，包括我们之前的超时时间
 
-![image-20220107235803670](/images/SpringCloud/07-Hystrix服务降级/image-20220107235803670.png)
+![image-20220107235803670](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220107235803670.png)
 
 这个超时时间默认是1s
 
@@ -1041,19 +1041,19 @@ public String idErrorHandler(@PathVariable("id") Integer id) {
 
 接下来开一百个线程试试
 
-![image-20220108000043391](/images/SpringCloud/07-Hystrix服务降级/image-20220108000043391.png)
+![image-20220108000043391](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108000043391.png)
 
 这一百个有问题的线程执行完毕之后我立刻执行一次没有问题的get请求
 
 然后没有问题的请求也返回了奇怪的值
 
-![image-20220108000944973](/images/SpringCloud/07-Hystrix服务降级/image-20220108000944973.png)
+![image-20220108000944973](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108000944973.png)
 
 过了一会儿正确的值再次访问
 
-![image-20220108001023508](/images/SpringCloud/07-Hystrix服务降级/image-20220108001023508.png)
+![image-20220108001023508](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108001023508.png)
 
-![image-20220108001629301](/images/SpringCloud/07-Hystrix服务降级/image-20220108001629301.png)
+![image-20220108001629301](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108001629301.png)
 
 ## 服务限流
 
@@ -1061,7 +1061,7 @@ public String idErrorHandler(@PathVariable("id") Integer id) {
 
 ## 服务监控仪表盘
 
-![image-20220108002802786](/images/SpringCloud/07-Hystrix服务降级/image-20220108002802786.png)
+![image-20220108002802786](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108002802786.png)
 
 ### 搭建
 
@@ -1149,7 +1149,7 @@ public class HystrixDashboard9001Application {
 
 如果出现如下页面，表示启动成功
 
-![image-20220108003635296](/images/SpringCloud/07-Hystrix服务降级/image-20220108003635296.png)
+![image-20220108003635296](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108003635296.png)
 
 ### 使用
 
@@ -1191,7 +1191,7 @@ management: enabled: false endpoints:  web:  exposure:  include: hystrix.stream 
 
 接着访问即可，在<http://localhost:9001/hystrix>内输入<http://localhost:8001/hystrix.stream>
 
-![image-20220108004425099](/images/SpringCloud/07-Hystrix服务降级/image-20220108004425099.png)
+![image-20220108004425099](/images/Java/SpringCloud/07-Hystrix服务降级/image-20220108004425099.png)
 
 …这玩意貌似坑还不少 算了 没必要用。。真用上了去看看[视频](https://www.bilibili.com/video/BV18E411x7eT?p=64&spm_id_from=pageDriver)
 

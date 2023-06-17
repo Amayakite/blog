@@ -13,11 +13,11 @@ tag:
 
 Spring Cloud Config是做服务配置的，Bus则是做服务总线的，他们两都做的非常好，但奈何阿里巴巴的Nacos太过强大..几乎垄断了半壁江山
 
-![image-20220108171346242](/images/SpringCloud/09-Config和Bus/image-20220108171346242.png)
+![image-20220108171346242](/images/Java/SpringCloud/09-Config和Bus/image-20220108171346242.png)
 
 在开始之前，我们先看看目前分布式系统中存在的问题
 
-![image-20220108171543877](/images/SpringCloud/09-Config和Bus/image-20220108171543877.png)
+![image-20220108171543877](/images/Java/SpringCloud/09-Config和Bus/image-20220108171543877.png)
 
 不知不觉已经这么多了啊….
 
@@ -35,9 +35,9 @@ Spring Cloud Config是做服务配置的，Bus则是做服务总线的，他们�
 
 它使用方便，且一次配置处处生效
 
-![image-20220108172329947](/images/SpringCloud/09-Config和Bus/image-20220108172329947.png)
+![image-20220108172329947](/images/Java/SpringCloud/09-Config和Bus/image-20220108172329947.png)
 
-![image-20220108172730837](/images/SpringCloud/09-Config和Bus/image-20220108172730837.png)
+![image-20220108172730837](/images/Java/SpringCloud/09-Config和Bus/image-20220108172730837.png)
 
 至于配置文件存放到哪里
 
@@ -57,7 +57,7 @@ spring-cloud-config
 
 然后克隆到本地
 
-![image-20220108180050474](/images/SpringCloud/09-Config和Bus/image-20220108180050474.png)
+![image-20220108180050474](/images/Java/SpringCloud/09-Config和Bus/image-20220108180050474.png)
 
 新建如上文件 并提交
 
@@ -67,7 +67,7 @@ git commit -m "init yml"
 git push origin master
 ```
 
-![image-20220108180229992](/images/SpringCloud/09-Config和Bus/image-20220108180229992.png)
+![image-20220108180229992](/images/Java/SpringCloud/09-Config和Bus/image-20220108180229992.png)
 
 我这里用的是gitlab
 
@@ -167,15 +167,15 @@ config:
     info: "master branch,spring-cloud-config/config-dev.yaml version=1"
 ```
 
-![image-20220108190011583](/images/SpringCloud/09-Config和Bus/image-20220108190011583.png)
+![image-20220108190011583](/images/Java/SpringCloud/09-Config和Bus/image-20220108190011583.png)
 
 接着，打开浏览器，访问<http://localhost:3344/master/config-dev.yaml>
 
-![image-20220108190055153](/images/SpringCloud/09-Config和Bus/image-20220108190055153.png)
+![image-20220108190055153](/images/Java/SpringCloud/09-Config和Bus/image-20220108190055153.png)
 
 支持的Controller
 
-![image-20220108190113967](/images/SpringCloud/09-Config和Bus/image-20220108190113967.png)
+![image-20220108190113967](/images/Java/SpringCloud/09-Config和Bus/image-20220108190113967.png)
 
 这个格式稍微有点奇怪，但是总得来说可以分为三种，注意，只支持如下三种，也就是说我们在Git上的文件必须是中横线风格命名的方式
 
@@ -195,7 +195,7 @@ config:
    - <http://localhost:3344/config/prod/master>
    - 如果要用默认分支 可以省略下，这样写<http://localhost:3344/config/dev>
    - 返回的是Json字符串而并非是yaml
-     ![image-20220108191650052](/images/SpringCloud/09-Config和Bus/image-20220108191650052.png)
+     ![image-20220108191650052](/images/Java/SpringCloud/09-Config和Bus/image-20220108191650052.png)
    - ….就是把第一个反过来一样，这个用的比较少，因为需要手动解析
 
 > 至此，我们成功实现了Spring Cloud Config通过GitHub获取配置信息
@@ -340,41 +340,41 @@ public class ConfigClientController {
 
 注意 这里注入了我们git上之前配置的内容
 
-![image-20220108215121638](/images/SpringCloud/09-Config和Bus/image-20220108215121638.png)
+![image-20220108215121638](/images/Java/SpringCloud/09-Config和Bus/image-20220108215121638.png)
 
 dev分支 访问的应该是这句话
 
 接下来启动3344和3355 注意启动顺序
 
-![image-20220108215221391](/images/SpringCloud/09-Config和Bus/image-20220108215221391.png)
+![image-20220108215221391](/images/Java/SpringCloud/09-Config和Bus/image-20220108215221391.png)
 
 然后我们访问下3355的这个接口
 
-![image-20220108215245821](/images/SpringCloud/09-Config和Bus/image-20220108215245821.png)
+![image-20220108215245821](/images/Java/SpringCloud/09-Config和Bus/image-20220108215245821.png)
 
 看来没问题，这样说明我们切换分支之类的都是可以的
 
 那动态更新呢？
 
-![image-20220108215335793](/images/SpringCloud/09-Config和Bus/image-20220108215335793.png)
+![image-20220108215335793](/images/Java/SpringCloud/09-Config和Bus/image-20220108215335793.png)
 
 我提交了下
 
 然后访问
 
-![image-20220108215355430](/images/SpringCloud/09-Config和Bus/image-20220108215355430.png)
+![image-20220108215355430](/images/Java/SpringCloud/09-Config和Bus/image-20220108215355430.png)
 
 但是我访问3344，却显示的是正常的内容
 
-![image-20220108215605239](/images/SpringCloud/09-Config和Bus/image-20220108215605239.png)
+![image-20220108215605239](/images/Java/SpringCloud/09-Config和Bus/image-20220108215605239.png)
 
 我接着重启了3355，才能获取到修改后的内容
 
-![image-20220108215443902](/images/SpringCloud/09-Config和Bus/image-20220108215443902.png)
+![image-20220108215443902](/images/Java/SpringCloud/09-Config和Bus/image-20220108215443902.png)
 
 我们现在遇到的问题就是
 
-![image-20220108215454549](/images/SpringCloud/09-Config和Bus/image-20220108215454549.png)
+![image-20220108215454549](/images/Java/SpringCloud/09-Config和Bus/image-20220108215454549.png)
 
 ### 手动实现动态更新
 
@@ -445,11 +445,11 @@ public class ConfigClientController {
 
 接下来我先修改下git上面的内容
 
-![image-20220108221335357](/images/SpringCloud/09-Config和Bus/image-20220108221335357.png)
+![image-20220108221335357](/images/Java/SpringCloud/09-Config和Bus/image-20220108221335357.png)
 
 然后启动 并访问
 
-![image-20220108221355017](/images/SpringCloud/09-Config和Bus/image-20220108221355017.png)
+![image-20220108221355017](/images/Java/SpringCloud/09-Config和Bus/image-20220108221355017.png)
 
 获取是没问题，那么我修改下呢？
 
@@ -460,7 +460,7 @@ config:
 
 接着访问 发现依旧还是原来的内容
 
-![image-20220108221454309](/images/SpringCloud/09-Config和Bus/image-20220108221454309.png)
+![image-20220108221454309](/images/Java/SpringCloud/09-Config和Bus/image-20220108221454309.png)
 
 其实这里并没有问题 还记得我们之前暴露了监控端点吗，没错，就是要通过那个玩意来手动刷新…
 
@@ -468,11 +468,11 @@ config:
 
 接下来测试下
 
-![image-20220108221626341](/images/SpringCloud/09-Config和Bus/image-20220108221626341.png)
+![image-20220108221626341](/images/Java/SpringCloud/09-Config和Bus/image-20220108221626341.png)
 
 再次访问
 
-![image-20220108221636942](/images/SpringCloud/09-Config和Bus/image-20220108221636942.png)
+![image-20220108221636942](/images/Java/SpringCloud/09-Config和Bus/image-20220108221636942.png)
 
 新内容就出来了
 
@@ -480,7 +480,7 @@ config:
 
 虽然说可以通过写一个sh脚本来每分钟轮循发送，但是这样我们不更新的话不就是造成了性能浪费吗？
 
-![image-20220108222037135](/images/SpringCloud/09-Config和Bus/image-20220108222037135.png)
+![image-20220108222037135](/images/Java/SpringCloud/09-Config和Bus/image-20220108222037135.png)
 
 所以就得用到另外的东西来解决这个问题
 
@@ -492,13 +492,13 @@ Bus支持RabbitMq和Kafuka
 
 Spring Cloud Bus配合Spring Cloud Config使用可以实现配置动态刷新
 
-![image-20220108222704984](/images/SpringCloud/09-Config和Bus/image-20220108222704984.png)
+![image-20220108222704984](/images/Java/SpringCloud/09-Config和Bus/image-20220108222704984.png)
 
-![image-20220108222837482](/images/SpringCloud/09-Config和Bus/image-20220108222837482.png)
+![image-20220108222837482](/images/Java/SpringCloud/09-Config和Bus/image-20220108222837482.png)
 
 
 
-![image-20220108222934588](/images/SpringCloud/09-Config和Bus/image-20220108222934588.png)
+![image-20220108222934588](/images/Java/SpringCloud/09-Config和Bus/image-20220108222934588.png)
 
 	### 配置RabbitMQ环境
 
@@ -512,7 +512,7 @@ docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmqSpringCloud -e RABBITMQ
 
 接着访问15672
 
-![image-20220108224139699](/images/SpringCloud/09-Config和Bus/image-20220108224139699.png)
+![image-20220108224139699](/images/Java/SpringCloud/09-Config和Bus/image-20220108224139699.png)
 
 
 
@@ -520,7 +520,7 @@ docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmqSpringCloud -e RABBITMQ
 
 接下来我们整一份3366 功能和3355一致
 
-![image-20220108224929613](/images/SpringCloud/09-Config和Bus/image-20220108224929613.png)
+![image-20220108224929613](/images/Java/SpringCloud/09-Config和Bus/image-20220108224929613.png)
 
 PS：当只有一个配置文件的时候，**据说**叫application或者bootstrap都可以，不过保险起见，涉及到总线操作的建议统一命名为bootstrap.yml更好
 
@@ -529,9 +529,9 @@ PS：当只有一个配置文件的时候，**据说**叫application或者bootst
 我们有两种方式可以刷新客户端
 
 1. 通过消息总线触发一个客户端的`/bus/refresh`，而刷新所有客户端的配置
-   ![image-20220108225807785](/images/SpringCloud/09-Config和Bus/image-20220108225807785.png)
+   ![image-20220108225807785](/images/Java/SpringCloud/09-Config和Bus/image-20220108225807785.png)
 2. 利用消息总线触发一个服务端ConfigServer的`/bus/refesh`端点，而刷新所有客户顿的配置
-   ![image-20220108225832255](/images/SpringCloud/09-Config和Bus/image-20220108225832255.png)
+   ![image-20220108225832255](/images/Java/SpringCloud/09-Config和Bus/image-20220108225832255.png)
 
 一般情况下来说，都是直通知Server端，为啥是它呢？
 
@@ -677,37 +677,37 @@ public class ConfigClientController {
 
 接着开启三个服务开始测试
 
-![image-20220108232415761](/images/SpringCloud/09-Config和Bus/image-20220108232415761.png)
+![image-20220108232415761](/images/Java/SpringCloud/09-Config和Bus/image-20220108232415761.png)
 
 3355第一次访问
 
-![image-20220108232423863](/images/SpringCloud/09-Config和Bus/image-20220108232423863.png)
+![image-20220108232423863](/images/Java/SpringCloud/09-Config和Bus/image-20220108232423863.png)
 
 3366第一次访问
 
-![image-20220108232434128](/images/SpringCloud/09-Config和Bus/image-20220108232434128.png)
+![image-20220108232434128](/images/Java/SpringCloud/09-Config和Bus/image-20220108232434128.png)
 
 接着修改下数据
 
-![image-20220108232507071](/images/SpringCloud/09-Config和Bus/image-20220108232507071.png)
+![image-20220108232507071](/images/Java/SpringCloud/09-Config和Bus/image-20220108232507071.png)
 
 这时候我们只需要刷下3344`http://localhost:3344/actuator/busrefresh`
 
 （注意 旧版本的话用的是访问bus-refresh来刷新，但新旧版本配置都是同一个，具体的可以看服务-Actuator-映射中的路径）
 
-![image-20220108234237871](/images/SpringCloud/09-Config和Bus/image-20220108234237871.png)
+![image-20220108234237871](/images/Java/SpringCloud/09-Config和Bus/image-20220108234237871.png)
 
-![image-20220108232712902](/images/SpringCloud/09-Config和Bus/image-20220108232712902.png)
+![image-20220108232712902](/images/Java/SpringCloud/09-Config和Bus/image-20220108232712902.png)
 
 然后访问另外两位
 
-![image-20220108232730938](/images/SpringCloud/09-Config和Bus/image-20220108232730938.png)
+![image-20220108232730938](/images/Java/SpringCloud/09-Config和Bus/image-20220108232730938.png)
 
-![image-20220108232735432](/images/SpringCloud/09-Config和Bus/image-20220108232735432.png)
+![image-20220108232735432](/images/Java/SpringCloud/09-Config和Bus/image-20220108232735432.png)
 
 
 
-![image-20220108234341945](/images/SpringCloud/09-Config和Bus/image-20220108234341945.png)
+![image-20220108234341945](/images/Java/SpringCloud/09-Config和Bus/image-20220108234341945.png)
 
 如果你感觉这样麻烦的话，实际工作环境内，可以写个git actions脚本 一旦发现提交立马触发脚本自动发送post请求
 
@@ -731,37 +731,37 @@ public class ConfigClientController {
 
 发送之前修改的内容
 
-![image-20220108235416183](/images/SpringCloud/09-Config和Bus/image-20220108235416183.png)
+![image-20220108235416183](/images/Java/SpringCloud/09-Config和Bus/image-20220108235416183.png)
 
 发送之后，3305访问
 
-![image-20220108235429862](/images/SpringCloud/09-Config和Bus/image-20220108235429862.png)
+![image-20220108235429862](/images/Java/SpringCloud/09-Config和Bus/image-20220108235429862.png)
 
 3360访问，还是之前的内容
 
-![image-20220108235440607](/images/SpringCloud/09-Config和Bus/image-20220108235440607.png)
+![image-20220108235440607](/images/Java/SpringCloud/09-Config和Bus/image-20220108235440607.png)
 
 当然 也可以不指定端口号 让该类的所有服务都刷新（一般也是这样用的）
 
 更新内容
 
-![image-20220108235530802](/images/SpringCloud/09-Config和Bus/image-20220108235530802.png)
+![image-20220108235530802](/images/Java/SpringCloud/09-Config和Bus/image-20220108235530802.png)
 
 发送请求：`curl -X POST http://localhost:3344/actuator/busrefresh/config-client`
 
 3355
 
-![image-20220108235552600](/images/SpringCloud/09-Config和Bus/image-20220108235552600.png)
+![image-20220108235552600](/images/Java/SpringCloud/09-Config和Bus/image-20220108235552600.png)
 
 3366
 
-![image-20220108235602407](/images/SpringCloud/09-Config和Bus/image-20220108235602407.png)
+![image-20220108235602407](/images/Java/SpringCloud/09-Config和Bus/image-20220108235602407.png)
 
 ### 总线总结
 
 一张图概括
 
-![image-20220108235856681](/images/SpringCloud/09-Config和Bus/image-20220108235856681.png)
+![image-20220108235856681](/images/Java/SpringCloud/09-Config和Bus/image-20220108235856681.png)
 
 
 

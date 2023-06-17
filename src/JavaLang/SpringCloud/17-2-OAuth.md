@@ -107,7 +107,7 @@ https://b.com/oauth/authorize?
 - `redirect_uri`参数是B接受或拒绝请求后跳转的网址
 - `scope`参数表示要求的授权范围（这里是只读read）
 
-![img](/images/SpringCloud/17-2-OAuth/bg2019040902.jpg)
+![img](/images/Java/SpringCloud/17-2-OAuth/bg2019040902.jpg)
 
 > 第二步：用户跳转后，B 网站会要求用户登录，然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回`redirect_uri`参数指定的网址。跳转时，会传回一个授权码，就像下面这样。
 
@@ -117,7 +117,7 @@ https://a.com/callback?code=AUTHORIZATION_CODE
 
 上面 URL 中，`code`参数就是授权码
 
-![img](/images/SpringCloud/17-2-OAuth/bg2019040907.jpg)
+![img](/images/Java/SpringCloud/17-2-OAuth/bg2019040907.jpg)
 
 > 第三步，A 网站拿到授权码以后，就可以在后端，向 B 网站请求令牌
 
@@ -138,7 +138,7 @@ https://b.com/oauth/token?
 - `code`是第二步中拿到的授权码
 - `redirect_uri`参数是令牌颁发后的回调网址
 
-![img](/images/SpringCloud/17-2-OAuth/bg2019040904.jpg)
+![img](/images/Java/SpringCloud/17-2-OAuth/bg2019040904.jpg)
 
 > 第四步，B网站收到请求后，就会颁发令牌，具体做法是向`rediect_uri`指定的网段，发送一段json数据
 
@@ -156,7 +156,7 @@ https://b.com/oauth/token?
 
 上面 JSON 数据中，`access_token`字段就是令牌，A 网站在后端拿到了。
 
-![img](/images/SpringCloud/17-2-OAuth/bg2019040905.jpg)
+![img](/images/Java/SpringCloud/17-2-OAuth/bg2019040905.jpg)
 
 ### 方式二：隐藏式
 
@@ -184,7 +184,7 @@ https://a.com/callback#token=ACCESS_TOKEN
 
 注意，令牌的位置是 URL 锚点（fragment），而不是查询字符串（querystring），这是因为 OAuth 2.0 允许跳转网址是 HTTP 协议，因此存在"中间人攻击"的风险，而浏览器跳转时，锚点不会发到服务器，就减少了泄漏令牌的风险。
 
-![img](/images/SpringCloud/17-2-OAuth/bg2019040906.jpg)
+![img](/images/Java/SpringCloud/17-2-OAuth/bg2019040906.jpg)
 
 这种方式把令牌直接传给前端，是很不安全的。因此，只能用于一些安全要求不高的场景，并且令牌的有效期必须非常短，通常就是会话期间（session）有效，浏览器关掉，令牌就失效了。
 
@@ -283,7 +283,7 @@ B网站验证通过后，就会办法新的令牌
 
 这样填写
 
-![image-20220122132204686](/images/SpringCloud/17-2-OAuth/image-20220122132204686.png)
+![image-20220122132204686](/images/Java/SpringCloud/17-2-OAuth/image-20220122132204686.png)
 
 应用的名称随便填
 
@@ -293,7 +293,7 @@ B网站验证通过后，就会办法新的令牌
 
 提交表单以后，GitHub 应该会返回客户端 ID（client ID）和客户端密钥（client secret），这就是应用的身份识别码
 
-![image-20220122132511389](/images/SpringCloud/17-2-OAuth/image-20220122132511389.png)
+![image-20220122132511389](/images/Java/SpringCloud/17-2-OAuth/image-20220122132511389.png)
 
 id： 5c87602a9e7c5818af38
 
@@ -321,7 +321,7 @@ node index.js
 
 就能看到这个页面
 
-![image-20220122135418708](/images/SpringCloud/17-2-OAuth/image-20220122135418708.png)
+![image-20220122135418708](/images/Java/SpringCloud/17-2-OAuth/image-20220122135418708.png)
 
 示例的首页很简单，就是一个链接，让用户跳转到 GitHub。
 
@@ -339,13 +339,13 @@ https://github.com/login/oauth/authorize?
 
 你点击之后，会跳转到github
 
-![image-20220122135555575](/images/SpringCloud/17-2-OAuth/image-20220122135555575.png)
+![image-20220122135555575](/images/Java/SpringCloud/17-2-OAuth/image-20220122135555575.png)
 
 这里同意授权
 
 接着你就能看到
 
-![image-20220122135652611](/images/SpringCloud/17-2-OAuth/image-20220122135652611.png)
+![image-20220122135652611](/images/Java/SpringCloud/17-2-OAuth/image-20220122135652611.png)
 
 ```md
 http://localhost:8080/oauth/redirect?
@@ -426,11 +426,11 @@ app.listen(8080);
 
 然后你的浏览器中，就可以看到这样的内容
 
-![image-20220122140647710](/images/SpringCloud/17-2-OAuth/image-20220122140647710.png)
+![image-20220122140647710](/images/Java/SpringCloud/17-2-OAuth/image-20220122140647710.png)
 
 并且在控制台上，能看到我们用户的相关信息
 
-![image-20220122140716682](/images/SpringCloud/17-2-OAuth/image-20220122140716682.png)
+![image-20220122140716682](/images/Java/SpringCloud/17-2-OAuth/image-20220122140716682.png)
 
 拆解下
 
@@ -534,7 +534,7 @@ a-OAuth2 模块基于 [RFC-6749 标准](https://tools.ietf.org/html/rfc6749) 编
 3. 密码式（Password）：Client直接拿着用户的账号密码换取授权Token
 4. 客户端凭证（Client Credentials）：Server端针对Client级别的Token，代表应用自身的资源授权
 
-![https://oss.dev33.cn/sa-token/doc/oauth2/sa-oauth2-setup.png](/images/SpringCloud/17-2-OAuth/sa-oauth2-setup.png)
+![https://oss.dev33.cn/sa-token/doc/oauth2/sa-oauth2-setup.png](/images/Java/SpringCloud/17-2-OAuth/sa-oauth2-setup.png)
 
 ### 准备工作
 
@@ -748,15 +748,15 @@ http://sa-oauth-server.com:8001/oauth2/authorize?response_type=code&client_id=10
 
 由于首次访问，我们在OAuth-Server端暂未登录，会被转发到登录视图
 
-![image-20220122145439501](/images/SpringCloud/17-2-OAuth/image-20220122145439501.png)
+![image-20220122145439501](/images/Java/SpringCloud/17-2-OAuth/image-20220122145439501.png)
 
 点击doLogin进行登录之后刷新页面，会提示我们确认授权
 
-![sa-oauth2-server-login-view](/images/SpringCloud/17-2-OAuth/sa-oauth2-server-scope.png)
+![sa-oauth2-server-login-view](/images/Java/SpringCloud/17-2-OAuth/sa-oauth2-server-scope.png)
 
 点击确认授权之后刷新页面，我们会被重定向至 redirect_uri 页面，并携带了code参数
 
-![sa-oauth2-server-code](/images/SpringCloud/17-2-OAuth/sa-oauth2-server-code.png)
+![sa-oauth2-server-code](/images/Java/SpringCloud/17-2-OAuth/sa-oauth2-server-code.png)
 
 
 
@@ -770,7 +770,7 @@ http://sa-oauth-server.com:8001/oauth2/token?grant_type=authorization_code&clien
 
 就可以获取如下内容： `Access-Token`、`Refresh-Token`、`openid`等授权信息
 
-![image-20220122150139471](/images/SpringCloud/17-2-OAuth/image-20220122150139471.png)
+![image-20220122150139471](/images/Java/SpringCloud/17-2-OAuth/image-20220122150139471.png)
 
 ```json
 {

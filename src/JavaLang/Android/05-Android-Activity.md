@@ -34,7 +34,7 @@ tag:
 
 我们首先新建两个activity
 
-![image-20220604165446574](/images/Android/05-Android-Activity/image-20220604165446574.png)
+![image-20220604165446574](/images/Java/Android/05-Android-Activity/image-20220604165446574.png)
 
 start
 
@@ -134,7 +134,7 @@ class ActFinishActivity : AppCompatActivity() {
 
 和React，Vue这些前端框架一样，在Android开发中，Activity也有生命周期，如下
 
-![image-20220604165951079](/images/Android/05-Android-Activity/image-20220604165951079.png)
+![image-20220604165951079](/images/Java/Android/05-Android-Activity/image-20220604165951079.png)
 
 大体流程是：
 
@@ -164,31 +164,31 @@ class ActFinishActivity : AppCompatActivity() {
 
 ### 生命周期中应该做的事情
 
-![image-20220604172034007](/images/Android/05-Android-Activity/image-20220604172034007.png)
+![image-20220604172034007](/images/Java/Android/05-Android-Activity/image-20220604172034007.png)
 
-![image-20220604172250112](/images/Android/05-Android-Activity/image-20220604172250112.png)
+![image-20220604172250112](/images/Java/Android/05-Android-Activity/image-20220604172250112.png)
 
 ## Activity的启动模式
 
-![image-20220604172453879](/images/Android/05-Android-Activity/image-20220604172453879.png)
+![image-20220604172453879](/images/Java/Android/05-Android-Activity/image-20220604172453879.png)
 
 就是一个先进后出的结构
 
 当然启动模式也分很多种，例如上面这种属于默认的
 
-![image-20220604172921487](/images/Android/05-Android-Activity/image-20220604172921487.png)
+![image-20220604172921487](/images/Java/Android/05-Android-Activity/image-20220604172921487.png)
 
 还有栈顶复用模式，这个感觉有点鸡肋，栈顶一般都是当前页面，当前页面新建当前页面一般也不会发生..但好处是可以放置重复创建Activity
 
-![image-20220604172958341](/images/Android/05-Android-Activity/image-20220604172958341.png)
+![image-20220604172958341](/images/Java/Android/05-Android-Activity/image-20220604172958341.png)
 
 还有栈内复用，详细看图，感觉适合做一些例如直接跳转到主页的应用balabala的
 
-![image-20220604173301672](/images/Android/05-Android-Activity/image-20220604173301672.png)
+![image-20220604173301672](/images/Java/Android/05-Android-Activity/image-20220604173301672.png)
 
 以及全局唯一模式，会给每个activity都单独建立一个栈
 
-![image-20220604173610184](/images/Android/05-Android-Activity/image-20220604173610184.png)
+![image-20220604173610184](/images/Java/Android/05-Android-Activity/image-20220604173610184.png)
 
 ## 使用不同的启动模式
 
@@ -265,7 +265,7 @@ class ActStartActivity : AppCompatActivity() {
 
 ### 常用启动标志一览
 
-![image-20220604175423219](/images/Android/05-Android-Activity/image-20220604175423219.png)
+![image-20220604175423219](/images/Java/Android/05-Android-Activity/image-20220604175423219.png)
 
 总共就这几个常见的
 
@@ -281,7 +281,7 @@ class ActStartActivity : AppCompatActivity() {
 
 一个意图有如下组成部分
 
-![image-20220604182226371](/images/Android/05-Android-Activity/image-20220604182226371.png)
+![image-20220604182226371](/images/Java/Android/05-Android-Activity/image-20220604182226371.png)
 
 ### 显示Intent
 
@@ -291,7 +291,7 @@ class ActStartActivity : AppCompatActivity() {
 - 调用意图对象的setClass指定
 - 调用意图对象的setComponent方式指定
 
-![image-20220604180510364](/images/Android/05-Android-Activity/image-20220604180510364.png)
+![image-20220604180510364](/images/Java/Android/05-Android-Activity/image-20220604180510364.png)
 
 这里额外说下第三个Component，例如想要启动微信中的index页面之类的（就是开别的软件的对应页面）
 
@@ -323,7 +323,7 @@ class ActStartActivity : AppCompatActivity() {
 
 通常App不希望向外暴露活动名称，只给出一个事先定义好的标记串，这样大家约定俗成，按图索骥即可，隐式Intent便起到了标记过滤作用，这个动作名称标记串，可以是自己定义的动作，也可以是已有的系统动作，常见的取值表如下
 
-![image-20220604181418311](/images/Android/05-Android-Activity/image-20220604181418311.png)
+![image-20220604181418311](/images/Java/Android/05-Android-Activity/image-20220604181418311.png)
 
 例如我们现在准备拨号，则可以这样
 
@@ -361,7 +361,7 @@ class ActStartActivity : AppCompatActivity() {
 
 首先，我们回到声明文件
 
-![image-20220605105704957](/images/Android/05-Android-Activity/image-20220605105704957.png)
+![image-20220605105704957](/images/Java/Android/05-Android-Activity/image-20220605105704957.png)
 
 可以看到文件中有一项内容
 
@@ -406,7 +406,7 @@ class ActStartActivity : AppCompatActivity() {
 - Intent使用Bundle对象存放待传递的数据信息
 - Bundle对象操作各类形数据的读写方法如下
 
-![image-20220605110809131](/images/Android/05-Android-Activity/image-20220605110809131.png)
+![image-20220605110809131](/images/Java/Android/05-Android-Activity/image-20220605110809131.png)
 
 首先发送方代码如下
 
@@ -473,7 +473,7 @@ class ActFinishActivity : AppCompatActivity() {
 
 比方说你做一个网页活动，要求用户分享到指定的地方并且通过该应用的回调来判断用户是否分享成功
 
-![image-20220605112142171](/images/Android/05-Android-Activity/image-20220605112142171.png)
+![image-20220605112142171](/images/Java/Android/05-Android-Activity/image-20220605112142171.png)
 
 Ps：在Android 30+中，startActivityForResult方法已经被标上删除线了，官方建议是使用`registerForActivityResult`(PS：**如果没有标灰，则是gradle中的依赖版本太低，貌似IEDA创建的project版本都是挺低的，需要自己调高来（除了junit）**)
 
@@ -721,11 +721,11 @@ class ReadStringActivity : AppCompatActivity() {
 
 ### 元数据-给应用页面注册快捷方式
 
-![image-20220605124053190](/images/Android/05-Android-Activity/image-20220605124053190.png)
+![image-20220605124053190](/images/Java/Android/05-Android-Activity/image-20220605124053190.png)
 
 要实现这个功能，首先要新建个文件
 
-![image-20220605135515294](/images/Android/05-Android-Activity/image-20220605135515294.png)
+![image-20220605135515294](/images/Java/Android/05-Android-Activity/image-20220605135515294.png)
 
 这里名字起的是`shortcuts`，当然，你也可以起别的，在xml文件夹内即可（没有就新建个）
 
@@ -886,11 +886,11 @@ Server -->  桌面端
 
 ### 关于Drawable
 
-![image-20220605140922967](/images/Android/05-Android-Activity/image-20220605140922967.png)
+![image-20220605140922967](/images/Java/Android/05-Android-Activity/image-20220605140922967.png)
 
 一般的项目中，除了`drawable`还有其他drawable文件夹，例如
 
-![image-20220605141132635](/images/Android/05-Android-Activity/image-20220605141132635.png)
+![image-20220605141132635](/images/Java/Android/05-Android-Activity/image-20220605141132635.png)
 
 这里还有个drawable-24
 
@@ -969,11 +969,11 @@ Server -->  桌面端
 
 然后创建一个drawable资源文件`shape_rect_gold`
 
-![image-20220605143514543](/images/Android/05-Android-Activity/image-20220605143514543.png)
+![image-20220605143514543](/images/Java/Android/05-Android-Activity/image-20220605143514543.png)
 
 然后直接填写一个名字
 
-![image-20220605143542986](/images/Android/05-Android-Activity/image-20220605143542986.png)
+![image-20220605143542986](/images/Java/Android/05-Android-Activity/image-20220605143542986.png)
 
 next即可
 
@@ -1006,7 +1006,7 @@ next即可
 
 然后就能看到这个效果
 
-![image-20220605143958189](/images/Android/05-Android-Activity/image-20220605143958189.png)
+![image-20220605143958189](/images/Java/Android/05-Android-Activity/image-20220605143958189.png)
 
 接下来再如法炮制一个椭圆形`shape_oval_gold`
 
@@ -1033,35 +1033,35 @@ next即可
 
 效果
 
-![image-20220605144413372](/images/Android/05-Android-Activity/image-20220605144413372.png)
+![image-20220605144413372](/images/Java/Android/05-Android-Activity/image-20220605144413372.png)
 
 接着回去将背景设定为指定值即可
 
-![image-20220605144705111](/images/Android/05-Android-Activity/image-20220605144705111.png)
+![image-20220605144705111](/images/Java/Android/05-Android-Activity/image-20220605144705111.png)
 
 PS：如果颜色没有显示自己的内容的话，则可以去`values/theme/theme和thtemes.night.xml中`继承的类目最后加个Bridge
 
-![image-20220605144841707](/images/Android/05-Android-Activity/image-20220605144841707.png)
+![image-20220605144841707](/images/Java/Android/05-Android-Activity/image-20220605144841707.png)
 
 ### Shape的标签和属性说明
 
-![image-20220605151046114](/images/Android/05-Android-Activity/image-20220605151046114.png)
+![image-20220605151046114](/images/Java/Android/05-Android-Activity/image-20220605151046114.png)
 
-![image-20220605151055038](/images/Android/05-Android-Activity/image-20220605151055038.png)
+![image-20220605151055038](/images/Java/Android/05-Android-Activity/image-20220605151055038.png)
 
 一般来说除了特殊情况不会设置size，如果设置了则必须以像素为单位并且可能要考虑到不同分辨率下的单独适配
 
-![image-20220605151146542](/images/Android/05-Android-Activity/image-20220605151146542.png)
+![image-20220605151146542](/images/Java/Android/05-Android-Activity/image-20220605151146542.png)
 
-![image-20220605151209715](/images/Android/05-Android-Activity/image-20220605151209715.png)
+![image-20220605151209715](/images/Java/Android/05-Android-Activity/image-20220605151209715.png)
 
-![image-20220605151230704](/images/Android/05-Android-Activity/image-20220605151230704.png)
+![image-20220605151230704](/images/Java/Android/05-Android-Activity/image-20220605151230704.png)
 
-![image-20220605151336238](/images/Android/05-Android-Activity/image-20220605151336238.png)
+![image-20220605151336238](/images/Java/Android/05-Android-Activity/image-20220605151336238.png)
 
 ### Shape-渐变实例
 
-![image-20220605151336238](/images/Android/05-Android-Activity/image-20220605151336238.png)
+![image-20220605151336238](/images/Java/Android/05-Android-Activity/image-20220605151336238.png)
 
 属性有非常多，不过用到了看看即可
 
@@ -1093,11 +1093,11 @@ PS：如果颜色没有显示自己的内容的话，则可以去`values/theme/t
 
 效果
 
-![image-20220605151601295](/images/Android/05-Android-Activity/image-20220605151601295.png)
+![image-20220605151601295](/images/Java/Android/05-Android-Activity/image-20220605151601295.png)
 
 或者中间向外的渐变
 
-![image-20220605151938793](/images/Android/05-Android-Activity/image-20220605151938793.png)
+![image-20220605151938793](/images/Java/Android/05-Android-Activity/image-20220605151938793.png)
 
 ### 九宫格图片(9 patch)
 
@@ -1108,47 +1108,47 @@ PS：如果颜色没有显示自己的内容的话，则可以去`values/theme/t
 
 例如看看下面的效果，按钮的背景是一个圆角图片
 
-![image-20220605152154182](/images/Android/05-Android-Activity/image-20220605152154182.png)
+![image-20220605152154182](/images/Java/Android/05-Android-Activity/image-20220605152154182.png)
 
 使用了九宫格（也称点9图片）
 
 素材：
 
-![image-20220605152425556](/images/Android/05-Android-Activity/image-20220605152425556.png)
+![image-20220605152425556](/images/Java/Android/05-Android-Activity/image-20220605152425556.png)
 
 就直接拿这个用，先创建个文件夹`drawable-xhdpi`然后丢进去
 
 然后右键下，点击创建9-patch图片，存储路径同文件夹
 
-![image-20220605152614383](/images/Android/05-Android-Activity/image-20220605152614383.png)
+![image-20220605152614383](/images/Java/Android/05-Android-Activity/image-20220605152614383.png)
 
 然后就可以获取到一个新的文件（注意，这里我命名方式有误，实际上应该是下划线分割，注意修改）
 
-![image-20220605152704239](/images/Android/05-Android-Activity/image-20220605152704239.png)
+![image-20220605152704239](/images/Java/Android/05-Android-Activity/image-20220605152704239.png)
 
 打开来是这样的
 
-![image-20220605152715862](/images/Android/05-Android-Activity/image-20220605152715862.png)
+![image-20220605152715862](/images/Java/Android/05-Android-Activity/image-20220605152715862.png)
 
 我们可以通过调整左右两边的线来调整这个图片（上下也有线可以调整）
 
-![image-20220605153004207](/images/Android/05-Android-Activity/image-20220605153004207.png)
+![image-20220605153004207](/images/Java/Android/05-Android-Activity/image-20220605153004207.png)
 
 这里面实际上是内置了padding这类东西，所以说可以放心调整，反正最终效果就如右边那样
 
 然后就可以看到效果了
 
-![image-20220605153440600](/images/Android/05-Android-Activity/image-20220605153440600.png)
+![image-20220605153440600](/images/Java/Android/05-Android-Activity/image-20220605153440600.png)
 
 ### 状态列表图形（点击切换状态）
 
 例如想实现这个效果
 
-![image-20220605153537314](/images/Android/05-Android-Activity/image-20220605153537314.png)
+![image-20220605153537314](/images/Java/Android/05-Android-Activity/image-20220605153537314.png)
 
 我们首先在drawable中新建一个选择器对象`btn_nine_selector`
 
-![image-20220605154008947](/images/Android/05-Android-Activity/image-20220605154008947.png)
+![image-20220605154008947](/images/Java/Android/05-Android-Activity/image-20220605154008947.png)
 
 然后填入如下内容
 
@@ -1167,7 +1167,7 @@ PS：如果颜色没有显示自己的内容的话，则可以去`values/theme/t
 
 当然它还支持如下属性，反正都是用item包裹着
 
-![image-20220605155010524](/images/Android/05-Android-Activity/image-20220605155010524.png)
+![image-20220605155010524](/images/Java/Android/05-Android-Activity/image-20220605155010524.png)
 
 然后正常设置即可
 
@@ -1188,7 +1188,7 @@ PS：如果颜色没有显示自己的内容的话，则可以去`values/theme/t
 
 系统默认是这样的效果，需要定制的话一般也是加个状态列表图形之类的内容
 
-![image-20220605155112498](/images/Android/05-Android-Activity/image-20220605155112498.png)
+![image-20220605155112498](/images/Java/Android/05-Android-Activity/image-20220605155112498.png)
 
 例子
 
@@ -1244,13 +1244,13 @@ class MainActivity : AppCompatActivity() {
 
 ### 开关按钮Switch
 
-![image-20220605161207144](/images/Android/05-Android-Activity/image-20220605161207144.png)
+![image-20220605161207144](/images/Java/Android/05-Android-Activity/image-20220605161207144.png)
 
  这个使用和checkBox差不多，不多做说明
 
 ### 单选按钮RadioButton
 
-![image-20220605164752802](/images/Android/05-Android-Activity/image-20220605164752802.png)
+![image-20220605164752802](/images/Java/Android/05-Android-Activity/image-20220605164752802.png)
 
 和名字一样，是一个按钮组，里面可以放置任意数量的按钮
 
@@ -1315,7 +1315,7 @@ class MainActivity : AppCompatActivity() {
 
 效果
 
-![image-20220605164657422](/images/Android/05-Android-Activity/image-20220605164657422.png)
+![image-20220605164657422](/images/Java/Android/05-Android-Activity/image-20220605164657422.png)
 
 然后写点逻辑代码
 
@@ -1386,23 +1386,23 @@ class MainActivity : AppCompatActivity() {
 </LinearLayout>
 ```
 
-![image-20220724151552252](/images/Android/05-Android-Activity/image-20220724151552252.png)
+![image-20220724151552252](/images/Java/Android/05-Android-Activity/image-20220724151552252.png)
 
 type有如下选择
 
-![image-20220724151635952](/images/Android/05-Android-Activity/image-20220724151635952.png)
+![image-20220724151635952](/images/Java/Android/05-Android-Activity/image-20220724151635952.png)
 
 
 
 当然，这里面的datetime是数值输入，比较蛋疼，不建议直接用
 
-![image-20220724151916714](/images/Android/05-Android-Activity/image-20220724151916714.png)
+![image-20220724151916714](/images/Java/Android/05-Android-Activity/image-20220724151916714.png)
 
 如果不想要边框的话，设置background为none即可
 
 如果想要自定义边框的话，先新建一个资源文件，值为shape
 
-![image-20220724152103020](/images/Android/05-Android-Activity/image-20220724152103020.png)
+![image-20220724152103020](/images/Java/Android/05-Android-Activity/image-20220724152103020.png)
 
 然后来一个红底蓝框
 
@@ -1419,13 +1419,13 @@ type有如下选择
 
 然后使用即可
 
-![image-20220724152413886](/images/Android/05-Android-Activity/image-20220724152413886.png)
+![image-20220724152413886](/images/Java/Android/05-Android-Activity/image-20220724152413886.png)
 
  ### 编辑框获取焦点的时候换背景
 
 两个shape
 
-![image-20220724153008091](/images/Android/05-Android-Activity/image-20220724153008091.png)
+![image-20220724153008091](/images/Java/Android/05-Android-Activity/image-20220724153008091.png)
 
 正常状态
 
@@ -1479,11 +1479,11 @@ type有如下选择
 
 效果
 
-![image-20220724153127177](/images/Android/05-Android-Activity/image-20220724153127177.png)
+![image-20220724153127177](/images/Java/Android/05-Android-Activity/image-20220724153127177.png)
 
 ### 编辑框的附加属性列表
 
-![image-20220724153440011](/images/Android/05-Android-Activity/image-20220724153440011.png)
+![image-20220724153440011](/images/Java/Android/05-Android-Activity/image-20220724153440011.png)
 
 ## 对话框
 

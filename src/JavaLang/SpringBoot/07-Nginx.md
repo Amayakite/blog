@@ -30,7 +30,7 @@ tag:
 
 就像是我们挂梯子访问github、google那样，梯子就是代理服务器，nginx就可以成为这样的服务器
 
-![image-20211230120343736](/images/SpringBoot/07-Nginx/image-20211230120343736.png)
+![image-20211230120343736](/images/Java/SpringBoot/07-Nginx/image-20211230120343736.png)
 
 浏览器中配置代理服务器，通过代理服务器去绑定网址，最终将内容返回，这个过程就叫做正向代理
 
@@ -44,7 +44,7 @@ tag:
 
 正向代理访问的外部内容，反向代理访问的是内部内容
 
-![image-20211230121146260](/images/SpringBoot/07-Nginx/image-20211230121146260.png)
+![image-20211230121146260](/images/Java/SpringBoot/07-Nginx/image-20211230121146260.png)
 
 ### 负载均衡
 
@@ -52,7 +52,7 @@ tag:
 
 这种架构模式对于早期的系统相对单一，并发和请求相对较少的情况下是比较合适的，成本也比较低，但是随着信息数据的不断增长，访问量和数据量飞速增长，以及业务系统的复杂程度增加，这种架构会造成服务器响应客户端的请求变慢，并发量特别大的时候，还很容易导致服务器崩溃，这很明显是由于服务器性能的瓶颈造成的问题，，那么如何解决这种情况呢
 
-![image-20211230122132179](/images/SpringBoot/07-Nginx/image-20211230122132179.png)
+![image-20211230122132179](/images/Java/SpringBoot/07-Nginx/image-20211230122132179.png)
 
 首先我们可能想到的是给服务器加配，但是这也是有上限的
 
@@ -62,7 +62,7 @@ tag:
 
 这个时候集群的概念产生了，单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器的情况改变为将请求分配到多个服务器上，将负载分发到不同的服务器，这也就是我们说的负载均衡
 
-![image-20211230122934893](/images/SpringBoot/07-Nginx/image-20211230122934893.png)
+![image-20211230122934893](/images/Java/SpringBoot/07-Nginx/image-20211230122934893.png)
 
 ### 动静分离
 
@@ -70,11 +70,11 @@ tag:
 
 原本是这样
 
-![image-20211230123555818](/images/SpringBoot/07-Nginx/image-20211230123555818.png)
+![image-20211230123555818](/images/Java/SpringBoot/07-Nginx/image-20211230123555818.png)
 
 动静分离就是
 
-![image-20211230123712085](/images/SpringBoot/07-Nginx/image-20211230123712085.png)
+![image-20211230123712085](/images/Java/SpringBoot/07-Nginx/image-20211230123712085.png)
 
 就有点像是IOC..
 
@@ -96,7 +96,7 @@ systemctl start nginx
 
 接着访问80端口即可
 
-![image-20211230142610498](/images/SpringBoot/07-Nginx/image-20211230142610498.png)
+![image-20211230142610498](/images/Java/SpringBoot/07-Nginx/image-20211230142610498.png)
 
 ### Docker
 
@@ -468,7 +468,7 @@ java -jar xxxx.jar
 
 接着 如果说你是docker装的nginx 先记下这个端口
 
-![image-20211230163638948](/images/SpringBoot/07-Nginx/image-20211230163638948.png)
+![image-20211230163638948](/images/Java/SpringBoot/07-Nginx/image-20211230163638948.png)
 
 连接的时候会跳出来的docker绑定的ip
 
@@ -554,7 +554,7 @@ nginx -s reload
 
 然后你就可以正常访问了
 
-![image-20211230165105012](/images/SpringBoot/07-Nginx/image-20211230165105012.png)
+![image-20211230165105012](/images/Java/SpringBoot/07-Nginx/image-20211230165105012.png)
 
 ### Nginx反向代理配置多个路径
 
@@ -595,13 +595,13 @@ server {
 
 接着访问
 
-![image-20211230174250562](/images/SpringBoot/07-Nginx/image-20211230174250562.png)
+![image-20211230174250562](/images/Java/SpringBoot/07-Nginx/image-20211230174250562.png)
 
 发现err
 
 这其实是正常的效果，看console可以发现
 
-![image-20211230174354165](/images/SpringBoot/07-Nginx/image-20211230174354165.png)
+![image-20211230174354165](/images/Java/SpringBoot/07-Nginx/image-20211230174354165.png)
 
 有很多东西 没法代理，当然 如果是你自己整两个tomcat上去 并不会出现这样的问题
 
@@ -631,7 +631,7 @@ server {
 
 其实nginx给我们准备了四个特殊的玩意
 
-![image-20211230174832678](/images/SpringBoot/07-Nginx/image-20211230174832678.png)
+![image-20211230174832678](/images/Java/SpringBoot/07-Nginx/image-20211230174832678.png)
 
 1. `=` 用于不含正则表达式的uri前，要求请求字符串与uri严格匹配，如果是匹配成功，就停止继续向下搜索饼立刻处理该请求
 2. `~`用户表示uri包含正则表达式，并且区分大小写
@@ -642,11 +642,11 @@ server {
 
 也就是说 我们之前定义的规则可以通过这样访问
 
-![image-20211230175117919](/images/SpringBoot/07-Nginx/image-20211230175117919.png)
+![image-20211230175117919](/images/Java/SpringBoot/07-Nginx/image-20211230175117919.png)
 
 也可以这样
 
-![image-20211230175221571](/images/SpringBoot/07-Nginx/image-20211230175221571.png)
+![image-20211230175221571](/images/Java/SpringBoot/07-Nginx/image-20211230175221571.png)
 
 ## Nginx配置负载均衡
 
@@ -666,7 +666,7 @@ docker run -d -p 8888:8080 --name tomcat2  tomcat
 
 接着在两个的webapps内都添加对应的页面
 
-![image-20211230180701609](/images/SpringBoot/07-Nginx/image-20211230180701609.png)
+![image-20211230180701609](/images/Java/SpringBoot/07-Nginx/image-20211230180701609.png)
 
 7777的index
 
@@ -729,7 +729,7 @@ EOF
 
 如果感觉自己没有配置好 可以自己在vscode中开个端口转发测试
 
-![image-20211230182449742](/images/SpringBoot/07-Nginx/image-20211230182449742.png)
+![image-20211230182449742](/images/Java/SpringBoot/07-Nginx/image-20211230182449742.png)
 
 接着开始配置nginx
 
@@ -767,9 +767,9 @@ nginx -s reload
 
 接着访问
 
-![image-20211230184107188](/images/SpringBoot/07-Nginx/image-20211230184107188.png)
+![image-20211230184107188](/images/Java/SpringBoot/07-Nginx/image-20211230184107188.png)
 
-![image-20211230184120999](/images/SpringBoot/07-Nginx/image-20211230184120999.png)
+![image-20211230184120999](/images/Java/SpringBoot/07-Nginx/image-20211230184120999.png)
 
 你会发现每次访问的都不一样
 
@@ -876,7 +876,7 @@ server {
 - 存储把静态文件独立成单独的域名，放在独立的服务器上，这也是主流推崇的方案
 - 另一种是动态和静态文件混合在一起发布，通过nginx分开
 
-![image-20211230191723582](/images/SpringBoot/07-Nginx/image-20211230191723582.png)
+![image-20211230191723582](/images/Java/SpringBoot/07-Nginx/image-20211230191723582.png)
 
 通过`location`指定不同的后缀名实现不同的转发请求，通过`expries`参数设置，可以使浏览器缓存过期时间，减少与服务器之间的请求和流量
 
@@ -959,7 +959,7 @@ const add = () => {
 
 页面效果
 
-![image-20211230194525973](/images/SpringBoot/07-Nginx/image-20211230194525973.png)
+![image-20211230194525973](/images/Java/SpringBoot/07-Nginx/image-20211230194525973.png)
 
 接着，将相应的打包好的资源拷贝到docker目录内
 
@@ -969,24 +969,24 @@ docker cp /xxx/xxx/dist nginx:/data/www/
 
 然后再拷贝一点静态文件进去
 
-![image-20211230195615620](/images/SpringBoot/07-Nginx/image-20211230195615620.png)
+![image-20211230195615620](/images/Java/SpringBoot/07-Nginx/image-20211230195615620.png)
 
 附-重命名脚本
 
 ```shell
-for names in ./images/*
+for names in ./images/Java/*
 do
     echo "$names"
     news=$i
     echo "$news"
-    mv $names ./images/$news.png
+    mv $names ./images/Java/$news.png
     let i=i+1
 done
 ```
 
 最终结构
 
-![image-20211230195809173](/images/SpringBoot/07-Nginx/image-20211230195809173.png)
+![image-20211230195809173](/images/Java/SpringBoot/07-Nginx/image-20211230195809173.png)
 
 ### 配置静态资源
 
@@ -1004,7 +1004,7 @@ server {
 
     location /static/ {
         # 注意 其他静态资源 都要通过alias配置 不然读取不到 我也不知道为啥
-        alias /data/images/;
+        alias /data/images/Java/;
         # 这个是文件树 默认是不开启的
         autoindex on;
         # 这个是设置客户端的静态资源缓存时间
@@ -1052,31 +1052,31 @@ server {
 
 访问根路径
 
-![image-20211230213847818](/images/SpringBoot/07-Nginx/image-20211230213847818.png)
+![image-20211230213847818](/images/Java/SpringBoot/07-Nginx/image-20211230213847818.png)
 
 访问static
 
-![image-20211230213902858](/images/SpringBoot/07-Nginx/image-20211230213902858.png)
+![image-20211230213902858](/images/Java/SpringBoot/07-Nginx/image-20211230213902858.png)
 
 访问static路径下的资源
 
-![image-20211230214230070](/images/SpringBoot/07-Nginx/image-20211230214230070.png)
+![image-20211230214230070](/images/Java/SpringBoot/07-Nginx/image-20211230214230070.png)
 
 ## Nginx 集群
 
 没错 这玩意也有集群..
 
-![image-20211230214648202](/images/SpringBoot/07-Nginx/image-20211230214648202.png)
+![image-20211230214648202](/images/Java/SpringBoot/07-Nginx/image-20211230214648202.png)
 
 草 真就万物都可集群…绝了
 
 Nginx的大概长这样
 
-![image-20211230215018345](/images/SpringBoot/07-Nginx/image-20211230215018345.png)
+![image-20211230215018345](/images/Java/SpringBoot/07-Nginx/image-20211230215018345.png)
 
 然后需要一个额外的东西-KeepAlived来实现
 
-![image-20211230215330918](/images/SpringBoot/07-Nginx/image-20211230215330918.png)
+![image-20211230215330918](/images/Java/SpringBoot/07-Nginx/image-20211230215330918.png)
 
 这里就不说了 实际上这玩意非常稳 很少用到集群（除非托大的project）
 
@@ -1094,6 +1094,6 @@ worker是狗
 
 master进程是狗狗管理员即可
 
-![image-20211230222442992](/images/SpringBoot/07-Nginx/image-20211230222442992.png)
+![image-20211230222442992](/images/Java/SpringBoot/07-Nginx/image-20211230222442992.png)
 
-![image-20211230222725945](/images/SpringBoot/07-Nginx/image-20211230222725945.png)
+![image-20211230222725945](/images/Java/SpringBoot/07-Nginx/image-20211230222725945.png)

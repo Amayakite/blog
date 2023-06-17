@@ -256,11 +256,11 @@ public class GlobalExceptionHandler {
 
 如果说你前面都是正常配置的话，这里应该是这样的
 
-![image-20220121214051416](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121214051416.png)
+![image-20220121214051416](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121214051416.png)
 
 点击后，可以看到
 
-![image-20220121223317742](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121223317742.png)
+![image-20220121223317742](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121223317742.png)
 
 注意 如果没有这个token的话，表示登陆失败
 
@@ -543,25 +543,25 @@ public class SaSsoClientApplication {
 
 你直接访问，是这个内容
 
-![image-20220121223234108](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121223234108.png)
+![image-20220121223234108](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121223234108.png)
 
 点击登录后，会跳转到
 
-![image-20220121223249009](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121223249009.png)
+![image-20220121223249009](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121223249009.png)
 
 登录
 
-![image-20220121223259316](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121223259316.png)
+![image-20220121223259316](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121223259316.png)
 
 
 
 然后返回
 
-![image-20220121223342782](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121223342782.png)
+![image-20220121223342782](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121223342782.png)
 
 能发现登录成功了，并且你访问其他两个也会发现登陆成功
 
-![image-20220121223410580](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121223410580.png)
+![image-20220121223410580](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121223410580.png)
 
 好了，模式1就到这里，是不是非常简单….
 
@@ -763,25 +763,25 @@ spring:
 
 第一次访问的话 百分之一千是false
 
-![image-20220121230119402](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121230119402.png)
+![image-20220121230119402](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121230119402.png)
 
 然后你走一遍登陆流程
 
 变成true了
 
-![image-20220121230137950](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121230137950.png)
+![image-20220121230137950](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121230137950.png)
 
 接着你访问下同域名下的9002<http://sa-sso-client1.com:9002/>
 
-![image-20220121230153955](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121230153955.png)
+![image-20220121230153955](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121230153955.png)
 
 在访问下不同域名下的9003
 
-![image-20220121230303156](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121230303156.png)
+![image-20220121230303156](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121230303156.png)
 
 你会发现是false但是，当点击登录按钮之后
 
-![image-20220121230319911](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121230319911.png)
+![image-20220121230319911](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121230319911.png)
 
 立刻变成true了（就是点了下按钮）
 
@@ -789,7 +789,7 @@ spring:
 >
 > 你可以在控制台中看到请求过程
 >
-> ![image-20220121230429840](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121230429840.png)
+> ![image-20220121230429840](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121230429840.png)
 
 以上流程解决了跨域模式下的单点登录，但是后端仍然采用了共享Redis来同步会话，如果我们的架构设计中Client端与Server端无法共享Redis，又该怎么完成单点登录？
 
@@ -1029,7 +1029,7 @@ public Object myinfo() {
 
 访问测试：<http://sa-sso-client1.com:9001/sso/myinfo>
 
-![image-20220121233439308](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121233439308.png)
+![image-20220121233439308](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121233439308.png)
 
 这样表示成功
 
@@ -1037,15 +1037,15 @@ public Object myinfo() {
 
 重启项目，访问测试：<http://sa-sso-client1.com:9001/>， 我们主要的测试点在于 `单点注销`，正常登录即可。
 
-![sso-type3-client-index.png](/images/SpringCloud/17-1-Sa-Token单点认证/sso-type3-client-index.png)
+![sso-type3-client-index.png](/images/Java/SpringCloud/17-1-Sa-Token单点认证/sso-type3-client-index.png)
 
 点击 **`[注销]`** 按钮，即可单点注销成功。
 
-![sso-type3-slo-index.png](/images/SpringCloud/17-1-Sa-Token单点认证/sso-type3-slo-index.png)
+![sso-type3-slo-index.png](/images/Java/SpringCloud/17-1-Sa-Token单点认证/sso-type3-slo-index.png)
 
 > PS：这里我们为了方便演示，使用的是超链接跳页面的形式，**正式项目中使用 Ajax 调用接口即可做到无刷单点登录退出**
 
-![image-20220121234154695](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121234154695.png)
+![image-20220121234154695](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121234154695.png)
 
 ## 三种配置模式的总结
 
@@ -1074,7 +1074,7 @@ public Object myinfo() {
 
 这个时候不知情的用户访问到了这个URL的时候，它将被重定向至百度首页
 
-![image-20220121234818516](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121234818516.png)
+![image-20220121234818516](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121234818516.png)
 
 可以看到，代表着用户身份的 Ticket 码也显现到了URL之中，借此漏洞，攻击者完全可以构建一个URL将小红的 Ticket 码自动提交到攻击者自己的服务器，伪造小红身份登录网站
 
@@ -1157,7 +1157,7 @@ spring:
 
 可以看到如下内容
 
-![image-20220121235128539](/images/SpringCloud/17-1-Sa-Token单点认证/image-20220121235128539.png)
+![image-20220121235128539](/images/Java/SpringCloud/17-1-Sa-Token单点认证/image-20220121235128539.png)
 
 域名没有通过校验，拒绝授权
 

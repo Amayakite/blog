@@ -14,7 +14,7 @@ tag:
 
 好，存储过程预先存储在服务器上，需要执行的时候，客户端只需要向服务端发出调用存储过程的命令，服务器端就可以把预先存储好的这一系列sql全部执行
 
-![image-20220531221631138](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531221631138.png)
+![image-20220531221631138](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531221631138.png)
 
 语法大概如下
 
@@ -28,21 +28,21 @@ END
 
 这里面的 int out 和intout含义如下
 
-![image-20220531221844915](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531221844915.png)
+![image-20220531221844915](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531221844915.png)
 
-![image-20220531221932194](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531221932194.png)
+![image-20220531221932194](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531221932194.png)
 
-![image-20220531221938852](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531221938852.png)
+![image-20220531221938852](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531221938852.png)
 
 charateristics可以包含的内容详情如下
 
-![image-20220531222108162](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531222108162.png)
+![image-20220531222108162](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531222108162.png)
 
-![image-20220531222120297](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531222120297.png)
+![image-20220531222120297](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531222120297.png)
 
-![image-20220531222221893](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531222221893.png)
+![image-20220531222221893](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531222221893.png)
 
-![image-20220531222233036](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531222233036.png)
+![image-20220531222233036](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531222233036.png)
 
 嘛，整体看来还是比较麻烦的...
 
@@ -77,7 +77,7 @@ END ;
 
 对，就是这么简单，然后就可以发现在函数处多了个这个
 
-![image-20220531223539750](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531223539750.png)
+![image-20220531223539750](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531223539750.png)
 
 当然，如果你不想用`;`来进行结尾的话，也可以这样
 
@@ -101,7 +101,7 @@ call  select_all_emp();
 
 结果就来了
 
-![image-20220531223905362](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531223905362.png)
+![image-20220531223905362](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531223905362.png)
 
 ## 接收返回结果
 
@@ -199,7 +199,7 @@ select select_user_id(4);
 
 # 对比存储过程和存储函数
 
-![image-20220531231329533](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231329533.png)
+![image-20220531231329533](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231329533.png)
 
 # 存储过程/函数的查看、修改、删除
 
@@ -217,23 +217,23 @@ show create function bbbb ;
 
 查询的话 如果有结果会返回具体信息
 
-![image-20220531231704192](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231704192.png)
+![image-20220531231704192](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231704192.png)
 
-![image-20220531231810735](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231810735.png)
+![image-20220531231810735](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231810735.png)
 
-![image-20220531231816952](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231816952.png)
+![image-20220531231816952](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231816952.png)
 
-![image-20220531231825280](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231825280.png)
+![image-20220531231825280](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231825280.png)
 
 ## 修改
 
 只能修改特征，不能修改具体的内容
 
-![image-20220531231908910](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231908910.png)
+![image-20220531231908910](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231908910.png)
 
 ## 删除
 
-![image-20220531231948245](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531231948245.png)
+![image-20220531231948245](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531231948245.png)
 
 # 关于存储过程和函数的争议
 
@@ -243,10 +243,10 @@ show create function bbbb ;
 
 ## 存储过程的优点
 
-![image-20220531232156533](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531232156533.png)
+![image-20220531232156533](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531232156533.png)
 
 ## 缺点
 
 阿里巴巴的标准在国内一度成为java开发标准，所以大部分国内java项目或者脚手架中都见不到存储过程的影子
 
-![image-20220531232250476](/images/JavaSE/25-扩展-MySQL存储过程/image-20220531232250476.png)
+![image-20220531232250476](/images/Java/JavaSE/25-扩展-MySQL存储过程/image-20220531232250476.png)

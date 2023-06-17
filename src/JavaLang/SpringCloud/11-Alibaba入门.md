@@ -16,7 +16,7 @@ tag:
 
 主要原因是**Spring Cloud Netflix**项目进入了维护模式
 
-![image-20220110131758625](/images/SpringCloud/11-Alibaba入门/image-20220110131758625.png)
+![image-20220110131758625](/images/Java/SpringCloud/11-Alibaba入门/image-20220110131758625.png)
 
 当让这并不包括Eureka或并发限制模块
 
@@ -28,13 +28,13 @@ tag:
 
 所以这不就来了
 
-![image-20220110141014724](/images/SpringCloud/11-Alibaba入门/image-20220110141014724.png)
+![image-20220110141014724](/images/Java/SpringCloud/11-Alibaba入门/image-20220110141014724.png)
 
 那么Alibaba为什么这么出色呢？
 
 因为有阿里云，Spring Cloud Alibaba跟阿里云生态圈适配的非常好…
 
-![image-20220110141541587](/images/SpringCloud/11-Alibaba入门/image-20220110141541587.png)
+![image-20220110141541587](/images/Java/SpringCloud/11-Alibaba入门/image-20220110141541587.png)
 
 能干嘛？
 

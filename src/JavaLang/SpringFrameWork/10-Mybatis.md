@@ -14,9 +14,9 @@ tag:
 
 回想下我们之前是怎么进行JDBC操作的
 
-![image-20211215003424068](/images/SpringFrameWork/10-Mybatis/image-20211215003424068.png)
+![image-20211215003424068](/images/Java/SpringFrameWork/10-Mybatis/image-20211215003424068.png)
 
-![image-20211215003504392](/images/SpringFrameWork/10-Mybatis/image-20211215003504392.png)
+![image-20211215003504392](/images/Java/SpringFrameWork/10-Mybatis/image-20211215003504392.png)
 
 原始的JDBC开发存在的问题如下：
 
@@ -119,7 +119,7 @@ public class User {
 
 比如说我现在是com.mybatis.xxxxx 那么mybatis的目录应该也是在res下的com.mybatis.mapper目录下
 
-![image-20211215121324795](/images/SpringFrameWork/10-Mybatis/image-20211215121324795.png)
+![image-20211215121324795](/images/Java/SpringFrameWork/10-Mybatis/image-20211215121324795.png)
 
 然后我们在该目录下创建mybatis的配置文件userMapper.xml
 
@@ -140,7 +140,7 @@ select 指的是创建一个查询的句柄 id是它的名称 resuleType是它�
 
 它的标签体内可以写sql语句 同理 我们还可以创建和select同级的
 
-![image-20211215122503566](/images/SpringFrameWork/10-Mybatis/image-20211215122503566.png)
+![image-20211215122503566](/images/Java/SpringFrameWork/10-Mybatis/image-20211215122503566.png)
 
 这些东西
 
@@ -258,7 +258,7 @@ public class MyBatisTest {
 
 一张图概括
 
-![image-20211215134202667](/images/SpringFrameWork/10-Mybatis/image-20211215134202667.png)
+![image-20211215134202667](/images/Java/SpringFrameWork/10-Mybatis/image-20211215134202667.png)
 
 ### ✨增删改查
 
@@ -351,7 +351,7 @@ public void test3() throws IOException {
 
 ### ✨增删改查映射配置与API
 
-![image-20211215153513639](/images/SpringFrameWork/10-Mybatis/image-20211215153513639.png)
+![image-20211215153513639](/images/Java/SpringFrameWork/10-Mybatis/image-20211215153513639.png)
 
 ## ✨Mybatis核心配置文件概述
 
@@ -390,13 +390,13 @@ public void test3() throws IOException {
 
 它支持如下的标签
 
-![image-20211215153739412](/images/SpringFrameWork/10-Mybatis/image-20211215153739412.png)
+![image-20211215153739412](/images/Java/SpringFrameWork/10-Mybatis/image-20211215153739412.png)
 
 ### environment 配置数据源环境
 
 可以支持配置多个
 
-![image-20211215153908922](/images/SpringFrameWork/10-Mybatis/image-20211215153908922.png)
+![image-20211215153908922](/images/Java/SpringFrameWork/10-Mybatis/image-20211215153908922.png)
 
 额外说明的点：
 
@@ -467,7 +467,7 @@ jdbc.password=123456
 
 它和我们的mybatis核心配置文件呈现如下对应关系
 
-![image-20211215160743492](/images/SpringFrameWork/10-Mybatis/image-20211215160743492.png)
+![image-20211215160743492](/images/Java/SpringFrameWork/10-Mybatis/image-20211215160743492.png)
 
 接着加载配置文件即可， 注意 resource标签内**没有classpath:**
 
@@ -834,21 +834,21 @@ Mapper接口开发需要遵循如下规范：
 3. Mapper接口方法是输入参数和Mapper.xml中定义的每个sql中的parameterType类型相同
 4. Mapper接口方法的输出参数类型mapper.xml中定义的每个sql的resultType相同
 
-![image-20211215174631064](/images/SpringFrameWork/10-Mybatis/image-20211215174631064.png)
+![image-20211215174631064](/images/Java/SpringFrameWork/10-Mybatis/image-20211215174631064.png)
 
 ### ✨代理开发方式-简单实现
 
 现在我们的dao层的接口是在这个位置：
 
-![image-20211215174947589](/images/SpringFrameWork/10-Mybatis/image-20211215174947589.png)
+![image-20211215174947589](/images/Java/SpringFrameWork/10-Mybatis/image-20211215174947589.png)
 
 我们复制下它的全类名（左边的那个小红鸟先不管 是一个IEDA插件带来的 这个之后会说）
 
-![image-20211215175009717](/images/SpringFrameWork/10-Mybatis/image-20211215175009717.png)
+![image-20211215175009717](/images/Java/SpringFrameWork/10-Mybatis/image-20211215175009717.png)
 
 接着我们在userMapper中作出如下的修改：
 
-![image-20211215175056311](/images/SpringFrameWork/10-Mybatis/image-20211215175056311.png)
+![image-20211215175056311](/images/Java/SpringFrameWork/10-Mybatis/image-20211215175056311.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -1005,7 +1005,7 @@ public static void main(String[] args) throws IOException {
 
 返回值也是很正常不过了，但是如果我们创建user对象的时候没有给定指定的值，就查询不到相应的结果了,.
 
-![image-20211215193109709](/images/SpringFrameWork/10-Mybatis/image-20211215193109709.png)
+![image-20211215193109709](/images/Java/SpringFrameWork/10-Mybatis/image-20211215193109709.png)
 
 我们的理想状态是，在我们传入的对象中，例如User 三个参数都具备 就按照三个参数筛选，否则就按照已有的参数进行筛选
 
@@ -1038,7 +1038,7 @@ public static void main(String[] args) throws IOException {
 
 当然，**因为一般情况下我们项目中使用的都是包装类**：
 
-![image-20211215205450961](/images/SpringFrameWork/10-Mybatis/image-20211215205450961.png)
+![image-20211215205450961](/images/Java/SpringFrameWork/10-Mybatis/image-20211215205450961.png)
 
 所以说全部判断是否为null即可：
 
@@ -1150,7 +1150,7 @@ public static void main(String[] args) throws IOException {
 
 运行结果：
 
-![image-20211215212212357](/images/SpringFrameWork/10-Mybatis/image-20211215212212357.png)
+![image-20211215212212357](/images/Java/SpringFrameWork/10-Mybatis/image-20211215212212357.png)
 
 紧接着，就是我们的批量插入：
 
@@ -1197,7 +1197,7 @@ public static void main(String[] args) throws IOException {
 
 运行结果：
 
-![image-20211215212954158](/images/SpringFrameWork/10-Mybatis/image-20211215212954158.png)
+![image-20211215212954158](/images/Java/SpringFrameWork/10-Mybatis/image-20211215212954158.png)
 
 ### ✨SQL对象的抽取（SQL模板）
 
@@ -1272,11 +1272,11 @@ public static void main(String[] args) throws IOException {
 }
 ```
 
-![image-20211215220059676](/images/SpringFrameWork/10-Mybatis/image-20211215220059676.png)
+![image-20211215220059676](/images/Java/SpringFrameWork/10-Mybatis/image-20211215220059676.png)
 
 常用的有这些
 
-![image-20211215220208445](/images/SpringFrameWork/10-Mybatis/image-20211215220208445.png)
+![image-20211215220208445](/images/Java/SpringFrameWork/10-Mybatis/image-20211215220208445.png)
 
 当让 如果这40个不够你用的话，可以考虑使用自定义的类转换器
 
@@ -1466,7 +1466,7 @@ public static void main(String[] args) throws IOException {
 
 运行结果：
 
-![image-20211215231211454](/images/SpringFrameWork/10-Mybatis/image-20211215231211454.png)
+![image-20211215231211454](/images/Java/SpringFrameWork/10-Mybatis/image-20211215231211454.png)
 
 ## ✨✨Plugins标签（插件标签）
 
@@ -1624,7 +1624,7 @@ User{id=11, username='老八', password='123456', birthday=Thu Jan 01 08:00:00 C
 
 ### 一对一查询的模式
 
-![image-20211216000149849](/images/SpringFrameWork/10-Mybatis/image-20211216000149849.png)
+![image-20211216000149849](/images/Java/SpringFrameWork/10-Mybatis/image-20211216000149849.png)
 
 我们先创建一个order表吧
 
@@ -1686,7 +1686,7 @@ select *  from
  ON u.id = o.uid;
 ```
 
-![image-20211216003720702](/images/SpringFrameWork/10-Mybatis/image-20211216003720702.png)
+![image-20211216003720702](/images/Java/SpringFrameWork/10-Mybatis/image-20211216003720702.png)
 
 但是我们比较容易被这两个id所困惑，所以说实际上需要：
 
@@ -1696,7 +1696,7 @@ select *,o.id oid from
  ON u.id = o.uid;
 ```
 
-![image-20211216003922476](/images/SpringFrameWork/10-Mybatis/image-20211216003922476.png)
+![image-20211216003922476](/images/Java/SpringFrameWork/10-Mybatis/image-20211216003922476.png)
 
 这样就好区分了嘛
 
@@ -1805,7 +1805,7 @@ public static void main(String[] args) throws IOException {
 
 结果：完美的契合了对应的内容
 
-![image-20211216121526338](/images/SpringFrameWork/10-Mybatis/image-20211216121526338.png)
+![image-20211216121526338](/images/Java/SpringFrameWork/10-Mybatis/image-20211216121526338.png)
 
 ### ✨一对一查询的方式2
 
@@ -1859,7 +1859,7 @@ select *,o.id oid from user u,`order` o where u.id=o.uid;
 
 User表内并没有任何关于Order表的信息，但是Order表内涵盖有User表的信息
 
-![image-20211216140740439](/images/SpringFrameWork/10-Mybatis/image-20211216140740439.png)
+![image-20211216140740439](/images/Java/SpringFrameWork/10-Mybatis/image-20211216140740439.png)
 
 我现在有一个需求：**查找所有的User（只查询有订单的），并且将其订单信息存放在User表内的一个集合中**
 
@@ -1934,7 +1934,7 @@ public static void main(String[] args) throws IOException {
 
 结果：
 
-![image-20211216141802126](/images/SpringFrameWork/10-Mybatis/image-20211216141802126.png)
+![image-20211216141802126](/images/Java/SpringFrameWork/10-Mybatis/image-20211216141802126.png)
 
 ## Mybatis注解开发
 
@@ -1954,7 +1954,7 @@ public static void main(String[] args) throws IOException {
 
 我们的文件按照如下方式排列
 
-![image-20211216155232960](/images/SpringFrameWork/10-Mybatis/image-20211216155232960.png)
+![image-20211216155232960](/images/Java/SpringFrameWork/10-Mybatis/image-20211216155232960.png)
 
 User类中就是User的相关属性 和toString方法
 
@@ -2118,7 +2118,7 @@ public class TestA {
 
 运行结果：
 
-![image-20211216155803016](/images/SpringFrameWork/10-Mybatis/image-20211216155803016.png)
+![image-20211216155803016](/images/Java/SpringFrameWork/10-Mybatis/image-20211216155803016.png)
 
 ### Mybatis注解实现复杂的映射开发（多表查询）
 
@@ -2206,7 +2206,7 @@ public class TestA {
 
 结果：
 
-![image-20211216163100570](/images/SpringFrameWork/10-Mybatis/image-20211216163100570.png)
+![image-20211216163100570](/images/Java/SpringFrameWork/10-Mybatis/image-20211216163100570.png)
 
 但是总感觉这两张表一起查比较难受 所以我们得用到一个强大的注解
 
@@ -2258,7 +2258,7 @@ public void test1(){
 
 查询结果：
 
-![image-20211216164412666](/images/SpringFrameWork/10-Mybatis/image-20211216164412666.png)
+![image-20211216164412666](/images/Java/SpringFrameWork/10-Mybatis/image-20211216164412666.png)
 
 ### ✨✨@Many注解
 
@@ -2324,4 +2324,4 @@ public void test1(){
 
 结果：
 
-![image-20211216171148942](/images/SpringFrameWork/10-Mybatis/image-20211216171148942.png)
+![image-20211216171148942](/images/Java/SpringFrameWork/10-Mybatis/image-20211216171148942.png)

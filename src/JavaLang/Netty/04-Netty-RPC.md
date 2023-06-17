@@ -13,21 +13,21 @@ Remote Procedure Call——远程调用过程，是一个计算机通讯协议�
 
 两个或者多个应用程序都分布在不同的服务器上，他们之间的调用都像是本地的方法互调一样
 
-![image-20220521205517334](/images/Netty/04-Netty-RPC/image-20220521205517334.png)
+![image-20220521205517334](/images/Java/Netty/04-Netty-RPC/image-20220521205517334.png)
 
 常见的RPC框架有：阿里的Dubbo、google的gRPC、Golang的rpcx，Apache的Thrif，Spring旗下的SpringCloud
 
 之前已经接触过SpringCloud架构了，整体来说那是通过http进行一个rpc调用（open fegin基于netty）
 
-![image-20220521210328938](/images/Netty/04-Netty-RPC/image-20220521210328938.png)
+![image-20220521210328938](/images/Java/Netty/04-Netty-RPC/image-20220521210328938.png)
 
-![image-20220521210418540](/images/Netty/04-Netty-RPC/image-20220521210418540.png)
+![image-20220521210418540](/images/Java/Netty/04-Netty-RPC/image-20220521210418540.png)
 
 在这里，我们将会基于Netty实现一个类似于Dubbo的RPC框架
 
 ## 整体思路
 
-![image-20220521215244853](/images/Netty/04-Netty-RPC/image-20220521215244853.png)
+![image-20220521215244853](/images/Java/Netty/04-Netty-RPC/image-20220521215244853.png)
 
 ## 简单的接口准备
 
@@ -509,4 +509,4 @@ public class ClientBootstrap {
 
 嘛 虽然说转换的时候有点问题，不过貌似已经成功了
 
-![image-20220522133337633](/images/Netty/04-Netty-RPC/image-20220522133337633.png)
+![image-20220522133337633](/images/Java/Netty/04-Netty-RPC/image-20220522133337633.png)

@@ -38,7 +38,7 @@ doGet(HttpServletRequest req, HttpServletResponse resp){
 
 相信学过爬虫的都对request这玩意不陌生，一个请求，在正式开始前，我们先来看看这张图
 
-![资源分配图](/images/JavaEE/03-1Response和Requests/20200305162320791.jpg)
+![资源分配图](/images/Java/JavaEE/03-1Response和Requests/20200305162320791.jpg)
 
 ​  从这张图中，我们可以看到，一个客户端请求分为好几步：
 
@@ -71,11 +71,11 @@ Http的请求行中，会包含请求方法、请求资源名、请求路径、H
 
 如果你是在IEDA中启动tomcat的话，那么可以通过ieda的tomcat配置页面来设置log存放的路径：这两个勾上并配置即可
 
-![image-20211203220423076](/images/JavaEE/03-1Response和Requests/image-20211203220423076.png)
+![image-20211203220423076](/images/Java/JavaEE/03-1Response和Requests/image-20211203220423076.png)
 
 我们在上面请求HelloServlet的请求行信息格式大概如下：
 
-![image-20211203220705031](/images/JavaEE/03-1Response和Requests/image-20211203220705031.png)
+![image-20211203220705031](/images/Java/JavaEE/03-1Response和Requests/image-20211203220705031.png)
 
 在log信息中，括起来的为请求行信息，`GET`表示请求方式，`/`为请求url，`HTTP/1.1`为请求的协议及版本。
 
@@ -130,11 +130,11 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 }
 ```
 
-![image-20211203223228622](/images/JavaEE/03-1Response和Requests/image-20211203223228622.png)
+![image-20211203223228622](/images/Java/JavaEE/03-1Response和Requests/image-20211203223228622.png)
 
 换成127.0.0.1再试试（我电脑上装了docker，所以他识别我的主机名是docker（docker安装的时候会附带一个网络驱动））
 
-![image-20211203223341940](/images/JavaEE/03-1Response和Requests/image-20211203223341940.png)
+![image-20211203223341940](/images/Java/JavaEE/03-1Response和Requests/image-20211203223341940.png)
 
 ​  我们可以看到，HttpServletRequest提供的方法几乎可以获取我们想要的任何请求头中的信息，还可以获得客户端的的ip地址（客户端出口的公网ip），在上例中，getRemoteAddr等四个方法获取到的值全为0:0:0:0:0:0:0:1
 
@@ -146,7 +146,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
  当客户端请求Servlet时，需要通过请求头向服务器传递附加信息，例如客户端可以接受的数据类型、请求源、消息正文的长度、是否保持TCP连接等，我们先来看下Http中常见的请求头信息：
 
-![资源分配图](/images/JavaEE/03-1Response和Requests/20200305162936951.jpg)
+![资源分配图](/images/Java/JavaEE/03-1Response和Requests/20200305162936951.jpg)
 
  同样的，为了方便的获取请求头中对应的信息，HttpServletRequest也提供了一系列的方法，相关方法如下：
 
@@ -184,7 +184,7 @@ for(Cookie cookie: cookies) {
 
 结果：这里也可以手动添加几个cookie看看cookie的效果
 
-![image-20211203230732811](/images/JavaEE/03-1Response和Requests/image-20211203230732811.png)
+![image-20211203230732811](/images/Java/JavaEE/03-1Response和Requests/image-20211203230732811.png)
 
 ## HttpServletRequest中获取请求参数
 
@@ -203,7 +203,7 @@ for(Cookie cookie: cookies) {
 
 首先瞄一眼结构：原来是两个接口
 
-![image-20211203170325613](/images/JavaEE/03-1Response和Requests/image-20211203170325613.png)
+![image-20211203170325613](/images/Java/JavaEE/03-1Response和Requests/image-20211203170325613.png)
 
 可以看到，它继承自ServletResponse，同时他本身并没有直接对流操作的方法，但是它的父类中有个两个对流操作的方法： 
 
@@ -262,7 +262,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 接着，我们再来看看字段：
 
-![image-20211203172224003](/images/JavaEE/03-1Response和Requests/image-20211203172224003.png)
+![image-20211203172224003](/images/Java/JavaEE/03-1Response和Requests/image-20211203172224003.png)
 
 都是状态码的常量，这里面存放了各种常见的状态码，有需要的时候应该能直接调的来用
 
@@ -280,7 +280,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 我把文件放在了静态资源的同级目录下，而非是我们代码的目录下
 
-![image-20211203235821715](/images/JavaEE/03-1Response和Requests/image-20211203235821715.png)
+![image-20211203235821715](/images/Java/JavaEE/03-1Response和Requests/image-20211203235821715.png)
 
 ```java
 @WebServlet(
@@ -362,13 +362,13 @@ public class testImagePace extends HttpServlet {
 
 ```
 
-![image-20211204004721307](/images/JavaEE/03-1Response和Requests/image-20211204004721307.png)
+![image-20211204004721307](/images/Java/JavaEE/03-1Response和Requests/image-20211204004721307.png)
 
 而且每次的都不一样
 
 ### 实现重定向
 
-![image-20211204121022669](/images/JavaEE/03-1Response和Requests/image-20211204121022669.png)
+![image-20211204121022669](/images/Java/JavaEE/03-1Response和Requests/image-20211204121022669.png)
 
 B一个Web资源接收到客户端A请求后，他会通知客户端A去访问另一个WEb资源C，这个过程叫重定向
 

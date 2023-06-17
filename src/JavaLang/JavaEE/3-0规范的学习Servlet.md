@@ -53,7 +53,7 @@ tag:
 
 补充：工程路径就是我们在tomcat中部署那里设置的应用程序上下文，比如我设置个03，则访问地址为<http://localhost:8080/03/myServlet，需要以/开头，当让还有更多的方法，详情看我上一个文章（在最后@Servlet>那里有说明四种）
 
-![image-20211204133523223](/images/JavaEE/3-0规范的学习Servlet/image-20211204133523223.png)
+![image-20211204133523223](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204133523223.png)
 
 ```java
 @WebServlet(
@@ -94,13 +94,13 @@ public class MyServlet implements Servlet {
 
 访问结果：
 
-![image-20211204132730182](/images/JavaEE/3-0规范的学习Servlet/image-20211204132730182.png)
+![image-20211204132730182](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204132730182.png)
 
 ## Servlet原理
 
 一张图概括
 
-![image-20211204135640694](/images/JavaEE/3-0规范的学习Servlet/image-20211204135640694.png)
+![image-20211204135640694](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204135640694.png)
 
 详细的看我上一个文章，里面有写详细的内容，底层通过反射调用
 
@@ -176,7 +176,7 @@ MyServlet()service()方法被调用了
 
 当我们尝试终止这个程序的时候：
 
-![image-20211204140606812](/images/JavaEE/3-0规范的学习Servlet/image-20211204140606812.png)
+![image-20211204140606812](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204140606812.png)
 
 ## 引出doGet和doPost
 
@@ -208,7 +208,7 @@ MyServlet()service()方法被调用了
 
 发现他们两个返回的内容都是一样的---我之前写的Hello Servlet
 
-![image-20211204141409097](/images/JavaEE/3-0规范的学习Servlet/image-20211204141409097.png)
+![image-20211204141409097](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204141409097.png)
 
 按照我们对于前端的学习，这个时候应该清楚的认识到，这两个玩意应该返回不一样的东西
 
@@ -237,7 +237,7 @@ res.getClass() = class org.apache.catalina.connector.ResponseFacade
 
 发现有一个：
 
-![image-20211204142629615](/images/JavaEE/3-0规范的学习Servlet/image-20211204142629615.png)
+![image-20211204142629615](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204142629615.png)
 
 那这两个类能不能互相转换呢？
 
@@ -293,11 +293,11 @@ public void service(ServletRequest req, ServletResponse res) throws ServletExcep
 
 点击get按钮：
 
-![image-20211204143309321](/images/JavaEE/3-0规范的学习Servlet/image-20211204143309321.png)
+![image-20211204143309321](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204143309321.png)
 
 点击post按钮
 
-![image-20211204143320053](/images/JavaEE/3-0规范的学习Servlet/image-20211204143320053.png)
+![image-20211204143320053](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204143320053.png)
 
 但是感觉这样又不太美观，我决定自己额外写两个方法来处理这些东西：
 
@@ -334,13 +334,13 @@ public void myPost(HttpServletRequest req, HttpServletResponse res) throws IOExc
 
 发现有两个实现类
 
-![image-20211204143505902](/images/JavaEE/3-0规范的学习Servlet/image-20211204143505902.png)
+![image-20211204143505902](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204143505902.png)
 
 接着，我们看看在JavaEE手册中关于Servlet接口的详解：
 
 [官方英文手册](https://javaee.github.io/javaee-spec/javadocs/)
 
-![image-20211204144840470](/images/JavaEE/3-0规范的学习Servlet/image-20211204144840470.png)
+![image-20211204144840470](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204144840470.png)
 
 关于这个接口，官方给出了如下定义：
 
@@ -401,7 +401,7 @@ public class MyServlet2 extends HttpServlet {
 }
 ```
 
-![image-20211204150014567](/images/JavaEE/3-0规范的学习Servlet/image-20211204150014567.png)
+![image-20211204150014567](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204150014567.png)
 
 可以看到，非常的方便
 
@@ -411,15 +411,15 @@ public class MyServlet2 extends HttpServlet {
 
 如果你没有设置中文：File-Project Struture-facets-Source Roots
 
-![image-20211204150526370](/images/JavaEE/3-0规范的学习Servlet/image-20211204150526370.png)
+![image-20211204150526370](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204150526370.png)
 
 然后点击这个就能快速创建并在xml中声明
 
-![image-20211204150622245](/images/JavaEE/3-0规范的学习Servlet/image-20211204150622245.png)
+![image-20211204150622245](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204150622245.png)
 
 然后在这两个地方填上内容即可
 
-![image-20211204150805807](/images/JavaEE/3-0规范的学习Servlet/image-20211204150805807.png)
+![image-20211204150805807](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204150805807.png)
 
 然后你会发现自动生成了一个带注解的
 
@@ -458,7 +458,7 @@ public class testIedacreate extends HttpServlet {
 
 一张图概括
 
-![image-20211204152154991](/images/JavaEE/3-0规范的学习Servlet/image-20211204152154991.png)
+![image-20211204152154991](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204152154991.png)
 
 ## ServletConfig类
 
@@ -692,7 +692,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 结果：
 
-![image-20211204162409182](/images/JavaEE/3-0规范的学习Servlet/image-20211204162409182.png)
+![image-20211204162409182](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204162409182.png)
 
 可能你会有疑惑：这个工程部署路径有啥用呢？
 
@@ -700,23 +700,23 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 ​  我们的惯例应该是：除了一些隐私级别的文件，静态文件（html css 资源文件）同意放置在webapp目录下：
 
-![image-20211204162732455](/images/JavaEE/3-0规范的学习Servlet/image-20211204162732455.png)
+![image-20211204162732455](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204162732455.png)
 
-用户访问这些也很简单，比如说一个01.jpg，访问地址则为`localhost:8080/工程路径/static/images/01.jpg`
+用户访问这些也很简单，比如说一个01.jpg，访问地址则为`localhost:8080/工程路径/static/images/Java/01.jpg`
 
 结果：
 
-![image-20211204162850284](/images/JavaEE/3-0规范的学习Servlet/image-20211204162850284.png)
+![image-20211204162850284](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204162850284.png)
 
 java中获取这个图片的绝对路径的方式：
 
 ```java
-response.getWriter().println("static/images/01.jpg的绝对路径是:" + context.getRealPath("/static/images/01.jpg"));
+response.getWriter().println("static/images/Java/01.jpg的绝对路径是:" + context.getRealPath("/static/images/Java/01.jpg"));
 ```
 
 结果：
 
-![image-20211204163134313](/images/JavaEE/3-0规范的学习Servlet/image-20211204163134313.png)
+![image-20211204163134313](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204163134313.png)
 
 ### Servlet常用方法二：让Servlet通信
 
@@ -771,7 +771,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 还记得我们在老早之前创建的那个resources文件夹吗，资源文件就是放在那里的，我们先新建一个`db.properties`到该文件夹下：
 
-![image-20211203155322875](/images/JavaEE/3-0规范的学习Servlet/image-20211203155322875-16386087059881.png)
+![image-20211203155322875](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211203155322875-16386087059881.png)
 
 然后填写一些内容：(在这一步你可以先装个mysql-java，名称：mysql-connector-java)
 
@@ -788,7 +788,7 @@ url=jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf8
 
 这个classess路径也被称之为**classpath（类路径）**
 
-![image-20211203155802117](/images/JavaEE/3-0规范的学习Servlet/image-20211203155802117-16386087059892.png)
+![image-20211203155802117](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211203155802117-16386087059892.png)
 
 可能会遇到的导出问题：
 
@@ -867,7 +867,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 2. 请求头
    1. 由key-value键值对组成，不同的键值对代表不同的含义
 
-![image-20211204171938943](/images/JavaEE/3-0规范的学习Servlet/image-20211204171938943.png)
+![image-20211204171938943](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204171938943.png)
 
 #### post请求
 
@@ -887,7 +887,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 4. 请求体 就是发送给服务器的数据
 
-![image-20211204172617660](/images/JavaEE/3-0规范的学习Servlet/image-20211204172617660.png)
+![image-20211204172617660](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204172617660.png)
 
 ### 常用请求头说明
 
@@ -928,7 +928,7 @@ Host: 表示客户端请求的服务器的IP和端口号
 3. **一个空行，分割响应头和响应体**
 4. 响应体
 
-![image-20211204173630417](/images/JavaEE/3-0规范的学习Servlet/image-20211204173630417.png)
+![image-20211204173630417](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204173630417.png)
 
 ### 常见的响应状态吗
 
@@ -1009,13 +1009,13 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 }
 ```
 
-![image-20211204185818491](/images/JavaEE/3-0规范的学习Servlet/image-20211204185818491.png)
+![image-20211204185818491](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204185818491.png)
 
 ### 请求转发
 
 原理：
 
-![image-20211204192808207](/images/JavaEE/3-0规范的学习Servlet/image-20211204192808207.png)
+![image-20211204192808207](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204192808207.png)
 
 代码部分：
 
@@ -1055,7 +1055,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 访问：并携带参数
 
-![image-20211204191647686](/images/JavaEE/3-0规范的学习Servlet/image-20211204191647686.png)
+![image-20211204191647686](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204191647686.png)
 
 ### 解决Post请求中中文参数乱码的问题
 
@@ -1071,7 +1071,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
 我们先在webapp目录下新建如下文件：
 
-![image-20211204193232189](/images/JavaEE/3-0规范的学习Servlet/image-20211204193232189.png)
+![image-20211204193232189](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204193232189.png)
 
 god.html中有个a标签，`herf="a/b/c/d.html"`
 
@@ -1121,11 +1121,11 @@ public class ServletForward extends HttpServlet {
 
 你就会发现跳转过去没问题，但是从d.html中跳转回a却出了问题：
 
-![image-20211204194727947](/images/JavaEE/3-0规范的学习Servlet/image-20211204194727947.png)
+![image-20211204194727947](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204194727947.png)
 
 分析：
 
-![image-20211204194958004](/images/JavaEE/3-0规范的学习Servlet/image-20211204194958004.png)
+![image-20211204194958004](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204194958004.png)
 
 base是一个html标签，所以我们只需要：
 
@@ -1206,7 +1206,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
 原理(提一嘴，千万别手残打成304 304是永久重定向， 除非用户Ctrl+shift+R刷新页面，不然之后一直都是直接跳转到response2程序)
 
-![image-20211204221219141](/images/JavaEE/3-0规范的学习Servlet/image-20211204221219141.png)
+![image-20211204221219141](/images/Java/JavaEE/3-0规范的学习Servlet/image-20211204221219141.png)
 
 方法1  分别设置Status和Header中的Location
 

@@ -13,11 +13,11 @@ tag:
 
 这里的课程看的是狂神的
 
-![cardImage](/images/SpringBoot/06-RabbitMQ/kuangstudy7a8af1c2-b406-46d9-965e-df81525649cd.png)
+![cardImage](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy7a8af1c2-b406-46d9-965e-df81525649cd.png)
 
-![cardImage2](/images/SpringBoot/06-RabbitMQ/kuangstudyb888e5f0-2c0f-4576-af88-0176abfa7832.png)
+![cardImage2](/images/Java/SpringBoot/06-RabbitMQ/kuangstudyb888e5f0-2c0f-4576-af88-0176abfa7832.png)
 
-![image-20211227231239303](/images/SpringBoot/06-RabbitMQ/image-20211227231239303.png)
+![image-20211227231239303](/images/Java/SpringBoot/06-RabbitMQ/image-20211227231239303.png)
 
 这样说吧
 
@@ -42,7 +42,7 @@ RabbitMq具有接受数据、接受请求、存储数据、发送数据等技术
 
 支持这个协议的有
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy1705264a-5917-4bf7-99a8-2ed993b463fa-16406198611524.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy1705264a-5917-4bf7-99a8-2ed993b463fa-16406198611524.png)
 
 这个协议是基于Erlang 所以使用它需要安装Erlang 就像使用Java要安装JDK一样
 
@@ -62,7 +62,7 @@ MQTT协议：（Message Queueing Telemetry Transport）消息队列是IBM开放�
 
 ### OpenMessage协议
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy579c94ed-0947-439e-95e7-2ca6b425dc79.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy579c94ed-0947-439e-95e7-2ca6b425dc79.png)
 
 是近几年由阿里、雅虎和滴滴出行、Stremalio等公司共同参与创立的分布式消息中间件、流处理等领域的应用开发标准。
 特点：
@@ -293,7 +293,7 @@ rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 
 然后访问即可
 
-![image-20211228163633439](/images/SpringBoot/06-RabbitMQ/image-20211228163633439.png)
+![image-20211228163633439](/images/Java/SpringBoot/06-RabbitMQ/image-20211228163633439.png)
 
 **访问后一定要在admin标签内删除guest**
 
@@ -459,11 +459,11 @@ public class Consumer {
 
 接下来先运行下这个生产者：
 
-![image-20211228205739324](/images/SpringBoot/06-RabbitMQ/image-20211228205739324.png)
+![image-20211228205739324](/images/Java/SpringBoot/06-RabbitMQ/image-20211228205739324.png)
 
 你接着能在这个Queues内看到它
 
-![image-20211228205821025](/images/SpringBoot/06-RabbitMQ/image-20211228205821025.png)
+![image-20211228205821025](/images/Java/SpringBoot/06-RabbitMQ/image-20211228205821025.png)
 
 并且还可以在Channels中看到一个玩意
 
@@ -471,7 +471,7 @@ public class Consumer {
 
 成功接收到了刚刚生产者发送的消息
 
-![image-20211228210020027](/images/SpringBoot/06-RabbitMQ/image-20211228210020027.png)
+![image-20211228210020027](/images/Java/SpringBoot/06-RabbitMQ/image-20211228210020027.png)
 
 好了 这就是一次简单AMQP消息传递的流程
 
@@ -485,7 +485,7 @@ public class Consumer {
 
 生产者的流程：
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy7c8a41b8-e3bf-4821-a1f1-a18860277663.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy7c8a41b8-e3bf-4821-a1f1-a18860277663.png)
 
 首先 建立连接
 
@@ -555,7 +555,7 @@ RabbitMq为什么是基于通道去处理的，而不是连接呢？
 
 接下来看看消费者的流转过程：
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy081077ba-eced-43f9-b148-6f63987f1d2f.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy081077ba-eced-43f9-b148-6f63987f1d2f.png)
 
  和我们的生产者差不多 但是 这里的连接也有可能是从同一个连接内出来的
 
@@ -580,7 +580,7 @@ channel.basicPublish("", queueName, null, message.getBytes(StandardCharsets.UTF_
 
 答：不可能的，虽然我们像上面一样没有指定交换机，但是一定会存在一个默认的**交换机**
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy62a1f9e3-027d-408a-8fb4-a176bd184d23.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy62a1f9e3-027d-408a-8fb4-a176bd184d23.png)
 
 - Broker就是我们的RabbitMq 可能同时存在多个Broker（以后集群的话会涉及到），Broker就像是Mysql的database
 - 在Broker内 为了更好的区分和分辨 也整出了一个东西 ---虚拟机节点
@@ -590,11 +590,11 @@ channel.basicPublish("", queueName, null, message.getBytes(StandardCharsets.UTF_
 
 我们可以在Rabbit的管理面板中添加额外的节点
 
-![image-20211228212755591](/images/SpringBoot/06-RabbitMQ/image-20211228212755591.png)
+![image-20211228212755591](/images/Java/SpringBoot/06-RabbitMQ/image-20211228212755591.png)
 
 添加完毕后 就能看到
 
-![image-20211228212814207](/images/SpringBoot/06-RabbitMQ/image-20211228212814207.png)
+![image-20211228212814207](/images/Java/SpringBoot/06-RabbitMQ/image-20211228212814207.png)
 
 我们之后就可以在设置访问节点的时候 指定为我们的节点
 
@@ -620,25 +620,25 @@ connectionFactory.setVirtualHost("/order");
 
 然后点进这个queue内查看它的详细信息
 
-![image-20211228213330143](/images/SpringBoot/06-RabbitMQ/image-20211228213330143.png)
+![image-20211228213330143](/images/Java/SpringBoot/06-RabbitMQ/image-20211228213330143.png)
 
 查看它的绑定
 
-![image-20211228213402643](/images/SpringBoot/06-RabbitMQ/image-20211228213402643.png)
+![image-20211228213402643](/images/Java/SpringBoot/06-RabbitMQ/image-20211228213402643.png)
 
 可以看到 即使我们没有绑定交换机 它依旧是有一个默认的交换机
 
-![image-20211228213436236](/images/SpringBoot/06-RabbitMQ/image-20211228213436236.png)
+![image-20211228213436236](/images/Java/SpringBoot/06-RabbitMQ/image-20211228213436236.png)
 
 我们也可以直接到这个面板查看所有的交换机
 
-![image-20211228213535065](/images/SpringBoot/06-RabbitMQ/image-20211228213535065.png)
+![image-20211228213535065](/images/Java/SpringBoot/06-RabbitMQ/image-20211228213535065.png)
 
 非常显眼的 Default
 
 接着点进去 看下它的绑定 上面就直接说明了
 
-![image-20211228213606264](/images/SpringBoot/06-RabbitMQ/image-20211228213606264.png)
+![image-20211228213606264](/images/Java/SpringBoot/06-RabbitMQ/image-20211228213606264.png)
 
 默认交换隐式绑定到每个队列，路由键等于队列名称。无法明确绑定到默认交换或从默认交换中解除绑定。它也无法删除。
 
@@ -662,7 +662,7 @@ connectionFactory.setVirtualHost("/order");
 
 嘛 总体流程大概是这样
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy2704cee9-3595-45de-892d-ee658e848806.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy2704cee9-3595-45de-892d-ee658e848806.png)
 
 ## 图形化操作
 
@@ -672,27 +672,27 @@ connectionFactory.setVirtualHost("/order");
 
 一个人发 一个人收
 
-![img](/images/SpringBoot/06-RabbitMQ/python-one.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/python-one.png)
 
 始终要记住的一点：我们无论是否指定交换机 都将有交换机来为我们处理数据 没有指定的时候用的就是默认的default交换机
 
 我们先进入到Queues 可以看到如下内容
 
-![image-20211228221743907](/images/SpringBoot/06-RabbitMQ/image-20211228221743907.png)
+![image-20211228221743907](/images/Java/SpringBoot/06-RabbitMQ/image-20211228221743907.png)
 
 它的发送消息有两种模式
 
-![image-20211228221809042](/images/SpringBoot/06-RabbitMQ/image-20211228221809042.png)
+![image-20211228221809042](/images/Java/SpringBoot/06-RabbitMQ/image-20211228221809042.png)
 
 一种是不持久化（服务宕机或者重启后数据会丢失）另一种则是持久化存储
 
 我们先补到这里发消息，而是去交换机那
 
-![image-20211228221849246](/images/SpringBoot/06-RabbitMQ/image-20211228221849246.png)
+![image-20211228221849246](/images/Java/SpringBoot/06-RabbitMQ/image-20211228221849246.png)
 
 因为我们之前没有指定交换机 所以这里直接进入默认的
 
-![image-20211228221933399](/images/SpringBoot/06-RabbitMQ/image-20211228221933399.png)
+![image-20211228221933399](/images/Java/SpringBoot/06-RabbitMQ/image-20211228221933399.png)
 
 我们可以在队列名称中填入我们的队列queue1
 
@@ -700,7 +700,7 @@ connectionFactory.setVirtualHost("/order");
 
 然后点击发布
 
-![image-20211228222014231](/images/SpringBoot/06-RabbitMQ/image-20211228222014231.png)
+![image-20211228222014231](/images/Java/SpringBoot/06-RabbitMQ/image-20211228222014231.png)
 
 发布成功会有这个提示
 
@@ -708,17 +708,17 @@ TIPS：这一步的时候一定要把之前的 Java接收端程序关了 不然�
 
 下一步我们开始接受
 
-![image-20211228222221041](/images/SpringBoot/06-RabbitMQ/image-20211228222221041.png)
+![image-20211228222221041](/images/Java/SpringBoot/06-RabbitMQ/image-20211228222221041.png)
 
 注意 这里它的模式好几种
 
-![image-20211228222253379](/images/SpringBoot/06-RabbitMQ/image-20211228222253379.png)
+![image-20211228222253379](/images/Java/SpringBoot/06-RabbitMQ/image-20211228222253379.png)
 
 一定要选择第一种 其他的三个都想当于实际接受了数据（会把消息从队列中删除 在生产环境中这可是一个大问题）
 
 接着我们点击获取
 
-![image-20211228222344554](/images/SpringBoot/06-RabbitMQ/image-20211228222344554.png)
+![image-20211228222344554](/images/Java/SpringBoot/06-RabbitMQ/image-20211228222344554.png)
 
 成功获取到了刚刚发送的消息
 
@@ -730,7 +730,7 @@ TIPS：这一步的时候一定要把之前的 Java接收端程序关了 不然�
 
 我们现在管理界面的交换机处创建一个新的交换机
 
-![image-20211228222857157](/images/SpringBoot/06-RabbitMQ/image-20211228222857157.png)
+![image-20211228222857157](/images/Java/SpringBoot/06-RabbitMQ/image-20211228222857157.png)
 
 这个type一定要选择fanout
 
@@ -742,37 +742,37 @@ TIPS：这一步的时候一定要把之前的 Java接收端程序关了 不然�
 
 Durability 表示是否持久化 我们这里依旧使用默认的Durability即可 另外一个就是不持久化
 
-![image-20211228223004267](/images/SpringBoot/06-RabbitMQ/image-20211228223004267.png)
+![image-20211228223004267](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223004267.png)
 
-![image-20211228223014827](/images/SpringBoot/06-RabbitMQ/image-20211228223014827.png)
+![image-20211228223014827](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223014827.png)
 
 创建完毕后大概这样
 
 接着我们进入到这两个队列中 发现都没有绑定我们指定的交换机 于是可以手动绑定下
 
-![image-20211228223317469](/images/SpringBoot/06-RabbitMQ/image-20211228223317469.png)
+![image-20211228223317469](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223317469.png)
 
 绑定完毕后
 
-![image-20211228223423655](/images/SpringBoot/06-RabbitMQ/image-20211228223423655.png)
+![image-20211228223423655](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223423655.png)
 
 当然，也可以到交换机处绑定
 
-![image-20211228223450574](/images/SpringBoot/06-RabbitMQ/image-20211228223450574.png)
+![image-20211228223450574](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223450574.png)
 
-![image-20211228223454946](/images/SpringBoot/06-RabbitMQ/image-20211228223454946.png)
+![image-20211228223454946](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223454946.png)
 
 接下来我们在交换机中发送消息-但是无需指定接收方
 
-![image-20211228223706076](/images/SpringBoot/06-RabbitMQ/image-20211228223706076.png)
+![image-20211228223706076](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223706076.png)
 
 回到队列中 你就会发现这两个家伙都接受到消息了
 
-![image-20211228223744663](/images/SpringBoot/06-RabbitMQ/image-20211228223744663.png)
+![image-20211228223744663](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223744663.png)
 
 接下来发布多条试试
 
-![image-20211228223813850](/images/SpringBoot/06-RabbitMQ/image-20211228223813850.png)
+![image-20211228223813850](/images/Java/SpringBoot/06-RabbitMQ/image-20211228223813850.png)
 
 效果依旧
 
@@ -780,59 +780,59 @@ Durability 表示是否持久化 我们这里依旧使用默认的Durability即�
 
 看看模式
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy33427b78-879d-4511-9dd7-42fb33108339.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy33427b78-879d-4511-9dd7-42fb33108339.png)
 
 可以看到 这貌似是在发布则模式上增加了亿点点东西完成的
 
 接下来我们创建一个对应的交换机
 
-![image-20211228230744821](/images/SpringBoot/06-RabbitMQ/image-20211228230744821.png)
+![image-20211228230744821](/images/Java/SpringBoot/06-RabbitMQ/image-20211228230744821.png)
 
 注意 type要选择direct_change
 
 接下来我们进入并绑定
 
-![image-20211228230942800](/images/SpringBoot/06-RabbitMQ/image-20211228230942800.png)、
+![image-20211228230942800](/images/Java/SpringBoot/06-RabbitMQ/image-20211228230942800.png)、
 
 这里routingkey 取一个自己喜欢的
 
 然后在如法炮制一个q3 收发邮件的
 
-![image-20211228231053723](/images/SpringBoot/06-RabbitMQ/image-20211228231053723.png)
+![image-20211228231053723](/images/Java/SpringBoot/06-RabbitMQ/image-20211228231053723.png)
 
 而且可以给一个队列 分配多个 routing key
 
-![image-20211228231208575](/images/SpringBoot/06-RabbitMQ/image-20211228231208575.png)
+![image-20211228231208575](/images/Java/SpringBoot/06-RabbitMQ/image-20211228231208575.png)
 
 接下来我们可以指定发送的router key
 
-![image-20211228231310698](/images/SpringBoot/06-RabbitMQ/image-20211228231310698.png)
+![image-20211228231310698](/images/Java/SpringBoot/06-RabbitMQ/image-20211228231310698.png)
 
-![image-20211228231325958](/images/SpringBoot/06-RabbitMQ/image-20211228231325958.png)
+![image-20211228231325958](/images/Java/SpringBoot/06-RabbitMQ/image-20211228231325958.png)
 
 2收到了 3 也收到了
 
 再尝试下course
 
-![image-20211228231408936](/images/SpringBoot/06-RabbitMQ/image-20211228231408936.png)
+![image-20211228231408936](/images/Java/SpringBoot/06-RabbitMQ/image-20211228231408936.png)
 
 只有2收到了
 
-![image-20211228231432912](/images/SpringBoot/06-RabbitMQ/image-20211228231432912.png)
+![image-20211228231432912](/images/Java/SpringBoot/06-RabbitMQ/image-20211228231432912.png)
 
 ### Topic-模糊匹配的面板实现
 
-![img](/images/SpringBoot/06-RabbitMQ/python-five.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/python-five.png)
 
 创建
 
-![image-20211228232005779](/images/SpringBoot/06-RabbitMQ/image-20211228232005779.png)
+![image-20211228232005779](/images/Java/SpringBoot/06-RabbitMQ/image-20211228232005779.png)
 
 注意 type要选择topic
 
 绑定队列
 
-![image-20211228232238825](/images/SpringBoot/06-RabbitMQ/image-20211228232238825.png)
+![image-20211228232238825](/images/Java/SpringBoot/06-RabbitMQ/image-20211228232238825.png)
 
 分别绑定四个
 
@@ -855,21 +855,21 @@ Durability 表示是否持久化 我们这里依旧使用默认的Durability即�
 
 先创建一个交换机 选择header模式
 
-![image-20211228235852863](/images/SpringBoot/06-RabbitMQ/image-20211228235852863.png)
+![image-20211228235852863](/images/Java/SpringBoot/06-RabbitMQ/image-20211228235852863.png)
 
 接着依旧是要进入添加队列
 
 但是在添加队列的时候 可以额外指定一些参数
 
-![image-20211228235939199](/images/SpringBoot/06-RabbitMQ/image-20211228235939199.png)
+![image-20211228235939199](/images/Java/SpringBoot/06-RabbitMQ/image-20211228235939199.png)
 
-![image-20211229000003575](/images/SpringBoot/06-RabbitMQ/image-20211229000003575.png)
+![image-20211229000003575](/images/Java/SpringBoot/06-RabbitMQ/image-20211229000003575.png)
 
 就相当于 emm  往这里存放参数 需要携带固定的header
 
 并且我们添加参数 也可以直接指定headers的方式来进行添加
 
-![image-20211229000040388](/images/SpringBoot/06-RabbitMQ/image-20211229000040388.png)
+![image-20211229000040388](/images/Java/SpringBoot/06-RabbitMQ/image-20211229000040388.png)
 
 ## 代码实现
 
@@ -951,11 +951,11 @@ public class RabbitMQ {
 
 首先 我们之前已经创建好了对应的队列
 
-![image-20211229131848356](/images/SpringBoot/06-RabbitMQ/image-20211229131848356.png)
+![image-20211229131848356](/images/Java/SpringBoot/06-RabbitMQ/image-20211229131848356.png)
 
 然后在交换机fanout-exchange中绑定了三个队列
 
-![image-20211229131931673](/images/SpringBoot/06-RabbitMQ/image-20211229131931673.png)
+![image-20211229131931673](/images/Java/SpringBoot/06-RabbitMQ/image-20211229131931673.png)
 
 接着我们来使用生产者生产下消息发送到这三个队列内
 
@@ -996,7 +996,7 @@ public class Consumer {
 
 然后可以在消息列表内看到我们的三个消息
 
-![image-20211229132158261](/images/SpringBoot/06-RabbitMQ/image-20211229132158261.png)
+![image-20211229132158261](/images/Java/SpringBoot/06-RabbitMQ/image-20211229132158261.png)
 
 然后我们使用线程来创建三个消费者
 
@@ -1073,13 +1073,13 @@ public class Producer {
 
 同时队列内的消息也是同步变成0了
 
-![image-20211229132449143](/images/SpringBoot/06-RabbitMQ/image-20211229132449143.png)
+![image-20211229132449143](/images/Java/SpringBoot/06-RabbitMQ/image-20211229132449143.png)
 
 ### Routing-路由模式
 
 我们现在的route-exchange交换机绑定如下
 
-![image-20211229142319931](/images/SpringBoot/06-RabbitMQ/image-20211229142319931.png)
+![image-20211229142319931](/images/Java/SpringBoot/06-RabbitMQ/image-20211229142319931.png)
 
 接下来使用它给email发送消息
 
@@ -1193,7 +1193,7 @@ public class Producer {
 
 交换机如图
 
-![image-20211229143147758](/images/SpringBoot/06-RabbitMQ/image-20211229143147758.png)
+![image-20211229143147758](/images/Java/SpringBoot/06-RabbitMQ/image-20211229143147758.png)
 
 我们现在想让q2和q4收到消息
 
@@ -1372,7 +1372,7 @@ public class Producer {
 
 发送多次测试 均只有1.2接收到了消息
 
-![image-20211229150022504](/images/SpringBoot/06-RabbitMQ/image-20211229150022504.png)
+![image-20211229150022504](/images/Java/SpringBoot/06-RabbitMQ/image-20211229150022504.png)
 
 ## Work-工作队列模式
 
@@ -1381,7 +1381,7 @@ public class Producer {
 - 轮询模式：一个消费者只能消费一条消息，**按均分配**
 - 公平分发模式：根据消费者的能力进行公平分配，处理快的处理的多，反之亦然，按劳分配
 
-![img](/images/SpringBoot/06-RabbitMQ/python-two.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/python-two.png)
 
 ### 轮询模式
 
@@ -1594,13 +1594,13 @@ public class Producer {
 
 然后这里用一个简单的例子
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy3c16e7cd-e504-497e-a9fc-2260f74e5e51.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy3c16e7cd-e504-497e-a9fc-2260f74e5e51.png)
 
 我们平常如果给用户发一个消息的话，需要三步 并且都需要时间
 
 这时候可以考虑用线程池来解决
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy29bb193d-94fe-41a5-8d53-8e460316a7ba.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy29bb193d-94fe-41a5-8d53-8e460316a7ba.png)
 
 当然在Java中线程从来不是一个简单的东西…维护之类的极其繁琐，并且耦合性极高
 
@@ -1613,7 +1613,7 @@ public class Producer {
 
 所以我们就可以用RabbitMQ的异步消息队列模式
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudydfbeb825-015d-4be0-abba-d2dc7084cb84.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudydfbeb825-015d-4be0-abba-d2dc7084cb84.png)
 
 **好处**
 1：完全解耦，用MQ建立桥接
@@ -1625,7 +1625,7 @@ public class Producer {
 
 并且还可以通过它来对整个项目进行解耦合 使维护更加方便
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudya1f53997-b01d-443f-98cd-86a38223fe19.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudya1f53997-b01d-443f-98cd-86a38223fe19.png)
 
 还可以完成非常有效的秒杀队列、流量削峰
 
@@ -1641,7 +1641,7 @@ public class Producer {
 
 我们先创建一个project
 
-![image-20211229170017594](/images/SpringBoot/06-RabbitMQ/image-20211229170017594.png)
+![image-20211229170017594](/images/Java/SpringBoot/06-RabbitMQ/image-20211229170017594.png)
 
 首先 可以在pom中看到这样一个依赖包
 
@@ -1654,11 +1654,11 @@ public class Producer {
 
 然后依赖有这些
 
-![image-20211229170546479](/images/SpringBoot/06-RabbitMQ/image-20211229170546479.png)
+![image-20211229170546479](/images/Java/SpringBoot/06-RabbitMQ/image-20211229170546479.png)
 
 跟着包我们可以直接进入spring的autoconfiguration中查看
 
-![image-20211229170232886](/images/SpringBoot/06-RabbitMQ/image-20211229170232886.png)
+![image-20211229170232886](/images/Java/SpringBoot/06-RabbitMQ/image-20211229170232886.png)
 
 在autoconfiguration内
 
@@ -1710,11 +1710,11 @@ spring:
 
 ### Fanout模式-生产者
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy61c5b87b-d787-4d62-9e7c-85e8f26b02f8.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy61c5b87b-d787-4d62-9e7c-85e8f26b02f8.png)
 
 开始之前 我们先把所有用不上的交换机和队列之类的都删了（就像是恢复到刚刚装上那样）
 
-![image-20211229173328022](/images/SpringBoot/06-RabbitMQ/image-20211229173328022.png)
+![image-20211229173328022](/images/Java/SpringBoot/06-RabbitMQ/image-20211229173328022.png)
 
 接下来我们先写一个service
 
@@ -1841,15 +1841,15 @@ class OrderServiceTest {
 
 Log内成功打印了如下内容 80d0bf04-43ec-4553-8ff9-f1d8957f4d46
 
-![image-20211229181417541](/images/SpringBoot/06-RabbitMQ/image-20211229181417541.png)
+![image-20211229181417541](/images/Java/SpringBoot/06-RabbitMQ/image-20211229181417541.png)
 
 接下来我们看下rabbitmq
 
-![image-20211229181448440](/images/SpringBoot/06-RabbitMQ/image-20211229181448440.png)
+![image-20211229181448440](/images/Java/SpringBoot/06-RabbitMQ/image-20211229181448440.png)
 
 三个队列内都有消息了 现在随便打开一个看看获取到的消息内容
 
-![image-20211229181508511](/images/SpringBoot/06-RabbitMQ/image-20211229181508511.png)
+![image-20211229181508511](/images/Java/SpringBoot/06-RabbitMQ/image-20211229181508511.png)
 
 和我们发送的一模一样
 
@@ -1906,29 +1906,29 @@ public class FanoutSmsConsumer {
 
 最终结构如下
 
-![image-20211229193954231](/images/SpringBoot/06-RabbitMQ/image-20211229193954231.png)
+![image-20211229193954231](/images/Java/SpringBoot/06-RabbitMQ/image-20211229193954231.png)
 
 然后我们启动这个application
 
-![image-20211229194006577](/images/SpringBoot/06-RabbitMQ/image-20211229194006577.png)
+![image-20211229194006577](/images/Java/SpringBoot/06-RabbitMQ/image-20211229194006577.png)
 
 启动完毕后是什么都没有的
 
 但是紧接着运行我们之前测试类内的消费者
 
-![image-20211229194059678](/images/SpringBoot/06-RabbitMQ/image-20211229194059678.png)
+![image-20211229194059678](/images/Java/SpringBoot/06-RabbitMQ/image-20211229194059678.png)
 
 得到了订单号763c256b-7c28-40a3-a8ba-460abdebadb3
 
 我们再回到application进程中
 
-![image-20211229194120447](/images/SpringBoot/06-RabbitMQ/image-20211229194120447.png)
+![image-20211229194120447](/images/Java/SpringBoot/06-RabbitMQ/image-20211229194120447.png)
 
 可以看到成功接收到了消息..
 
 ### Routing(direct)模式-路由
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy61c5b87b-d787-4d62-9e7c-85e8f26b02f8-16407782199107.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy61c5b87b-d787-4d62-9e7c-85e8f26b02f8-16407782199107.png)
 
 应该是这样的
 
@@ -2089,7 +2089,7 @@ public class FanoutDuanxinConsumer {
 
 然后先启动主线程，再启动测试类
 
-![image-20211229195750062](/images/SpringBoot/06-RabbitMQ/image-20211229195750062.png)
+![image-20211229195750062](/images/Java/SpringBoot/06-RabbitMQ/image-20211229195750062.png)
 
 我们代码中是制定了向sms和email发送消息
 
@@ -2097,7 +2097,7 @@ public class FanoutDuanxinConsumer {
 
 接下来回到application进程 看看效果
 
-![image-20211229195828914](/images/SpringBoot/06-RabbitMQ/image-20211229195828914.png)
+![image-20211229195828914](/images/Java/SpringBoot/06-RabbitMQ/image-20211229195828914.png)
 
 只有email和sms收到了消息
 
@@ -2224,15 +2224,15 @@ class OrderServiceTest {
 
 结果：
 
-![image-20211229203720902](/images/SpringBoot/06-RabbitMQ/image-20211229203720902.png)
+![image-20211229203720902](/images/Java/SpringBoot/06-RabbitMQ/image-20211229203720902.png)
 
-![image-20211229203726541](/images/SpringBoot/06-RabbitMQ/image-20211229203726541.png)
+![image-20211229203726541](/images/Java/SpringBoot/06-RabbitMQ/image-20211229203726541.png)
 
 ## RabbitMQ高级开发
 
 在之前的学习中 我们始终没有说到过在队列中的这些东西
 
-![image-20211229204411755](/images/SpringBoot/06-RabbitMQ/image-20211229204411755.png)
+![image-20211229204411755](/images/Java/SpringBoot/06-RabbitMQ/image-20211229204411755.png)
 
 接下来一个一个的说明
 
@@ -2331,21 +2331,21 @@ public void ttlMakeOrderDirect(String userId, String productId, int num) {
 
 十秒内访问（我们设置的过期时间是10秒）
 
-![image-20211229211750899](/images/SpringBoot/06-RabbitMQ/image-20211229211750899.png)
+![image-20211229211750899](/images/Java/SpringBoot/06-RabbitMQ/image-20211229211750899.png)
 
 十秒后访问
 
-![image-20211229211808038](/images/SpringBoot/06-RabbitMQ/image-20211229211808038.png)
+![image-20211229211808038](/images/Java/SpringBoot/06-RabbitMQ/image-20211229211808038.png)
 
 并且可以看到上面有一个配置项
 
-![image-20211229211847472](/images/SpringBoot/06-RabbitMQ/image-20211229211847472.png)
+![image-20211229211847472](/images/Java/SpringBoot/06-RabbitMQ/image-20211229211847472.png)
 
 明确的说明了过期时间
 
 并且还能在队列内明确的发现 这是一个带有TTL过期时间的队列
 
-![image-20211229211944694](/images/SpringBoot/06-RabbitMQ/image-20211229211944694.png)
+![image-20211229211944694](/images/Java/SpringBoot/06-RabbitMQ/image-20211229211944694.png)
 
 但是这个过期并非是真正的删除 还有一个死信队列可以来接收过期的队列
 
@@ -2400,7 +2400,7 @@ DLX也是一个正常的交换机 和一般的交换机没有区别
 
 想要使用死信，只需要再定义列表的时候设置队列参数：`x-dead-letter-exchange`然后指定交换机即可
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy95eb209a-1bcd-487b-832a-e09d88da3beb.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy95eb209a-1bcd-487b-832a-e09d88da3beb.png)
 
 我们这里是这样的
 
@@ -2435,15 +2435,15 @@ public Queue ttlSmsQueue() {
 
 当超过限制的长度的时候 新添加的内容将会被转移到死信队列
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy4b80ded8-9524-4986-9485-aad2946124b2.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy4b80ded8-9524-4986-9485-aad2946124b2.png)
 
 ## Rabbit内存磁盘的监控
 
 当内存使用超过配置的阈值或者磁盘空间剩余空间对于配置的阈值时，RabbitMQ会暂时阻塞客户端的连接，并且停止接收从客户端发来的消息，以此避免服务器的崩溃，客户端与服务端的心态检测机制也会失效。
 
-![image-20211229220308754](/images/SpringBoot/06-RabbitMQ/image-20211229220308754.png)如下图：
+![image-20211229220308754](/images/Java/SpringBoot/06-RabbitMQ/image-20211229220308754.png)如下图：
 
-![img](/images/SpringBoot/06-RabbitMQ/kuangstudy414d826e-5cea-4caa-aba2-92cd30be34f4.png)
+![img](/images/Java/SpringBoot/06-RabbitMQ/kuangstudy414d826e-5cea-4caa-aba2-92cd30be34f4.png)
 
 当队列出现blocking或blocked话说明到达了阈值和以及高负荷运行了。
 
@@ -2573,7 +2573,7 @@ exit
 
 接着我们访问对应的网址 用默认账号 guest 密码guest登陆
 
-![image-20211229233609159](/images/SpringBoot/06-RabbitMQ/image-20211229233609159.png)
+![image-20211229233609159](/images/Java/SpringBoot/06-RabbitMQ/image-20211229233609159.png)
 
 可以看到集群搭建好了（记得要在admin处新建你的用户并把guest删掉 不然分分钟变成肉鸡）
 
