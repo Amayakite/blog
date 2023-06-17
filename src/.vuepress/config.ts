@@ -1,7 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
-import { docsearchPlugin } from "@vuepress/plugin-docsearch";
-
+// import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { searchProPlugin } from "vuepress-plugin-search-pro";
 export default defineUserConfig({
   base: "/",
 
@@ -11,22 +11,40 @@ export default defineUserConfig({
 
   plugins: [
 
-    docsearchPlugin({
-      appId: 'ZN9ZT0G3SP',
-      apiKey: '0c443a348d38a9f6de9ac2d2d7672024',
-      indexName: 'BlogSearch',
-      // 显示最近的搜索结果
-      disableUserPersonalization: false,
-      locales: {
-        '/': {
-          placeholder: 'Search',
-          translations: {
-            button: {
-              buttonText: '请输入要搜索的内容',
-            },
-          },
+    // docsearchPlugin({
+    //   appId: 'ZN9ZT0G3SP',
+    //   apiKey: '0c443a348d38a9f6de9ac2d2d7672024',
+    //   indexName: 'BlogSearch',
+    //   // 显示最近的搜索结果
+    //   disableUserPersonalization: false,
+    //   locales: {
+    //     '/': {
+    //       placeholder: 'Search',
+    //       translations: {
+    //         button: {
+    //           buttonText: '请输入要搜索的内容',
+    //         },
+    //       },
+    //     },
+    //   },
+    // }),
+    
+    searchProPlugin({
+      // 索引全部内容
+      indexContent: true,
+      // 为分类和标签添加索引
+      customFields: [
+        {
+          // @ts-ignore
+          getter: (page) => page.frontmatter.category,
+          formatter: "分类：$content",
         },
-      },
+        {
+          // @ts-ignore
+          getter: (page) => page.frontmatter.tag,
+          formatter: "标签：$content",
+        },
+      ],
     }),
   ],
 

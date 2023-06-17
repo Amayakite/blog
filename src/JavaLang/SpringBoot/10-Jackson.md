@@ -2,7 +2,7 @@
 title: 10-Jackson
 date: 2022-6-11 21:12:34
 category: SpringBoot
-tags:
+tag:
 - Json
 - FastJson
 - SpringBoot

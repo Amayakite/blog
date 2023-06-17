@@ -11,8 +11,11 @@ export default hopeTheme({
   },
 
 
+
   // 主题颜色配置
   themeColor: true,
+
+  fullscreen: true,
 
   // 嵌套的深度
   headerDepth: 4,
@@ -33,7 +36,8 @@ export default hopeTheme({
   docsBranch: "master",
 
   docsDir: "src",
-  pure: true,
+  // 纯净模式
+  pure: false,
 
   // navbar
   navbar,
@@ -68,6 +72,8 @@ export default hopeTheme({
 
   plugins: {
     blog: true,
+
+    pwa:false,
 
 
     // comment: {
