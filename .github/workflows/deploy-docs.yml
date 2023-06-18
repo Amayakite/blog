@@ -50,7 +50,10 @@ jobs:
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: src/.vuepress/dist
+          # folder: src/.vuepress/dist
+          # folder需要绝对路径(GITHUB_ACTION_PATH)
+          folder: ${{ github.action_path }}/src/.vuepress/dist
+
           # 指定仓库
           repository-name: ${{secrets.REPO}}
           # 这是文档部署到的分支名称
