@@ -36,6 +36,17 @@ jobs:
           pnpm run docs:build
           > src/.vuepress/dist/.nojekyll
 
+      - name: 上传文档到指定服务器
+        uses: mdallasanta/ssh-scp-deploy@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          local: src/.vuepress/dist
+          remote: ${{ secrets.REMOTE }}
+          key: ${{secrets.REMOTE_SSH_KEY}}
+          pre_upload: echo "当前工作区路径为：$PWD，当前工作区文件列表：$(ls -l)"
+          post_upload: echo "上传文件到指定服务器完毕"
+
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         with:
@@ -46,13 +57,4 @@ jobs:
           branch: ${{secrets.BRANCH}}
           ssh-key: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: 上传文档到指定服务器
-        uses: mdallasanta/ssh-scp-deploy@v1.2.0
-        with:
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          local: ./src/.vuepress/dist
-          remote: ${{ secrets.REMOTE }}
-          key: ${{secrets.REMOTE_SSH_KEY}}
-          pre_upload: echo "即将上传文件到指定服务器" 
-          post_upload: echo "上传文件到指定服务器完毕"
+
