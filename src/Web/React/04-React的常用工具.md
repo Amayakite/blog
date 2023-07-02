@@ -15,7 +15,7 @@ tag:
 
 **深拷贝**这里就不多赘述了，有很多实现方式，Immutable给的方式比较另类，详情见例子
 
-::: tips
+::: tip
 
 如果你还不明白深拷贝是什么，建议去了解下Object
 
@@ -82,7 +82,7 @@ export default MyComponent
 
 Mobx实际上运用到的技术和Vue挺像的，利用了Object.defineProperties添加get/set，写法上偏向OOP，且并非单一store，可以多store
 
-::: tips
+::: tip
 
 Redux默认以Javascript原生对象形式存储数据，而Mobx使用可观察对象
 

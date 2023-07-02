@@ -454,7 +454,12 @@ log4j.rootLogger=info, stdout
 
 接着配置映射配置文件
 
-TIPS:IEDA安装下`Mybatis X`插件 可以在Mapper接口类中按下ctrl+enter快速创建相应的语句
+::: tip
+
+IEDA安装下`Mybatis X`插件 可以在Mapper接口类中按下ctrl+enter快速创建相应的语句
+
+:::
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>

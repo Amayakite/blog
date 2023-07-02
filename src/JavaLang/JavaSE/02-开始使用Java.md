@@ -57,8 +57,6 @@ java _001helloWorld # 注意 这里不能带有后缀或者路径名什么的
   - 对修改后的HelloWorld.java源文件需要重新编译，生成新的.class文件后，再进行执行才能生效
 
 > 自此 第一个程序HelloWorld运行完毕
->
-> tips:小练：使用Java开发一个带有你名字的控制带程序：例如`YouName` 开始使用了Java
 
 ### 补充：Java开发注意事项和细节说明
 

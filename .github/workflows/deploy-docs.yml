@@ -36,17 +36,6 @@ jobs:
           pnpm run docs:build
           > src/.vuepress/dist/.nojekyll
 
-      - name: 上传文档到指定服务器
-        uses: mdallasanta/ssh-scp-deploy@v1.2.0
-        with:
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          local: src/.vuepress/dist/
-          remote: ${{ secrets.REMOTE }}
-          key: ${{secrets.REMOTE_SSH_KEY}}
-          # 传输文件夹
-          scp_options: -o StrictHostKeyChecking=no -r 
-
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         with:
