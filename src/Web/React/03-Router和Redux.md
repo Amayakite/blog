@@ -8,13 +8,13 @@ tag:
  - ReactRedux
 ---
 
-# Router
+## Router
 
-## 概述
+### 概述
 
 根据不同的url地址暂时不同的内容或者页面
 
-## 安装和基本使用
+### 安装和基本使用
 
 安装
 
@@ -77,7 +77,7 @@ export default class App extends Component {
 
 是不是非常简单
 
-## 路由重定向
+### 路由重定向
 
 想要重定向某个路由，例如我访问`/`的时候，重定向到`/home`，则可以这样（注意，5和6使用方式不同，这里演示的是6）：
 
@@ -140,7 +140,7 @@ export default class App extends Component {
 
 ```
 
-## 404页面的处理
+### 404页面的处理
 
 比较简单，path处使用`*`进行匹配即可，路由的搜索是默认先匹配看有没有，最后再到`*`处理，所以无论放在最前面还是最后面都无所谓
 
@@ -199,7 +199,7 @@ export default class App extends Component {
 }
 ```
 
-## 嵌套路由（子路由）
+### 嵌套路由（子路由）
 
 如果说想使用嵌套路由的话，则需要在父路由路径加上`/*`来提供模糊匹配，**并且把子路由丢到该路由组件内（务必在组件内记得加上`<Routes/>`，就像是Vue中view-router标签那样）**
 
@@ -278,7 +278,7 @@ export default class App extends Component {
 
 这样更直观，当然在`<App/>`内部一样要加上Routes
 
-## 嵌套子路由额外说明（精准匹配-exact
+### 嵌套子路由额外说明（精准匹配-exact
 
 例如现在我**不想在一个Route中写其子路由**，我想写
 
@@ -298,7 +298,7 @@ export default class App extends Component {
 
 
 
-## 接收路径参数
+### 接收路径参数
 
 例如访问`/user/{userId}`，返回对应用户的信息
 
@@ -352,7 +352,7 @@ export default class App extends Component {
 
 ![image-20220504213720380](/images/Web/React/03-Router和Redux/image-20220504213720380.png)
 
-## 接收query参数（?a=b）
+### 接收query参数（?a=b）
 
 查询参数也是有一个hooks来进行处理
 
@@ -415,7 +415,7 @@ export default class App extends Component {
 
 ![image-20220504214435507](/images/Web/React/03-Router和Redux/image-20220504214435507.png)
 
-## State传参
+### State传参
 
 这个要用到Navigate或者`NavLink`标签，用法都是一样的，这里以函数式编程为例：
 
@@ -435,7 +435,7 @@ function BBB(){
 
 通常不会用这个玩意，它貌似是在请求头加东西来传参的
 
-## 让用户跳转路由的方式
+### 让用户跳转路由的方式
 
 两种，第一种声明式导航
 
@@ -486,7 +486,7 @@ export interface NavigateOptions {
 // 当然，参数1可以直接填一个string（要到达的路径），参数2可以忽略
 ```
 
-## 路由守卫（鉴权）
+### 路由守卫（鉴权）
 
 这里直接上代码了，没有新的东西，自己封装鉴权，当然在element中也可以用{aa && xxx}的表达式来，这里就不演示了（那个局限性有点大）
 
@@ -542,7 +542,7 @@ const AuthPage = ({children}: { children: JSX.Element }) => {
 }
 ```
 
-## 路由懒加载
+### 路由懒加载
 
 如下，只能这样整。。。但是可以通过map之类的来批量生成下
 
@@ -583,7 +583,7 @@ export default class App extends Component {
 
 ```
 
-### 关于监听路由的销毁
+#### 关于监听路由的销毁
 
 在使用函数式编程中，可以直接通过useEffect来进行监听初始化完毕和销毁事件
 
@@ -604,7 +604,7 @@ const MyFuncComponent: React.FC = function () {
 }
 ```
 
-## 扩展-高阶函数withRotuer
+### 扩展-高阶函数withRotuer
 
 有这样一个情况，我们有某个组件不在`Router`的映射范畴外，例如/index 是跳转到App这个组件，但是App这个组件里面有一个子组件Child，这个组件需要通过当前的路由参数来做某些事情，但是App不穿的话他又拿不到，所以可以这样
 
@@ -622,9 +622,9 @@ export default withRouter(Child);  // 这里通过WithRouter将路由参数传�
 
 函数式同理
 
-# Redux
+## Redux
 
-## 安装
+### 安装
 
 PS：从这里开始，我使用的包管理工具从yarn换成了pnpm(学着学着因为工作，断了三个月，2022年8月28日)
 
@@ -634,7 +634,7 @@ PS：从这里开始，我使用的包管理工具从yarn换成了pnpm(学着学
 pnpm i redux
 ```
 
-## 基本使用
+### 基本使用
 
 例如我现在有一个这样的场景
 
@@ -1720,9 +1720,9 @@ export default store
 
 
 
-# React-Redux
+## React-Redux
 
-## 概述
+### 概述
 
 我们再刚刚成功过完了`redux`，如果你使用的是typescript，那么应该不难发现，这玩意是真TM的有点难受，例如你引入了`redux-promise`后，是绝对会出现红色波浪线的hhh，只能*@ts-ignore*来处理
 
@@ -1732,7 +1732,7 @@ export default store
 
 > react-redux是基于redux的，所以store本身是不变的，变动的是我们页面UI的调用方式
 
-## 安装和使用
+### 安装和使用
 
 首先安装
 
@@ -1978,7 +1978,7 @@ const MyChild = connect(
 
 在App的子组件内也是可以正常调用的
 
-## Connect的第二个参数
+### Connect的第二个参数
 
 Connect还有一个参数可以传入，如果你传入了的话，那么你将获取不到dispatch
 
@@ -2063,7 +2063,7 @@ const MyChild = connect(
 )
 ```
 
-## 如何在使用connect的时候父组件额外传递参数给子组件
+### 如何在使用connect的时候父组件额外传递参数给子组件
 
 只需要这样
 
@@ -2155,7 +2155,7 @@ const MyChild = connect(
 
 ![image-20230319164107962](/images/Web/React/03-Router和Redux/image-20230319164107962.png)
 
-## 如何在Typescript中优雅的给connect包装后的组件传递数据
+### 如何在Typescript中优雅的给connect包装后的组件传递数据
 
 我们首先将父子组件需要的功能说明白，父组件显示store的Name，可以传递一个字符串给子组件，子组件可以调用某个方法，修改store中的Name为刚刚父组件传递的
 

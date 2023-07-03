@@ -7,7 +7,7 @@ tag:
 - Activity
 ---
 
-# 概述
+## 概述
 
 在Android中，总共有四大组件
 
@@ -18,9 +18,9 @@ tag:
 
 其他三者之后会说明，先由Activity开始，因为它是四大组件中最重要也是使用最频繁的组件
 
-# 活动Activity
+## 活动Activity
 
-## 启动和结束(跳转页面)
+### 启动和结束(跳转页面)
 
 > 要从当前页面跳转到新页面，跳转代码如下
 
@@ -130,7 +130,7 @@ class ActFinishActivity : AppCompatActivity() {
 }
 ```
 
-## Activity的生命周期
+### Activity的生命周期
 
 和React，Vue这些前端框架一样，在Android开发中，Activity也有生命周期，如下
 
@@ -168,7 +168,7 @@ class ActFinishActivity : AppCompatActivity() {
 
 ![image-20220604172250112](/images/Java/Android/05-Android-Activity/image-20220604172250112.png)
 
-## Activity的启动模式
+### Activity的启动模式
 
 ![image-20220604172453879](/images/Java/Android/05-Android-Activity/image-20220604172453879.png)
 
@@ -190,7 +190,7 @@ class ActFinishActivity : AppCompatActivity() {
 
 ![image-20220604173610184](/images/Java/Android/05-Android-Activity/image-20220604173610184.png)
 
-## 使用不同的启动模式
+### 使用不同的启动模式
 
 只需要在创建意图对象的时候设置下即可
 
@@ -220,7 +220,7 @@ class ActStartActivity : AppCompatActivity() {
 }
 ```
 
-### 案例-登陆成功后不再进入登陆页面
+#### 案例-登陆成功后不再进入登陆页面
 
 很多APP第一次打开都要求登陆，登陆成功后进入App首页，如果进入首页后按下返回键可以看到并没有返回到登陆页面而是直接退出App了
 
@@ -263,7 +263,7 @@ class ActStartActivity : AppCompatActivity() {
 }
 ```
 
-### 常用启动标志一览
+#### 常用启动标志一览
 
 ![image-20220604175423219](/images/Java/Android/05-Android-Activity/image-20220604175423219.png)
 
@@ -858,7 +858,7 @@ class ReadStringActivity : AppCompatActivity() {
 </manifest>
 ```
 
-# 中级控件
+## 中级控件
 
 首先来看看正常的系统架构，一般都是一个server对应多个client的
 

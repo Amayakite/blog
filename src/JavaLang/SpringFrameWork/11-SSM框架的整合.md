@@ -9,7 +9,7 @@ tag:
 - Mybatis
 ---
 
-# 概述
+## 概述
 
 到了这里为止，SSM三大框架就已经学完了(Spring SpringMVC Mybatis)
 
@@ -908,7 +908,7 @@ public class AccountServiceImpl implements AccountService {
 
 还有Mybatis Plus 可以让Mybatis变得不那么繁琐
 
-# 🎉🎉SSM整合总结-模板
+## 🎉🎉SSM整合总结-模板
 
 ## 整体项目结构
 

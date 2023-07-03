@@ -6,7 +6,7 @@ tag:
  - Java
  - JavaSE
 ---
-# Java的特点
+## Java的特点
 
 1. Java是面向对象的(oop)
 2. Java语言是健壮性的
@@ -31,7 +31,7 @@ tag:
 
 ## Java开发工具的选择
 
-​ 刚开始使用的话，建议是用VsCode或者Sublime Text 差不多熟练后再转用IEDA(面试的时候往往都要手搓代码)
+ 刚开始使用的话，建议是用VsCode或者Sublime Text 差不多熟练后再转用IEDA(面试的时候往往都要手搓代码)
 
 ## Java运行机制及运行过程
 

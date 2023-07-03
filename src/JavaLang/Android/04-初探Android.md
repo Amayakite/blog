@@ -6,7 +6,7 @@ tag:
 - Android
 ---
 
-# 概述
+## 概述
 
 关于AndroidOS，这是基于Linux内核的自由及开源的操作系统（嘛因为基于Linux，所以也得这样整
 
@@ -14,11 +14,9 @@ tag:
 
 最后就是IED的选择，可以选择基于IEDA衍生的Android Studio，也可以选择IEDA（需要启用Kotlin和Android插件），我这里就懒得下载Android Studio了，直接用IEDA
 
-# 初探Android
+## 初探Android
 
-
-
-## 从一个HelloWorld开始
+### 从一个HelloWorld开始
 
 毕竟万物基于Hello World嘛，我这里假设你安装完毕了Android Studio或者IEDA，下面使用IEDA演示，Android Studio跟着感觉做即可
 
@@ -88,7 +86,7 @@ tag:
 
 ![image-20220509133228784](/images/Java/Android/04-初探Android/image-20220509133228784.png)
 
-## Android中的日志相关
+### Android中的日志相关
 
 要在Android中DEBUG有点困难，所以一般都是用Log的形式来查看
 
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
 ![image-20220509132044842](/images/Java/Android/04-初探Android/image-20220509132044842.png)
 
-## Android的开发语言
+### Android的开发语言
 
 主要有两条路子：**原生开发**和**混合开发**
 
@@ -145,7 +143,7 @@ Android的官方编译语言包括Java和Kotlin
 
 一般来说大项目是纯原生，小项目一般混合或者说两者混合
 
-## Android的目录结构
+### Android的目录结构
 
 首先我们将视图切换成Android
 
@@ -184,7 +182,7 @@ PS：如果要给项目加依赖的话，加到那个Module的build.gradle内
 
 ![image-20220509140232659](/images/Java/Android/04-初探Android/image-20220509140232659.png)
 
-## build.gradle配置文件
+### build.gradle配置文件
 
 通常来说在Android中一个Module就是一个APP
 
@@ -279,7 +277,7 @@ dependencies {
 }
 ```
 
-## 运行配置文件AndroidManifest.xml
+### 运行配置文件AndroidManifest.xml
 
 AndroidManifest.xml指定了APP的运行配置信息，它是一个XML描述文件，初始大概是这个样子
 
@@ -323,7 +321,7 @@ AndroidManifest.xml指定了APP的运行配置信息，它是一个XML描述文�
 </manifest>
 ```
 
-## 基本的页面显示和逻辑处理
+### 基本的页面显示和逻辑处理
 
 首先我们修改下res/layout的`activity_main.xml`
 
@@ -392,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
 
 ![image-20220509152053493](/images/Java/Android/04-初探Android/image-20220509152053493.png)
 
-## Activity的创建和跳转
+### Activity的创建和跳转
 
 我们在res/layout下新建一个`mypage.xml`
 
@@ -570,7 +568,7 @@ public class MainActivity extends AppCompatActivity {
 
 ![image-20220509154913184](/images/Java/Android/04-初探Android/image-20220509154913184.png)
 
-## 补充-更方便的创建Activity的方法
+### 补充-更方便的创建Activity的方法
 
 刚刚那样创建Activity太麻烦，要手动创建贼多文件，所以一般情况下可以通过这种方式来创建Activity
 
@@ -578,13 +576,13 @@ public class MainActivity extends AppCompatActivity {
 
 它将会自动给你创建xml，类，和在声明文件中声明（当然不一定要在layout那点，在java那点也可）
 
-# 简单控件
+## 简单控件
 
 首先我们新建一个Android Module
 
 ![image-20220509160214688](/images/Java/Android/04-初探Android/image-20220509160214688.png)
 
-## 文本控件
+### 文本控件
 
 > 设置文本内容有两种方式
 >
